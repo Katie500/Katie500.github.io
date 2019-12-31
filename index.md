@@ -1,4 +1,4 @@
-![Photo of me](https://photos.app.goo.gl/eVj2YyCjaKHCiQAf6)
+![Photo](https://photos.app.goo.gl/eVj2YyCjaKHCiQAf6)
 ## Welcome to Katie's Homepage!
 
 Feel free to bookmark this to keep an eye on my project updates. You can see even more of my qualifications on [my LinkedIn profile.](https://www.linkedin.com/in/katieknauss19/)
