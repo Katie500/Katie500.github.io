@@ -1,9 +1,8 @@
+![Photo of me](https://photos.app.goo.gl/eVj2YyCjaKHCiQAf6)
 ## Welcome to Katie's Homepage!
 
-Feel free to bookmark this to keep an eye on my project updates
-You can use the [editor on GitHub](https://github.com/Katie500/katie.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Feel free to bookmark this to keep an eye on my project updates. You can see even more of my qualifications on [my LinkedIn profile.](https://www.linkedin.com/in/katieknauss19/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Markdown
 
