@@ -20,3 +20,5 @@ Completed Projects are currently pending.
 ### Contact Information
 
 Please refer to my LinkedIn for contact information.
+
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
