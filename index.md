@@ -7,15 +7,14 @@ Feel free to bookmark this to keep an eye on my project updates. You can see eve
 Queue broadway music
 
 ### Completed Projects
-eventually this will get done
-
+Completed projects are currently pending
 
 ```markdown
-Hmmmmmmm
+"You miss 100% of the colons you don't find."
 ```
 ### Current Projects
 
- `well this is cool`
+ `Yeet and repeat, my dude`
 
 ### Contact Information
 
