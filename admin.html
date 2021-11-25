@@ -3,6 +3,9 @@
 <body>
   
 <style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
 /* Add padding to containers */
 .container {
@@ -24,6 +27,16 @@ body {
   }
   </style>
   
+  <div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-white w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href = "#add" onclick="toggleFunction()>ADD</a>
+    <a href = "#delete" onclick="toggleFunction()>DELETE</a>
+    <a href = "#view" onclick="toggleFunction()>VIEW</a>
+   </div>
+   </div>                            
   <h1>Welcome To The Administrator Portal</h1>
   
   <p>Please choose what you would like to do:</p>
@@ -48,9 +61,7 @@ body {
   <br>
   <br>
   <p>What even are we trying to add, delete, and view here? What should the options look like?</p>
-  <a href = "#add">ADD</a>
-  <a href = "#delete">DELETE</a>
-  <a href = "#view">VIEW</a>
+ 
   
   
   <div id = "add">
