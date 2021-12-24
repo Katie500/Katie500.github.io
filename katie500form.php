@@ -1,8 +1,8 @@
 
 <?php
-  $name = $_POST['name'];
-  $visitor_email = $_POST['email'];
-  $message = $_POST['message'];
+  $name = $_POST['Name'];
+  $visitor_email = $_POST['Email'];
+  $message = $_POST['Message'];
 
 
   function IsInjected($str)
@@ -52,10 +52,7 @@ if(IsInjected($visitor_email))
 
   mail($to,$email_subject,$email_body,$headers);
 
-    
-    
-  mail(to,subject,message,headers)
-    
+        
     
 
 ?>
