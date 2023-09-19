@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="SENG_TA_Lec1.css">
+    <title>SENG 513 - Web Development</title>
+</head>
+<body>
+    <header>
+        <h1>SENG 513 - Web Development</h1>
+        <p>Learn the fundamentals of web development and build modern web applications.</p>
+    </header>
+
+    <div class="container">
+
+        <img src="web-development1.png" alt="Description of the image">
+
+        <h2>About the Course</h2>
+        <p>SENG 513 is an introductory course in web development that covers the essential technologies and techniques used in building web applications. You will learn HTML, CSS, JavaScript, and more, enabling you to create dynamic and responsive websites.</p>
+
+        <h2>Instructor</h2>
+        <p>Professor Steve Sutcliffe</p>
+
+        <h2>Class Schedule</h2>
+        <p>Classes are held on <b>Tuesday and Thursday from 12:30 PM to 1:45 PM in ENG60</b>.</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20058.922855961217!2d-114.12532225583497!3d51.06480529836712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1694536163053!5m2!1sen!2sca" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <h2>Contact</h2>
+        <p>If you have any questions or need assistance, please contact <a href="mailto:seyednami.modarressi@ucalgary.ca">seyednami.modarressi@ucalgary.ca</a>.</p>
+    </div>
+    <div class="container" id = "second_container">
+
+        <img src="cat-typing.gif" alt="Description of the image" id="cat_gif">
+        <h2>Any Problem With the Course? Send a Message Here</h2>
+
+        <form>
+            <label for="ucid">UCID:</label><br/>
+            <input type="text" id="ucid" name="ucid" required><br><br>
+    
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" cols="50" required style="resize: none;"></textarea><br><br>
+    
+            <label for="tutorial-time">Select Tutorial Time:</label>
+            <select id="tutorial-time" name="tutorial-time">
+                <option value="monday">Group 1</option>
+                <option value="tuesday">Group 2</option>
+            </select><br><br>
+    
+            <table>
+                <tr>
+                    <td>
+                        Group 1
+                    </td>
+                    <td>
+                        Group 2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Friday 14 - 15:50
+                    </td>
+                    <td>
+                        Friday 8 - 9:50
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Submit" id="submit">
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+header {
+    background-color: #0078d4;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    font-size: 36px;
+    margin: 0;
+}
+img{
+    max-width: 800px;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+
+
+#second_container{
+    text-align: center;
+}
+#cat_gif{
+    width: 100%;
+}
+
+#submit{
+    width: 200px; 
+    height: 50px;
+     border-radius: 12px; 
+     color: white; 
+     background-color: black;
+}
+
+table{
+    width: 800px;
+    border: 1px solid black;
+}
+
+tr, td {
+    border: 1px solid black;
+}
+
+#ucid{
+    
+    border-width: 0 0 2px;
+    border-color: Black;
+    width: 200px; 
+}
+
+#message{
+    outline: 0;
+    border-width: 2px;
+    border-color: black;
+    width: 200px; 
+}
+</style>
