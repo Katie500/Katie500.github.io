@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Katie's Portfolio</title>
+        <style>
+            body,h1 {font-family: "Montserrat", sans-serif}
+            img {margin-bottom: -7px}
+            .w3-row-padding img {margin-bottom: 12px}
+
+            body {
+                background-color: white;
+                color: black;
+            }
+        
+            .bartender {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+            }
+        
+            .bar {
+                height: 20%;
+                width: 100%;
+                /* background-image: url('backgroudPortfolio.JPG'); */
+                animation-name: tend;
+                animation-duration: 0.5s;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                transform: translateX(0%);
+                /* animation-play-state: paused; */
+            }
+        
+            @keyframes tend {
+                0% {
+                    transform: translateX(0%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+            .bar:nth-child(1) {
+                animation-delay: 0ms;
+                background-image: url('b1.JPG');
+            }
+            .bar:nth-child(2) {
+                animation-delay: 100ms;
+                background-image: url('b2.JPG');
+            }
+            .bar:nth-child(3) {
+                animation-delay: 200ms;
+                background-image: url('b3.JPG');
+            }
+            .bar:nth-child(4) {
+                animation-delay: 300ms;
+                background-image: url('b4.JPG');
+            }
+            .bar:nth-child(5) {
+                animation-delay: 400ms;
+                background-image: url('b5.JPG');
+            }
+        
+        </style>
+        
+        <script>
+            function handleClick(e) {
+                e.preventDefault();
+                const bars = document.querySelectorAll(".bar");
+                bars.forEach((bar, i) => {
+                    bar.style.animationPlayState = "running";
+                });
+                const lastBar = bars[bars.length-1];
+                lastBar.addEventListener("animationend", () => {
+                    setTimeout(() => {
+                        window.location = e.target.href;
+                    }, 500);
+                });
+            }
+            
+        </script>
+        
+
+    </head>
+    <body>
+        
+
+       
+        <div class="bartender">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- Sidebar -->
+        
+        
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-content" style="max-width:1500px">
+        
+        <!-- Header -->
+        <div class="w3-opacity">
+        <div class="w3-clear"></div>
+        <header class="w3-center w3-margin-bottom">
+            <h1><b>PORTFOLIO</b></h1>
+            <p><b>Here are some projects I've done.</b></p>
+            <p class="w3-padding-16"><button class="w3-button w3-black" onclick="window.location.href='./portfolio.html';">Back To Home</button></p>
+        </header>
+        </div>
+        
+        <!-- Photo Grid -->
+        <div class="w3-row-padding" id="myGrid" style="margin-bottom:128px">
+            <div class="w3-third">
+            <img src="sizzleTheFlame.jpg" style="width:100%" class="w3-hover-opacity" onclick="window.location.href='./proj1.html';">
+            <img src="https://st2.depositphotos.com/7819052/46883/i/450/depositphotos_468835242-stock-photo-alphabet-letter-word-tbd-abbreviation.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://static6.depositphotos.com/1077687/571/i/450/depositphotos_5711288-stock-photo-seal-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st.depositphotos.com/1041343/2306/i/450/depositphotos_23067978-stock-photo-coming-soon-on-keyboard.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st3.depositphotos.com/14431644/32624/i/450/depositphotos_326245626-stock-photo-handwriting-text-writing-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st2.depositphotos.com/7865540/10807/i/450/depositphotos_108078086-stock-photo-torn-brown-paper.jpg" style="width:100%" class="w3-hover-opacity">
+            </div>
+        
+            <div class="w3-third">
+            <img src="https://st.depositphotos.com/1041343/2306/i/450/depositphotos_23067978-stock-photo-coming-soon-on-keyboard.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st2.depositphotos.com/7865540/10807/i/450/depositphotos_108078086-stock-photo-torn-brown-paper.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st3.depositphotos.com/14431644/32624/i/450/depositphotos_326245626-stock-photo-handwriting-text-writing-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://static6.depositphotos.com/1077687/571/i/450/depositphotos_5711288-stock-photo-seal-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st.depositphotos.com/1041343/2306/i/450/depositphotos_23067978-stock-photo-coming-soon-on-keyboard.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st2.depositphotos.com/7819052/46883/i/450/depositphotos_468835242-stock-photo-alphabet-letter-word-tbd-abbreviation.jpg" style="width:100%" class="w3-hover-opacity">
+            </div>
+        
+            <div class="w3-third">
+            <img src="https://st2.depositphotos.com/7819052/46883/i/450/depositphotos_468835242-stock-photo-alphabet-letter-word-tbd-abbreviation.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st3.depositphotos.com/14431644/32624/i/450/depositphotos_326245626-stock-photo-handwriting-text-writing-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st.depositphotos.com/1041343/2306/i/450/depositphotos_23067978-stock-photo-coming-soon-on-keyboard.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st3.depositphotos.com/14431644/32624/i/450/depositphotos_326245626-stock-photo-handwriting-text-writing-coming-soon.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st2.depositphotos.com/7865540/10807/i/450/depositphotos_108078086-stock-photo-torn-brown-paper.jpg" style="width:100%" class="w3-hover-opacity">
+            <img src="https://st.depositphotos.com/1041343/2306/i/450/depositphotos_23067978-stock-photo-coming-soon-on-keyboard.jpg" style="width:100%" class="w3-hover-opacity">
+            </div>
+        </div>
+        
+        <!-- End Page Content -->
+        </div>
+        
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+            <p class="w3-medium">Powered by <a href="https://katie500.github.io/" target="_blank" class="w3-hover-text-green">KT Designs</a></p>
+        </footer>
+
+        
+    </body>
+</html>
+
