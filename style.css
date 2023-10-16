@@ -1,0 +1,113 @@
+/* 
+Course: SENG 513
+Date: OCT 23, 2023
+Assignment 2
+Name: Katherine Knauss
+UCID: 30087243*/
+
+* {
+
+}
+
+header {
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+
+}
+
+.background {
+    background-image: url('logo.jpg');
+}
+
+/* Style for the header */
+/* header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+} */
+
+/* Style for the game grid */
+#tic-tac-toe {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide the screen into 3 equal parts */
+    grid-template-rows: repeat(3, 1fr); /* Make rows the same size as columns */
+    grid-gap: 5px;
+    max-height: 80vh; /* Limit the height to 80% of the viewport height */
+    width: 45%; /* Full width */
+}
+
+/* Style for individual cells (squares) */
+.cell {
+    text-align: center;
+    font-size: 36px;
+    background-color: #eee;
+    cursor: pointer;
+    aspect-ratio: 1 / 1; /* Make cells square */
+    position: relative;
+   
+}
+
+/* Style for X and O images */
+.cell img {
+    width: 90%;
+    height: 90%;
+    border: 5px solid;
+    /* border-color: ; */
+}
+
+.cell img-container {
+    width: 90%;
+    height: 90%;
+    border: 5px solid;
+}
+
+
+/* Red outline for X, blue outline for O */
+.cell.x img {
+    border-color: red;
+}
+
+.cell.o img {
+    border-color: blue;
+}
+
+/* Style for the menu button */
+#menu-button {
+    display: block;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    width: 10%;
+}
+
+#instructions-button {
+    display: block;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    width: 10%;
+}
