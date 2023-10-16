@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <title>Elemental Endeavor: Earth, Water, Fire</title>
 </head>
 <body>
@@ -17,23 +18,27 @@
         <h1>Elemental Endeavor: Earth, Water, Fire</h1>
     </header>
 
-    <div id="options">
-        <h2>Select Your Element:</h2>
-        <button id="fire-button">Fire</button>
-        <button id="water-button">Water</button>
-        <button id="earth-button">Earth</button>
-    </div>
+    <div id="container">
+        <div id="options">
+            <h2>Select Your Element:</h2>
+            <button class = "btn-grad-red" id="fire-button">Fire</button>
+            <br>
+            <button class = "btn-grad-blue" id="water-button">Water</button>
+            <br>
+            <button class = "btn-grad-green" id="earth-button">Earth</button>
+        </div>
 
-    <div id="tic-tac-toe">
-        <div class="cell" id="cell-0"></div>
-        <div class="cell" id="cell-1"></div>
-        <div class="cell" id="cell-2"></div>
-        <div class="cell" id="cell-3"></div>
-        <div class="cell" id="cell-4"></div>
-        <div class="cell" id="cell-5"></div>
-        <div class="cell" id="cell-6"></div>
-        <div class="cell" id="cell-7"></div>
-        <div class="cell" id="cell-8"></div>
+        <div id="tic-tac-toe">
+            <div class="cell" id="cell-0"></div>
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
+            <div class="cell" id="cell-3"></div>
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
+            <div class="cell" id="cell-6"></div>
+            <div class="cell" id="cell-7"></div>
+            <div class="cell" id="cell-8"></div>
+        </div>
     </div>
 
     <script>
@@ -68,7 +73,7 @@
                     cells.forEach(cell => cell.classList.remove('x', 'o', 'e'));
                     cell.classList.add(currentPlayer.toLowerCase()); // Add the class to the clicked cell
                     // Update the image based on the current player's choice
-                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="${currentPlayer}" style="border: 5px solid ${currentPlayer === 'X' ? xBorderColor : oBorderColor}"></div>`;
+                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? '.pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="${currentPlayer}" style="border: 5px solid ${currentPlayer === 'X' ? xBorderColor : oBorderColor}"></div>`;
 
                     lastPlayer = currentPlayer;
                     currentPlayer = currentPlayer === 'X' ? 'O' : (currentPlayer === 'O' ? 'X' : 'E');
