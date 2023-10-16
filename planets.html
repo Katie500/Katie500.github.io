@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html>
+<title>Katie's Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('./pictures/space.jpg')
+
+}
+
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+</style>
+<body>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container" id="home">
+    
+</div>
+
+ 
+<!-- Container (About Section) -->
+<div class="w3-content w3-container " id="about">
+  <h3 class="w3-center w3-xxlarge w3-wide">Planets</h3>
+  <h4 class="w3-center"><em>Write Ups</em></h4>
+  <h5>PLANETS LINK</h5>
+  <a href="https://simonrvincent.github.io/hide-and-seek-game/">Play Now!</a> </br>
+  <a href="https://github.com/SimonRVincent/hide-and-seek-game">View Source Code!</a>
+
+  <h5>Overview</h5>
+  <p>Description</p>
+  <h5>Gameplay</h5>
+  <p>Description</p>
+  <h5>Initial 10 Sketches</h5>
+  <p>Description</p>
+  <h5>Refinded 10 Sketches</h5>
+  <p>Description</p>
+
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  
+
+  <h5>What makes the game special?</h5>
+  <p>Description</p>
+  <h5>Project contribution:</h5>
+  <p>Description</p>
+</div>
+   
+
+
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-wide">DEMO</span>
+  </div>
+</div>
+
+<div style="text-align:center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/JeHTh1_05_w?si=vnmSzbvhqkVmziZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div>
+
+<!-- Container (Sketch Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center w3-xxlarge w3-wide">INITIAL SKETCHES</h3>
+  <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+    
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    
+
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+  </div>
+</div>
+
+<!-- Container (Refined Sketch Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center w3-xxlarge w3-wide">REFINED SKETCHES</h3>
+  <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description.">
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center w3-xxlarge w3-wide">APP SCREENSHOTS</h3>
+  <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+        alt="Title Screen: </br> Purpose: </br> Description  </br>
+        Features: 
+        <ul>
+          <li> </li>
+        </ul> ">
+      </div>
+
+    <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+
+    <div class="w3-col m3">
+    <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+    alt="Title Screen: </br> Purpose: </br> Description  </br>
+    Features: 
+    <ul>
+        <li> </li>
+    </ul> ">
+    </div>
+
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3" style="text-align: left;">
+      <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+    <div class="w3-col m3">
+      <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+
+    <div class="w3-col m3">
+      <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+
+    <div class="w3-col m3">
+      <div class="w3-col m3">
+      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+    <!-- <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">Back To Top</button> -->
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" style="text-align:left" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+ 
+<script>
+  
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+
+</script>
+
+</body>
+</html>
+
