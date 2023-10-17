@@ -278,3 +278,39 @@ footer {
     top: 30%;
     width: 10%;
 }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: rgb(226, 212, 212);
+    width: 80%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.scrollable-content {
+    max-height: 400px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+}
+
