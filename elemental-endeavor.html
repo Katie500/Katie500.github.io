@@ -39,16 +39,22 @@
             <div class="cell" id="cell-7"></div>
             <div class="cell" id="cell-8"></div>
         </div>
+
+        <div id="info">
+            <h2>Player <span id="player-turn">1</span>'s Turn</h2>
+            <!-- <h2>Player ${currentPlayer}'s Turn</h2> -->
+            <button class="btn-grad-dark">Instructions</button>
+        </div>
     </div>
 
     <script>
         // JavaScript code for your game logic
         const cells = document.querySelectorAll('.cell');
-        let currentPlayer = 'X';
-        let imageClick = '';
+        let currentPlayer = '1';
+        let imageClick = '1';
         let lastPlayer = ''; // Initialize the last player
-        let xBorderColor = 'red'; // Border color for player X
-        let oBorderColor = 'blue'; // Border color for player O
+        let xBorderColor = 'red'; // Border color for player 1
+        let oBorderColor = 'blue'; // Border color for player 2
 
         const fireButton = document.getElementById('fire-button');
         const waterButton = document.getElementById('water-button');
@@ -66,20 +72,39 @@
             imageClick = '3';
         });
 
+        const playerTurnElement = document.getElementById('player-turn');
+        playerTurnElement.style.color = 'red';
+
+
         cells.forEach(cell => {
             cell.addEventListener('click', () => {
                 if (!cell.textContent) {
                     // Remove the class from all cells
-                    cells.forEach(cell => cell.classList.remove('x', 'o', 'e'));
+                    cells.forEach(cell => cell.classList.remove('1', '2', '0'));
                     cell.classList.add(currentPlayer.toLowerCase()); // Add the class to the clicked cell
                     // Update the image based on the current player's choice
-                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="${currentPlayer}" style="border: 5px solid ${currentPlayer === 'X' ? xBorderColor : oBorderColor}"></div>`;
+                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
 
                     lastPlayer = currentPlayer;
-                    currentPlayer = currentPlayer === 'X' ? 'O' : (currentPlayer === 'O' ? 'X' : 'E');
+                    currentPlayer = currentPlayer === '1' ? '2' : (currentPlayer === '2' ? '1' : '0');
+                    playerTurnElement.textContent = currentPlayer;
+
+                    // After updating playerTurnElement.textContent, add the following code
+                    if (currentPlayer === '1') {
+                        playerTurnElement.style.color = 'red';
+                    } else if (currentPlayer === '2') {
+                        playerTurnElement.style.color = 'blue';
+                    } else {
+                        // Add a default color if needed (e.g., black for player 0)
+                        playerTurnElement.style.color = 'black';
+}
+
                 }
             });
         });
+
+        
+
     </script>
 </body>
 <footer>

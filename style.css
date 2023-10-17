@@ -6,7 +6,8 @@ Name: Katherine Knauss
 UCID: 30087243*/
 
 * {
-    font-family: 'Montserrat'
+    font-family: 'Montserrat';
+
 }
 
 header {
@@ -31,6 +32,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    background-color: rgb(223, 218, 218);
 }
 
 footer {
@@ -50,6 +52,31 @@ footer {
 
 }
 
+         
+.btn-grad-dark {
+    background-image: linear-gradient(to right, #159957 0%, #155799  51%, #159957  100%);
+    margin: 10px;
+    padding: 15px 23px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: none;
+    width: 100%;
+  }
+
+  .btn-grad-dark:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+
+ 
+ 
          
 .btn-grad-red {
     background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
@@ -169,7 +196,7 @@ footer {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    padding-right: 15%;
+    padding-right: 10%;
     text-align: left;
 }
 
@@ -179,6 +206,13 @@ footer {
     align-items: start;
     width: 100%;
     padding-top: 2%;
+}
+
+#info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10%;
 }
 
 /* Style for individual cells (squares) */
