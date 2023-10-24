@@ -23,27 +23,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     margin: 0;
     background-color: rgb(223, 218, 218);
-}
-
-.background {
-    background-image: url('logo.jpg');
-}
-
-
-.button {
-    width: 75%;
-    padding: 10px;
-    background: url('fire.jpg') no-repeat;
 }
 
          
 .btn-grad-dark {
     background-image: linear-gradient(to right, #159957 0%, #155799  51%, #159957  100%);
     margin: 10px;
-    padding: 15px 23px;
+    padding: 12px 30px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -65,7 +53,7 @@ body {
 .btn-grad-red {
     background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
     margin: 10px;
-    padding: 15px 45px;
+    padding: 12px 30px;    
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -88,7 +76,7 @@ body {
   .btn-grad-blue {
     background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
     margin: 10px;
-    padding: 15px 45px;
+    padding: 12px 30px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -106,13 +94,11 @@ body {
     color: #fff;
     text-decoration: none;
   }
- 
-
            
   .btn-grad-green {
     background-image: linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%);
     margin: 10px;
-    padding: 15px 45px;
+    padding: 12px 30px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -130,13 +116,11 @@ body {
     color: #fff;
     text-decoration: none;
   }
-
-
            
   .btn-grad {
     background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%);
     margin: 10px;
-    padding: 15px 45px;
+    padding: 12px 30px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -153,10 +137,10 @@ body {
     text-decoration: none;
   }
  
-
- .selectElementMobile {
+ .selectElement {
     display: none;
  }
+
 
 /* Style for the game grid */
 #tic-tac-toe {
@@ -171,17 +155,17 @@ body {
  /* Style for the buttons */
  #options {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     padding: 20px;
-    padding-right: 10%;
+    /* padding-right: 10%; */
     text-align: left;
 }
 
 #container {
     display: flex;
-    flex-direction: row;
-    align-items: start;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding-top: 2%;
 }
@@ -190,7 +174,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 10%;
+    padding-top: 10%;
 }
 
 /* Style for individual cells (squares) */
@@ -200,21 +184,13 @@ body {
     background-color: #eee;
     cursor: pointer;
     aspect-ratio: 1 / 1; /* Make cells square */
-    position: relative;
-   
+    position: relative;  
 }
 
 /* Style for X and O images */
 .cell img {
-    width: 90%;
-    height: 90%;
-    border: 5px solid;
-}
-
-.cell img-container {
-    width: 90%;
-    height: 90%;
-    border: 5px solid;
+    width: 65%;
+    height: 65%;
 }
 
 

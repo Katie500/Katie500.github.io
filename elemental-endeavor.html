@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" media= "screen and (min-width: 641px)" type="text/css" href="./style.css">
+    <link rel="stylesheet" media= "screen and (max-width: 640px)" type="text/css" href="./styleMobile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <title>Elemental Endeavor: Earth, Water, Fire</title>
 </head>
@@ -18,9 +19,11 @@
         <h1>Elemental Endeavor: Earth, Water, Fire</h1>
     </header>
 
+    <!-- buttons that control user elements (default fire) -->
     <div id="container">
+        <h2 class = "selectElementMobile" style="padding-left: 5%;">Select Your Element:</h2>
         <div id="options">
-            <h2>Select Your Element:</h2>
+            <h2 class="selectElement">Select Your Element:</h2>
             <button class = "btn-grad-red" id="fire-button">Fire</button>
             <br>
             <button class = "btn-grad-blue" id="water-button">Water</button>
@@ -28,6 +31,7 @@
             <button class = "btn-grad-green" id="earth-button">Earth</button>
         </div>
 
+        <!-- basic game board based on tic tac toe -->
         <div id="tic-tac-toe">
             <div class="cell" id="cell-0"></div>
             <div class="cell" id="cell-1"></div>
@@ -40,13 +44,14 @@
             <div class="cell" id="cell-8"></div>
         </div>
 
+        <!-- whos turn is it -->
         <div id="info">
-            <h2>Player <span id="player-turn">1</span>'s Turn</h2>
-            <!-- <h2>Player ${currentPlayer}'s Turn</h2> -->
+            <h3>Player <span id="player-turn">1</span>'s Turn</h3>
             <button class="btn-grad-dark">Instructions</button>
         </div>
     </div>
 
+    <!-- instructions modal for user -->
     <div id="modal" class="modal">
         <div class="modal-content scrollable-content">
             <span class="close" id="close-btn">&times;</span>
@@ -82,7 +87,17 @@
     </div>
 
     <script>
-        // JavaScript code for your game logic
+        // TODO:
+        // -Make it so:  Fire beats Earth.
+        //             Earth beats Water.
+        //             Water beats Fire.
+        // -make winner screen appear
+        // -check for winner with three in a row logic
+        // -possibly check for stalemate (unknown if this is necessary)
+        // -if time - allow for advanced mode with added wind in a 4 x 4 grid 
+
+
+        // JavaScript code for game logic
         const cells = document.querySelectorAll('.cell');
         let currentPlayer = '1';
         let imageClick = '1';
@@ -90,10 +105,13 @@
         let xBorderColor = 'red'; // Border color for player 1
         let oBorderColor = 'blue'; // Border color for player 2
 
+        //button listeners
         const fireButton = document.getElementById('fire-button');
         const waterButton = document.getElementById('water-button');
         const earthButton = document.getElementById('earth-button');
 
+
+        // buttons logic
         fireButton.addEventListener('click', () => {
             imageClick = '1';
         });
@@ -106,10 +124,12 @@
             imageClick = '3';
         });
 
+        //checking for player turn
         const playerTurnElement = document.getElementById('player-turn');
-        playerTurnElement.style.color = 'red';
+        playerTurnElement.style.color = 'red'; //default start with player 1
 
 
+        //display cell logic
         cells.forEach(cell => {
             cell.addEventListener('click', () => {
                 if (!cell.textContent) {
@@ -117,19 +137,20 @@
                     cells.forEach(cell => cell.classList.remove('1', '2', '0'));
                     cell.classList.add(currentPlayer.toLowerCase()); // Add the class to the clicked cell
                     // Update the image based on the current player's choice
-                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
-
+                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? 'fire.jpg' : (imageClick === '2' ? 'water.jpg' : (imageClick === '3' ? 'earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
+                    //indicate next player
                     lastPlayer = currentPlayer;
+                    //check currect player 1 or 2
                     currentPlayer = currentPlayer === '1' ? '2' : (currentPlayer === '2' ? '1' : '0');
-                    playerTurnElement.textContent = currentPlayer;
+                    playerTurnElement.textContent = currentPlayer; //indicate who's turn it is
 
-                    // After updating playerTurnElement.textContent, add the following code
+                    // Indicate red or blue based on player
                     if (currentPlayer === '1') {
                         playerTurnElement.style.color = 'red';
                     } else if (currentPlayer === '2') {
                         playerTurnElement.style.color = 'blue';
                     } else {
-                        // Add a default color if needed (e.g., black for player 0)
+                        // Add a default color if needed (e.g., black for player 0) (not needed so far, just an exception catch)
                         playerTurnElement.style.color = 'black';
 }
 
@@ -137,7 +158,7 @@
             });
         });
 
-
+        //instructions modal code
         const instructionButton = document.querySelector('.btn-grad-dark');
         const modal = document.getElementById('modal');
         const closeBtn = document.getElementById('close-btn');
@@ -158,11 +179,7 @@
         });
 
 
-        
-
     </script>
 </body>
-<footer>
-    <!-- Footer content here -->
-</footer>
+
 </html>
