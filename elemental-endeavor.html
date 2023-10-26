@@ -137,7 +137,7 @@
                     cells.forEach(cell => cell.classList.remove('1', '2', '0'));
                     cell.classList.add(currentPlayer.toLowerCase()); // Add the class to the clicked cell
                     // Update the image based on the current player's choice
-                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? 'fire.jpg' : (imageClick === '2' ? 'water.jpg' : (imageClick === '3' ? 'earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
+                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
                     //indicate next player
                     lastPlayer = currentPlayer;
                     //check currect player 1 or 2
