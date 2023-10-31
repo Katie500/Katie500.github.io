@@ -145,7 +145,7 @@ body {
 /* Style for the game grid */
 #tic-tac-toe {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Divide the screen into 3 equal parts */
+  grid-template-columns: repeat(5, 1fr); /* Divide the screen into 3 equal parts */
   grid-template-rows: repeat(3, 1fr); /* Make rows the same size as columns */
   grid-gap: 5px;
   max-height: 80vh; /* Limit the height to 80% of the viewport height */
@@ -180,7 +180,7 @@ body {
 /* Style for individual cells (squares) */
 .cell {
   text-align: center;
-  font-size: 0px;
+  font-size: 1px;
   background-color: #eee;
   cursor: pointer;
   aspect-ratio: 1 / 1; /* Make cells square */

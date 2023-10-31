@@ -42,6 +42,22 @@
             <div class="cell" id="cell-6"></div>
             <div class="cell" id="cell-7"></div>
             <div class="cell" id="cell-8"></div>
+            <div class="cell" id="cell-9"></div>
+            <div class="cell" id="cell-10"></div>
+            <div class="cell" id="cell-11"></div>
+            <div class="cell" id="cell-12"></div>
+            <div class="cell" id="cell-13"></div>
+            <div class="cell" id="cell-14"></div>
+            <div class="cell" id="cell-15"></div>
+            <div class="cell" id="cell-16"></div>
+            <div class="cell" id="cell-17"></div>
+            <div class="cell" id="cell-18"></div>
+            <div class="cell" id="cell-19"></div>
+            <div class="cell" id="cell-20"></div>
+            <div class="cell" id="cell-21"></div>
+            <div class="cell" id="cell-22"></div>
+            <div class="cell" id="cell-23"></div>
+            <div class="cell" id="cell-24"></div>
         </div>
 
         <!-- whos turn is it -->
@@ -150,7 +166,7 @@
                 // Get the current player's element
                 const currentPlayerElement = imageClick === '1' ? 'fire' : (imageClick === '2' ? 'water' : (imageClick === '3' ? 'earth' : ''));
                 if(canPlaceToken(currentPlayerElement, cell, imageClick)) {
-                    cell.innerHTML = `<div class="img-container"><img src="./pictures/${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
+                    cell.innerHTML = `<div class="img-container"><img src="${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
 
                     // Check for a winner after each move
                     if (checkForWinner()) {
@@ -178,44 +194,40 @@
             const imageElement = cell.querySelector('img');
             const source = imageElement.getAttribute('src');
             
-            if(source === './pictures/fire.jpg') {
+            if(source === 'fire.jpg') {
                 console.log(currentPlayerElement);
                 if(currentPlayerElement === 'water') {
                     return true;
                 }
             }
-            else if(source === './pictures/water.jpg') {
+            else if(source === 'water.jpg') {
                 console.log(currentPlayerElement);
                 if(currentPlayerElement === 'earth') {
                     return true;
                 }
             }
-            else if(source === './pictures/earth.jpg') {
-                console.log('cell img 3');
-                console.log(currentPlayerElement);
+            else if(source === 'earth.jpg') {
                 if(currentPlayerElement === 'fire') {
-                    console.log('returning true');
                     return true;
                 }
             }   
             else {
-                console.log('returning false');
                 return false;
             }
         }
 
         function checkForWinner() {
             const winningCombinations = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-                [0, 4, 8], [2, 4, 6]           // Diagonals
+                [0, 1, 2, 3, 4], [5,6,7,8,9], [10, 11,12,13,14], [15,16,17,18,19],[20, 21,22,23,24], // Rows
+                [0, 5, 10,15,20], [1, 6, 11, 16,21], [2, 7, 12, 17, 22], [3, 8, 13, 18, 23], [4, 9, 14, 19, 24], // Columns
+                [0, 6, 12,18, 24], [4, 8, 12,16,20]           // Diagonals
                 
             ];
 
             for (const combo of winningCombinations) {
-                const [a, b, c] = combo;
+                const [a, b, c, d, e] = combo;
                 
-                if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
+                if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer && cells[d].textContent === currentPlayer && cells[e].textContent === currentPlayer) {
                     // Declare the current player as the winner
                     const winnerModal = document.getElementById('winner-modal');
                     const winnerPlayer = document.getElementById('winner-player');
