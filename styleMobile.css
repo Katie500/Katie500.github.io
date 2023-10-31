@@ -180,7 +180,7 @@ body {
 /* Style for individual cells (squares) */
 .cell {
   text-align: center;
-  font-size: 1px;
+  font-size: 0px;
   background-color: #eee;
   cursor: pointer;
   aspect-ratio: 1 / 1; /* Make cells square */
@@ -192,9 +192,6 @@ body {
   width: 65%;
   height: 65%;
 }
-
-
-
 
 
 /* Red outline for X, blue outline for O */
