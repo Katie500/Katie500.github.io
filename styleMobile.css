@@ -6,263 +6,266 @@ Name: Katherine Knauss
 UCID: 30087243*/
 
 * {
-    font-family: 'Montserrat';
+  font-family: 'Montserrat';
 
 }
 
 header {
-    padding: 2%;
-    text-align: center;
-    width: 100%;
-    background-image: linear-gradient(to right, #a2220e 0%, #40a0f4  51%, #0e491d  100%);
-    color: white;
+  padding: 4%;
+  text-align: center;
+  width: 100%;
+  background-image: linear-gradient(to right, #a2220e 0%, #40a0f4  51%, #0e491d  100%);
+  color: white;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    background-color: rgb(223, 218, 218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: rgb(223, 218, 218);
+}
+
+       
+.btn-grad-dark {
+  background-image: linear-gradient(to right, #159957 0%, #155799  51%, #159957  100%);
+  margin: 10px;
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  width: 100%;
+}
+
+.btn-grad-dark:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+    
+.btn-grad-red {
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  margin: 10px;
+  padding: 12px 30px;    
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  width: 75%;
+}
+
+.btn-grad-red:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
          
-.btn-grad-dark {
-    background-image: linear-gradient(to right, #159957 0%, #155799  51%, #159957  100%);
-    margin: 10px;
-    padding: 12px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: none;
-    width: 100%;
-  }
+.btn-grad-blue {
+  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+  margin: 10px;
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  width: 75%;
+}
 
-  .btn-grad-dark:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
-      
-.btn-grad-red {
-    background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
-    margin: 10px;
-    padding: 12px 30px;    
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: none;
-    width: 75%;
-  }
+.btn-grad-blue:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+         
+.btn-grad-green {
+  background-image: linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%);
+  margin: 10px;
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  width: 75%;
+}
 
-  .btn-grad-red:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
+.btn-grad-green:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+         
+.btn-grad {
+  background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%);
+  margin: 10px;
+  padding: 12px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
 
-           
-  .btn-grad-blue {
-    background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
-    margin: 10px;
-    padding: 12px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: none;
-    width: 75%;
-  }
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
 
-  .btn-grad-blue:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
-           
-  .btn-grad-green {
-    background-image: linear-gradient(to right, #134E5E 0%, #71B280  51%, #134E5E  100%);
-    margin: 10px;
-    padding: 12px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-    border: none;
-    width: 75%;
-  }
-
-  .btn-grad-green:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
-           
-  .btn-grad {
-    background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%);
-    margin: 10px;
-    padding: 12px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-  }
-
-  .btn-grad:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
- 
- .selectElement {
-    display: none;
- }
+.selectElement {
+  display: none;
+}
 
 
 /* Style for the game grid */
 #tic-tac-toe {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divide the screen into 3 equal parts */
-    grid-template-rows: repeat(3, 1fr); /* Make rows the same size as columns */
-    grid-gap: 5px;
-    max-height: 80vh; /* Limit the height to 80% of the viewport height */
-    width: 45%; /* Full width */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Divide the screen into 3 equal parts */
+  grid-template-rows: repeat(3, 1fr); /* Make rows the same size as columns */
+  grid-gap: 5px;
+  max-height: 80vh; /* Limit the height to 80% of the viewport height */
+  width: 45%; /* Full width */
 }
 
- /* Style for the buttons */
- #options {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    /* padding-right: 10%; */
-    text-align: left;
+/* Style for the buttons */
+#options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  /* padding-right: 10%; */
+  text-align: left;
 }
 
 #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 2%;
 }
 
 #info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
 }
 
 /* Style for individual cells (squares) */
 .cell {
-    text-align: center;
-    font-size: 36px;
-    background-color: #eee;
-    cursor: pointer;
-    aspect-ratio: 1 / 1; /* Make cells square */
-    position: relative;  
+  text-align: center;
+  font-size: 1px;
+  background-color: #eee;
+  cursor: pointer;
+  aspect-ratio: 1 / 1; /* Make cells square */
+  position: relative;  
 }
 
 /* Style for X and O images */
 .cell img {
-    width: 65%;
-    height: 65%;
+  width: 65%;
+  height: 65%;
 }
+
+
+
 
 
 /* Red outline for X, blue outline for O */
 .cell.x img {
-    border-color: red;
+  border-color: red;
 }
 
 .cell.o img {
-    border-color: blue;
+  border-color: blue;
 }
 
 /* Style for the menu button */
 #menu-button {
-    display: block;
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    position: absolute;
-    left: 5%;
-    top: 20%;
-    width: 10%;
+  display: block;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+  top: 20%;
+  width: 10%;
 }
 
 #instructions-button {
-    display: block;
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    position: absolute;
-    left: 5%;
-    top: 30%;
-    width: 10%;
+  display: block;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+  top: 30%;
+  width: 10%;
 }
 
 
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
 .modal-content {
-    background-color: rgb(226, 212, 212);
-    width: 80%;
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: left;
+  background-color: rgb(226, 212, 212);
+  width: 80%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .scrollable-content {
-    max-height: 400px; 
-    overflow-y: auto;
+  max-height: 400px; 
+  overflow-y: auto;
 }

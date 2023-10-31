@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     margin: 0;
     background-color: rgb(223, 218, 218);
 }
@@ -196,7 +196,7 @@ body {
 /* Style for individual cells (squares) */
 .cell {
     text-align: center;
-    font-size: 36px;
+    font-size: 1px;
     background-color: #eee;
     cursor: pointer;
     aspect-ratio: 1 / 1; /* Make cells square */
@@ -215,6 +215,7 @@ body {
     width: 90%;
     height: 90%;
     border: 5px solid;
+    font-size: 1px;
 }
 
 

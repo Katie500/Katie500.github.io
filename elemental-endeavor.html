@@ -70,46 +70,59 @@
             </ol>
             <p>*A player may replace an opponent's token with their own if the their token defeats their opponent's token.</p>
             <h4>Elemental Interactions:</h4>
-            <ol>
-                <li>Each element has strengths and weaknesses against the others, creating a tactical aspect to the game. For example:</li>
+            <!-- <ol> -->
+                <p>Each element has strengths and weaknesses against the others, creating a tactical aspect to the game. For example:</p>
                 <ul>
                     <li>Fire beats Earth.</li>
                     <li>Earth beats Water.</li>
                     <li>Water beats Fire.</li>
                 
                 </ul>
-                <li>If a player places a token that defeats the opposing element in a row, they can remove the opponent's token from that spot and replace it with their own.</li>
-            </ol>
+                <p>If a player places a token that defeats the opposing element in a row, they can remove the opponent's token from that spot and replace it with their own.</p>
+            <!-- </ol> -->
 
             <h4>Winning:</h4>
             <p>The first player to connect three of their own elemental tokens in a row wins the game.</p>
         </div>
     </div>
 
-    <script>
-        // TODO:
-        // -Make it so:  Fire beats Earth.
-        //             Earth beats Water.
-        //             Water beats Fire.
-        // -make winner screen appear
-        // -check for winner with three in a row logic
-        // -possibly check for stalemate (unknown if this is necessary)
-        // -if time - allow for advanced mode with added wind in a 4 x 4 grid 
+    
+    <div id="winner-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-winner-modal">&times;</span>
+            <h2>Player <span id="winner-player">1</span> Won!</h2>
+            <button id="exit-button">Exit</button>
+        </div>
+    </div>
 
+    <script>
 
         // JavaScript code for game logic
         const cells = document.querySelectorAll('.cell');
         let currentPlayer = '1';
-        let imageClick = '1';
-        let lastPlayer = ''; // Initialize the last player
         let xBorderColor = 'red'; // Border color for player 1
         let oBorderColor = 'blue'; // Border color for player 2
+
+        // Initialize imageClick to '1' (fire) for player 1
+        let imageClick = '1';
+
+        // Function to reset the cell click event listeners
+        function resetCellClickListeners() {
+            cells.forEach(cell => {
+                cell.removeEventListener('click', handleCellClick); // Remove the old listener
+                cell.addEventListener('click', handleCellClick); // Add a new listener
+            });
+        }
+
+        // Call the function to set up the initial event listeners
+        resetCellClickListeners();
+
+
 
         //button listeners
         const fireButton = document.getElementById('fire-button');
         const waterButton = document.getElementById('water-button');
         const earthButton = document.getElementById('earth-button');
-
 
         // buttons logic
         fireButton.addEventListener('click', () => {
@@ -124,39 +137,124 @@
             imageClick = '3';
         });
 
-        //checking for player turn
-        const playerTurnElement = document.getElementById('player-turn');
-        playerTurnElement.style.color = 'red'; //default start with player 1
+        // Define the relationships between elements
+        const elementStrengths = {
+            fire: 'earth',
+            earth: 'water',
+            water: 'fire',
+            
+        };
 
+        function handleCellClick() {
+            const cell = this; // 'this' refers to the clicked cell
+                // Get the current player's element
+                const currentPlayerElement = imageClick === '1' ? 'fire' : (imageClick === '2' ? 'water' : (imageClick === '3' ? 'earth' : ''));
+                if(canPlaceToken(currentPlayerElement, cell, imageClick)) {
+                    cell.innerHTML = `<div class="img-container"><img src="./pictures/${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
 
-        //display cell logic
-        cells.forEach(cell => {
-            cell.addEventListener('click', () => {
-                if (!cell.textContent) {
-                    // Remove the class from all cells
-                    cells.forEach(cell => cell.classList.remove('1', '2', '0'));
-                    cell.classList.add(currentPlayer.toLowerCase()); // Add the class to the clicked cell
-                    // Update the image based on the current player's choice
-                    cell.innerHTML = `<div class="img-container"><img src="${imageClick === '1' ? './pictures/fire.jpg' : (imageClick === '2' ? './pictures/water.jpg' : (imageClick === '3' ? './pictures/earth.jpg' : ''))}" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}"></div>`;
-                    //indicate next player
-                    lastPlayer = currentPlayer;
-                    //check currect player 1 or 2
-                    currentPlayer = currentPlayer === '1' ? '2' : (currentPlayer === '2' ? '1' : '0');
-                    playerTurnElement.textContent = currentPlayer; //indicate who's turn it is
-
-                    // Indicate red or blue based on player
-                    if (currentPlayer === '1') {
-                        playerTurnElement.style.color = 'red';
-                    } else if (currentPlayer === '2') {
-                        playerTurnElement.style.color = 'blue';
+                    // Check for a winner after each move
+                    if (checkForWinner()) {
+                        clearBoard();
+                        // Handle the case where a player wins
+                        // You can display a winner screen or take appropriate actions
                     } else {
-                        // Add a default color if needed (e.g., black for player 0) (not needed so far, just an exception catch)
-                        playerTurnElement.style.color = 'black';
-}
-
+                        // Switch to the other player
+                        currentPlayer = currentPlayer === '1' ? '2' : '1';
+                        updatePlayerTurn();
+                        resetCellClickListeners(); // Reset cell click listeners
+                    }
                 }
-            });
+        }
+
+
+
+        function canPlaceToken(currentPlayerElement, cell, imageClick) {
+            const playerCell = cell.textContent; // Get the element of the cell
+            const cellImg = imageClick;
+            if (playerCell === '') {
+                // The cell is empty, and any token can be placed on it
+                return true;
+            }
+            const imageElement = cell.querySelector('img');
+            const source = imageElement.getAttribute('src');
+            
+            if(source === './pictures/fire.jpg') {
+                console.log(currentPlayerElement);
+                if(currentPlayerElement === 'water') {
+                    return true;
+                }
+            }
+            else if(source === './pictures/water.jpg') {
+                console.log(currentPlayerElement);
+                if(currentPlayerElement === 'earth') {
+                    return true;
+                }
+            }
+            else if(source === './pictures/earth.jpg') {
+                console.log('cell img 3');
+                console.log(currentPlayerElement);
+                if(currentPlayerElement === 'fire') {
+                    console.log('returning true');
+                    return true;
+                }
+            }   
+            else {
+                console.log('returning false');
+                return false;
+            }
+        }
+
+        function checkForWinner() {
+            const winningCombinations = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6]           // Diagonals
+                
+            ];
+
+            for (const combo of winningCombinations) {
+                const [a, b, c] = combo;
+                
+                if (cells[a].textContent === currentPlayer && cells[b].textContent === currentPlayer && cells[c].textContent === currentPlayer) {
+                    // Declare the current player as the winner
+                    const winnerModal = document.getElementById('winner-modal');
+                    const winnerPlayer = document.getElementById('winner-player');
+                    winnerPlayer.textContent = currentPlayer;
+                    winnerModal.style.display = 'block';
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Handle the exit button in the winner modal
+        const exitButton = document.getElementById('exit-button');
+        exitButton.addEventListener('click', () => {
+            const winnerModal = document.getElementById('winner-modal');
+            winnerModal.style.display = 'none';
+
+            // Clear the board and reset the game
+            clearBoard();
+            currentPlayer = '1'; // Reset to player 1
+            updatePlayerTurn();
         });
+
+        // Function to clear the game board
+        function clearBoard() {
+            cells.forEach(cell => {
+                cell.innerHTML = '';
+            });
+            console.log('Clear board');
+        }
+
+
+
+        // Function to update the player's turn
+        function updatePlayerTurn() {
+            const playerTurnElement = document.getElementById('player-turn');
+            playerTurnElement.textContent = currentPlayer;
+            playerTurnElement.style.color = currentPlayer === '1' ? 'red' : 'blue';
+        }
 
         //instructions modal code
         const instructionButton = document.querySelector('.btn-grad-dark');
