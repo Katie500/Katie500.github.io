@@ -162,7 +162,7 @@ body {
 #tic-tac-toe {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Divide the screen into 3 equal parts */
-    grid-template-rows: repeat(3, 1fr); /* Make rows the same size as columns */
+    grid-template-rows: repeat(5, 1fr); /* Make rows the same size as columns */
     grid-gap: 5px;
     max-height: 80vh; /* Limit the height to 80% of the viewport height */
     width: 45%; /* Full width */

@@ -166,7 +166,7 @@
                 // Get the current player's element
                 const currentPlayerElement = imageClick === '1' ? 'fire' : (imageClick === '2' ? 'water' : (imageClick === '3' ? 'earth' : ''));
                 if(canPlaceToken(currentPlayerElement, cell, imageClick)) {
-                    cell.innerHTML = `<div class="img-container"><img src="${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
+                    cell.innerHTML = `<div class="img-container"><img src="./pictures/${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
 
                     // Check for a winner after each move
                     if (checkForWinner()) {
@@ -194,19 +194,19 @@
             const imageElement = cell.querySelector('img');
             const source = imageElement.getAttribute('src');
             
-            if(source === 'fire.jpg') {
+            if(source === './pictures/fire.jpg') {
                 console.log(currentPlayerElement);
                 if(currentPlayerElement === 'water') {
                     return true;
                 }
             }
-            else if(source === 'water.jpg') {
+            else if(source === './pictures/water.jpg') {
                 console.log(currentPlayerElement);
                 if(currentPlayerElement === 'earth') {
                     return true;
                 }
             }
-            else if(source === 'earth.jpg') {
+            else if(source === './pictures/earth.jpg') {
                 if(currentPlayerElement === 'fire') {
                     return true;
                 }
