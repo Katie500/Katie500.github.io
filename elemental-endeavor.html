@@ -1,6 +1,6 @@
 <!-- Course: SENG 513 -->
-<!-- Date: OCT 23, 2023 -->
-<!-- Assignment 2 -->
+<!-- Date: OCT 31, 2023 -->
+<!-- Assignment 3 -->
 <!-- Name: Katherine Knauss -->
 <!-- UCID: 30087243 -->
 
@@ -12,6 +12,7 @@
     <link rel="stylesheet" media= "screen and (min-width: 641px)" type="text/css" href="./style.css">
     <link rel="stylesheet" media= "screen and (max-width: 640px)" type="text/css" href="./styleMobile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="elementalScript.js"></script>
     <title>Elemental Endeavor: Earth, Water, Fire</title>
 </head>
 <body>
@@ -74,9 +75,8 @@
             <h2 style="text-align: center">Instructions</h2>
             <h4>Setup:</h4>
             <ol>
-                <li>Uses a 3x3 grid, similar to Tic Tac Toe.</li>
-                <li>Each player has a set of elemental options, with three different elements: fire, water, and earth. Each element has a unique symbol.
-                </li>
+                <li>Uses a 5x5 grid, similar to Tic Tac Toe.</li>
+                <li>Each player has a set of elemental options, with three different elements: fire, water, and earth. Each element has a unique symbol.</li>
             </ol>
 
             <h4>Gameplay:</h4>
@@ -86,22 +86,17 @@
             </ol>
             <p>*A player may replace an opponent's token with their own if the their token defeats their opponent's token.</p>
             <h4>Elemental Interactions:</h4>
-            <!-- <ol> -->
-                <p>Each element has strengths and weaknesses against the others, creating a tactical aspect to the game. For example:</p>
-                <ul>
-                    <li>Fire beats Earth.</li>
-                    <li>Earth beats Water.</li>
-                    <li>Water beats Fire.</li>
-                
-                </ul>
-                <p>If a player places a token that defeats the opposing element in a row, they can remove the opponent's token from that spot and replace it with their own.</p>
-            <!-- </ol> -->
-
+            <p>Each element has strengths and weaknesses against the others, creating a tactical aspect to the game. For example:</p>
+            <ul>
+                <li>Fire beats Earth.</li>
+                <li>Earth beats Water.</li>
+                <li>Water beats Fire.</li>
+            </ul>
+            <p>If a player places a token that defeats the opposing element in a row, they can remove the opponent's token from that spot and replace it with their own.</p>
             <h4>Winning:</h4>
             <p>The first player to connect three of their own elemental tokens in a row wins the game.</p>
         </div>
     </div>
-
     
     <div id="winner-modal" class="modal">
         <div class="modal-content">
@@ -111,7 +106,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
 
         // JavaScript code for game logic
         const cells = document.querySelectorAll('.cell');
@@ -289,7 +284,6 @@
         });
 
 
-    </script>
+    </script> -->
 </body>
-
 </html>
