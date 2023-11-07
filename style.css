@@ -291,3 +291,19 @@ body {
     max-height: 400px; 
     overflow-y: auto;
 }
+
+.modal-content2 {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 400px;
+    margin: 400px auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.winner-heading {
+    color: #e74c3c; /* Red color for the winner heading */
+    font-size: 24px;
+}
