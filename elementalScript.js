@@ -1,8 +1,8 @@
 // Course: SENG 513 
 // Date: Oct 31, 2023 
 // Assignment 3
-// Name: Katherine Knauss 
-// UCID: 30087243 
+
+
 
 
  // JavaScript code for game logic
@@ -33,7 +33,7 @@
  const waterButton = document.getElementById('water-button');
  const earthButton = document.getElementById('earth-button');
 
- // buttons logic
+ // Logic for buttons that changes the element of a player
  fireButton.addEventListener('click', () => {
      imageClick = '1';
  });
@@ -53,10 +53,11 @@
          const currentPlayerElement = imageClick === '1' ? 'fire' : (imageClick === '2' ? 'water' : (imageClick === '3' ? 'earth' : ''));
 
          if(canPlaceToken(currentPlayerElement, cell)) {
-             cell.innerHTML = `<div class="img-container"><img src="./pictures/${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
+             cell.innerHTML = `<div class="img-container"><img src="${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
              previouslyPlayed = cell;
 
              // Check for a winner after each move
+             //Winner modal ANIMATION
              if (checkForWinner()) {
              } else {
                  // Switch to the other player
@@ -78,31 +79,31 @@
      const source = imageElement.getAttribute('src');
 
     //check if current cell was previously played to prevent loops
-     if(!cell === previouslyPlayed)
-     {
-        //find element weaknesses
-         if(source === './pictures/fire.jpg') {
-             if(currentPlayerElement === 'water') {
-                 return true;
-             }
-         }
-         else if(source === './pictures/water.jpg') {
-             if(currentPlayerElement === 'earth') {
-                 return true;
-             }
-         }
-         else if(source === './pictures/earth.jpg') {
-             if(currentPlayerElement === 'fire') {
-                 return true;
-             }
-         }   
-         else {
-             return false;
-         }
-     }
-     else {
-         return false;
-     }
+    //Checking the kinds of COLLISIONS that are allowed to occur
+    if(cell === previouslyPlayed)
+    {
+       return false;
+    }
+    else {
+        if(source === 'fire.jpg') {
+            if(currentPlayerElement === 'water') {
+                return true;
+            }
+        }
+        else if(source === 'water.jpg') {
+            if(currentPlayerElement === 'earth') {
+                return true;
+            }
+        }
+        else if(source === 'earth.jpg') {
+            if(currentPlayerElement === 'fire') {
+                return true;
+            }
+        }   
+        else {
+            return false;
+        }
+    }
  }
 
  function checkForWinner() {
@@ -114,6 +115,7 @@
          
      ];
 
+    //CUSTOM ALGORITHM 
     //check all five combinations
      for (const combo of winningCombinations) {
          const [a, b, c, d, e] = combo;
