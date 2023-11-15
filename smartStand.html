@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-<title>Hardware Project</title>
+<title>Whirl-i-Cook SmartStand</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -25,7 +25,7 @@ body, html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-  background-image: url('./pictures/hardwareImg.jpg')
+  background-image: url('./pictures/Whirl-i-Cook.png')
 
 }
 
@@ -52,39 +52,148 @@ body, html {
  
 <!-- Container (About Section) -->
 <div class="w3-content w3-container " id="about">
-  <h3 class="w3-center w3-xxlarge w3-wide">Hardware Project</h3>
+  <h3 class="w3-center w3-xxlarge w3-wide">Whirl-i-Cook SmartStand</h3>
   <h4 class="w3-center"><em>Write Ups</em></h4>
-  <h5>HARDWARE PROJECT</h5>
-  <a href="https://simonrvincent.github.io/hide-and-seek-game/">Play Now!</a> </br>
-  <a href="https://github.com/SimonRVincent/hide-and-seek-game">View Source Code!</a>
+  <h5>DESIGN SUMMARY</h5>
+  <a href="https://github.com/SimonRVincent/581_A3_pyserial">View Source Code!</a>
 
-  <h5>Overview</h5>
-  <p>Description</p>
-  <h5>Gameplay</h5>
-  <p>Description</p>
-  <h5>Initial 10 Sketches</h5>
-  <p>Description</p>
-  <h5>Refinded 10 Sketches</h5>
-  <p>Description</p>
+  <h5>Introduction</h5>
 
+  <p>In today's fast-paced world, multitasking in the kitchen is more 
+    common than ever. However, this often leads to the challenge of 
+    efficiently managing cooking tasks while engaging in other activities. 
+    This is where the "Whirl-i-Cook SmartStand" comes into play. Our 
+    motivation to design and build this innovative device stems from the 
+    need to assist busy individuals in their cooking endeavors, making 
+    the process smoother and more enjoyable. </p>
+  <h5>Device Overview</h5>
+  <p>The Whirl-i-Cook SmartStand is a state-of-the-art kitchen assistant, 
+    leveraging the power of Arduino technology combined with mechanical 
+    ingenuity. It is designed to hold a phone or a tablet and 
+    intelligently rotate it to face the user, no matter where they move 
+    in the kitchen. This allows users to effortlessly follow cooking 
+    tutorials, watch their favorite shows, or video call while cooking, 
+    without ever losing sight of the screen. </p>
+  <h5>Technical Specifications</h5>
+  <p>The SmartStand is built around the robust Arduino development kit, complemented by:</p>
+    <ul>
+      <li>1x Stepper Motor </li>
+      <li>A set of jumper wires </li>
+      <li>1x ULN2003 Stepper Motor Driver Module</li>
+      <li>A sturdy base made from recycled materials, that is attached 
+        to the stepper motor </li>
+    </ul>
+  <h5>Working Principle </h5>
+  <p>The device uses a laptop webcam, coupled with a Teachable Machine 
+    model, to detect the user's position in the kitchen. Based on the 
+    user's location, it calculates the angle at which the phone/tablet 
+    should be rotated for optimal viewing. The stepper motor then 
+    precisely rotates the stand to the calculated angle. The servo motors 
+    are used to adjust the tilt for better viewing angles, ensuring the 
+    screen is always perfectly aligned with the user's line of sight. </p>
+
+  <h5>User Interaction </h5>
   <ol>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li><b>Set Up:</b> The user places their phone/tablet on the SmartStand and starts the accompanying software on their laptop. </li>
+    <li><b>Automatic Detection:</b> As the user moves around the kitchen, the laptop's webcam, in conjunction with the Teachable Machine model, detects their position.</li>
+    <li><b>Dynamic Adjustment:</b> The SmartStand adjusts its orientation in real-time, smoothly following the user's movements. </li>
     <li></li>
   </ol>
   
 
-  <h5>What makes the game special?</h5>
-  <p>Description</p>
-  <h5>Project contribution:</h5>
-  <p>Description</p>
+  <h5>Impact and Conclusion </h5>
+  <p>The Whirl-i-Cook SmartStand is not just a technological marvel; 
+    it's a testament to human-centered design and innovation. It enhances 
+    the cooking experience, enabling users to multitask efficiently without 
+    missing a beat. Whether it's following a recipe, catching up on a TV 
+    show, or simply staying connected, the SmartStand ensures users can 
+    do it all while cooking, without ever losing sight of what's important. 
+    </br>As we continue to refine and improve the Whirl-i-Cook SmartStand, we 
+    stay committed to our mission of blending technology with everyday 
+    convenience, making life a little easier, one rotation at a time. </p>
+  <h5>Integration of Python Script with Arduino for Whirl-i-Cook SmartStand </h5>
+  <p>The Whirl-i-Cook SmartStand is a marvel of modern engineering, 
+    seamlessly integrating sophisticated software with precise mechanical 
+    control. At the heart of this system lies the synergy between a 
+    Python script and an Arduino sketch, working in concert to deliver 
+    an unparalleled user experience. </p>
+
+  <h5>Python Script: The Brains Behind the Operation </h5>
+  <p>
+    The Python script is the central intelligence of the SmartStand. 
+    Running on a laptop, it uses the built-in webcam to continually 
+    monitor the user's position within the kitchen. The script leverages 
+    a Teachable Machine model, a form of machine learning, to 
+    intelligently interpret the webcam's visual input. This model has 
+    been trained to recognize different positions of the user in the 
+    kitchen, labeled from zero to four. 
+  </br>
+    Once the user's position is detected, the script performs a series 
+    of calculations to determine the optimal angle at which the stand 
+    should be oriented for the user to have the best view of their device. 
+    This angle is translated into a specific number of steps that the 
+    stepper motor needs to execute to achieve the desired rotation. 
+  </br>
+    The script then sends these instructions to the Arduino board via a 
+    serial connection. Each instruction is a command that corresponds to 
+    one of the five predefined positions, ensuring that the stand rotates 
+    precisely to the angle that aligns the phone or tablet with the user's 
+    current position. 
+  </p>
+  <h5>Arduino Sketch: Translating Instructions into Motion </h5>
+  <p></p>
+  <h5>Synchronized Functionality for Enhanced User Experience </h5>
+  <h5>DESIGN PROCESS</h5>
+  <p>Our journey in designing the Whirl-i-Cook SmartStand was marked by 
+    creativity, collaboration, and innovation. As a team of two, we 
+    embarked on this venture with a vision to blend technology seamlessly 
+    into the culinary experience. </p>
+  <h5>Initial Ideation and Sketching </h5>
+  <p>Our design process commenced with an initial ideation phase, where 
+    both team members, Simon and Katie, sketched out 10 rough design 
+    concepts each. This phase resulted in a diverse array of 20 
+    preliminary designs, each presenting a unique approach to integrating 
+    technology into the kitchen. </p>
+  <h5>Concept Selection and Development </h5>
+  <p>Among the plethora of ideas, Katie's concept of a track device, 
+    designed to ensure the user could always view their phone screen 
+    while cooking, stood out. This idea was not only practical in 
+    addressing a common kitchen challenge but also presented an 
+    intriguing engineering challenge.</br>The concept envisioned a smart 
+    device that would dynamically adjust the position of a phone or 
+    tablet, allowing users to effortlessly follow recipes or enjoy 
+    entertainment while engaged in culinary tasks. The implementation 
+    required a blend of motion tracking, automated mechanical adjustment, 
+    and user-friendly design. </br> A refined storyboard was sketched and 
+    a stop-motion video of the problem we were solving solidified the 
+    intended use of the device. </p>
+  <h5>Decision and Further Development </h5>
+  <p>After thorough consideration and discussion, we unanimously decided 
+    to proceed with the development of Katie's track device concept. 
+    This decision was bolstered by the potential we saw in its utility 
+    and the engaging challenge it posed in terms of implementation. 
+  </br>We then created a detailed storyboard, outlining the user's 
+  journey with the SmartStand, from setting up the device to experiencing 
+  its dynamic adjustments during cooking. This storyboard helped us 
+  visualize the user experience and refine the design further. 
+  </p>
+  <h5>Feedback and Iteration </h5>
+  <p>Presenting our concept and preliminary designs in a class setting, 
+    we gathered valuable feedback from peers and instructors. This 
+    feedback provided us with critical insights, which we incorporated 
+    into subsequent design iterations, further polishing the concept. </p>
+  <h5>Conclusion </h5>
+  <p>The design process of the Whirl-i-Cook SmartStand was a testament 
+    to the power of collaborative ideation, iterative design, and 
+    user-centric development. From rough sketches to a refined, 
+    innovative product, our journey was marked by a steadfast commitment 
+    to creating a device that would not only simplify but also enhance 
+    the cooking experience. </p>
 </div>
    
 
 
 
-<!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container">
   <div class="w3-display-middle">
     <span class="w3-xxlarge w3-wide">DEMO</span>
@@ -92,8 +201,7 @@ body, html {
 </div>
 
 <div style="text-align:center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/JeHTh1_05_w?si=vnmSzbvhqkVmziZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/FJe_GTZtDiw?si=D7aYbT9ilXuTtS6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <!-- Container (Sketch Section) -->
