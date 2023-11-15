@@ -97,7 +97,7 @@ body, html {
     <li><b>Set Up:</b> The user places their phone/tablet on the SmartStand and starts the accompanying software on their laptop. </li>
     <li><b>Automatic Detection:</b> As the user moves around the kitchen, the laptop's webcam, in conjunction with the Teachable Machine model, detects their position.</li>
     <li><b>Dynamic Adjustment:</b> The SmartStand adjusts its orientation in real-time, smoothly following the user's movements. </li>
-    <li></li>
+    
   </ol>
   
 
@@ -108,7 +108,7 @@ body, html {
     missing a beat. Whether it's following a recipe, catching up on a TV 
     show, or simply staying connected, the SmartStand ensures users can 
     do it all while cooking, without ever losing sight of what's important. 
-    </br>As we continue to refine and improve the Whirl-i-Cook SmartStand, we 
+    </br></br>As we continue to refine and improve the Whirl-i-Cook SmartStand, we 
     stay committed to our mission of blending technology with everyday 
     convenience, making life a little easier, one rotation at a time. </p>
   <h5>Integration of Python Script with Arduino for Whirl-i-Cook SmartStand </h5>
@@ -126,14 +126,13 @@ body, html {
     a Teachable Machine model, a form of machine learning, to 
     intelligently interpret the webcam's visual input. This model has 
     been trained to recognize different positions of the user in the 
-    kitchen, labeled from zero to four. 
-  </br>
+    kitchen, labeled from zero to four. </br></br>
     Once the user's position is detected, the script performs a series 
     of calculations to determine the optimal angle at which the stand 
     should be oriented for the user to have the best view of their device. 
     This angle is translated into a specific number of steps that the 
     stepper motor needs to execute to achieve the desired rotation. 
-  </br>
+  </br></br>
     The script then sends these instructions to the Arduino board via a 
     serial connection. Each instruction is a command that corresponds to 
     one of the five predefined positions, ensuring that the stand rotates 
@@ -141,8 +140,32 @@ body, html {
     current position. 
   </p>
   <h5>Arduino Sketch: Translating Instructions into Motion </h5>
-  <p></p>
+  <p>The Arduino sketch is designed to receive and interpret the commands 
+    sent by the Python script. It acts as the executor, translating the 
+    high-level instructions into physical motion.</br></br>Upon receiving a 
+    command, such as "STEP_ZERO" or "STEP_ONE", the Arduino sketch 
+    activates the stepper motor. It precisely controls the number of 
+    steps the motor takes, corresponding to the specific position 
+    indicated by the command. This control is crucial for ensuring the 
+    smooth and accurate rotation of the stand, aligning the device with 
+    the user. </br></br>The Arduino’s role is pivotal in managing the hardware 
+    components of the SmartStand. It regulates the stepper motor's speed 
+    and direction, ensuring that the transition from one position to 
+    another is both fluid and precise. The Arduino's reliable processing 
+    and execution of the Python script's instructions are what make the 
+    SmartStand's dynamic adjustments possible. </p>
   <h5>Synchronized Functionality for Enhanced User Experience </h5>
+  <p>The combination of the Python script's analytical prowess and the 
+    Arduino's mechanical control creates a system that is both intelligent 
+    and responsive. This synergy allows the Whirl-i-Cook SmartStand to 
+    provide an interactive, user-centric cooking experience. It 
+    exemplifies how software and hardware can be harmoniously integrated 
+    to create a product that is not only functionally efficient but also 
+    intuitive and user-friendly.</br></br>In conclusion, the Python script and 
+    the Arduino sketch together form the backbone of the Whirl-i-Cook 
+    SmartStand, a device that exemplifies the innovative integration of 
+    technology into everyday life, making cooking a more connected and 
+    enjoyable experience. </p>
   <h5>DESIGN PROCESS</h5>
   <p>Our journey in designing the Whirl-i-Cook SmartStand was marked by 
     creativity, collaboration, and innovation. As a team of two, we 
@@ -159,12 +182,12 @@ body, html {
     designed to ensure the user could always view their phone screen 
     while cooking, stood out. This idea was not only practical in 
     addressing a common kitchen challenge but also presented an 
-    intriguing engineering challenge.</br>The concept envisioned a smart 
+    intriguing engineering challenge.</br></br>The concept envisioned a smart 
     device that would dynamically adjust the position of a phone or 
     tablet, allowing users to effortlessly follow recipes or enjoy 
     entertainment while engaged in culinary tasks. The implementation 
     required a blend of motion tracking, automated mechanical adjustment, 
-    and user-friendly design. </br> A refined storyboard was sketched and 
+    and user-friendly design. </br></br> A refined storyboard was sketched and 
     a stop-motion video of the problem we were solving solidified the 
     intended use of the device. </p>
   <h5>Decision and Further Development </h5>
@@ -172,7 +195,7 @@ body, html {
     to proceed with the development of Katie's track device concept. 
     This decision was bolstered by the potential we saw in its utility 
     and the engaging challenge it posed in terms of implementation. 
-  </br>We then created a detailed storyboard, outlining the user's 
+  </br></br>We then created a detailed storyboard, outlining the user's 
   journey with the SmartStand, from setting up the device to experiencing 
   its dynamic adjustments during cooking. This storyboard helped us 
   visualize the user experience and refine the design further. 
@@ -371,6 +394,7 @@ body, html {
       <ul>
         <li> </li>
       </ul> ">
+      </div>
     </div>
     <div class="w3-col m3">
       <div class="w3-col m3">
@@ -380,16 +404,7 @@ body, html {
       <ul>
         <li> </li>
       </ul> ">
-    </div>
-
-    <div class="w3-col m3">
-      <div class="w3-col m3">
-      <img src="./pictures/hardwareImg.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
+      </div>
     </div>
 
     <div class="w3-col m3">
@@ -400,6 +415,18 @@ body, html {
       <ul>
         <li> </li>
       </ul> ">
+      </div>
+    </div>
+
+    <div class="w3-col m3">
+      <div class="w3-col m3">
+      <img src="./pictures/hardwareImg.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+      </div>
     </div>
     <!-- <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">Back To Top</button> -->
   </div>
