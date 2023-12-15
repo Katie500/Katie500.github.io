@@ -56,7 +56,9 @@ body, html {
   <h4 class="w3-center"><em>Write Ups</em></h4>
   <h5>BIZLINK GITHUB LINK</h5>
   <a href="https://simonrvincent.github.io/dbc-card-app/">Try Now!</a> </br>
-  <a href="https://github.com/SimonRVincent/dbc-card-app">View Source Code!</a>
+  <a href="https://github.com/SimonRVincent/dbc-card-app">View Source Code For DBC Card App!</a>
+  <a href="https://github.com/SimonRVincent/dbc-app">View Source Code For DBC App!</a>
+
 
   <h5>Overview</h5>
   <h6>Introducing BizLink Card – Your Virtual Business Connection!</h6>
@@ -72,8 +74,28 @@ body, html {
   </ul>
   <p>Join the future of professional networking – where innovation meets connection. Download BizLink Card today and redefine the way you network! Your business connections have never been more accessible, dynamic, or impactful. BizLink Card: Connect with Confidence. Connect with Class.</p>
 
-  <h5>App Walkthough</h5>
-  <p>Description</p>
+  <h5>App Walkthough and Technical Overview</h5>
+  <h6>Part 1: QR Code Generator, the Digital Business Card</h6>
+  <p>The QR Code Generator is a web-based application that allows users to create a unique QR code containing their business card details. It employs a simple interface where users can input their professional information, including name, position, email, phone number, LinkedIn, GitHub, and a brief bio. This information is then encoded into a QR code, which can be shared or printed for distribution. Professionals need to only to allow others to scan their QR code with a smartphone, and their business card is distributed, with working links and email included. </p>
+  <h6>Part 2: Business Card Display </h6>
+  <p>When the QR code is scanned, it directs the scanner to a web-based Digital Business Card Display. This part of the application parses the information encoded in the QR code and presents it in an aesthetically pleasing and easy-to-read format. The display includes the individual's name, position, contact information, social links, and a brief bio in the format of a digital business card. </p>
+  <h6>Technical Implementation</h6>
+  <h6>No Database Requirement</h6>
+  <p>A significant feature of this application is its independence from a database. All the necessary information is embedded directly within the QR code. When the QR code is scanned, the application parses the URL parameters encoded in the QR code to dynamically generate the business card on the fly. This approach offers several advantages: </p>
+  <ol>
+    <li><b>Privacy and Security: </b>No personal data is stored on a server, reducing privacy concerns and security risks. </li>
+    <li><b>Ease of Use: </b>Users don't need to create accounts or log in, simplifying the process. </li>
+    <li><b>Cost-Effectiveness: </b>Eliminating the need for a database reduces development and maintenance costs. Business cards also do not need to be printed and carried. </li>
+  </ol>
+  <h6>Technologies Used</h6>
+  <p>The application is developed using modern web technologies. The QR Code Generator is built with HTML, CSS, and JavaScript, ensuring compatibility across various devices and platforms. The Business Card Display uses React, a popular JavaScript library for building user interfaces, along with React Bootstrap for styling. This combination allows for a responsive design that adapts to different screen sizes, be it mobile phones, tablets, or desktop screens, though the application is built with smartphones in mind. </p>
+  <h6>Integration with Communication Platforms </h6>
+  <p>The app's design makes it an excellent tool for both in-person and remote interactions. In face-to-face settings, the QR code acts as a more-detailed business card that does not require multiple copies. The QR code can be printed on business cards, badges, or promotional materials as well to easily distribute information. For remote communication, the QR code can be shared digitally through email signatures, virtual business cards, or social media platforms. </p>
+  <h6>Conclusion </h6>
+  <p>The Digital Business Card application presents a unique and innovative solution for sharing professional contact information in a modern, digital format. By leveraging QR codes and web technologies, it addresses the needs of contemporary professional networking, eliminating the need for physical business cards and reducing reliance on traditional database-driven systems. This approach aligns well with the growing trend of digital transformation in personal and professional communication and collaboration. </p>
+
+
+
   <h5>Initial 10 Sketches</h5>
   <p>Our initial ten sketeches attempted to create ideas for making virtual collaboration easier and more fun! We had many ideas including virtual hats, art galleries, pet cameras, and more. But we eventually settled on our virtual business card idea.</p>
   <h5>Refined 10 Sketches</h5>
@@ -84,16 +106,14 @@ body, html {
 </div>
    
 
-<div class="bgimg-2 w3-display-container">
-    <div class="w3-display-middle">
-      <h3 class="w3-center w3-xxlarge w3-wide">CONCEPT VIDEO</h3>
-    </div>
-  </div>
-  
-  <div style="text-align:center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/JeHTh1_05_w?si=vnmSzbvhqkVmziZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
-  </div>
+<h3 class="w3-center w3-xxlarge w3-wide">PROBLEM CONCEPT</h3>
+<div style="text-align:center;">
+  <video width="320" height="240" controls="controls" name="BizLink Concept Video">
+    <source src="./pictures/BizLinkConcept.mov" >
+  Your browser does not support the video tag.
+  </video>
+
+</div>
 
 
 
@@ -104,37 +124,37 @@ body, html {
     <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
     <div class="w3-row-padding w3-center">
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Two business men meet">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="One of the men asks the other for a business card">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The man looks but cannot find a business card">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The other man has an idea">
       </div>
     </div>
   
     <div class="w3-row-padding w3-center w3-section">
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The other man shows the first his phone with a qr app to scan his business card">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The man is amazed at such an invention">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="He looks at the other man's virtual business card">
       </div>
   
       <div class="w3-col m3">
-          <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+          <img src="./pictures/sketches/rotoscopeSketch8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Virtual business card">
       </div>
     </div>
   </div>
@@ -147,8 +167,7 @@ body, html {
   </div>
   
   <div style="text-align:center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/JeHTh1_05_w?si=vnmSzbvhqkVmziZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  
+            <!-- PUT DEMO HERE -->
   </div>
 
 <!-- Container (Sketch Section) -->
@@ -272,80 +291,27 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
+      <img src="./pictures/screenshots/BCard1.png" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity"> 
+      
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-        alt="Title Screen: </br> Purpose: </br> Description  </br>
-        Features: 
-        <ul>
-          <li> </li>
-        </ul> ">
+        <img src="./pictures/screenshots/BCard2.png" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity"> 
+        
       </div>
 
     <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
+      <img src="./pictures/screenshots/defaultCard.png" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity"> 
+      
     </div>
 
     <div class="w3-col m3">
-    <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-    alt="Title Screen: </br> Purpose: </br> Description  </br>
-    Features: 
-    <ul>
-        <li> </li>
-    </ul> ">
+    <img src="./pictures/screenshots/QRCode.png" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity"> 
+    
     </div>
 
   </div>
 
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3" style="text-align: left;">
-      <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
-    </div>
-      <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
-    </div>
-
-      <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
-    </div>
-
-      <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
-    </div>
-  </div>
 </div>
 
 <!-- Modal for full size images on click-->
