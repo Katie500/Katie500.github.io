@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+<html>
+<title>Course Companion</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  background-image: url('./pictures/bizlink.jpg')
+
+}
+
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1600px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+    min-height: 400px;
+  }
+}
+</style>
+<body>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container" id="home">
+    
+</div>
+
+ 
+<!-- Container (About Section) -->
+<div class="w3-content w3-container " id="about">
+  <h3 class="w3-center w3-xxlarge w3-wide">Course Companion</h3>
+  <h4 class="w3-center"><em>Write Ups</em></h4>
+  <h5>COURSE COMPANION LINKS</h5>
+  <a href="https://katie500.github.io/CourseCompanion/">Launch Now!</a> </br>
+  <a href="https://github.com/Katie500/CourseCompanion">View Source Code!</a>
+
+  <h5>Overview</h5>
+  <p>Course Companion started with a group of us students deciding that the existing course registration 
+    site for the University of Calgary was no longer fitting the requirements of what it was designed for. 
+    While the existing software is currently used by all students at the University of Calgary, it is painfully 
+    clear that it is in need of a major redesign. My team and I redesigned and reimaged our schedule builder 
+    using techniques taught in our HCI class to give a new and fresh approach to register for classes. 
+
+  </p>
+  <h4>Project Rationale</h5>
+  <p>
+    For many students, creating a schedule is an integral part of completing a degree.
+    Keeping track of the number of credits, the requirements that have been fulfilled, the courses
+    that are offered, and which courses are needed for graduation can be a complicated process
+    and many students turn to their Faculty Advisors for help/guidance. The University of
+    Calgary has launched an initiative to implement the Course Companion, a tool designed to
+    simplify the process of building a schedule and planning courses to help lessen the wait times
+    and load on Faculty Advisors, and to streamline and simplify the enrollment process for
+    students.
+  </p>
+  <h5>Expected Types of Users</h5>
+  <ul>
+    <li>Current Students</li>
+    <li>Incoming Students</li>
+    <li>Excluded Users</li>
+  </ul>
+  <h5>Work Contexts</h5>
+  <p>
+    Students are required to select courses and build schedules that incorporate classes
+    that fulfill requirements for their degree. Each semester, students need to find the list of
+    courses offered and check their Academic Requirements in order to check which
+    requirements need to be fulfilled and create a schedule using that information. Students may
+    also contact a faculty advisor to help plan their semester. This is done every semester until a
+    student completes their degree and graduates.
+  </p>
+  <h5>Concrete Task Examples</h5>
+  <ol>
+    <li>Task Example #1: Mariam</li>
+    <p>
+        Mariam is a fourth year student at the University of Calgary. She has nearly
+        completed her bachelor's degree, and has 10 courses remaining. In order to create a
+        schedule that will fill her requirements, Mariam opens the Academic Advisor page on
+        her Student Centre and checks which requirements have not been fulfilled yet, and
+        what classes can fulfill those requirements by comparing it to the classes offered
+        during the year. She then adds the classes that do not overlap with one another and
+        complete her requirements. She creates a Fall and Winter schedule for the upcoming
+        year that fulfill her requirements for graduation.
+    </p>
+    <p>
+        Mariam is a typical user of the system. There are always students that are
+        graduating each year, so this is infrequent for most users, but a routine task
+        and important task regardless. Being at the end of your degree is when it is
+        most important that you have all of your qualifications to graduate.
+    </p>
+    <li>Task Example #2: Olivia </li>
+    <p>
+        Olivia is a third year student at the University of Calgary and is about to start
+        the course registration process for the next Winter semester. To build her class
+        schedule, Olivia starts by reviewing her required courses and goes to add ones she has
+        not done yet into the schedule builder. Then, she checks the time of each class and
+        tutorial to make sure there are no conflicts and makes any necessary adjustments.
+        However, when she tries to enter a class with a full waitlist, she has to manually check
+        if the waitlist is open every few hours. Eventually, she is able to get onto the waitlist
+        and finalizes her schedule.
+    </p>
+    <p>
+        Olivia is a typical user of the system. Her task is routine and important. In a
+        student’s third year, they are typically planning for their last two remaining
+        years. Many students are not aware that there are a limited number of 200
+        level courses they need to take, and should be made aware of this during their
+        last few years in their degree, so that they can graduate on time.
+    </p>
+    <li>Task Example #3: Benjamin</li>
+    <p>
+        Benjamin is a recent graduate from the United States who just moved to
+        Calgary to pursue an undergraduate in Computer Science at the University of Calgary.
+        He goes to the University’s online schedule builder and starts planning his first Fall
+        semester. To figure out which classes he needs to take, Benjamin finds a list of
+        required classes for his major. He looks at the requirements for the first year of the
+        degree, and he notes CPSC 231. He checks if there are any prerequisites and if it’s
+        being offered in Fall. Once he confirms that he is eligible, he adds it to his schedule.
+        He repeats the same steps for two more courses. Eventually he is able to finalize his
+        schedule with CPSC 231, MATH 211, and PHIL 279.
+    </p>
+    <p>
+        Benjamin is a typical user performing a routine and important task. New
+        students come in every year, and with that they are the most important to
+        educate with the schedule planning system. Many questions they ask are very
+        simple, and can easily be answered if the information was easier to access.
+    </p>
+    <li>Task Example #4: Wayne</li>
+    <p>
+        Wayne is in his 3rd year pursuing a Business degree, with a minor in
+        Computer Science. He plans his upcoming year for both Fall and Winter. He begins
+        by planning for Fall. He finds a course calendar that outlines what he needs for each
+        Business concentration, along with descriptions of each course contained in them. He
+        already knows that he needs to take CPSC 319, so he immediately adds it to his
+        schedule. He then looks for courses to take in Business Technology Management, and
+        notes BTMA 331 and BTMA 333. After reading the descriptions, he decides to take
+        BTMA 331. Afterwards, he looks for Computer Science classes, and remembers that
+        PHIL 279 was not offered in the Winter last year, so tries to see if he can take it this
+        upcoming year. He finds that it is being offered in the Fall and adds it to his schedule.
+        He checks to see what other courses interest him in Computer Science, and adds
+        CPSC 329 to his schedule as well. Afterwards, he finalizes his schedule and enrolls.
+    </p>
+    <p>
+        Wayne is not the typical user, but his task is infrequent and important.
+        Business majors are required to declare a concentration by graduation. In
+        addition, most students are not taking minors but these additional courses must
+        be considered as well. 
+    </p>
+    <li>Task Example #5: Azhar</li>
+    <p>
+        Azhar, a fourth-year student at the University of Calgary, is currently enrolled
+        in the Faculty of Science and pursuing a Bachelor of Science degree in Computer
+        Science. During his course planning for the upcoming term, he became interested in
+        two courses offered by the Software Engineering and Computer Science departments,
+        respectively. The courses in question were SENG 511, offered by the Software
+        Engineering department, and CPSC 599, a special topic course offered by the
+        Computer Science department.</br>
+        When attempting to enroll in these courses using the Schedule Builder, Azhar
+        encountered a warning that indicated that he needed to obtain permission from an
+        academic advisor. As a result, he sent an email to the Faculty of Science Student
+        Centre to request an appointment with an academic advisor. After scheduling an
+        appointment and meeting with the academic advisor, Azhar received the necessary
+        permission to enroll in the courses of his interest.
+
+    </p>
+    <p>
+        Azhar is a typical user, along with performing an infrequent but important task. Some
+        Software Engineering courses require Computer Science students to manually request
+        permission for enrollment. It is important that students are made aware of this
+        information as soon as possible. As a result, Azhar illustrates many qualities of our
+        expected user.
+    </p>
+    <li>Task Example #6: Anna</li>
+    <p>
+        Anna is a first year Natural Science major at the University of Calgary. She
+        has recently been accepted to transfer into a Combined Degree of Biology and
+        Computer Science for Fall 2023. In order to create a schedule for the coming year that
+        will fulfill requirements for the degree she transferred into, she searches for the
+        first-year degree guide for both the Computer Science and Biology programs and
+        looks at the suggested courses for each program. She creates a schedule by using that
+        as a guide for selecting courses, adding them into the Schedule Builder, and checking
+        each class for any potential time conflicts. She creates a schedule for the upcoming
+        year that fulfills her requirements for the upcoming year.
+    </p>
+    <p>
+        Anna is another typical user of the system, with the only caveat being that she has
+        transferred into a combined degree. Hence, her task is infrequent but important. This
+        means that her required courses and graduation requirements have been changed, so
+        she will need to adjust which courses she plans for in the future, which is not a routine
+        that most students must go through.
+    </p>
+  </ol>
+  <p><i>Each task example was collected through interviews of typical users of the Schedule Builder
+    system. Some were recorded sessions, others were live demos of putting the user in a
+    hypothetical situation, and watching them plan their courses. Tasks were validated by asking
+    the users after the task descriptions were formed, and confirming if these were faithful to
+    their experiences.</i></p>
+
+  <h5>Requirements List</h5>
+  <img src="./pictures/ccRequirementsList.jpg" style="width: 100%;">
+
+  <ul>
+    <li>Must Include:</li>
+    <ul>
+        <li>Each item in this list is essential to the core functions of our system, from the
+            task descriptions we saw that students always needed to reference an external
+            source to check the appropriate information when planning their schedule.</li>
+    </ul>
+    <li>Should Include:</li>
+    <ul>
+        <li>Helpful to students to see a high level overview in terms of their degree
+            progress (especially if they are close to graduation) but not essential.</li>
+    </ul>
+    <li>Could Include:</li>
+    <ul>
+        <li>The waitlist is a regular grievance with Schedule Builder. But part/full-time
+            status is a smaller detail that a student can easily miss, especially if they are
+            new. These non-essential features fall under “nice to haves” as they do not
+            target the goal of the new system.</li>
+    </ul>
+    <li>Exclude:</li>
+    <ul>
+        <li>Actual enrollment is still handled by Schedule Builder, so it must integrate
+            with Schedule Builder’s backend. This also means we also cannot export any
+            data to semesters that Schedule Builder does not present. Most students rarely
+            looked at courses outside of their faculty, so when filtering courses and
+            sorting, we chose not to inherently suggest courses outside of a student’s
+            graduation requirements (not including eligible open options).
+            </li>
+    </ul>
+  </ul>
+
+  <h5>Redesigning</h5>
+  <ol>
+    <li>The first element of our prototype we redesigned is we added the ability for users to plan for
+      two semesters at the same time.
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>The reason for this change is because in our first
+        prototype, users were only able to create a schedule for one semester at a time. If the
+        users wanted to navigate to another semester, there was a button on the right with an
+        arrow that indicated the next semester they could plan. In redesigning the prototype,
+        we wanted to simplify the process of creating a schedule, and took into consideration
+        the fact that most students plan multiple semesters at a time.
+        </li>
+      <li><strong>Change Made: </strong>The way in which we simplify the process is we redesigned our
+        prototype to show two semesters at a time, ex. Fall and Winter, so students would
+        have the ability to plan for and visualise both.
+        </li>
+      <li><strong>Addresses Reason: </strong>By changing the view from one semester at a time to two
+        semesters at a time, the user does not need to navigate back and forth between
+        semesters and thus does not get confused by accidentally doubling up on classes and
+        has a better picture for the year ahead.</li>
+      <li><strong>Benefits of Choice: </strong>This benefits the users as it allows for users to change
+        and finalise their schedules for two semesters -one academic year- at the same time.
+        This prevents the need for users to continuously navigate back and forth across
+        semesters and to break up the space, we added a background colour behind each
+        semester, which makes it easier for users to visualise which classes are currently
+        planned for which semester.</li>
+      <li><strong>Downsides of Choice: </strong>The user could get confused and mix up which current
+        semester a class is offered in. The user could accidentally add a class to one semester
+        instead of the other. The user could have confusions in navigating between semesters.
+        </li>
+      <li><strong>Other Considerations: </strong>We also considered a tab option in which you could
+        choose the tab corresponding to the semester of your choice. This would prevent
+        visually seeing the user’s schedule simultaneously and also is quite similar to
+        schedule builder.</li>
+    </ul>
+    <li>Another element we redesigned was the way courses were filtered. In our first prototype, we
+      had a drop-down menu above the display where users could check and apply filters. In our
+      redesign, we moved the filters to the left of the screen.
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>The reason for the change is to take a step back from
+        schedule builder and to not overwhelm the user. Having so much information at once
+        can overwhelm the user so they are unable to focus on the important part, which is
+        choosing their courses.
+        </li>
+      <li><strong>Change Made: </strong>We changed from a drop down list view to a sidebar menu of
+        options with course suggestions based on those options.</li>
+      <li><strong>Addresses Reason: </strong>This way the user can clearly see the options selected as
+        well as the course suggested, whereas in the previous design all of the information
+        was overlapped and hard to see.</li>
+      <li><strong>Benefits of Choice: </strong>The benefits of this choice are more spread out
+        information so that the user is not overwhelmed, options not layered over one another
+        so that the user can clearly see all the information, we have more options for filtering
+        which makes course selection/browsing easier and cleaner setup with clearer semester
+        planning.
+        </li>
+      <li><strong>Downsides of Choice: </strong>Users may think that the courses that are being
+        suggested are the courses they have added to semester cart/enrollment.
+        </li>
+      <li><strong>Other Considerations: </strong>We considered a button that would refresh new
+        courses instead of a slider bar but a slider bar makes more sense because it is very
+        common in other applications that the user might be familiar with.
+        </li>
+    </ul>
+    <li>The third element we redesigned was that we incorporated more filters for users, such as the
+      ability to filter based on the level of the course, and eligibility.
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>The reason for this change is that users may want to
+        filter beyond just their requirements, they may want to filter more precisely, for
+        example a 200 level open option course.
+        </li>
+      <li><strong>Change Made: </strong>The change that was made was we incorporated more options for
+        users to choose from, which allows for users to easily see and click the available
+        filtering options.
+        </li>
+      <li><strong>Addresses Reason: </strong>By including more available options to filter by, it allows
+        easier navigation and simplifies the process of filtering.
+        </li>
+      <li><strong>Benefits of Choice: </strong>This redesign can benefit the users by providing more
+        options for users to filter by.</li>
+      <li><strong>Downsides of Choice: </strong>A downside might be that users could be confused by
+        the many filtering options that are provided since graduation requirements are not
+        clearly communicated to students.
+        </li>
+      <li><strong>Other Considerations: </strong>We had no other considerations for this change.
+      </li>
+    </ul>
+    <li>
+      Another element we redesigned we added the units for each semester are shown in button
+      corner of the semester they are planned for
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>Original prototype did not have a way to see the credits
+        that would be applied to the proposed/planned semester.
+        </li>
+      <li><strong>Change Made: </strong> The change we made was to add a units option that is shown at
+        the bottom of each semester.
+        </li>
+      <li><strong>Addresses Reason: </strong>The change addresses the reason by showing the
+        prospective credits that would be achieved for a given semester with the courses
+        currently in each semester.</li>
+      <li><strong>Benefits of Choice: </strong>The benefits for this choice are that the user can easily
+        see how many units/credits are acquired for a given semester. The user has clarity on
+        how units/credits work (especially helpful for first year students).</li>
+      <li><strong>Downsides of Choice: </strong>Users may become confused at the concept of
+        units/credits.</li>
+      <li><strong>Other Considerations: </strong>We had no other considerations for this change.
+      </li>
+    </ul>
+    <li>
+      Added a reset button.
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>A user may wish to reset their entire schedule and start
+        from scratch. Doing this by removing class by class could get tedious.
+        </li>
+      <li><strong>Change Made: </strong>We added a reset button to the bottom of the page.</li>
+      <li><strong>Addresses Reason: </strong>: The change addresses the reason because by pressing the
+        button, a user can remove all the classes that they had previously added and are able
+        to start from scratch.
+        </li>
+      <li><strong>Benefits of Choice: </strong>Users are able to easily locate the button and use it to
+        reset their schedule.</li>
+      <li><strong>Downsides of Choice: </strong>Users may accidentally press the button because it is
+        next to the export button. Users may think that the button is for something else and
+        press it without realizing what this does.</li>
+      <li><strong>Other Considerations: </strong>We had no other considerations for this issue
+        presently.</li>
+    </ul>
+    <li>
+      Added a confirmation screen when users export to schedule builder
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>After the export button is pressed, a user may wonder if
+        the export was successful and if their schedule is now inputted into schedule builder.
+        </li>
+      <li><strong>Change Made: </strong>We made a confirmation screen that appears after the button is
+        pressed and the export is confirmed.
+        </li>
+      <li><strong>Addresses Reason: </strong>The confirmation screen confirms that the schedule was
+        successfully exported and the user is free to leave Course Companion to go to
+        schedule builder.</li>
+      <li><strong>Benefits of Choice: </strong>This benefits the user by getting rid of any confusion
+        about whether or not the export was successful and therefore limits frustration and
+        worry in regards to safely leaving Course Companion.</li>
+      <li><strong>Downsides of Choice: </strong>Users may think that the confirmation screen means
+        that they are enrolled in their courses.
+        </li>
+      <li><strong>Other Considerations: </strong>We have no other considerations at this time.
+      </li>
+    </ul>
+    <li>
+      Added help, contact buttons
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>This change helps improve user experience by providing
+        users with easy access to support and assistance.
+        </li>
+      <li><strong>Change Made: </strong>We added a “Help" button and a “add” button on the bottom left
+        corner of the screen.
+        </li>
+      <li><strong>Addresses Reason: </strong>The change addresses the reason by improving the user
+        experience by providing users easy access to support and assistance when run into
+        problems or have any questions.</li>
+      <li><strong>Benefits of Choice: </strong>Users can now easily get help, it improves the overall
+        user experience and gives them a tour of the interface.
+        </li>
+      <li><strong>Downsides of Choice: </strong>They are very small and easy to mistake for copyright
+        text. They do not look like buttons. They are not at the bottom of the screen and
+        centered which is the usual place for help and contact buttons.
+        </li>
+      <li><strong>Other Considerations: </strong>We have no other consideration for this change.
+      </li>
+    </ul>
+    <li>
+      Redesign the way course information is seen by user, it is now a little drop down button to see
+      info
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong> In the previous sketch, the expanded course information
+        had an overwhelming amount of information that would not be used by the users.
+        </li>
+      <li><strong>Change Made: </strong>We changed the design so that the information was hidden
+        behind a little dropdown because the course information is not important for the user
+        if they are looking for a specific class or if they are just browsing for a topic that
+        interests them.
+        </li>
+      <li><strong>Addresses Reason: </strong>This new design allows users to press the dropdown
+        button to provide additional information, and does not overwhelm the user with the
+        condensed information.</li>
+      <li><strong>Benefits of Choice: </strong>The user is familiar with the schedule builder dropdown
+        design. The user is not overwhelmed with unnecessary information. The user can
+        view more courses because there is more space to view more courses.</li>
+      <li><strong>Downsides of Choice: </strong>The user may miss the dropdown and not see the
+        hidden information.
+        </li>
+      <li><strong>Other Considerations: </strong>We considered not having additional information at
+        all but decided it was important and necessary to have. We also considered having a
+        popup box instead of a dropdown but the dropdown was the better option because
+        closing infinite pop ups can get tedious and annoying.</li>
+    </ul>
+    <li>
+      Original “Add” button and checkboxes removed, changed to a uniform + button.
+    </li>
+    <ul>
+      <li><strong>Reason For Change: </strong>The check box was unclear because it was difficult to
+        see how many courses were selected and if it was a selection to add the course or if it
+        was a selection for something else.
+        </li>
+      <li><strong>Change Made: </strong>We changed the check box to a plus add button at the top right
+        corner of each course that is suggested.</li>
+      <li><strong>Addresses Reason: </strong>The plus add button is green and very clear that it is an
+        addition button to add a specific course to a semester.</li>
+      <li><strong>Benefits of Choice: </strong>The user can clearly see that the plus button means add a
+        course to the user’s semester schedule.</li>
+      <li><strong>Downsides of Choice: </strong>Users could think that the plus means additional
+        information.</li>
+      <li><strong>Other Considerations: </strong>We did not have any additional considerations aside
+        from the idea of using checkboxes instead of the plus symbol.
+        </li>
+    </ul>
+  </ol>
+
+  <h4>Final Design Rational</h4>
+  <h5>State of Design</h5>
+  <p>The system we designed is a course planner that simplifies the process of creating a
+    schedule and planning classes by providing users with a way to select courses based on their
+    requirements. Instead of individually searching for a class that fulfills a credit, the system takes
+    into consideration each student's major and progress to show users courses that they should
+    take. Users are able to search for specific classes, and see which requirements a class would fill
+    and see how their planned schedule would impact their progress to degree completion.
+  </p>
+  <h5>What Works Well</h5>
+  <p>
+    An element of our system that works well is the ability for users to search for specific
+    classes. The search can be utilized to find courses based on the semester they are offered, the
+    level of the course and the title of the course. This feature allows users to easily find a specific
+    class or classes with certain criteria to add to their schedule, such as searching for 500 level
+    CPSC classes.</br>
+    The filter feature on our system allows users to filter the suggested courses based on
+    various conditions such as major field requirements, open options, and eligible courses among
+    others, which simplifies the process of finding and selecting a course to fulfill a specific
+    requirement. The filter simplifies the process by only showing users courses that they want to
+    see, which prevents the users from needing to sift through irrelevant courses to find what they
+    are looking for.</br>
+    Our system is designed such that users can create a schedule and plan for multiple
+    semesters at once. This feature was incorporated into our design plan, as it is a frequently
+    occurring task and more often than not students are planning for multiple semesters. The ability
+    to plan for multiple semesters at once reduces confusion, as users do not need to shift across
+    multiple pages to plan their courses for the year. </br>
+    Users are able to view their progress in their degree using the progress bar. Users can
+    also see what their proposed schedule would mean for their progress, which allows users to
+    plan their courses accordingly. This feature also simplifies the process because users do not
+    need to go back and forth between multiple pages to add courses and check their requirements.
+
+  </p>
+  <h5>What Still Needs Improvement</h5>
+  <p>
+    A few improvements that can be done to our design is to add a degree requirements
+    checklist, that checks off classes that have already been taken. This makes it clear to users
+    which classes they have taken and which requirements have been fulfilled. Another
+    improvement is to include highlights in the help tutorial that starts when a user clicks the help
+    button. Highlighting each section that the help tutorial is explaining can add some clarity for
+    users.
+  </p>
+  <h5>Would Our System Work Well for Identified Users and Tasks</h5>
+  <p>The identified users for the course planning system are current and incoming students.
+    Overall, the system would work well for identified users of the system and the tasks because
+    users would be able to complete tasks like creating a schedule and searching for classes that fill
+    requirements in a way that's simpler by utilizing features like the filter and the degree progress
+    bar. The system we designed takes each student's degree, and progression into account and
+    provides a planner where students can easily access that information while creating their
+    schedule. The system also provides real time updates on how each proposed schedule would
+    impact a students progression -which is reflected in the progress bar- and keeps students
+    informed on their progress and doesn’t require them to utilize multiple resources to select
+    classes that fulfill degree requirements.</br>
+    The task identified through task walkthroughs and examples included looking for courses
+    that fulfill a requirement, creating a schedule in conjunction with other resources to ensure that
+    requirements are filled, which our system covers.
+
+  </p>
+  <h5>Design Strengths</h5>
+  <p>
+    A strong design element of our system is the degree progress bar. This progress bar
+    allows users to easily access their degree requirements and see how far along in their degree
+    they are. It also shows users how many credits of each requirement they have filled, and how
+    many they have left, which users can utilize to make informed decisions about their schedules
+    such that they fulfill any missing requirements. The search where users can see all courses that
+    match the search, and select which ones they want. The simplicity of the design makes it so
+    users are not overwhelmed with information, and can simply filter courses and choose what they
+    want. The design also allows for a simple way to add and remove classes and see any
+    ineligibilities as soon as someone tries to add a course they can’t enroll in. This all makes
+    planning courses a simpler task.
+  </p>
+  <h5>Design Weaknesses</h5>
+  <p>
+    Our system design has a few weaknesses, one being that users are not able to see the
+    time that each class is offered. This can make it difficult to plan courses for specific times or to
+    see if any courses have time conflicts. Another weakness is that users can’t see course details
+    like what time the course is offered, the number of seats, if the course is open or at capacity or
+    offers a waitlist. This can also be an obstacle as users may create an entire schedule and only
+    once it's been exported to schedule builder will they notice these issues, causing them to rethink
+    their course choices.That system also can not handle block week courses currently. Lastly,
+    users are not able to view the form in which the class is being delivered, whether it is online or
+    in-person which for some users can be an important factor in whether they want to register for
+    the class.
+  </p>
+
+
+</div>
+   
+ 
+
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-wide">DEMO</span>
+  </div>
+</div>
+
+<div style="text-align:center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ThN_2fZ7U9A?si=Nq3uQjdNF9SsfOdE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+<!-- Container (Sketch Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center w3-xxlarge w3-wide">PROTOTYPING</h3>
+  <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+      <img src="./pictures/sketches/ccSketch1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+    
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    
+
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch9.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch10.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch11.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch12.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch13.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch14.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch15.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch16.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch17.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch18.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch19.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch20.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch21.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch22.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/sketches/ccSketch23.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+  </div>
+</div>
+
+<!-- Container (Refined Sketch Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center w3-xxlarge w3-wide">APP SCREENSHOTS</h3>
+  <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccCollision.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccDegreeRequirements.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccExport.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccFilters.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccMath.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccProgress.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccReset.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/screenshots/ccSpringSummer.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" style="text-align:left" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+ 
+<script>
+  
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+
+</script>
+
+</body>
+</html>
+
