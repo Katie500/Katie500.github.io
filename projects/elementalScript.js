@@ -53,7 +53,7 @@
          const currentPlayerElement = imageClick === '1' ? 'fire' : (imageClick === '2' ? 'water' : (imageClick === '3' ? 'earth' : ''));
 
          if(canPlaceToken(currentPlayerElement, cell)) {
-             cell.innerHTML = `<div class="img-container"><img src="${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
+             cell.innerHTML = `<div class="img-container"><img src="../pictures/${currentPlayerElement}.jpg" alt="Player ${currentPlayer}" style="border: 5px solid ${currentPlayer === '1' ? xBorderColor : oBorderColor}">${currentPlayer}</div>`;
              previouslyPlayed = cell;
 
              // Check for a winner after each move
@@ -85,17 +85,17 @@
        return false;
     }
     else {
-        if(source === 'fire.jpg') {
+        if(source === '../pictures/fire.jpg') {
             if(currentPlayerElement === 'water') {
                 return true;
             }
         }
-        else if(source === 'water.jpg') {
+        else if(source === '../pictures/water.jpg') {
             if(currentPlayerElement === 'earth') {
                 return true;
             }
         }
-        else if(source === 'earth.jpg') {
+        else if(source === '../pictures/earth.jpg') {
             if(currentPlayerElement === 'fire') {
                 return true;
             }

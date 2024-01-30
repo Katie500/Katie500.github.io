@@ -25,7 +25,7 @@ body, html {
 
 /* First image (Logo. Full height) */
 .bgimg-1 {
-  background-image: url('./pictures/bizlink.jpg')
+  background-image: url('../pictures/decidr-wide.jpg')
 
 }
 
@@ -58,20 +58,84 @@ body, html {
   <a href="https://simonrvincent.github.io/hide-and-seek-game/">Play Now!</a> </br>
   <a href="https://github.com/SimonRVincent/hide-and-seek-game">View Source Code!</a>
 
-  <h5>Overview</h5>
-  <p>Description</p>
-  <h5>Gameplay</h5>
-  <p>Description</p>
-  <h5>Initial 10 Sketches</h5>
-  <p>Description</p>
-  <h5>Refinded 10 Sketches</h5>
-  <p>Description</p>
+  <h5>About Decidr</h5>
+  <p>In today's fast-paced world, groups of people often struggle with the challenge of making decisions efficiently. Whether it's choosing a 
+    restaurant for a family dinner, selecting a movie to watch with friends, determining the best football team, or deciding on a game to play, 
+    indecisiveness can lead to wasted time and frustration. Current methods of resolving disagreements and reaching a consensus can be cumbersome 
+    and time-consuming, often resulting in unresolved disputes. As a result, there is a pressing need for a user-friendly, efficient solution 
+    that empowers groups of all ages and demographics to make timely, informed decisions in a manner that fosters collaboration and unity.
+  </br>
+    Decidr, our innovative web-based application offers an elegant and user-friendly solution to this common problem of indecisiveness within 
+    groups. By enabling an appointed admin to initiate a decision-making session and invite participants with a unique code, Decidr streamlines 
+    the decision-making process. Each user contributes a limited number of suggestions relevant to the topic at hand and the application then 
+    intelligently aggregates and displays the suggestions as bubbles on the screen, merging similar ideas into larger, proportionally 
+    representative bubbles. Our primary goal is to minimize the time and stress associated with deciding on various topics, offering multiple 
+    preferred options that truly reflect the group's collective preferences. Decidr is an innovative solution to the age-old problem of group 
+    decision-making, providing an effective and engaging platform for making choices together.
+   </p>
+  <h5>User Requirements:</h5>
+  <p>User Type 1: Admin </br>
+    On a hot summer day, Aisha wants to go out for ice cream with her friends, but they can’t make a decision on where to go since they keep 
+    shouting over each other. Frustrated, she pulls out her phone and opens Decidr.
+  </br>
+  In Decidr she creates a decision-making session titled “Something Cold Now”, and sends out invites to her friends. As her friends join her 
+  session, Aisha becomes the admin. She can now set rules, time limits, etc. for the session in order to come to a timely and uniform decision. 
+  </p>
+  <p>User Type 2: Members</br>
+    While trying to help Aisha make a decision, all of her friends got extremely passionate and started talking over each other. As a result, 
+    Aisha resorts to Decidr to resolve the conflict.
+  </br>
+  Once they receive a unique code from Aisha, all her friends join her session as members. Here they can collaborate in a more productive manner. 
+  Based on the rules and restrictions Aisha sets, the members can now vote in a silent and effective manner. Some of the things they can do 
+  include adding or making new suggestions and collaborating with each other. In the end, they all come to a collective decision.
+  </p>
+  <h5>Key Features:</h5>
+  <p>As we go through the project we will be creating some key features with set timelines. We will be going through version control such as Git 
+    and participate as a group where each member partakes in their own feature to implement onto the product. Our plan is to create new feature 
+    branches through our local repository and then do a pull request before merging onto our main branch after we have completed our feature 
+    branch.
+  </p>
+  <ul>
+    <li><strong>Login Screen: </strong>Users will be prompted two fields, an input field to enter the code to join an existing meeting or a button 
+      to begin a new session. Upon creating the meeting room, the code will be displayed on the screen. Existing members in the room can share this 
+      code to invite participants to the application.
+    </li>
+    <li><strong>Admin Screen: </strong>Upon creating a meeting room,  Admins can provide questions and suggestions, then prompt participants for 
+      votes. The user interface will display a circle. The size of that circle corresponds with the number of votes that have accumulated for that 
+      suggestion. Once the votes are collected, admins are given a clear visual representation of the most popular suggestion. Admins are also given 
+      the task of extending the time for votes, ending a vote, deleting suggestions, editing votes, or adding more votes.
+    </li>
+    <li><strong>Member Screen: </strong>Members are given an interface similar to the Admin, but are given fewer privileges as they are limited to 
+      just providing votes or adding suggestions which would then have to be approved by the admin.
+    </li>
+    <li><strong>Result Screen: </strong>Displayed for all users. Once the votes have rallied up, a table will order the options in decreasing order 
+      from highest vote counts to lower vote counts. A button will also prompt the users to return back to the home page.
+    </li>
+  </ul>
 
+  <h5>Design Features: </h5>
+  
   <ol>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li><strong>Collaborative Decision-Making: </strong>Decide facilitates collaborative decision-making by allowing users to contribute their 
+      suggestions, view other’s ideas, and collectively shape the outcome.
+    </li>
+    <li><strong>Real-Time Interaction: </strong>The application operates in real-time enabling users to see the dynamic changes. Users can make 
+      additional suggestions during the decision-making process. 
+    </li>
+    <li><strong>Anonymous Voting and Results: </strong>Decide tallies votes anonymously and present the top options at the end of a preset time 
+      limit, facilitating a quick and democratic decision-making process. 
+    </li>
+    <li><strong>Admin Control: </strong>The admin plays a pivotal role in initiating decision-making sessions, sending unique codes to invite 
+      participants, and setting parameters for the session, ensuring a guided and organized process.
+    </li>
+    <li><strong>Responsive UI with React: </strong>The front end will be built using React to provide an interactive and user-friendly interface, 
+      handling rendering, state management, etc. We will also optimize the pages so that they cater to all screen sizes to ensure a large array of 
+      participants are able to effectively participate.
+    </li>
+    <li><strong>MongoDB Data Storage: </strong> The back end will be built using MongoDB which stores and retrieves data related to user questions, 
+      choices, votes, suggestions, etc. This will ensure that historical suggestions are created. The back end will be created later in the timeline 
+      once the front end is fully implemented. 
+    </li>
   </ol>
   
 
@@ -81,74 +145,57 @@ body, html {
   <p>Description</p>
 </div>
    
-
-
-
-<!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container">
-  <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-wide">DEMO</span>
+<h3 class="w3-center w3-xxlarge w3-wide">SLIDE SHOW</h3>
+  <div style="text-align:center;">
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRGGxC96Nz0p05-yaZN5ilCLlNSL3l-DM0dFhd2QxV-zLcEwet6b1iYXBPjRkoQTivP6iEyyit6vTkE/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
   </div>
+
+<h3 class="w3-center w3-xxlarge w3-wide">SHOWCASE DEMO</h3>
+<div style="text-align:center;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/-Esc5BAEuFw?si=yRCS8H4pYobThjXs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
+<h3 class="w3-center w3-xxlarge w3-wide">TECHNICAL DEMO</h3>
 <div style="text-align:center;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/JeHTh1_05_w?si=vnmSzbvhqkVmziZh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/6cSsVDXLn7Y?si=NUk3D2LhxS_mKFBS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 <!-- Container (Sketch Section) -->
 <div class="w3-content w3-container w3-padding-64" id="portfolio">
-  <h3 class="w3-center w3-xxlarge w3-wide">INITIAL SKETCHES</h3>
+  <h3 class="w3-center w3-xxlarge w3-wide">PROPOSAL MOCKUPS</h3>
   <h4 class="w3-center"><em>Click on each image to read the description!</em></h4><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+      <img src="../pictures/screenshots/analyticView.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshots/default.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshots/hamburger.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshots/newSession.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
     
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshots/nickname.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshot/results.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    
-
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/screenshot/view.png" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="">
     </div>
   </div>
 </div>
@@ -161,47 +208,47 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-  </div>
-
-  <div class="w3-row-padding w3-center w3-section">
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
-    </div>
-
-    <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
   </div>
 
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
+    </div>
+
+    <div class="w3-col m3">
+        <img src="../pictures/space.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Description">
     </div>
   </div>
 </div>
@@ -217,7 +264,7 @@ body, html {
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
       alt="Title Screen: </br> Purpose: </br> Description  </br>
       Features: 
       <ul>
@@ -226,7 +273,7 @@ body, html {
     </div>
 
     <div class="w3-col m3">
-        <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+        <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
         alt="Title Screen: </br> Purpose: </br> Description  </br>
         Features: 
         <ul>
@@ -235,7 +282,7 @@ body, html {
       </div>
 
     <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
       alt="Title Screen: </br> Purpose: </br> Description  </br>
       Features: 
       <ul>
@@ -244,7 +291,7 @@ body, html {
     </div>
 
     <div class="w3-col m3">
-    <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+    <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
     alt="Title Screen: </br> Purpose: </br> Description  </br>
     Features: 
     <ul>
@@ -257,7 +304,7 @@ body, html {
   <div class="w3-row-padding w3-center w3-section">
     <div class="w3-col m3" style="text-align: left;">
       <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
       alt="Title Screen: </br> Purpose: </br> Description  </br>
       Features: 
       <ul>
@@ -266,17 +313,7 @@ body, html {
     </div>
     <div class="w3-col m3">
       <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
-      alt="Title Screen: </br> Purpose: </br> Description  </br>
-      Features: 
-      <ul>
-        <li> </li>
-      </ul> ">
-    </div>
-
-    <div class="w3-col m3">
-      <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
       alt="Title Screen: </br> Purpose: </br> Description  </br>
       Features: 
       <ul>
@@ -286,7 +323,17 @@ body, html {
 
     <div class="w3-col m3">
       <div class="w3-col m3">
-      <img src="./pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
+      alt="Title Screen: </br> Purpose: </br> Description  </br>
+      Features: 
+      <ul>
+        <li> </li>
+      </ul> ">
+    </div>
+
+    <div class="w3-col m3">
+      <div class="w3-col m3">
+      <img src="../pictures/space.jpg" style="width: 100%; height: 24.99999%;" onclick="onClick(this)" class="w3-hover-opacity" 
       alt="Title Screen: </br> Purpose: </br> Description  </br>
       Features: 
       <ul>
