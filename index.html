@@ -248,6 +248,7 @@
           gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
           gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
           gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
           try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, im); o.w = im.naturalWidth; o.h = im.naturalHeight; }
           catch (e) { console.warn("texture blocked", e); }
         };
@@ -285,6 +286,7 @@
         // when transition ends, promote B to A so the next one starts clean
         gl.uniform1f(U.prog, progress);
         if (progress >= 1) texA = texB;
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
         requestAnimationFrame(frame);
       })(0);
     }
