@@ -3,302 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Katie Knauss — Portfolio</title>
+<title>Katie Knauss</title>
 <meta name="description" content="Programmer, designer, artist. Solver of problems you didn't know you had.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --fg:#f4f1ea; --dim:rgba(244,241,234,.45); --acc:#ff5b3a; }
+  :root { --bg:#f4f0e9; --ink:#23221f; --soft:#7c776d; --line:rgba(35,34,31,.16); --acc:#8b78a8; }
   * { box-sizing:border-box; margin:0; padding:0; }
-  html,body { height:100%; background:#08080a; color:var(--fg); overflow:hidden;
-    font-family:"Space Grotesk",system-ui,sans-serif; cursor:none; }
-  @media (hover:none) { html,body { cursor:auto; } .cursor { display:none; } }
-  #gl { position:fixed; inset:0; width:100%; height:100%; display:block; }
-  .fallback { position:fixed; inset:0; background:url(pictures/backgroudPortfolio.JPG) center/cover; opacity:.5; display:none; }
-  .grain { position:fixed; inset:-50%; pointer-events:none; opacity:.07; mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation:grain 1s steps(6) infinite; }
-  @keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-5%,3%)} 40%{transform:translate(4%,-6%)} 60%{transform:translate(-3%,5%)} 80%{transform:translate(6%,2%)} 100%{transform:translate(0,0)} }
+  html,body { min-height:100%; background:var(--bg); color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
 
-  main { position:fixed; inset:0; display:flex; flex-direction:column; justify-content:space-between;
-    padding:clamp(18px,3vw,40px); pointer-events:none; }
-  main a, main button { pointer-events:auto; }
-  header, footer { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;
-    font:400 12px/1.5 "JetBrains Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
-  header a, footer a { color:var(--fg); text-decoration:none; position:relative; }
-  header a::after, footer a::after { content:""; position:absolute; left:0; right:100%; bottom:-2px; height:1px; background:var(--acc); transition:right .35s cubic-bezier(.2,.8,.2,1); }
-  header a:hover::after, footer a:hover::after { right:0; }
-  .live { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--acc); margin-right:8px; animation:pulse 1.6s infinite; }
-  @keyframes pulse { 50% { opacity:.2; transform:scale(.6); } }
-  nav.links { display:flex; gap:1.6rem; }
+  .page { min-height:100vh; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:clamp(24px,6vw,96px); align-items:center; padding:clamp(24px,5vw,72px); max-width:1400px; margin:0 auto; position:relative; }
 
-  .hero { position:relative; }
-  .kicker { font:400 12px "JetBrains Mono",monospace; letter-spacing:.2em; text-transform:uppercase; color:var(--dim); margin-bottom:1.2rem; min-height:1.2em; }
-  h1 { font-weight:700; letter-spacing:-.045em; line-height:.86; font-size:clamp(3.4rem,13.5vw,14rem); mix-blend-mode:difference; }
-  h1 .ln { display:block; overflow:hidden; }
-  h1 .ch { display:inline-block; transform:translateY(105%); animation:rise 1s cubic-bezier(.2,.9,.1,1) forwards; }
-  @keyframes rise { to { transform:none; } }
-  h1 .ch.hot { color:var(--acc); }
+  .top { position:absolute; left:clamp(24px,5vw,72px); right:clamp(24px,5vw,72px); top:clamp(20px,3.5vw,44px);
+    display:flex; justify-content:space-between; font-size:13px; letter-spacing:.02em; }
+  .top nav { display:flex; gap:1.8rem; }
+  .top a { color:var(--soft); transition:color .3s; }
+  .top a:hover { color:var(--ink); }
+  .top .mark { color:var(--ink); font-family:"Fraunces",serif; font-size:16px; font-weight:300; }
 
-  ol.work { list-style:none; margin-top:clamp(1.2rem,3vh,2.4rem); display:flex; flex-wrap:wrap; gap:.2rem 1.4rem; max-width:1200px; }
-  ol.work li { counter-increment:w; }
-  ol.work a { display:inline-flex; align-items:baseline; gap:.55rem; color:var(--dim); text-decoration:none;
-    font-weight:300; font-size:clamp(1.1rem,2.3vw,2rem); letter-spacing:-.02em; transition:color .3s, transform .5s cubic-bezier(.2,.8,.2,1), letter-spacing .5s; }
-  ol.work a::before { content:counter(w,decimal-leading-zero); font:400 10px "JetBrains Mono",monospace; letter-spacing:.1em; color:var(--acc); transform:translateY(-.9em); }
-  ol.work a:hover, ol.work a:focus-visible, ol.work a.on { color:var(--fg); transform:translateX(6px); letter-spacing:0; outline:none; }
-  ol.work a.on::after { content:"↗"; color:var(--acc); }
+  .copy { opacity:0; transform:translateY(14px); animation:in 1.4s .15s cubic-bezier(.2,.7,.2,1) forwards; }
+  .eyebrow { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); margin-bottom:1.6rem; display:flex; align-items:center; gap:.9rem; }
+  .eyebrow::before { content:""; width:36px; height:1px; background:var(--soft); }
+  h1 { font-family:"Fraunces",Georgia,serif; font-weight:300; font-size:clamp(2.8rem,6.6vw,6.2rem); line-height:1.02; letter-spacing:-.025em; }
+  h1 em { font-style:italic; color:var(--acc); }
+  .lede { margin-top:1.8rem; max-width:30ch; font-size:clamp(1rem,1.3vw,1.2rem); line-height:1.6; color:var(--soft); }
+  .cta { margin-top:2.4rem; display:flex; gap:1.6rem; align-items:center; flex-wrap:wrap; }
+  .btn { display:inline-flex; align-items:center; gap:.7rem; padding:.85rem 1.5rem; border:1px solid var(--ink); border-radius:999px; font-size:14px; font-weight:500;
+    transition:background .35s, color .35s, gap .35s; }
+  .btn:hover { background:var(--ink); color:var(--bg); gap:1rem; }
+  .ghost { font-size:14px; color:var(--soft); border-bottom:1px solid var(--line); padding-bottom:2px; transition:color .3s, border-color .3s; }
+  .ghost:hover { color:var(--ink); border-color:var(--ink); }
 
-  .hint { color:var(--dim); }
-  .cursor { position:fixed; left:0; top:0; z-index:9; pointer-events:none; mix-blend-mode:difference; }
-  .cursor i { position:absolute; width:14px; height:14px; margin:-7px; border-radius:50%; background:#fff; transition:transform .25s; }
-  .cursor b { position:absolute; width:56px; height:56px; margin:-28px; border-radius:50%; border:1px solid #fff; transition:transform .3s cubic-bezier(.2,.8,.2,1); }
-  body.link .cursor b { transform:scale(1.9); } body.link .cursor i { transform:scale(.3); }
-  .veil { position:fixed; inset:0; background:#08080a; z-index:20; pointer-events:none; opacity:0; transition:opacity .5s; }
-  .veil.go { opacity:1; }
-  @media (max-width:640px) { nav.links a:nth-child(n+3){display:none} footer .hint { display:none } }
-  @media (prefers-reduced-motion:reduce) { .grain{animation:none} h1 .ch{animation-duration:.01s} }
+  .frame { position:relative; width:min(100%,520px,calc((100vh - 170px)*.74)); justify-self:center; aspect-ratio:4/5.4; opacity:0; animation:in 1.6s .35s cubic-bezier(.2,.7,.2,1) forwards; }
+  .frame canvas, .frame .still { position:absolute; inset:0; width:100%; height:100%; border-radius:999px 999px 18px 18px; display:block; }
+  .frame .still { background:url(pictures/backgroudPortfolio.JPG) 82% 75%/cover; }
+  .frame::after { content:""; position:absolute; inset:-14px; border:1px solid var(--line); border-radius:999px 999px 28px 28px; pointer-events:none; }
+  .cap { position:absolute; left:0; right:0; bottom:-34px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+
+  @keyframes in { to { opacity:1; transform:none; } }
+  @media (max-width:820px) {
+    .page { grid-template-columns:1fr; padding-top:84px; padding-bottom:64px; gap:56px; }
+    .frame { order:-1; width:min(78%,380px); }
+  }
+  @media (prefers-reduced-motion:reduce) { .copy,.frame { animation-duration:.01s; } }
 </style>
 </head>
 <body>
-<div class="fallback" id="fb"></div>
-<canvas id="gl"></canvas>
-<div class="grain"></div>
-
-<main>
-  <header>
-    <span><i class="live"></i>Available for interesting problems</span>
-    <nav class="links">
-      <a href="proj.html">All projects</a>
+<div class="page">
+  <div class="top">
+    <a class="mark" href="./">Katie Knauss</a>
+    <nav>
+      <a href="proj.html">Work</a>
       <a href="https://www.linkedin.com/in/katieknauss19/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="index-classic.html">Classic site</a>
     </nav>
-  </header>
+  </div>
 
-  <section class="hero">
-    <p class="kicker" id="kicker" aria-label="programmer, designer, artist"></p>
-    <h1 aria-label="Katie Knauss" id="title"></h1>
-    <ol class="work" id="work"></ol>
+  <section class="copy">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Programmer,<br>designer, <em>artist.</em></h1>
+    <p class="lede">I solve problems you didn't know you had.</p>
+    <div class="cta">
+      <a class="btn" href="proj.html">See my work <span aria-hidden="true">→</span></a>
+      <a class="ghost" href="index-classic.html">Previous version</a>
+    </div>
   </section>
 
-  <footer>
-    <span class="hint" id="hint">Move your cursor · hover a project · press ← → then Enter</span>
-    <span>“Solver of problems you didn't know you had.”</span>
-  </footer>
-</main>
-
-<div class="cursor" id="cur"><b></b><i></i></div>
-<div class="veil" id="veil"></div>
+  <div class="frame" id="frame">
+    <div class="still" id="still"></div>
+    <canvas id="gl" aria-label="Photo of Katie in a prairie, gently rippling under your cursor" role="img"></canvas>
+    <div class="cap"><span>Prairie, 2023</span><span>Move through it</span></div>
+  </div>
+</div>
 
 <script>
 (() => {
-  const PROJECTS = [
-    { n:"Decidr",              href:"projects/decidr.html",              img:"pictures/decidr-wide.jpg" },
-    { n:"BizLink",             href:"projects/bizlink.html",             img:"pictures/BizlinkWide.jpg" },
-    { n:"SmartStand",          href:"projects/smartStand.html",          img:"pictures/smartStandLogoWide.jpg" },
-    { n:"Hide'n'Heat",         href:"projects/hide_n_heat.html",         img:"pictures/sizzleTheFlameWide4.jpg" },
-    { n:"Elemental Endeavor",  href:"projects/elemental-endeavor.html",  img:"pictures/ElementalEndeavor.png" },
-    { n:"Course Companion",    href:"projects/courseCompanion.html",     img:"pictures/ccLogo.png" },
-    { n:"Planets",             href:"projects/planets.html",             img:"pictures/space.jpg" },
-    { n:"Indirection Server",  href:"projects/indirectionServer.html",   img:"pictures/hardwareImg.jpg" },
-  ];
-  const HOME_IMG = "pictures/backgroudPortfolio.JPG";
-  const $ = id => document.getElementById(id);
+  const SRC = "pictures/backgroudPortfolio.JPG";
+  const FOCUS = [0.82, 0.62];            // where to anchor the crop (x from left, y from top)
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const canvas = document.getElementById("gl"), still = document.getElementById("still"), frame = document.getElementById("frame");
+  const gl = canvas.getContext("webgl", { antialias:false, alpha:true, premultipliedAlpha:false });
+  if (!gl) { canvas.style.display = "none"; return; }
 
-  /* ---------- headline: split letters, staggered rise ---------- */
-  const title = $("title");
-  ["Katie","Knauss"].forEach((w, li) => {
-    const ln = document.createElement("span"); ln.className = "ln";
-    [...w].forEach((c, i) => {
-      const s = document.createElement("span"); s.className = "ch" + (li && i === w.length-1 ? " hot" : "");
-      s.textContent = c; s.style.animationDelay = (.15 + li*.25 + i*.055) + "s"; ln.appendChild(s);
-    });
-    title.appendChild(ln);
-  });
+  const MAXR = 10;
+  const vs = `attribute vec2 p; varying vec2 uv; void main(){ uv = p*.5+.5; gl_Position = vec4(p,0.,1.); }`;
+  const fs = `precision highp float; varying vec2 uv;
+    uniform sampler2D tex; uniform vec2 size, res, mouse, focus; uniform float t, near; uniform vec4 rip[${MAXR}];
+    float h(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+    float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
+      return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }
+    void main(){
+      float asp = res.x/res.y; vec2 off = vec2(0.);
+      for(int i=0;i<${MAXR};i++){
+        vec4 r = rip[i]; float age = t - r.z; if(age<0.||age>4.) continue;
+        vec2 d = (uv-r.xy)*vec2(asp,1.); float L = length(d); float front = age*.22;
+        float w = exp(-pow((L-front)*7.,2.)) * exp(-age*1.1) * r.w;
+        off += normalize(d+1e-5) * sin((L-front)*26.) * w * .007;
+      }
+      // barely-there drift, like wind in the grass
+      float g = smoothstep(.0,.45,1.-uv.y);
+      off += vec2(sin(uv.y*9.+t*.7), cos(uv.x*7.+t*.55)) * .0016 * (.4+g);
+      vec2 dm = (uv-mouse)*vec2(asp,1.); off += -dm * exp(-dot(dm,dm)*9.) * .05 * near;
+      float ra = res.x/res.y, rt = size.x/size.y;
+      vec2 k = ra>rt ? vec2(1., rt/ra) : vec2(ra/rt, 1.);
+      vec2 lo = k*.5, hi = 1.-k*.5; vec2 q = vec2(clamp(mix(lo.x,hi.x,focus.x)+(uv.x+off.x-.5)*k.x, 0., 1.), clamp(mix(lo.y,hi.y,1.-focus.y)+(uv.y+off.y-.5)*k.y, 0., 1.));
+      vec3 c = texture2D(tex, q).rgb;
+      c = c*1.05 + .015;                      // lift the moody original toward soft daylight
+      c = mix(vec3(dot(c,vec3(.3,.59,.11))), c, 1.08);
+      gl_FragColor = vec4(c, 1.);
+    }`;
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+  let prog;
+  try { prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(prog); gl.useProgram(prog); }
+  catch (e) { console.warn(e); canvas.style.display = "none"; return; }
 
-  /* ---------- kicker: decrypt-scramble cycling through roles ---------- */
-  const kicker = $("kicker"), roles = ["programmer","designer","artist","problem solver"];
-  const GL = "!<>-_\\/[]{}—=+*^?#01";
-  let scrambleTok = 0;
-  function scramble(el, text, done) {
-    const tok = ++scrambleTok; let f = 0; const total = text.length * 2 + 8;
-    (function tick() {
-      if (tok !== scrambleTok) return;
-      let out = "";
-      for (let i = 0; i < text.length; i++) out += (i < f/2 - 3) ? text[i] : (text[i] === " " ? " " : GL[Math.random()*GL.length|0]);
-      el.textContent = out;
-      if (++f <= total) requestAnimationFrame(tick); else { el.textContent = text; done && done(); }
-    })();
-  }
-  let ri = 0;
-  (function cycle() { scramble(kicker, "— " + roles[ri++ % roles.length], () => setTimeout(cycle, 1800)); })();
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const U = {}; ["tex","size","res","mouse","focus","t","near"].forEach(k => U[k] = gl.getUniformLocation(prog, k));
+  const uRip = gl.getUniformLocation(prog, "rip");
+  gl.uniform2f(U.focus, FOCUS[0], FOCUS[1]);
 
-  /* ---------- project list ---------- */
-  const list = $("work"), links = [];
-  PROJECTS.forEach((p, i) => {
-    const li = document.createElement("li"), a = document.createElement("a");
-    a.href = p.href; a.textContent = p.n; li.appendChild(a); list.appendChild(li); links.push(a);
-    a.addEventListener("mouseenter", () => focusProject(i));
-    a.addEventListener("focus", () => focusProject(i));
-    a.addEventListener("click", e => { e.preventDefault(); leave(p.href); });
-  });
-  list.addEventListener("mouseleave", () => focusProject(-1));
-  let cur = -1;
-  function focusProject(i) {
-    cur = i; links.forEach((a, k) => a.classList.toggle("on", k === i));
-    setTarget(i < 0 ? 0 : i + 1);
-  }
-  addEventListener("keydown", e => {
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); focusProject((cur + 1) % PROJECTS.length); }
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); focusProject((cur - 1 + PROJECTS.length) % PROJECTS.length); }
-    else if (e.key === "Enter" && cur >= 0) leave(PROJECTS[cur].href);
-    else if (e.key === "Escape") focusProject(-1);
-  });
-  function leave(href) {
-    $("veil").classList.add("go"); burst(.5, .5, 1.6);
-    setTimeout(() => location.href = href, 520);
-  }
-  addEventListener("pageshow", () => $("veil").classList.remove("go"));
+  // canvas stays hidden (the CSS still shows) until the texture is ready, so there is never a flash of black
+  canvas.style.opacity = 0; canvas.style.transition = "opacity 1.2s";
+  const tex = gl.createTexture(); let ready = false;
+  const im = new Image();
+  im.onload = () => {
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, im); } catch (e) { console.warn(e); return; }
+    gl.uniform2f(U.size, im.naturalWidth, im.naturalHeight); ready = true; canvas.style.opacity = 1;
+  };
+  im.src = SRC;
 
-  /* ---------- custom cursor ---------- */
-  const curEl = $("cur"); let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
-  document.addEventListener("mouseover", e => document.body.classList.toggle("link", !!e.target.closest("a")));
+  const ripples = Array.from({length:MAXR}, () => [0,0,-100,0]); let rp = 0;
+  const drop = (x, y, s) => { ripples[rp++ % MAXR] = [x, y, performance.now()/1000, s]; };
+  let mx = .5, my = .5, sx = .5, sy = .5, near = 0, over = false, lastDrop = 0;
+  const local = e => { const r = canvas.getBoundingClientRect(); return [(e.clientX-r.left)/r.width, 1-(e.clientY-r.top)/r.height]; };
+  frame.addEventListener("pointermove", e => { [mx, my] = local(e); over = true; });
+  frame.addEventListener("pointerleave", () => over = false);
+  frame.addEventListener("pointerdown", e => { const [x, y] = local(e); drop(x, y, 1.4); });
+  setTimeout(() => drop(.7, .3, 1), 900);
 
-  /* ---------- WebGL: displaced, refracted photo with ripples + dissolve transitions ---------- */
-  const canvas = $("gl");
-  const gl = canvas.getContext("webgl", { antialias:false, alpha:false });
-  const MAXR = 12;
-  const ripples = Array.from({length:MAXR}, () => [0,0,-100,0]); // x,y,startTime,strength
-  let rp = 0; const now = () => performance.now()/1000;
-  function burst(x, y, s) { ripples[rp++ % MAXR] = [x, 1-y, now(), s]; }
+  const flat = new Float32Array(MAXR*4);
+  const resize = () => { const d = Math.min(devicePixelRatio || 1, 2), r = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, r.width*d|0); canvas.height = Math.max(1, r.height*d|0);
+    gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(U.res, canvas.width, canvas.height); };
+  addEventListener("resize", resize); resize();
 
-  let target = 0, texes = [], texA = 0, texB = 0, progress = 1;
-  function setTarget(t) { if (t === target) return; texA = texB; texB = t; target = t; progress = 0; burst(mx/innerWidth, my/innerHeight, 1.2); }
-
-  if (!gl) { $("fb").style.display = "block"; }
-  else {
-    const vs = `attribute vec2 p; varying vec2 uv; void main(){ uv = p*.5+.5; gl_Position = vec4(p,0.,1.); }`;
-    const fs = `precision highp float; varying vec2 uv;
-      uniform sampler2D tA, tB; uniform vec2 sA, sB, res, mouse; uniform float t, prog, hover;
-      uniform vec4 rip[${MAXR}];
-      float h(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
-      float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
-        return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }
-      float fbm(vec2 p){ float a=.5, s=0.; for(int i=0;i<4;i++){ s+=a*n(p); p*=2.03; a*=.5; } return s; }
-      vec2 cover(vec2 q, vec2 s){ float ra = res.x/res.y, rt = s.x/s.y; vec2 k = ra>rt ? vec2(1., rt/ra) : vec2(ra/rt, 1.);
-        return (q-.5)*k+.5; }
-      void main(){
-        float asp = res.x/res.y; vec2 q = uv;
-        // ripple field -> height gradient
-        vec2 off = vec2(0.); float glow = 0.;
-        for(int i=0;i<${MAXR};i++){
-          vec4 r = rip[i]; float age = t - r.z; if(age<0.||age>3.5) continue;
-          vec2 d = (uv - r.xy)*vec2(asp,1.); float L = length(d);
-          float front = age*.55; float w = exp(-pow((L-front)*9., 2.)) * exp(-age*1.4) * r.w;
-          off += normalize(d+1e-5) * sin((L-front)*38.) * w * .022; glow += w;
-        }
-        // cursor lens + slow liquid warp
-        vec2 dm = (uv-mouse)*vec2(asp,1.); float lens = exp(-dot(dm,dm)*14.);
-        off += -dm * lens * (.25 + .2*hover);
-        vec2 warp = vec2(fbm(uv*3.+t*.06), fbm(uv*3.+7.1-t*.05)) - .5;
-        q += off + warp*.028;
-        // dissolve between textures through a noise mask
-        float m = fbm(uv*4. + 3.);
-        float e = smoothstep(m-.12, m+.12, prog*1.24-.12);
-        float ab = .004 + glow*.02 + lens*.01;
-        vec2 ua = cover(q, sA), ub = cover(q, sB);
-        vec3 ca = vec3(texture2D(tA, ua+vec2(ab,0.)).r, texture2D(tA, ua).g, texture2D(tA, ua-vec2(ab,0.)).b);
-        vec3 cb = vec3(texture2D(tB, ub+vec2(ab,0.)).r, texture2D(tB, ub).g, texture2D(tB, ub-vec2(ab,0.)).b);
-        vec3 c = mix(ca, cb, e);
-        // edge burn along the dissolve front
-        float edge = smoothstep(.0,.08,e)*(1.-smoothstep(.08,.5,e)) * step(.001,prog)*step(prog,.999);
-        c += vec3(1.,.36,.2) * edge * .55;
-        // grade: darken for legibility, lift near cursor, vignette
-        c = mix(c, vec3(dot(c,vec3(.3,.59,.11))), .25);
-        c *= .38 + lens*.5 + glow*.5;
-        c *= 1. - .55*pow(length(uv-.5)*1.25, 2.2);
-        c += vec3(1.,.36,.23) * pow(lens,3.) * .08;
-        gl_FragColor = vec4(c, 1.);
-      }`;
-    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
-    let prog;
-    try {
-      prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
-      gl.linkProgram(prog); gl.useProgram(prog);
-    } catch (err) { console.warn(err); $("fb").style.display = "block"; canvas.style.display = "none"; }
-    if (prog) {
-      const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-      const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-      const U = {}; ["tA","tB","sA","sB","res","mouse","t","prog","hover"].forEach(k => U[k] = gl.getUniformLocation(prog, k));
-      const uRip = gl.getUniformLocation(prog, "rip");
-      gl.uniform1i(U.tA, 0); gl.uniform1i(U.tB, 1);
-
-      // textures: 1x1 placeholder until each image arrives
-      const mk = src => {
-        const t = gl.createTexture(), o = { t, w:1, h:1 };
-        gl.bindTexture(gl.TEXTURE_2D, t);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([12,12,14,255]));
-        const im = new Image(); im.onload = () => {
-          gl.bindTexture(gl.TEXTURE_2D, t);
-          // non-power-of-two safe: clamp + linear, no mipmaps
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-          gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-          try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, im); o.w = im.naturalWidth; o.h = im.naturalHeight; }
-          catch (e) { console.warn("texture blocked", e); }
-        };
-        im.src = src; return o;
-      };
-      texes = [mk(HOME_IMG), ...PROJECTS.map(p => mk(p.img))];
-      // set default params on placeholders too
-      texes.forEach(o => { gl.bindTexture(gl.TEXTURE_2D, o.t);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); });
-
-      let dpr = 1;
-      const resize = () => { dpr = Math.min(devicePixelRatio || 1, 1.75);
-        canvas.width = innerWidth*dpr|0; canvas.height = innerHeight*dpr|0; gl.viewport(0,0,canvas.width,canvas.height);
-        gl.uniform2f(U.res, canvas.width, canvas.height); };
-      addEventListener("resize", resize); resize();
-
-      let smx = .5, smy = .5, hv = 0, last = 0, lastRip = 0;
-      const flat = new Float32Array(MAXR*4);
-      (function frame(ts) {
-        const t = ts/1000, dt = Math.min(t - last, .05); last = t;
-        cx += (mx-cx)*.2; cy += (my-cy)*.2;
-        curEl.style.transform = `translate(${cx}px,${cy}px)`;
-        smx += (mx/innerWidth - smx)*.12; smy += (1 - my/innerHeight - smy)*.12;
-        hv += ((cur >= 0 ? 1 : 0) - hv) * .08;
-        progress = Math.min(1, progress + dt/(reduce ? .01 : 1.1));
-        // trail ripples while moving
-        if (t - lastRip > .09 && Math.hypot(mx-cx, my-cy) > 6 && !reduce) { burst(mx/innerWidth, my/innerHeight, .35); lastRip = t; }
-        // bind A on unit 0, B on unit 1
-        gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texes[texA].t);
-        gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texes[texB].t);
-        gl.uniform2f(U.sA, texes[texA].w, texes[texA].h); gl.uniform2f(U.sB, texes[texB].w, texes[texB].h);
-        ripples.forEach((r,i) => flat.set(r, i*4)); gl.uniform4fv(uRip, flat);
-        gl.uniform2f(U.mouse, smx, smy); gl.uniform1f(U.t, t); gl.uniform1f(U.hover, hv);
-        // when transition ends, promote B to A so the next one starts clean
-        gl.uniform1f(U.prog, progress);
-        if (progress >= 1) texA = texB;
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-        requestAnimationFrame(frame);
-      })(0);
+  (function frameLoop(ts) {
+    const t = ts/1000;
+    sx += (mx-sx)*.1; sy += (my-sy)*.1; near += ((over ? 1 : 0) - near)*.06;
+    if (over && !reduce && t - lastDrop > .18 && Math.hypot(mx-sx, my-sy) > .004) { drop(mx, my, .5); lastDrop = t; }
+    if (ready) {
+      ripples.forEach((r,i) => flat.set(r, i*4)); gl.uniform4fv(uRip, flat);
+      gl.uniform2f(U.mouse, sx, sy); gl.uniform1f(U.near, near); gl.uniform1f(U.t, reduce ? 0 : t);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
-  }
-  // mouse / touch feed
-  const move = (x, y) => { mx = x; my = y; };
-  addEventListener("mousemove", e => move(e.clientX, e.clientY));
-  addEventListener("touchmove", e => { const t = e.touches[0]; move(t.clientX, t.clientY); }, { passive:true });
-  addEventListener("pointerdown", e => { move(e.clientX, e.clientY); burst(e.clientX/innerWidth, e.clientY/innerHeight, 1.6); });
-  // opening flourish
-  setTimeout(() => burst(.5, .5, 1.6), 250);
-  console.log("%cHi 👋 — this whole background is one GLSL fragment shader.", "font:600 14px system-ui;color:#ff5b3a");
+    requestAnimationFrame(frameLoop);
+  })(0);
 })();
 </script>
 </body>
