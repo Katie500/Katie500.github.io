@@ -69,9 +69,9 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "deceased",
       "rebelChild": true,
-      "notes": "Signet: farsight. Dies at Resson (Iron Flame) when Deigh is killed. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Signet: farsight. Dies at Resson in the Fourth Wing finale when Deigh is killed. Starter note from web summaries; check against your copy.",
       "unverified": true,
-      "rev": 3,
+      "rev": 8,
       "dragonId": "s-deigh",
       "fateEventId": "s-ev-if-resson"
     },
@@ -215,10 +215,11 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "deceased",
       "rebelChild": true,
-      "notes": "Dies in the same battle at Resson as Liam (Iron Flame). Starter note from web summaries of the books; check against your copy.",
+      "notes": "Dies at Resson in the Fourth Wing finale along with her dragon Fuil. Starter note from web summaries; check against your copy.",
       "unverified": true,
-      "rev": 3,
-      "fateEventId": "s-ev-if-resson"
+      "rev": 8,
+      "fateEventId": "s-ev-if-resson",
+      "dragonId": "s-fuil"
     },
     {
       "id": "s-quinn",
@@ -623,6 +624,39 @@ window.EMPYREAN_SEED = {
       "notes": "Led the failed Tyrrish rebellion and was executed; his last words are recorded as “You're all cowards” (redacted). Starter note from web summaries and your snippets; check against your copy.",
       "unverified": true,
       "rev": 6
+    },
+    {
+      "id": "s-aetos",
+      "name": "Colonel Aetos",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Dain's father. Sends assassins after the Athebyne survivors and led the Fourth Wing cadets into the trap at Resson. Starter note from web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-halden",
+      "name": "Prince Halden",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Part of Violet's squad searching for the irids in Onyx Storm. Starter note from web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-maren",
+      "name": "Maren",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Helps Violet alter the wards at Basgiath in Onyx Storm. Starter note from web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 8
     }
   ],
   "dragons": [
@@ -895,7 +929,7 @@ window.EMPYREAN_SEED = {
       "dam": "",
       "riderId": "s-liam",
       "status": "deceased",
-      "notes": "Killed at Resson (Iron Flame), which also kills Liam. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Killed at Resson in the Fourth Wing finale, which also kills Liam. Starter note from web summaries; check against your copy.",
       "unverified": false,
       "rev": 4
     },
@@ -947,6 +981,21 @@ window.EMPYREAN_SEED = {
       "notes": "Bonded Caroline Ashton after his previous rider died during their first flight lesson. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
       "rev": 4
+    },
+    {
+      "id": "s-fuil",
+      "name": "Fuil",
+      "color": "",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-soleil",
+      "status": "deceased",
+      "notes": "Soleil's dragon; killed at Resson with her. Starter note from web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 8
     }
   ],
   "events": [
@@ -975,30 +1024,30 @@ window.EMPYREAN_SEED = {
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Violet wakes up at the end of Fourth Wing and discovers Brennan, believed dead after the rebellion, is alive in Aretia. Add the page number; until then its position among page-numbered events is approximate.",
+      "desc": "Violet is poisoned at the end of the Resson battle and wakes up mended in Tyrrendor. Brennan, believed dead, is alive there and welcomes her to the revolution against the secrets Navarre keeps. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-violet",
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 8
     },
     {
       "id": "s-ev-if-resson",
-      "title": "Battle at Resson (Athebyne)",
-      "book": "IF",
-      "order": 400,
+      "title": "Resson: Liam, Soleil and their dragons die",
+      "book": "FW",
+      "order": 460,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "event",
-      "desc": "Liam and Soleil Telery die at Resson; Liam dies when Deigh is killed. Add the page number; until then its position among page-numbered events is approximate.",
+      "desc": "In the Fourth Wing finale at Resson, Violet and her friends are led into a trap by Colonel Aetos, who learned of their Athebyne trips through Dain. Soleil and her dragon Fuil, and Liam and his dragon Deigh, are killed. Corrected from an earlier Iron Flame placement; page 452 marks the start of this battle. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-liam",
         "s-soleil"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 8
     },
     {
       "id": "s-ev-os-zehyllna",
@@ -1020,18 +1069,18 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-os-draithus",
       "title": "Battle of Draithus: Quinn dies",
       "book": "OS",
-      "order": 50,
+      "order": 85,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "event",
-      "desc": "Quinn Hollis is stabbed by a venin and dies in Imogen's arms.",
+      "desc": "Quinn Hollis is stabbed by a venin and dies in Imogen's arms. This is the climactic battle of Onyx Storm against the venin, fought by Navarre, Poromiel and Tyrrendor together.",
       "chars": [
         "s-quinn",
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 8
     },
     {
       "id": "s-ev-os-end",
@@ -1187,7 +1236,7 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-os-theo",
       "title": "Theophanie is killed",
       "book": "OS",
-      "order": 70,
+      "order": 88,
       "chapter": "",
       "page": "",
       "edition": "",
@@ -1198,7 +1247,7 @@ window.EMPYREAN_SEED = {
         "s-theophanie"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 8
     },
     {
       "id": "s-ev-td-brennan",
@@ -1660,7 +1709,7 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 6
+      "rev": 8
     },
     {
       "id": "s-ev-if-rescue",
@@ -1678,6 +1727,627 @@ window.EMPYREAN_SEED = {
       ],
       "unverified": true,
       "rev": 7
+    },
+    {
+      "id": "s-ev-pre-aretia",
+      "title": "Battle of Aretia: the Tyrrish rebellion fails",
+      "book": "FW",
+      "order": 0,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Fen Riorson's Tyrrish rebellion fails at the Battle of Aretia. Violet's brother Brennan is believed to have been killed by Fen. (Placement is approximate; it happens years before Fourth Wing.) Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-fen",
+        "s-brennan"
+      ],
+      "unverified": true,
+      "rev": 8,
+      "story": 106
+    },
+    {
+      "id": "s-ev-pre-executions",
+      "title": "Rebel leaders are executed and 107 children are marked",
+      "book": "FW",
+      "order": 0,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "The rebellion's leaders are executed. Their 107 children are marked with the Rebellion Relic and conscripted into the Riders Quadrant to prove their loyalty (see the deal Xaden makes next). Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-fen",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8,
+      "story": 107
+    },
+    {
+      "id": "s-ev-fw-conscription",
+      "title": "Conscription Day: Violet is forced into the Riders Quadrant",
+      "book": "FW",
+      "order": 5,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet had always planned to join the Scribes, but is made to enter the Riders Quadrant instead, with only about six months to prepare. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-lilith"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-mira-warns",
+      "title": "Mira warns Violet about Xaden",
+      "book": "FW",
+      "order": 8,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Mira warns Violet to stay away from Xaden Riorson, son of the “Great Betrayer” Fen Riorson. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-mira",
+        "s-violet",
+        "s-xaden",
+        "s-fen"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-boots",
+      "title": "Violet and Rhiannon swap shoes before the Parapet",
+      "book": "FW",
+      "order": 15,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet and Rhiannon meet before the Parapet Run and swap shoes so that each has one with good grip. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-rhi"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-parapet-jack",
+      "title": "Jack Barlowe tries to kill Violet on the Parapet",
+      "book": "FW",
+      "order": 24,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "While crossing the Parapet, the cadet behind Violet, Jack Barlowe, tries to kill her. She survives, and meets Xaden at the top. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-jack",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-squad",
+      "title": "Xaden moves Violet and Rhiannon into his Fourth Wing",
+      "book": "FW",
+      "order": 40,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet and Rhiannon are first placed in Dain's squad, but Xaden intervenes and reassigns them to his Fourth Wing (Second Squad, Flame Section). Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden",
+        "s-dain",
+        "s-violet",
+        "s-rhi"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-defend-andarna",
+      "title": "Violet defends Andarna at Threshing",
+      "book": "FW",
+      "order": 101,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "At Threshing Violet overhears cadets planning to kill a small golden dragon and rushes to defend it. Xaden sees but cannot interfere under the Codex. Violet wounds Jack, who flees, and knocks Oren unconscious; Tairn kills Tynan as he runs. Violet bonds both Tairn and Andarna. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-jack",
+        "s-oren",
+        "s-tynan",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-poison",
+      "title": "Violet starts poisoning her sparring partners",
+      "book": "FW",
+      "order": 150,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Struggling at sparring because of her frailty, Violet starts learning her partners' names in advance and poisoning them to give herself an edge. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-lovers",
+      "title": "Violet and Xaden become lovers during the War Games",
+      "book": "FW",
+      "order": 365,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet and Xaden sleep together during the War Games. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-athebyne",
+      "title": "Violet learns Xaden is secretly fighting venin with gryphon riders",
+      "book": "FW",
+      "order": 410,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Violet learns that Xaden has been working with gryphon riders to attack venin from Athebyne. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-dain-reads",
+      "title": "Dain reads Violet's memories and tells his father",
+      "book": "FW",
+      "order": 440,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Dain uses his signet on Violet without her knowing, reads her memories of Xaden's secret mission at Athebyne, and passes them to Colonel Aetos. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-dain",
+        "s-violet",
+        "s-aetos"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-venin-reveal",
+      "title": "Venin and wyverns are revealed, and Navarre has been hiding them",
+      "book": "FW",
+      "order": 470,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "The finale shows that venin draw energy from the earth and feed it into their wyverns, the opposite of dragon riders. Navarre keeps them secret because venin can't draw power inside its wards. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-fw-last-venin",
+      "title": "Violet defeats the last venin and briefly stops time",
+      "book": "FW",
+      "order": 465,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "At Resson Violet uses her lightning to defeat the last venin and briefly stops time with energy from Andarna, leaving her badly hurt. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-assembly",
+      "title": "The Assembly sends the cadets back to Basgiath",
+      "book": "IF",
+      "order": 10,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet processes that Brennan is alive and overhears the revolution's Assembly. They vote to return the cadets to Basgiath and conceal the wyvern and venin events. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-brennan",
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-return",
+      "title": "Back at Basgiath: Varrish, Samara and the Rider Survival Course",
+      "book": "IF",
+      "order": 40,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Xaden is reassigned to Samara, Major Burton Varrish becomes Vice Commandant, and the second years begin a classified Rider Survival Course. Violet starts secretly researching Basgiath's history and wards. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden",
+        "s-varrish",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-assassins",
+      "title": "Assassins go after the Athebyne survivors and Violet",
+      "book": "IF",
+      "order": 60,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Colonel Aetos sends assassins after the survivors of the Athebyne mission, and a first-year cadet tries to kill Violet. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-aetos",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-punish",
+      "title": "Varrish punishes Violet for protecting Andarna",
+      "book": "IF",
+      "order": 90,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Varrish punishes Violet for protecting Andarna. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-varrish",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-jack-alive",
+      "title": "Jack Barlowe reappears alive",
+      "book": "IF",
+      "order": 190,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Jack, presumed dead after Violet dropped a mountain on him, reappears after months in the infirmary being mended by Nolon. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-jack",
+        "s-nolon"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-samara",
+      "title": "Attack on Samara",
+      "book": "IF",
+      "order": 200,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Samara, where Xaden is posted, is attacked. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-journals",
+      "title": "Violet finds the First Six's journals in the archives",
+      "book": "IF",
+      "order": 280,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Her research leads Violet to the journals of the First Six Riders, giving clues to how the wards work. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-torture",
+      "title": "Varrish tortures Violet for five days",
+      "book": "IF",
+      "order": 315,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Varrish and his associates torture Violet for five days. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-varrish",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-varrish-dies",
+      "title": "Dain frees Violet and Varrish is killed",
+      "book": "IF",
+      "order": 322,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Varrish orders Dain to read Violet's memories. After seeing the truth, Dain frees her just as Xaden and Garrick arrive, and Xaden and Violet kill Varrish together. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-dain",
+        "s-violet",
+        "s-xaden",
+        "s-garrick",
+        "s-varrish"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-luminary",
+      "title": "Xaden refused a luminary in exchange for Violet",
+      "book": "IF",
+      "order": 480,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Visiting Viscount Tecarus in Poromiel, Violet learns Xaden had been offered a luminary in exchange for her, a deal he refused. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden",
+        "s-tecarus"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-gryphons",
+      "title": "Violet and Xaden agree to train gryphon fliers in Aretia and get the luminary",
+      "book": "IF",
+      "order": 490,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "After agreeing to train gryphon fliers in Aretia, Xaden and Violet secure the luminary. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden",
+        "s-tecarus"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-six-blood",
+      "title": "The wards need the blood of six powerful riders",
+      "book": "IF",
+      "order": 520,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Violet works out that the First Six made the wards with the blood of the six most powerful riders, so six riders must bleed on the wardstone to power them. Aretia's wardstone is unpowered. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-if-venin-attack",
+      "title": "Venin attack Basgiath in force",
+      "book": "IF",
+      "order": 575,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "A massive venin attack hits Basgiath, leading to the finale at the wardstone. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-xaden",
+        "s-lilith"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-open",
+      "title": "Onyx Storm opens: Xaden is kept under watch",
+      "book": "OS",
+      "order": 5,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Right after Iron Flame, Xaden is held at Basgiath under constant watch to stop him channeling again, and the question is whether he can be turned back from venin. His condition is kept secret. Cadets run patrols hunting wyverns and venin. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden",
+        "s-violet",
+        "s-garrick",
+        "s-bodhi",
+        "s-imogen"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-senarium",
+      "title": "Peace talks at Basgiath: the alliance with Poromiel fails",
+      "book": "OS",
+      "order": 20,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "The Senarium meets at Basgiath for peace talks between Navarre and Poromiel. The Aretian riders are pardoned, but leadership refuses to alter the wards so fliers can use lesser magic, so the proposed alliance fails. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-wardstone",
+      "title": "Violet secretly alters the wardstone",
+      "book": "OS",
+      "order": 30,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet works with Ridoc, Rhiannon, Bodhi, Quinn, Imogen, Sawyer, Maren and eventually Mira and Brennan to alter the wards at Basgiath so gryphon fliers can use their magic under them. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-ridoc",
+        "s-rhi",
+        "s-bodhi",
+        "s-quinn",
+        "s-imogen",
+        "s-sawyer",
+        "s-maren",
+        "s-mira",
+        "s-brennan"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-irids",
+      "title": "Violet's squad sets out to find the irids",
+      "book": "OS",
+      "order": 36,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet leads a squad to search for more of Andarna's kind, with the secret extra aim of finding a cure for Xaden. The squad includes riders and fliers, Mira, Brennan, Dain, Ridoc and Prince Halden. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet",
+        "s-mira",
+        "s-brennan",
+        "s-dain",
+        "s-ridoc",
+        "s-halden"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-theo-taunts",
+      "title": "Theophanie keeps manipulating events and taunting Violet",
+      "book": "OS",
+      "order": 45,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Theophanie repeatedly kills civilians and taunts Violet with hints that she holds answers about venin. In one confrontation she reveals that irids are dragons of peace who withdrew from the Continent centuries ago. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-theophanie",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-mira-captured",
+      "title": "Theophanie captures Mira",
+      "book": "OS",
+      "order": 75,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Theophanie captures Violet's sister Mira, setting up the climactic battle. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-theophanie",
+        "s-mira",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-andarna-returns",
+      "title": "Andarna returns",
+      "book": "OS",
+      "order": 86,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "During the climactic battle Andarna returns. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
+    },
+    {
+      "id": "s-ev-os-onyx-storm",
+      "title": "Xaden channels shadows in the onyx storm",
+      "book": "OS",
+      "order": 92,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Xaden channels power from the earth and wields shadows in a massive onyx storm that ends the battle and saves Violet and Sgaeyl, but advances him almost fully into a venin, with a single piece of his soul still holding onto his love for Violet. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 8
     }
   ],
   "theories": [
