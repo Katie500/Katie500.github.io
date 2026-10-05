@@ -599,6 +599,18 @@ window.EMPYREAN_SEED = {
       "notes": "Makes a brief appearance in the early chapters of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
       "rev": 4
+    },
+    {
+      "id": "s-amber",
+      "name": "Amber Mavis",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Put to death on page 246 of Fourth Wing, per your notes. Starter note; check against your copy.",
+      "fateEventId": "s-ev-fw-amber",
+      "unverified": true,
+      "rev": 5
     }
   ],
   "dragons": [
@@ -930,34 +942,34 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-threshing",
       "title": "Violet's Threshing",
       "book": "FW",
-      "order": 10,
+      "order": 100,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "event",
-      "desc": "Violet takes part in Threshing at Basgiath and bonds Tairn and Andarna. Add the page, chapter and details from your copy.",
+      "desc": "Violet takes part in Threshing at Basgiath and bonds Tairn and Andarna. Add the page, chapter and details from your copy. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-violet"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 5
     },
     {
       "id": "s-ev-fw-brennan",
       "title": "Violet learns Brennan is alive in Aretia",
       "book": "FW",
-      "order": 90,
+      "order": 505,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Violet wakes up at the end of Fourth Wing and discovers Brennan, believed dead after the rebellion, is alive in Aretia.",
+      "desc": "Violet wakes up at the end of Fourth Wing and discovers Brennan, believed dead after the rebellion, is alive in Aretia. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-violet",
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 5
     },
     {
       "id": "s-ev-if-resson",
@@ -1032,17 +1044,17 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-fw-two-dragons",
       "title": "Violet bonds two dragons: double signets",
       "book": "FW",
-      "order": 12,
+      "order": 110,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Violet becomes the first rider with two dragons, Tairn and Andarna, and so carries two signets: lightning wielding (Tairn) and stopping time (Andarna), per the summaries.",
+      "desc": "Violet becomes the first rider with two dragons, Tairn and Andarna, and so carries two signets: lightning wielding (Tairn) and stopping time (Andarna), per the summaries. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-violet"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 5
     },
     {
       "id": "s-ev-if-channeling",
@@ -1181,16 +1193,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Brennan",
       "book": "TD",
       "order": 1,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "2",
+      "page": "7",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Brennan enters Threshing determined to prove himself beyond the Sorrengail name. His father gives him a good-luck bracelet, and alone he climbs a tree and meets Marbh, an orange daggertail. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 100
     },
     {
@@ -1198,16 +1210,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Mira",
       "book": "TD",
       "order": 2,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "3",
+      "page": "23",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Teine digs a talon into Mira's thigh to find her breaking point, and she tells him to take his fingernail out of her leg. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-mira"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 105
     },
     {
@@ -1233,16 +1245,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Xaden",
       "book": "TD",
       "order": 3,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "4",
+      "page": "37",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Set in the snow, Xaden says he'd love nothing more than to burn the place to the ground. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 110
     },
     {
@@ -1250,16 +1262,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Garrick",
       "book": "TD",
       "order": 4,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "5",
+      "page": "61",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Garrick's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-garrick"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 120
     },
     {
@@ -1267,16 +1279,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Bodhi",
       "book": "TD",
       "order": 5,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "7",
+      "page": "87",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Bodhi's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-bodhi"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 130
     },
     {
@@ -1284,16 +1296,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Imogen",
       "book": "TD",
       "order": 6,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "8",
+      "page": "103",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Imogen's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 140
     },
     {
@@ -1301,16 +1313,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Dain",
       "book": "TD",
       "order": 7,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "6",
+      "page": "71",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Dain's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-dain"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 150
     },
     {
@@ -1318,16 +1330,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Liam",
       "book": "TD",
       "order": 8,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "12",
+      "page": "167",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Liam's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-liam"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 1010.1
     },
     {
@@ -1335,16 +1347,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Rhiannon",
       "book": "TD",
       "order": 9,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "9",
+      "page": "123",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Rhiannon's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-rhi"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 1010.2
     },
     {
@@ -1352,16 +1364,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Ridoc",
       "book": "TD",
       "order": 10,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "11",
+      "page": "153",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Ridoc's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-ridoc"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 1010.3
     },
     {
@@ -1369,16 +1381,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Sawyer",
       "book": "TD",
       "order": 11,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "10",
+      "page": "135",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Sawyer's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-sawyer"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 1010.4
     },
     {
@@ -1386,16 +1398,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Sloane",
       "book": "TD",
       "order": 12,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "13",
+      "page": "181",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Sloane's Threshing, early in Iron Flame. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-sloane"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 2005.1
     },
     {
@@ -1403,16 +1415,16 @@ window.EMPYREAN_SEED = {
       "title": "Threshing Day: Aaric",
       "book": "TD",
       "order": 13,
-      "chapter": "",
-      "page": "",
-      "edition": "",
+      "chapter": "14",
+      "page": "199",
+      "edition": "Hardcover",
       "kind": "event",
       "desc": "Aaric's Threshing, early in Iron Flame. The collection's final story has a prince in rider black telling his dragon he intends to tear the kingdom apart. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
       "chars": [
         "s-aaric"
       ],
       "unverified": true,
-      "rev": 4,
+      "rev": 5,
       "story": 2005.2
     },
     {
@@ -1432,6 +1444,179 @@ window.EMPYREAN_SEED = {
       ],
       "unverified": true,
       "rev": 4
+    },
+    {
+      "id": "s-ev-td-trial",
+      "title": "Threshing Day: “Trial by Fire” (Threshing advice for dragonkind)",
+      "book": "TD",
+      "order": 0,
+      "chapter": "1",
+      "page": "1",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Opening chapter of Threshing Day: Threshing advice for dragonkind, credited to Colonel Thaddeus Palme.",
+      "chars": [],
+      "unverified": true,
+      "rev": 5,
+      "story": 90
+    },
+    {
+      "id": "s-ev-fw-parapet",
+      "title": "Violet takes her first step onto the parapet",
+      "book": "FW",
+      "order": 23,
+      "chapter": "",
+      "page": "23",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Violet takes her first step onto the parapet.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-wakes",
+      "title": "Violet wakes up before she is murdered",
+      "book": "FW",
+      "order": 220,
+      "chapter": "",
+      "page": "220",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Violet wakes up just before she would have been murdered.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-andarna-time",
+      "title": "Andarna freezes time",
+      "book": "FW",
+      "order": 222,
+      "chapter": "",
+      "page": "222",
+      "edition": "Hardcover",
+      "kind": "reveal",
+      "desc": "Andarna freezes time.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-feather-fail",
+      "title": "Failed feathertails shouldn't bond: they can gift their powers to humans",
+      "book": "FW",
+      "order": 233,
+      "chapter": "",
+      "page": "233",
+      "edition": "Hardcover",
+      "kind": "reveal",
+      "desc": "We learn that failed feathertails shouldn't bond, because they can accidentally gift their powers to humans.",
+      "chars": [],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-feather-baby",
+      "title": "Feathertails are actually baby dragons",
+      "book": "FW",
+      "order": 233.1,
+      "chapter": "",
+      "page": "233",
+      "edition": "Hardcover",
+      "kind": "reveal",
+      "desc": "We learn that feathertails are actually just baby dragons.",
+      "chars": [],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-amber",
+      "title": "Amber Mavis is put to death",
+      "book": "FW",
+      "order": 246,
+      "chapter": "",
+      "page": "246",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Amber Mavis is put to death. Possibly connected to the question of the right of benefaction; see that theory.",
+      "chars": [
+        "s-amber"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-jack-power",
+      "title": "Jack forces his power into Violet while sparring",
+      "book": "FW",
+      "order": 294,
+      "chapter": "",
+      "page": "294",
+      "edition": "Hardcover",
+      "kind": "foreshadow",
+      "desc": "On the mat, Jack Barlowe forces his power into Violet's body while they spar. Read as foreshadowing.",
+      "chars": [
+        "s-violet",
+        "s-jack"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-lightning",
+      "title": "Violet learns she is a lightning wielder",
+      "book": "FW",
+      "order": 362,
+      "chapter": "",
+      "page": "362",
+      "edition": "Hardcover",
+      "kind": "reveal",
+      "desc": "Violet finds out she is a lightning wielder.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-jack-dies",
+      "title": "Violet kills Jack Barlowe (or so it seemed)",
+      "book": "FW",
+      "order": 362.1,
+      "chapter": "",
+      "page": "362",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Violet kills Jack Barlowe, or at least that is what we thought at the time.",
+      "chars": [
+        "s-violet",
+        "s-jack"
+      ],
+      "unverified": true,
+      "rev": 5
+    },
+    {
+      "id": "s-ev-fw-note",
+      "title": "Violet finds a note from her father",
+      "book": "FW",
+      "order": 391,
+      "chapter": "",
+      "page": "391",
+      "edition": "Hardcover",
+      "kind": "foreshadow",
+      "desc": "Violet finds a note her father left for her in a book. In his own words he tells her that folklore passes from one generation to the next to teach us about our past, that losing it breaks our link to that past, that it takes only one desperate generation to change history or even erase it, and that he knows she will make the right choice when the time comes. Add the exact wording from your copy if you like.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 5
     }
   ],
   "theories": [
@@ -1496,6 +1681,68 @@ window.EMPYREAN_SEED = {
       "revealId": "",
       "revealText": "",
       "evidence": [],
+      "created": 0,
+      "updated": 0
+    },
+    {
+      "id": "s-th-benefaction",
+      "title": "What is the “right of benefaction”?",
+      "status": "speculative",
+      "confidence": 2,
+      "body": "It seems to be something a feathertail can do, or maybe any baby dragon. The related clues so far: failed feathertails can accidentally gift their powers to humans, feathertails are baby dragons, and on page 246 Amber Mavis is put to death. Work out what the right of benefaction is and whether the execution is connected.",
+      "foreshadow": [
+        "s-ev-fw-feather-fail",
+        "s-ev-fw-feather-baby",
+        "s-ev-fw-amber"
+      ],
+      "revealId": "",
+      "revealText": "",
+      "evidence": [
+        {
+          "book": "FW",
+          "edition": "Hardcover",
+          "page": "233",
+          "note": "Failed feathertails can gift their powers to humans.",
+          "stance": "support"
+        },
+        {
+          "book": "FW",
+          "edition": "Hardcover",
+          "page": "233",
+          "note": "Feathertails are actually just baby dragons.",
+          "stance": "support"
+        },
+        {
+          "book": "FW",
+          "edition": "Hardcover",
+          "page": "246",
+          "note": "Amber Mavis is put to death; link to the right of benefaction unclear.",
+          "stance": "neutral"
+        }
+      ],
+      "created": 0,
+      "updated": 0
+    },
+    {
+      "id": "s-th-jack-power",
+      "title": "Jack forcing his power into Violet (p. 294) foreshadows something bigger",
+      "status": "speculative",
+      "confidence": 3,
+      "body": "While sparring on the mat, Jack Barlowe forces his power into Violet's body. Candidate payoff, linked here as a tentative arc: Jack's later return as venin in Iron Flame. Change the reveal if you think it points elsewhere.",
+      "foreshadow": [
+        "s-ev-fw-jack-power"
+      ],
+      "revealId": "s-ev-if-jack-ward",
+      "revealText": "",
+      "evidence": [
+        {
+          "book": "FW",
+          "edition": "Hardcover",
+          "page": "294",
+          "note": "Jack forces his power into Violet's body while they spar.",
+          "stance": "support"
+        }
+      ],
       "created": 0,
       "updated": 0
     }
