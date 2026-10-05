@@ -131,7 +131,7 @@ const E = (() => {
   // fields: {k,label,type:text|textarea|number|select|multi|cites|checkbox|url|date, options:[{v,l}], stance:bool}
   const form = ({ title, fields, value = {}, onSave, onDelete }) => {
     const dlg = h("dialog");
-    const getters = {};
+    const getters = {}, setters = {};
     const body = fields.map(f => {
       const v = value[f.k];
       let input;
@@ -169,10 +169,16 @@ const E = (() => {
         return h("div", { class:"f" }, h("label", {}, f.label), prev, pick, clear, h("div", { class:"meta" }, "Resized in your browser and saved only there (and in your backup file)."));
       }
       if (f.type === "text" || f.type === "number" || f.type === "url" || f.type === "date") input = h("input", { type:f.type, value:v ?? "", placeholder:f.placeholder || "", step:f.type === "number" ? "any" : null });
+      if (f.type === "select") setters[f.k] = v => { input.value = v; };
       getters[f.k] = () => f.type === "checkbox" ? input.checked : f.type === "multi" ? [...input.querySelectorAll("input:checked")].map(x => x.value) : f.type === "number" ? (input.value === "" ? null : Number(input.value)) : input.value.trim();
       return h("div", { class:"f" }, h("label", {}, f.label), input, f.hint ? h("div", { class:"meta" }, f.hint) : null);
     });
-    const f = h("form", { method:"dialog", onsubmit:e => {
+    const applyConds = () => fields.forEach((fd, i) => {
+      if (fd.showIf) body[i].style.display = getters[fd.showIf]() ? "" : "none";
+      if (fd.hideIf) body[i].style.display = getters[fd.hideIf]() ? "none" : "";
+      if (fd.autoSet && getters[fd.autoSet.when]() && !fd.autoSet.ifIn.includes(getters[fd.k]())) setters[fd.k](fd.autoSet.to);
+    });
+    const f = h("form", { method:"dialog", onchange:applyConds, onsubmit:e => {
       e.preventDefault();
       const out = { ...value, unverified:false }; fields.forEach(x => out[x.k] = getters[x.k]());
       onSave(out); dlg.close(); dlg.remove();
@@ -181,7 +187,7 @@ const E = (() => {
         onDelete ? h("button", { type:"button", class:"btn danger", onclick:() => { if (confirm("Delete this entry?")) { onDelete(); dlg.close(); dlg.remove(); } } }, "Delete") : null,
         h("button", { type:"button", class:"btn", onclick:() => { dlg.close(); dlg.remove(); } }, "Cancel"),
         h("button", { type:"submit", class:"btn primary" }, "Save")));
-    dlg.append(f); document.body.append(dlg); dlg.showModal();
+    dlg.append(f); document.body.append(dlg); applyConds(); dlg.showModal();
     dlg.addEventListener("cancel", () => dlg.remove());
   };
 

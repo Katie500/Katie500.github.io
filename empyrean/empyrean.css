@@ -81,3 +81,7 @@ nav.main { align-items:center; } code { background:#23221f10; padding:.05rem .35
 .nt .note::before { content:""; position:absolute; left:calc(-1.6rem - 4px); top:1.2rem; width:6px; height:6px; border-radius:50%; background:var(--soft); }
 .nt .num { font:500 12px "Inter"; letter-spacing:.1em; color:var(--acc); }
 .nt .body { font-family:"Fraunces",Georgia,serif; font-size:1.02rem; line-height:1.55; margin:.3rem 0; }
+
+@keyframes fl { from { background:#a8502d26; } }
+.flash { animation:fl 1.6s ease-out; }
+.axis-wrap svg text { font-family:"Inter",system-ui,sans-serif; }

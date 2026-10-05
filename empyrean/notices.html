@@ -7,44 +7,41 @@
 </head><body><div class="wrap"><main id="app"></main></div>
 <script src="seed.js"></script><script src="app.js"></script>
 <script>
-const { h, data } = E;
-E.layout("notices.html", "Notices <em>&amp; bonus content</em>", "A log of the public notices and bonus material from Rebecca Yarros’s sites, so you can track what you’ve read and what it might mean.");
+const { h, svg, data } = E;
+E.layout("notices.html", "Notices <em>&amp; snippets</em>", "The public notices and the in-world snippets that open each chapter, on one timeline. Tick “snippet” when you log a chapter opening and pick which book it comes from.");
 const app = document.getElementById("app");
 const SOURCES = [["dragonkind","DragonKind library"],["bonus","Bonus content"],["other","Other"]];
-let src = "all", q = "", view = "timeline", newestFirst = false;
+const SNIPPET_BOOKS = ["FW","IF","OS"];
+let type = "all", q = "", bookFilter = "all", newestFirst = false;
+const isSnip = x => !!x.snippet;
 
 const editForm = (n = {}) => E.form({
-  title: n.id ? "Edit notice" : "Log a notice", value:n.id ? n : { source:src === "all" ? "dragonkind" : src, book:"OT", read:false, theoryIds:[] },
+  title: n.id ? "Edit entry" : "Log a notice or snippet",
+  value:n.id ? n : { snippet:type === "snippet", source:type === "bonus" ? "bonus" : "dragonkind", book:type === "snippet" ? (bookFilter !== "all" ? bookFilter : "FW") : "OT", read:false, theoryIds:[] },
   fields: [
-    { k:"title", label:"Title", type:"text" },
-    { k:"source", label:"Where it’s from", type:"select", options:SOURCES.map(([v, l]) => ({ v, l })) },
-    { k:"url", label:"Link", type:"url", placeholder:"https://…" },
-    { k:"inWorld", label:"In-world year", type:"text", placeholder:"e.g. Year 628" },
-    { k:"transcriber", label:"Transcribed by", type:"text" },
-    { k:"date", label:"Date posted (real world)", type:"date" },
-    { k:"book", label:"Related book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
+    { k:"snippet", label:"This is a snippet from a book (the opening of a chapter), not a public notice", type:"checkbox" },
+    { k:"book", label:"Book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })), hint:"For a snippet, pick the book it opens a chapter in.", autoSet:{ when:"snippet", ifIn:SNIPPET_BOOKS, to:"FW" } },
+    { k:"chapter", label:"Chapter", type:"text", showIf:"snippet", placeholder:"e.g. 12" },
+    { k:"title", label:"Title", type:"text", hint:"Optional for snippets; it defaults to the book and chapter." },
+    { k:"source", label:"Where it’s from", type:"select", hideIf:"snippet", options:SOURCES.map(([v, l]) => ({ v, l })) },
+    { k:"url", label:"Link", type:"url", hideIf:"snippet", placeholder:"https://…" },
+    { k:"inWorld", label:"In-world year", type:"text", hideIf:"snippet", placeholder:"e.g. Year 628" },
+    { k:"transcriber", label:"Transcribed by", type:"text", hideIf:"snippet" },
+    { k:"date", label:"Date posted (real world)", type:"date", hideIf:"snippet" },
     { k:"summary", label:"Summary (your own words)", type:"textarea" },
-    { k:"text", label:"Notice text", type:"textarea" },
+    { k:"text", label:"Text", type:"textarea" },
     { k:"read", label:"I’ve read this", type:"checkbox" },
     { k:"theoryIds", label:"Theories it relates to", type:"multi", options:E.optionsOf("theories", t => t.title) },
     { k:"cites", label:"Book page references it connects to", type:"cites" },
   ],
-  onSave: o => { o.id = o.id || E.uid("n"); E.upsert("notices", o); render(); },
+  onSave: o => {
+    o.id = o.id || E.uid("n");
+    if (o.snippet) { o.source = "book"; if (!o.title) o.title = E.bookOf(o.book).name + " — Chapter " + (o.chapter || "?"); }
+    else if (!o.title) o.title = "Public Notice";
+    E.upsert("notices", o); render();
+  },
   onDelete: n.id ? () => { E.remove("notices", n.id); render(); } : null,
 });
-
-const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top:20px" },
-  h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, n.title),
-    h("span", { class:"pill " + (n.read ? "s-active" : "s-missing") }, n.read ? "read" : "unread")),
-  h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.inWorld, n.date, n.transcriber && "transcribed by " + n.transcriber, n.book !== "OT" && E.bookOf(n.book).name].filter(Boolean).join(" · ")),
-  n.text ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap;font-family:Fraunces,Georgia,serif;font-size:15.5px;line-height:1.5" }, n.text)
-    : n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
-  (n.cites || []).map(E.citeView),
-  h("div", { class:"row", style:"margin-top:.6rem" },
-    (n.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
-    n.url ? h("a", { class:"btn sm", href:n.url, target:"_blank", rel:"noopener" }, "Open ↗") : null,
-    h("button", { class:"btn sm", onclick:() => { n.read = !n.read; E.upsert("notices", n); render(); } }, n.read ? "Mark unread" : "Mark read"),
-    h("button", { class:"btn sm", onclick:() => editForm(n) }, "Edit")));
 
 // Reads a saved copy of the DragonKind library page and stores each notice's text in this browser only.
 function importText() {
@@ -72,26 +69,72 @@ function importText() {
 }
 
 const numOf = x => { const m = (x.title || "").match(/(\d+)\.(\d+)/) || (x.id || "").match(/(\d+)-(\d+)$/); return m ? [+m[1], +m[2]] : [null, null]; };
+const chapterOf = x => { const v = parseFloat(x.chapter); return isNaN(v) ? 1e9 : v; };
+const bookIdx = x => E.BOOKS.findIndex(b => b.id === x.book);
+const NOTICE_COLOR = "#a8502d", SNIPPET_COLOR = "#8b78a8";
 
-function timeline(list) {
-  const items = list.map(x => ({ x, num:numOf(x) })).sort((a, b) => ((a.num[0] ?? 1e9) - (b.num[0] ?? 1e9)) || ((a.num[1] ?? 0) - (b.num[1] ?? 0)));
-  if (newestFirst) items.reverse();
-  const out = []; let lastYear = null;
-  items.forEach(({ x, num }) => {
-    const yr = num[0];
-    if (yr !== lastYear) {
-      if (lastYear != null && yr != null) { const d = Math.abs(yr - lastYear); if (d > 1) out.push(h("div", { class:"gap" }, d + " years " + (newestFirst ? "earlier" : "later"))); }
-      out.push(h("div", { class:"yr" }, yr == null ? "Undated" : "Year " + yr)); lastYear = yr;
+// Notices by in-world number, then snippets by book and chapter.
+function ordered(list) {
+  const notices = list.filter(x => !isSnip(x)).map(x => ({ x, num:numOf(x) })).sort((a, b) => ((a.num[0] ?? 1e9) - (b.num[0] ?? 1e9)) || ((a.num[1] ?? 0) - (b.num[1] ?? 0)));
+  const snippets = list.filter(isSnip).map(x => ({ x, num:[null, null] })).sort((a, b) => (bookIdx(a.x) - bookIdx(b.x)) || (chapterOf(a.x) - chapterOf(b.x)));
+  const all = [...notices, ...snippets];
+  all.forEach(it => { it.group = isSnip(it.x) ? E.bookOf(it.x.book).name : (it.num[0] != null ? "Year " + it.num[0] : "Undated"); it.short = isSnip(it.x) ? it.x.book + " " + (it.x.chapter || "?") : (it.num[0] != null ? it.num[0] + "." + it.num[1] : "—"); });
+  return newestFirst ? all.reverse() : all;
+}
+
+function axis(items) {
+  const STEP = 64, JUMP = 54, PAD = 46, top = 44, base = 96;
+  const pos = []; let x = PAD, prev = null;
+  items.forEach(it => { if (prev && prev.group !== it.group) x += JUMP; pos.push(x); x += STEP; prev = it; });
+  const W = x + PAD - STEP + 30, el = svg("svg", { width:Math.max(W, 300), height:150, role:"img", "aria-label":"Timeline of notices and snippets" });
+  el.append(svg("line", { x1:PAD - 24, x2:W - PAD + 20, y1:base, y2:base, stroke:"rgba(35,34,31,.25)" }));
+  // group brackets and labels
+  let i = 0;
+  while (i < items.length) {
+    let j = i; while (j + 1 < items.length && items[j + 1].group === items[i].group) j++;
+    const snip = isSnip(items[i].x), col = snip ? SNIPPET_COLOR : NOTICE_COLOR;
+    el.append(svg("path", { d:`M${pos[i] - 10},${top + 14} V${top + 20} H${pos[j] + 10} V${top + 14}`, fill:"none", stroke:col, "stroke-opacity":.5 }));
+    const lab = svg("text", { x:(pos[i] + pos[j]) / 2, y:top + 8, "font-size":11, "text-anchor":"middle", fill:col, "font-weight":500 }); lab.textContent = items[i].group; el.append(lab);
+    if (j + 1 < items.length && !isSnip(items[i].x) && !isSnip(items[j + 1].x)) {
+      const a = items[j].num[0], b = items[j + 1].num[0];
+      if (a != null && b != null && Math.abs(b - a) > 1) { const g = svg("text", { x:(pos[j] + pos[j + 1]) / 2, y:base - 12, "font-size":10, "text-anchor":"middle", fill:"#7c776d" }); g.textContent = "· " + Math.abs(b - a) + " yrs ·"; el.append(g); }
     }
+    i = j + 1;
+  }
+  items.forEach((it, k) => {
+    const col = isSnip(it.x) ? SNIPPET_COLOR : NOTICE_COLOR, g = svg("g", { style:"cursor:pointer", tabindex:0, role:"link", "aria-label":it.x.title });
+    g.append(svg("circle", { cx:pos[k], cy:base, r:8, fill:it.x.read ? col : "#fbf9f5", stroke:col, "stroke-width":2 }));
+    const t = svg("text", { x:pos[k], y:base + 26, "font-size":11, "text-anchor":"middle", fill:"#4b473f" }); t.textContent = it.short; g.append(t);
+    g.append(svg("title", {}, it.x.title + (it.x.read ? " (read)" : " (unread)")));
+    const go = () => { const t2 = document.getElementById(it.x.id); if (t2) { t2.scrollIntoView({ behavior:"smooth", block:"center" }); t2.classList.remove("flash"); void t2.offsetWidth; t2.classList.add("flash"); } };
+    g.addEventListener("click", go); g.addEventListener("keydown", ev => { if (ev.key === "Enter") go(); });
+    el.append(g);
+  });
+  return h("div", {},
+    h("div", { class:"axis-wrap" }, el),
+    h("div", { class:"legend" }, h("span", {}, h("span", { class:"dot", style:"background:" + NOTICE_COLOR }), "Public notice"), h("span", {}, h("span", { class:"dot", style:"background:" + SNIPPET_COLOR }), "Book snippet"), h("span", {}, "Filled = read · outlined = unread · click a point to jump to it")));
+}
+
+function entries(items) {
+  const out = []; let lastGroup = null, lastYear = null;
+  items.forEach(it => {
+    const x = it.x, snip = isSnip(x);
+    if (it.group !== lastGroup) {
+      if (!snip && lastYear != null && it.num[0] != null) { const d = Math.abs(it.num[0] - lastYear); if (d > 1) out.push(h("div", { class:"gap" }, d + " years " + (newestFirst ? "earlier" : "later"))); }
+      out.push(h("div", { class:"yr" }, it.group)); lastGroup = it.group;
+    }
+    if (!snip) lastYear = it.num[0];
     out.push(h("article", { class:"note", id:x.id },
       h("div", { class:"row", style:"justify-content:space-between" },
-        h("span", { class:"num" }, num[0] != null ? "PUBLIC NOTICE " + num[0] + "." + num[1] : x.title.toUpperCase()),
+        h("span", { class:"num", style:snip ? "color:" + SNIPPET_COLOR : "" }, snip ? "SNIPPET · " + E.bookOf(x.book).name.toUpperCase() + " · CHAPTER " + (x.chapter || "?") : (it.num[0] != null ? "PUBLIC NOTICE " + it.num[0] + "." + it.num[1] : (x.title || "").toUpperCase())),
         h("span", { class:"pill " + (x.read ? "s-active" : "s-missing") }, x.read ? "read" : "unread")),
-      x.text ? h("p", { class:"body" }, x.text) : h("p", { class:"body meta" }, x.summary || "No text yet. Use “Import from DragonKind” or Edit."),
-      x.transcriber ? h("div", { class:"meta" }, "Transcribed by " + x.transcriber) : null,
+      x.text ? h("p", { class:"body", style:"white-space:pre-wrap" }, x.text) : h("p", { class:"body meta" }, x.summary || (snip ? "No text yet. Use Edit to add this chapter’s opening." : "No text yet. Use “Import from DragonKind” or Edit.")),
+      x.text && x.summary ? h("div", { class:"meta" }, "In brief: " + x.summary) : null,
+      !snip && x.transcriber ? h("div", { class:"meta" }, "Transcribed by " + x.transcriber) : null,
       (x.cites || []).map(E.citeView),
       h("div", { class:"row", style:"margin-top:.5rem" },
         (x.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
+        !snip && x.url ? h("a", { class:"btn sm", href:x.url, target:"_blank", rel:"noopener" }, "Open ↗") : null,
         h("button", { class:"btn sm", onclick:() => { x.read = !x.read; E.upsert("notices", x); render(); } }, x.read ? "Mark unread" : "Mark read"),
         h("button", { class:"btn sm", onclick:() => editForm(x) }, "Edit"))));
   });
@@ -104,18 +147,28 @@ function render() {
       h("a", { class:"card", href:"https://dragonkind.com/library", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "DragonKind library ↗"), h("p", { class:"meta" }, "dragonkind.com/library — open it in a new tab, then log what you find here.")),
       h("a", { class:"card", href:"https://rebeccayarros.com/bonus-content", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "Bonus content ↗"), h("p", { class:"meta" }, "rebeccayarros.com/bonus-content — the author’s official extras."))),
     h("div", { class:"toolbar" },
-      E.tabs([["timeline","Timeline"],["cards","Cards"]], view, k => { view = k; render(); }),
-      E.tabs([["all","All"], ...SOURCES], src, k => { src = k; render(); }), h("span", { class:"grow" }),
-      view === "timeline" ? h("button", { class:"btn sm", onclick:() => { newestFirst = !newestFirst; render(); } }, newestFirst ? "Newest first ↓" : "Oldest first ↑") : null,
-      h("input", { type:"search", placeholder:"Search notices…", value:q, "aria-label":"Search notices", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      E.tabs([["all","All"],["notice","Public notices"],["snippet","Book snippets"],["bonus","Bonus content"]], type, k => { type = k; render(); }),
+      type === "snippet" || type === "all" ? h("select", { "aria-label":"Book", onchange:e => { bookFilter = e.target.value; renderList(); } }, h("option", { value:"all" }, "All books"), SNIPPET_BOOKS.map(id => h("option", { value:id, selected:bookFilter === id }, E.bookOf(id).name))) : null,
+      h("span", { class:"grow" }),
+      h("button", { class:"btn sm", onclick:() => { newestFirst = !newestFirst; render(); } }, newestFirst ? "Newest first ↓" : "Oldest first ↑"),
+      h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
       h("button", { class:"btn", onclick:importText }, "Import from DragonKind"),
-      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Log a notice")),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Notice or snippet")),
     h("div", { id:"list" }));
   renderList();
 }
 function renderList() {
-  const l = data.notices.filter(n => (src === "all" || n.source === src) && (n.title + " " + (n.summary || "")).toLowerCase().includes(q)).sort((a, b) => (b.date || "").localeCompare(a.date || "") || (a.seq ?? 999) - (b.seq ?? 999));
-  document.getElementById("list").replaceChildren(l.length ? (view === "timeline" ? timeline(l) : h("div", { class:"grid" }, l.map(card))) : E.emptyState("Nothing logged yet. Open one of the sources above and add notices as you read them."));
+  const l = data.notices.filter(n => {
+    if (type === "notice" && isSnip(n)) return false;
+    if (type === "snippet" && !isSnip(n)) return false;
+    if (type === "bonus" && (isSnip(n) || n.source !== "bonus")) return false;
+    if (isSnip(n) && bookFilter !== "all" && n.book !== bookFilter) return false;
+    return ((n.title || "") + " " + (n.summary || "") + " " + (n.text || "")).toLowerCase().includes(q);
+  });
+  const box = document.getElementById("list");
+  if (!l.length) { box.replaceChildren(E.emptyState(type === "snippet" ? "No snippets yet. Press “+ Notice or snippet”, tick the snippet box and pick the book." : "Nothing here yet.")); return; }
+  const items = ordered(l);
+  box.replaceChildren(axis(items), entries(items));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
 }
 render();
