@@ -740,9 +740,13 @@
    "dam": "",
    "riderId": "s-ridoc",
    "status": "unknown",
-   "notes": "Starter note from web summaries of the books; check against your copy.",
+   "notes": "",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791230815425
   },
   {
    "id": "s-glane",
@@ -757,9 +761,13 @@
    "dam": "",
    "riderId": "s-imogen",
    "status": "unknown",
-   "notes": "Claimed Imogen before Threshing began. Starter note from web summaries of the books; check against your copy.",
+   "notes": "Claimed Imogen before Threshing began. Started Channeling on Threshing day",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791230904227
   },
   {
    "id": "s-teine",
@@ -774,9 +782,13 @@
    "dam": "",
    "riderId": "s-mira",
    "status": "unknown",
-   "notes": "Mira's dragon.",
+   "notes": "",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791230851205
   },
   {
    "id": "s-aimsir",
@@ -810,15 +822,22 @@
    "id": "s-codagh",
    "name": "Codagh",
    "color": "Black",
-   "tail": "swordtail",
+   "tail": "Sword",
    "family": "Dubhmadinn",
    "sire": "",
    "dam": "",
    "riderId": "s-melgren",
    "status": "unknown",
-   "notes": "Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 7
+   "notes": "",
+   "unverified": false,
+   "rev": 7,
+   "img": "",
+   "aliases": "",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791230867234
   },
   {
    "id": "s-solas",
