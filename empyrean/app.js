@@ -36,6 +36,15 @@ const E = (() => {
 
   /* ---------- storage ---------- */
   let data;
+  const SYNC_KEY = "empyrean.sync.v1", PUB_KEY = "empyrean.published.v1", DATA_PATH = "empyrean/data.json";
+  const hash = s => { let x = 5381; for (let i = 0; i < s.length; i++) x = ((x << 5) + x + s.charCodeAt(i)) | 0; return x + ":" + s.length; };
+  const syncDefaults = { owner:"Katie500", repo:"Katie500.github.io", branch:"master", token:"" };
+  const syncSettings = () => { try { return { ...syncDefaults, ...JSON.parse(localStorage.getItem(SYNC_KEY) || "{}") }; } catch (e) { return { ...syncDefaults }; } };
+  const saveSyncSettings = s => { try { localStorage.setItem(SYNC_KEY, JSON.stringify(s)); } catch (e) { console.warn(e); } };
+  const syncState = () => {
+    let pub = null; try { pub = localStorage.getItem(PUB_KEY); } catch (e) {}
+    return !pub ? "never" : pub === hash(JSON.stringify(data)) ? "clean" : "dirty";
+  };
   const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[] });
   const load = () => {
     try {
@@ -50,18 +59,31 @@ const E = (() => {
           if (i < 0) { if (!data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; } continue; }
           if (data[list][i].unverified === true && (s.rev || 0) > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); added = true; continue; }
           // entries you've edited keep your values; only blank fields (and "not set" statuses) are filled from the starter data
-          for (const k of ["aliases","tail","fateEventId"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          for (const k of ["aliases","tail","fateEventId","text"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          if (data[list][i].venin === undefined && s.venin) { data[list][i].venin = true; added = true; }
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
         }
         if (added) save();
         return;
       }
     } catch (e) { console.warn(e); }
-    data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); save();
+    data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); data.fromSeed = true; data.removedSeed = []; save();
+    fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
   };
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { console.warn("Could not save", e); alert("Your browser couldn\u2019t save this (storage may be full). Export a backup, then try smaller pictures."); } };
-  const upsert = (list, item) => { const i = data[list].findIndex(x => x.id === item.id); item.updated = Date.now(); if (i >= 0) data[list][i] = item; else data[list].push(item); save(); };
-  const remove = (list, id) => { if (id.startsWith("s-")) (data.removedSeed ||= []).push(id); data[list] = data[list].filter(x => x.id !== id); save(); };
+  async function fetchPublished() {
+    try {
+      const r = await fetch(new URL("data.json", location.href) + "?t=" + Date.now(), { cache:"no-store" });
+      if (!r.ok) return;
+      const obj = await r.json();
+      if (!obj || !Array.isArray(obj.theories) || !data.fromSeed) return;   // never overwrite anything the visitor has started editing
+      data = Object.assign(empty(), obj); data.removedSeed = data.removedSeed || []; save();
+      try { localStorage.setItem(PUB_KEY, hash(JSON.stringify(data))); } catch (e) {}
+      location.reload();
+    } catch (e) { /* no published copy yet */ }
+  }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); updateBadge(); } catch (e) { console.warn("Could not save", e); alert("Your browser couldn\u2019t save this (storage may be full). Export a backup, then try smaller pictures."); } };
+  const upsert = (list, item) => { delete data.fromSeed; const i = data[list].findIndex(x => x.id === item.id); item.updated = Date.now(); if (i >= 0) data[list][i] = item; else data[list].push(item); save(); };
+  const remove = (list, id) => { delete data.fromSeed; if (id.startsWith("s-")) (data.removedSeed ||= []).push(id); data[list] = data[list].filter(x => x.id !== id); save(); };
   const byId = (list, id) => data[list].find(x => x.id === id);
   const sortEvents = list => [...list].sort((a, b) => BOOKS.findIndex(x => x.id === a.book) - BOOKS.findIndex(x => x.id === b.book) || (a.order ?? 0) - (b.order ?? 0));
 
@@ -158,13 +180,64 @@ const E = (() => {
     dlg.addEventListener("cancel", () => dlg.remove());
   };
 
+  /* ---------- publish to the site through the GitHub API ---------- */
+  const b64 = s => { const bytes = new TextEncoder().encode(s); let bin = ""; for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000)); return btoa(bin); };
+  const gh = (s, extra = {}) => ({ headers:{ Accept:"application/vnd.github+json", Authorization:"Bearer " + s.token, "X-GitHub-Api-Version":"2022-11-28", ...extra } });
+  const ghUrl = s => `https://api.github.com/repos/${encodeURIComponent(s.owner)}/${encodeURIComponent(s.repo)}/contents/${DATA_PATH}`;
+  const ghError = async r => { let m = ""; try { m = (await r.json()).message; } catch (e) {} return r.status === 401 ? "GitHub rejected the token (expired or mistyped)." : r.status === 403 || r.status === 404 ? "GitHub says no access (" + r.status + "). Check the token has Contents: Read and write on this repository. " + (m || "") : "GitHub error " + r.status + ". " + (m || ""); };
+  async function publish(s) {
+    let sha; const r = await fetch(ghUrl(s) + "?ref=" + encodeURIComponent(s.branch), gh(s));
+    if (r.ok) sha = (await r.json()).sha; else if (r.status !== 404) throw new Error(await ghError(r));
+    const snap = { ...data }; delete snap.fromSeed;
+    const body = { message:"Update Empyrean notebook data", content:b64(JSON.stringify(snap, null, 1)), branch:s.branch }; if (sha) body.sha = sha;
+    const w = await fetch(ghUrl(s), { method:"PUT", ...gh(s, { "Content-Type":"application/json" }), body:JSON.stringify(body) });
+    if (!w.ok) throw new Error(await ghError(w));
+    try { localStorage.setItem(PUB_KEY, hash(JSON.stringify(data))); } catch (e) {}
+    updateBadge();
+  }
+  async function pull(s) {
+    let r;
+    if (s.token) r = await fetch(ghUrl(s) + "?ref=" + encodeURIComponent(s.branch), gh(s, { Accept:"application/vnd.github.raw+json" }));
+    else r = await fetch(new URL("data.json", location.href) + "?t=" + Date.now(), { cache:"no-store" });
+    if (r.status === 404) throw new Error("Nothing has been saved to the site yet.");
+    if (!r.ok) throw new Error(await ghError(r));
+    const obj = JSON.parse(await r.text());
+    if (!obj || !Array.isArray(obj.theories)) throw new Error("The saved file isn\u2019t a notebook.");
+    return obj;
+  }
+  const updateBadge = () => {
+    const b = document.getElementById("sync-btn"); if (!b) return;
+    const st = syncState();
+    b.textContent = st === "dirty" ? "● Unsaved changes" : st === "clean" ? "✓ Saved to site" : "Sync";
+    b.className = "btn sm sync " + st;
+  };
+  function syncDialog() {
+    const s = syncSettings(), dlg = h("dialog"), msg = h("p", { class:"meta", role:"status", style:"min-height:1.4em;margin-top:.8rem" });
+    const inp = (k, type = "text") => h("input", { type, value:s[k] || "", autocomplete:"off", spellcheck:"false", oninput:e => s[k] = e.target.value.trim() });
+    const run = async (label, fn) => { msg.style.color = "var(--soft)"; msg.textContent = label + "…"; try { await fn(); } catch (e) { msg.style.color = "var(--bad)"; msg.textContent = e.message || String(e); } };
+    dlg.append(h("form", { method:"dialog", onsubmit:e => e.preventDefault() },
+      h("h2", {}, "Sync with the site"),
+      h("p", { class:"meta" }, "Saving writes your whole notebook to ", h("code", {}, DATA_PATH), " in your GitHub repository, which republishes the site in a minute or two. Anyone visiting the site for the first time then sees it, and so does any other device of yours (use “Load from site”). Saving makes the notebook public."),
+      h("div", { class:"f" }, h("label", {}, "GitHub token"), inp("token", "password"),
+        h("div", { class:"meta" }, "Stored only in this browser. Never share it. ", h("a", { href:"https://github.com/settings/personal-access-tokens/new", target:"_blank", rel:"noopener" }, "Create one"), ": “Only select repositories” → this repo, permission Contents → Read and write.")),
+      h("div", { class:"row" }, h("div", { class:"f", style:"flex:1;min-width:140px" }, h("label", {}, "Owner"), inp("owner")), h("div", { class:"f", style:"flex:1;min-width:160px" }, h("label", {}, "Repository"), inp("repo")), h("div", { class:"f", style:"width:110px" }, h("label", {}, "Branch"), inp("branch"))),
+      h("div", { class:"actions", style:"justify-content:flex-start" },
+        h("button", { type:"button", class:"btn primary", onclick:() => run("Saving", async () => { if (!s.token) throw new Error("Paste a token first."); saveSyncSettings(s); await publish(s); msg.style.color = "var(--ok)"; msg.textContent = "Saved. The site updates in a minute or two."; }) }, "Save to site"),
+        h("button", { type:"button", class:"btn", onclick:() => run("Loading", async () => { saveSyncSettings(s); const obj = await pull(s); if (!confirm("Replace what’s in this browser with the copy saved on the site?")) { msg.textContent = ""; return; } data = Object.assign(empty(), obj); data.removedSeed = data.removedSeed || []; save(); try { localStorage.setItem(PUB_KEY, hash(JSON.stringify(data))); } catch (e) {} location.reload(); }) }, "Load from site"),
+        h("button", { type:"button", class:"btn", onclick:() => { s.token = ""; saveSyncSettings(s); dlg.close(); dlg.remove(); } }, "Forget token"),
+        h("button", { type:"button", class:"btn", onclick:() => { saveSyncSettings(s); dlg.close(); dlg.remove(); } }, "Close")),
+      msg));
+    document.body.append(dlg); dlg.showModal(); dlg.addEventListener("cancel", () => { saveSyncSettings(s); dlg.remove(); });
+  }
+
   /* ---------- layout ---------- */
   const NAV = [["index.html","Home"],["timeline.html","Timeline"],["theories.html","Theories"],["notices.html","Notices"],["dragons.html","Dragons"],["characters.html","Characters"]];
   const layout = (active, title, lede) => {
     const root = document.getElementById("app");
     root.before(h("header", { class:"site" },
       h("a", { class:"brand", href:"index.html" }, "Empyrean Notebook", h("small", {}, "Theories · Timeline · Lineages")),
-      h("nav", { class:"main", "aria-label":"Sections" }, NAV.map(([href, l]) => h("a", { href, "aria-current":href === active ? "page" : null }, l)))));
+      h("nav", { class:"main", "aria-label":"Sections" }, NAV.map(([href, l]) => h("a", { href, "aria-current":href === active ? "page" : null }, l)), h("button", { id:"sync-btn", class:"btn sm sync", onclick:syncDialog, title:"Save your notebook to the site or load it from there" }, "Sync"))));
+    updateBadge();
     if (title) root.before(h("h1", { html:title }), lede ? h("p", { class:"lede" }, lede) : null);
     document.querySelector(".wrap").append(h("footer", { class:"site" },
       h("span", {}, "Fan-made and unofficial. Spoilers for the series throughout. Saved only in this browser."),

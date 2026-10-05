@@ -11,7 +11,7 @@ const { h, data } = E;
 E.layout("notices.html", "Notices <em>&amp; bonus content</em>", "A log of the public notices and bonus material from Rebecca Yarros’s sites, so you can track what you’ve read and what it might mean.");
 const app = document.getElementById("app");
 const SOURCES = [["dragonkind","DragonKind library"],["bonus","Bonus content"],["other","Other"]];
-let src = "all", q = "";
+let src = "all", q = "", view = "timeline", newestFirst = false;
 
 const editForm = (n = {}) => E.form({
   title: n.id ? "Edit notice" : "Log a notice", value:n.id ? n : { source:src === "all" ? "dragonkind" : src, book:"OT", read:false, theoryIds:[] },
@@ -24,7 +24,7 @@ const editForm = (n = {}) => E.form({
     { k:"date", label:"Date posted (real world)", type:"date" },
     { k:"book", label:"Related book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
     { k:"summary", label:"Summary (your own words)", type:"textarea" },
-    { k:"text", label:"Original text", type:"textarea", hint:"Optional. Stays in this browser and in your backup file, never in the site’s code." },
+    { k:"text", label:"Notice text", type:"textarea" },
     { k:"read", label:"I’ve read this", type:"checkbox" },
     { k:"theoryIds", label:"Theories it relates to", type:"multi", options:E.optionsOf("theories", t => t.title) },
     { k:"cites", label:"Book page references it connects to", type:"cites" },
@@ -37,8 +37,8 @@ const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top
   h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, n.title),
     h("span", { class:"pill " + (n.read ? "s-active" : "s-missing") }, n.read ? "read" : "unread")),
   h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.inWorld, n.date, n.transcriber && "transcribed by " + n.transcriber, n.book !== "OT" && E.bookOf(n.book).name].filter(Boolean).join(" · ")),
-  n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
-  n.text ? h("details", { style:"margin:.5rem 0" }, h("summary", { class:"meta", style:"cursor:pointer" }, "Original text"), h("p", { style:"margin-top:.4rem;white-space:pre-wrap;font-family:Fraunces,Georgia,serif;font-size:15px" }, n.text)) : null,
+  n.text ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap;font-family:Fraunces,Georgia,serif;font-size:15.5px;line-height:1.5" }, n.text)
+    : n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
   (n.cites || []).map(E.citeView),
   h("div", { class:"row", style:"margin-top:.6rem" },
     (n.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
@@ -49,8 +49,8 @@ const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top
 // Reads a saved copy of the DragonKind library page and stores each notice's text in this browser only.
 function importText() {
   E.form({
-    title:"Import original text", value:{},
-    fields:[{ k:"html", label:"Page source", type:"textarea", hint:"On dragonkind.com/library press Ctrl/Cmd+U (view source), select all, copy, and paste it here. Nothing leaves your browser. New notices are added automatically; existing ones get their original text filled in." }],
+    title:"Import notices from DragonKind", value:{},
+    fields:[{ k:"html", label:"Page source", type:"textarea", hint:"On dragonkind.com/library press Ctrl/Cmd+U (view source), select all, copy, and paste it here. It is read in your browser. New notices are added automatically; existing ones get their text filled in." }],
     onSave:o => {
       const doc = new DOMParser().parseFromString(o.html || "", "text/html"), arts = [...doc.querySelectorAll("article.notice-sheet")];
       if (!arts.length) { alert("I couldn’t find any notices in that. Make sure you copied the whole page source."); return; }
@@ -71,22 +71,51 @@ function importText() {
   });
 }
 
+const numOf = x => { const m = (x.title || "").match(/(\d+)\.(\d+)/) || (x.id || "").match(/(\d+)-(\d+)$/); return m ? [+m[1], +m[2]] : [null, null]; };
+
+function timeline(list) {
+  const items = list.map(x => ({ x, num:numOf(x) })).sort((a, b) => ((a.num[0] ?? 1e9) - (b.num[0] ?? 1e9)) || ((a.num[1] ?? 0) - (b.num[1] ?? 0)));
+  if (newestFirst) items.reverse();
+  const out = []; let lastYear = null;
+  items.forEach(({ x, num }) => {
+    const yr = num[0];
+    if (yr !== lastYear) {
+      if (lastYear != null && yr != null) { const d = Math.abs(yr - lastYear); if (d > 1) out.push(h("div", { class:"gap" }, d + " years " + (newestFirst ? "earlier" : "later"))); }
+      out.push(h("div", { class:"yr" }, yr == null ? "Undated" : "Year " + yr)); lastYear = yr;
+    }
+    out.push(h("article", { class:"note", id:x.id },
+      h("div", { class:"row", style:"justify-content:space-between" },
+        h("span", { class:"num" }, num[0] != null ? "PUBLIC NOTICE " + num[0] + "." + num[1] : x.title.toUpperCase()),
+        h("span", { class:"pill " + (x.read ? "s-active" : "s-missing") }, x.read ? "read" : "unread")),
+      x.text ? h("p", { class:"body" }, x.text) : h("p", { class:"body meta" }, x.summary || "No text yet. Use “Import from DragonKind” or Edit."),
+      x.transcriber ? h("div", { class:"meta" }, "Transcribed by " + x.transcriber) : null,
+      (x.cites || []).map(E.citeView),
+      h("div", { class:"row", style:"margin-top:.5rem" },
+        (x.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
+        h("button", { class:"btn sm", onclick:() => { x.read = !x.read; E.upsert("notices", x); render(); } }, x.read ? "Mark unread" : "Mark read"),
+        h("button", { class:"btn sm", onclick:() => editForm(x) }, "Edit"))));
+  });
+  return h("div", { class:"nt" }, out);
+}
+
 function render() {
   app.replaceChildren(
     h("div", { class:"grid", style:"margin:1.6rem 0 1.4rem" },
       h("a", { class:"card", href:"https://dragonkind.com/library", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "DragonKind library ↗"), h("p", { class:"meta" }, "dragonkind.com/library — open it in a new tab, then log what you find here.")),
       h("a", { class:"card", href:"https://rebeccayarros.com/bonus-content", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "Bonus content ↗"), h("p", { class:"meta" }, "rebeccayarros.com/bonus-content — the author’s official extras."))),
     h("div", { class:"toolbar" },
+      E.tabs([["timeline","Timeline"],["cards","Cards"]], view, k => { view = k; render(); }),
       E.tabs([["all","All"], ...SOURCES], src, k => { src = k; render(); }), h("span", { class:"grow" }),
+      view === "timeline" ? h("button", { class:"btn sm", onclick:() => { newestFirst = !newestFirst; render(); } }, newestFirst ? "Newest first ↓" : "Oldest first ↑") : null,
       h("input", { type:"search", placeholder:"Search notices…", value:q, "aria-label":"Search notices", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
-      h("button", { class:"btn", onclick:importText }, "Import original text"),
+      h("button", { class:"btn", onclick:importText }, "Import from DragonKind"),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Log a notice")),
     h("div", { id:"list" }));
   renderList();
 }
 function renderList() {
   const l = data.notices.filter(n => (src === "all" || n.source === src) && (n.title + " " + (n.summary || "")).toLowerCase().includes(q)).sort((a, b) => (b.date || "").localeCompare(a.date || "") || (a.seq ?? 999) - (b.seq ?? 999));
-  document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState("Nothing logged yet. Open one of the sources above and add notices as you read them."));
+  document.getElementById("list").replaceChildren(l.length ? (view === "timeline" ? timeline(l) : h("div", { class:"grid" }, l.map(card))) : E.emptyState("Nothing logged yet. Open one of the sources above and add notices as you read them."));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
 }
 render();

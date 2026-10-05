@@ -13,7 +13,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Main POV. Signets: stopping time and lightning wielding. Also bonded to Andarna. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-tairn"
     },
     {
@@ -22,11 +22,12 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "missing",
       "rebelChild": true,
-      "notes": "Wingleader of Fourth Wing and secret leader of the rebel children. Reported missing at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Wingleader of Fourth Wing and secret leader of the rebel children. Turns venin at the end of Iron Flame after channeling earth magic to save Violet; Onyx Storm opens with the question of whether he can be turned back. Reported missing at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-sgaeyl",
-      "fateEventId": "s-ev-os-end"
+      "fateEventId": "s-ev-if-xaden-venin",
+      "venin": true
     },
     {
       "id": "s-brennan",
@@ -36,7 +37,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame; heads toward Marbh with Mira in Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "fateEventId": "s-ev-fw-brennan"
     },
     {
@@ -47,7 +48,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Violet's sister. Dragon Teine is listed as green. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-teine"
     },
     {
@@ -56,9 +57,9 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "unknown",
       "rebelChild": false,
-      "notes": "Status after Onyx Storm not confirmed in the sources I could reach. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Wingleader of Fourth Wing by Iron Flame. Shows steadfast loyalty to Violet in Onyx Storm, even stealing from his father to help her. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-cath"
     },
     {
@@ -69,7 +70,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Signet: farsight. Dies at Resson (Iron Flame) when Deigh is killed. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-deigh",
       "fateEventId": "s-ev-if-resson"
     },
@@ -79,9 +80,9 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "active",
       "rebelChild": false,
-      "notes": "Liam's sister. Alive and in Violet's squad at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Liam's sister, daughter of a former Lord of Tyrrendor. Her ability to siphon magic proves vital (she siphons Lilith's power into the stone in Iron Flame). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-rhi",
@@ -89,9 +90,9 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "unknown",
       "rebelChild": false,
-      "notes": "Signet lets her make items disappear and reappear. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Signet lets her make items disappear and reappear (summoning). A squad leader by Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-feirge"
     },
     {
@@ -100,9 +101,9 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "unknown",
       "rebelChild": false,
-      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "notes": "Signet: ice wielding. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-aotrom"
     },
     {
@@ -113,7 +114,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "One of the missing riders at the end of Onyx Storm (the only one confirmed by name in the sources I found). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "fateEventId": "s-ev-os-end"
     },
     {
@@ -124,7 +125,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Rebel child. Absent when Violet wakes at Riorson House at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-imogen",
@@ -134,7 +135,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Rebel child. Wiped Violet's memory of the last 12 hours at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-glane"
     },
     {
@@ -145,7 +146,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-aaric",
@@ -153,10 +154,11 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "active",
       "rebelChild": false,
-      "notes": "Alive and in Violet's squad at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Alive and in Violet's squad at the end of Iron Flame. Summaries describe him as King Tauri's missing son, hiding his identity, with a precognitive signet; bonded to Molvic. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
-      "aliases": "Cam Tauri"
+      "rev": 3,
+      "aliases": "Cam Tauri",
+      "dragonId": "s-molvic"
     },
     {
       "id": "s-lilith",
@@ -166,7 +168,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "General and storm wielder; Violet's mother. She and Aimsir sacrifice themselves at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-aimsir",
       "fateEventId": "s-ev-if-lilith"
     },
@@ -176,10 +178,11 @@ window.EMPYREAN_SEED = {
       "group": "rider",
       "status": "unknown",
       "rebelChild": false,
-      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "notes": "Survives Violet dropping a mountain on him because he turns venin. In Iron Flame he kills his own dragon Baide, which cracks the wardstone and drops Basgiath's wards. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
-      "dragonId": "s-baide"
+      "rev": 3,
+      "dragonId": "s-baide",
+      "venin": true
     },
     {
       "id": "s-melgren",
@@ -189,7 +192,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "dragonId": "s-codagh"
     },
     {
@@ -200,7 +203,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Joined Jack Barlowe and Oren Seifert in an attempt on Andarna during Threshing; incinerated by Tairn. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-soleil",
@@ -210,7 +213,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Dies in the same battle at Resson as Liam (Iron Flame). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "fateEventId": "s-ev-if-resson"
     },
     {
@@ -221,7 +224,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Stabbed by a venin and dies in Imogen's arms during the battle at Draithus (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "fateEventId": "s-ev-os-draithus"
     },
     {
@@ -232,7 +235,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Shot during the game on Zehyllna; his gryphon Sila dies shortly after (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2,
+      "rev": 3,
       "fateEventId": "s-ev-os-zehyllna"
     },
     {
@@ -243,7 +246,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Killed by a wyvern's claws while the riders were escaping (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-oren",
@@ -253,7 +256,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": false,
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-mason",
@@ -263,7 +266,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-carrigan",
@@ -273,7 +276,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-cerella",
@@ -283,7 +286,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-jace",
@@ -293,7 +296,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-bryn",
@@ -303,7 +306,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-howell",
@@ -313,7 +316,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-weylan",
@@ -323,7 +326,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-keanan",
@@ -333,7 +336,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-eya",
@@ -343,7 +346,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ciaran",
@@ -353,7 +356,7 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-norwood",
@@ -363,7 +366,141 @@ window.EMPYREAN_SEED = {
       "rebelChild": true,
       "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
+    },
+    {
+      "id": "s-berwyn",
+      "name": "Berwyn",
+      "group": "antagonist",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": true,
+      "notes": "Venin sage and maven (the equivalent of a general), a dream walker who throws blue fire. Summaries say he turned Xaden. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-theophanie",
+      "name": "Theophanie",
+      "group": "antagonist",
+      "status": "deceased",
+      "rebelChild": false,
+      "venin": true,
+      "notes": "Main antagonist of Onyx Storm: a maven and dark wielder who is also a powerful storm wielder and rides a huge wyvern. Killed by Violet, with Aaric's help, using a shard from Dunne's temple. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3,
+      "fateEventId": "s-ev-os-theo"
+    },
+    {
+      "id": "s-varrish",
+      "name": "Major Burton Varrish",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Vice Commander of Basgiath War College in Iron Flame; ruthless, previously suspended for killing during his tortures. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3,
+      "dragonId": "s-solas"
+    },
+    {
+      "id": "s-kaori",
+      "name": "Professor Kaori",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Dragonkind professor at Basgiath. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-grady",
+      "name": "Professor Grady",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Runs the Rider Survival Course (RSC). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-devera",
+      "name": "Professor Devera",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Teaches history and Battle Brief; defects from the college to join the rebellion in Aretia. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-markham",
+      "name": "Professor Markham",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Curator of the Riders Quadrant; teaches Battle Brief. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-panchek",
+      "name": "Commandant Panchek",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Identified in Onyx Storm as the traitor at Basgiath. One summary says Panchek's dragon is killed at Berwyn's hands. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-cat",
+      "name": "Catriona (Cat)",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Xaden's ex and the niece of Count Tecarus. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-tecarus",
+      "name": "Count Tecarus",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Uncle of Cat. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-jesinia",
+      "name": "Jesinia",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Scribe who reveals in Iron Flame that Andarna is the key to activating the wardstone. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-dylan",
+      "name": "Dylan",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Dies on the parapet in Fourth Wing. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
     }
   ],
   "dragons": [
@@ -391,7 +528,7 @@ window.EMPYREAN_SEED = {
       "dam": "",
       "riderId": "s-violet",
       "status": "unknown",
-      "notes": "Violet's second bond.",
+      "notes": "Violet's second bond. Per summaries she is a breed of her own who waited about 650 years for Violet, and the key to activating the wardstone. Starter note from web summaries of the books; check against your copy.",
       "unverified": false,
       "tail": "feathertail",
       "rev": 2,
@@ -423,7 +560,7 @@ window.EMPYREAN_SEED = {
       "notes": "Killed at Resson (Iron Flame), which also kills Liam. Starter note from web summaries; check against your copy.",
       "unverified": true,
       "tail": "daggertail",
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-cath",
@@ -437,7 +574,7 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Dain's dragon. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-feirge",
@@ -451,7 +588,7 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-aotrom",
@@ -465,7 +602,7 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-glane",
@@ -479,7 +616,7 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Claimed Imogen before Threshing began. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-teine",
@@ -493,7 +630,7 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-aimsir",
@@ -507,7 +644,7 @@ window.EMPYREAN_SEED = {
       "status": "deceased",
       "notes": "Dies with Lilith at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-baide",
@@ -518,10 +655,10 @@ window.EMPYREAN_SEED = {
       "sire": "",
       "dam": "",
       "riderId": "s-jack",
-      "status": "unknown",
-      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "status": "deceased",
+      "notes": "Killed by Jack Barlowe in Iron Flame, which cracks the wardstone. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-codagh",
@@ -535,7 +672,35 @@ window.EMPYREAN_SEED = {
       "status": "unknown",
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 2
+      "rev": 3
+    },
+    {
+      "id": "s-solas",
+      "name": "Solas",
+      "color": "",
+      "tail": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-varrish",
+      "status": "unknown",
+      "notes": "Major Varrish's dragon. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-molvic",
+      "name": "Molvic",
+      "color": "Blue",
+      "tail": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-aaric",
+      "status": "unknown",
+      "notes": "Aaric's dragon. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 3
     }
   ],
   "events": [
@@ -553,7 +718,7 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ev-fw-brennan",
@@ -570,7 +735,7 @@ window.EMPYREAN_SEED = {
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ev-if-resson",
@@ -587,24 +752,7 @@ window.EMPYREAN_SEED = {
         "s-soleil"
       ],
       "unverified": true,
-      "rev": 2
-    },
-    {
-      "id": "s-ev-if-lilith",
-      "title": "Lilith and Aimsir sacrifice themselves",
-      "book": "IF",
-      "order": 90,
-      "chapter": "",
-      "page": "",
-      "edition": "",
-      "kind": "event",
-      "desc": "Lilith has Sloane siphon her power into the stone and dies with Aimsir, protecting Basgiath.",
-      "chars": [
-        "s-lilith",
-        "s-sloane"
-      ],
-      "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ev-os-zehyllna",
@@ -620,7 +768,7 @@ window.EMPYREAN_SEED = {
         "s-trager"
       ],
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ev-os-draithus",
@@ -637,7 +785,7 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 2
+      "rev": 3
     },
     {
       "id": "s-ev-os-end",
@@ -656,7 +804,155 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 2
+      "rev": 3
+    },
+    {
+      "id": "s-ev-fw-two-dragons",
+      "title": "Violet bonds two dragons: double signets",
+      "book": "FW",
+      "order": 12,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Violet becomes the first rider with two dragons, Tairn and Andarna, and so carries two signets: lightning wielding (Tairn) and stopping time (Andarna), per the summaries.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-channeling",
+      "title": "Channeling begins",
+      "book": "IF",
+      "order": 30,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "After Violet stands up to Jack Barlowe's taunting without losing her temper, her dragons decide she is ready to begin channeling, the point where riders start drawing magic directly from the earth.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-andarna-ward",
+      "title": "Andarna is the key to the wardstone",
+      "book": "IF",
+      "order": 60,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Jesinia reveals that Andarna is the secret to activating the wardstone, and that she is a breed of her own who waited about 650 years for Violet to hatch.",
+      "chars": [
+        "s-jesinia",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-jack-ward",
+      "title": "Jack returns as venin and cracks the wardstone",
+      "book": "IF",
+      "order": 70,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Jack survived Violet dropping a mountain on him because he turned venin. He kills his own dragon, which cracks the wardstone in half and brings down Basgiath's wards.",
+      "chars": [
+        "s-jack"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-xaden-signet",
+      "title": "Xaden's second signet is revealed",
+      "book": "IF",
+      "order": 80,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Xaden is revealed to have a second signet.",
+      "chars": [
+        "s-xaden"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-xaden-venin",
+      "title": "Xaden channels earth magic and turns venin",
+      "book": "IF",
+      "order": 85,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "While Violet is burning out to save everyone, Xaden loses to a venin general. Feeling Violet dying, he channels power from the earth to save her and turns venin. Onyx Storm opens with him held at Basgiath under constant watch and the question of whether he can be turned back.",
+      "chars": [
+        "s-xaden",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-if-lilith",
+      "title": "Lilith and Aimsir sacrifice themselves",
+      "book": "IF",
+      "order": 90,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Just before Violet burns out, Lilith kicks her aside and forces Sloane to siphon all her power into the stone. Lilith and Aimsir die, and the wards at Basgiath are restored.",
+      "chars": [
+        "s-lilith",
+        "s-sloane"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-os-panchek",
+      "title": "Commandant Panchek is the traitor at Basgiath",
+      "book": "OS",
+      "order": 60,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Panchek is identified as the traitor at Basgiath.",
+      "chars": [
+        "s-panchek"
+      ],
+      "unverified": true,
+      "rev": 3
+    },
+    {
+      "id": "s-ev-os-theo",
+      "title": "Theophanie is killed",
+      "book": "OS",
+      "order": 70,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet kills the maven Theophanie, with Aaric's help, using a shard from Dunne's temple.",
+      "chars": [
+        "s-violet",
+        "s-theophanie"
+      ],
+      "unverified": true,
+      "rev": 3
     }
   ],
   "theories": [
@@ -697,7 +993,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Conscription rates are doubled in every province until further notice.",
-      "cites": []
+      "cites": [],
+      "text": "Conscription rates are hereby doubled for each province until further notice."
     },
     {
       "id": "s-n-628-86",
@@ -711,7 +1008,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "After the Treaty of Aretia, Tyrrendor's seat in the King's Senarium passes from House Riorson to House Lewellen.",
-      "cites": []
+      "cites": [],
+      "text": "As a result of the Treaty of Aretia, the power to represent the province of Tyrrendor in the King’s Senarium has hereby been transferred from the House of Riorson to the House of Lewellen."
     },
     {
       "id": "s-n-628-85",
@@ -725,7 +1023,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Records that Aretia was burned by dragons under the treaty that ended the separatist movement. Those who fled survived; the rest remain entombed in the ruins.",
-      "cites": []
+      "cites": [],
+      "text": "In this, the 628th year of our Unification, it is hereby recorded that Aretia has been burned by dragon in accordance with the Treaty ending the separatist movement. Those who fled, survived, and those who did not remain entombed in her ruins."
     },
     {
       "id": "s-n-442-184",
@@ -739,7 +1038,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Raiders from the Emerald Sea sacked the Tyrrish village of Kyllendelle. Seaside residents of Tyrrendor and Luceras are asked to stay vigilant and light warning beacons to call the nearest riot.",
-      "cites": []
+      "cites": [],
+      "text": "The Tyrrish village of Kyllendelle has been sacked by raiders from the Emerald Sea. We ask those living by the seaside in Tyrrendor and Luceras to remain vigilant in service to their fellow Navarrians and light the warning beacons to alert the nearest riot if requesting aid."
     },
     {
       "id": "s-n-433-231",
@@ -753,7 +1053,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Navarrian forces repelled an attempted breach by Poromish troops near the outpost of Athebyne. The attack is called unprovoked, and the commitment to the peace process is restated.",
-      "cites": []
+      "cites": [],
+      "text": "Our forces have successfully routed an attempted breach of our border by Poromish forces near the outpost of Athebyne. While this attack was unprovoked, we remain committed to the peace process."
     },
     {
       "id": "s-n-210-183",
@@ -767,7 +1068,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Provincial notices are ended. Regional notices written by local scribes replace them, each needing approval from the Curator of the Scribe Quadrant at Basgiath before posting.",
-      "cites": []
+      "cites": [],
+      "text": "The system of provincial notices is hereby ended in order to simplify the flow of accurate information to all Navarrians, and will be replaced with regional notices provided by local scribes, all of which must be approved by the Curator of the Scribe Quadrant of Basgiath War College before posting."
     },
     {
       "id": "s-n-209-11",
@@ -781,7 +1083,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Public notices now override provincial ones, posted for up to sixty days in any village with more than five hundred people.",
-      "cites": []
+      "cites": [],
+      "text": "In the interest of quelling rumor and providing accurate information on behalf of the crown, all public notices hereby transcend their provincial counterparts, and will be posted for a maximum of sixty days in any village with a population greater than five hundred."
     },
     {
       "id": "s-n-208-271",
@@ -795,7 +1098,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Queen Alondra splits Tyrrendor into three duchies (Lewellen, Tirvainne and Aretia). The Duchess of Aretia keeps the Tyrrish seat on the Senarium.",
-      "cites": []
+      "cites": [],
+      "text": "Queen Alondra has ordered the provinces of Tyrrendor to be split into three duchies to better serve her citizens. While the Dukes of Lewellen and Tirvainne will oversee their territories for the betterment of all—as per the new maps provided by the crown—the Duchess of Aretia will retain the Tyrrish seat on the Senarium to represent the province."
     },
     {
       "id": "s-n-207-6",
@@ -809,7 +1113,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Because of increased danger, travel beyond Navarre may only be authorized by the sovereign.",
-      "cites": []
+      "cites": [],
+      "text": "Due to increased danger to our citizens, travel beyond Navarre may only be authorized by the sovereign."
     },
     {
       "id": "s-n-207-1",
@@ -823,7 +1128,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Every duchy signs a Provincial Commitment placing the provincial armies under Queen Alondra's standard against Poromish aggression until the war is declared over.",
-      "cites": []
+      "cites": [],
+      "text": "A Provincial Commitment has been signed by every duchy in Navarre, consolidating the provinces' armies under Queen Alondra's standard to better defend our kingdom against Poromish aggression until such time as the war is declared over."
     },
     {
       "id": "s-n-200-417",
@@ -837,7 +1143,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Guardians may no longer dedicate children to a favored deity. Serving the gods for life must be chosen freely after the age of majority.",
-      "cites": []
+      "cites": [],
+      "text": "Guardians are no longer permitted to dedicate children in service to their favored deity. The decision to serve the gods for life must be made after the age of majority and of one’s free will."
     },
     {
       "id": "s-n-2-21",
@@ -851,7 +1158,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "The Migration of the First Year is declared complete. Borders are secured against increasingly militant neighbors, and travel beyond Navarre may be authorized by a duchy's ruling house.",
-      "cites": []
+      "cites": [],
+      "text": "The triumphant success of The Migration of The First Year is now considered complete. To keep the promise of peace we fought for, our forces have taken the unfortunate, but necessary precaution of securing our borders against our increasingly militant neighbors. Travel beyond Navarre may be authorized by a duchy's ruling house."
     },
     {
       "id": "s-n-1-323",
@@ -865,7 +1173,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Krovlan forces attacked Elsum, causing four casualties in the mountains near the village of Resson. The area is secured and the attack is called an outlier; the commitment to peace stands.",
-      "cites": []
+      "cites": [],
+      "text": "The province of Elsum has suffered an unprovoked attack by Krovlan forces, resulting in four casualties in the mountains near the village of Resson. The area has been secured. Our commitment to peace has not wavered and we consider this heinous act to be an outlier."
     },
     {
       "id": "s-n-1-249",
@@ -879,7 +1188,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "The Council of Calldyr agrees that Navarre is ruled as a secular kingdom, but its marriage law follows the terms each god sets in their temples.",
-      "cites": []
+      "cites": [],
+      "text": "The Council of Calldyr has agreed that while rule of Navarre is secular, the law of the kingdom will follow the unique terms each god has set in their temples regarding marriage."
     },
     {
       "id": "s-n-1-3",
@@ -893,7 +1203,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "As promised in the Unification Scrolls, the borders stay open for twelve months to anyone who wants to live under Navarre's wards and laws.",
-      "cites": []
+      "cites": [],
+      "text": "As promised in the Unification Scrolls that define our laws, for the next twelve months, the borders of the Kingdom of Navarre will remain open to all who wish to live under the protection of our wards and laws. We welcome all who wish to be Navarrians."
     },
     {
       "id": "s-n-1-2",
@@ -907,7 +1218,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "The scribes of Basgiath War College take over announcing and recording public notices, posted beside provincial ones for at least thirty days in villages with more than fifty people.",
-      "cites": []
+      "cites": [],
+      "text": "In the interest of the security of Navarre and in the spirit of transparency within our unified realm, the scribes of Basgiath War College have assumed the honorable responsibility of announcing and recording all pertinent information via public notices. These notices shall be posted alongside their provincial counterparts for a minimum of thirty days in any village with a population greater than fifty."
     },
     {
       "id": "s-n-1-1",
@@ -921,7 +1233,8 @@ window.EMPYREAN_SEED = {
       "read": false,
       "theoryIds": [],
       "summary": "Calldyr, Elsum, Luceras, Morainne and Tyrrendor accept the Unification Scrolls and swear fealty to King Reginald Navarrius. The kingdom is named Navarre and the calendar restarts at year 1.",
-      "cites": []
+      "cites": [],
+      "text": "It is hereby recorded that the territories of Calldyr, Elsum, Luceras, Morainne, and Tyrrendor have agreed to terms defined in the Unification Scrolls and sworn fealty to our magnanimous King Reginald Navarrius. All people dwelling within the safe haven of our borders shall be considered citizens of the kingdom now known as Navarre. In celebration of this momentous occasion and our new, peaceful era, our calendars shall reflect this year as our first after unification."
     }
   ]
 };
