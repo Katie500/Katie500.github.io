@@ -23,7 +23,8 @@ const editForm = (n = {}) => E.form({
     { k:"transcriber", label:"Transcribed by", type:"text" },
     { k:"date", label:"Date posted (real world)", type:"date" },
     { k:"book", label:"Related book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
-    { k:"summary", label:"Summary (your own words)", type:"textarea", hint:"The original text belongs to the author, so keep to your own notes and use the link above to read it." },
+    { k:"summary", label:"Summary (your own words)", type:"textarea" },
+    { k:"text", label:"Original text", type:"textarea", hint:"Optional. Stays in this browser and in your backup file, never in the site’s code." },
     { k:"read", label:"I’ve read this", type:"checkbox" },
     { k:"theoryIds", label:"Theories it relates to", type:"multi", options:E.optionsOf("theories", t => t.title) },
     { k:"cites", label:"Book page references it connects to", type:"cites" },
@@ -37,12 +38,38 @@ const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top
     h("span", { class:"pill " + (n.read ? "s-active" : "s-missing") }, n.read ? "read" : "unread")),
   h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.inWorld, n.date, n.transcriber && "transcribed by " + n.transcriber, n.book !== "OT" && E.bookOf(n.book).name].filter(Boolean).join(" · ")),
   n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
+  n.text ? h("details", { style:"margin:.5rem 0" }, h("summary", { class:"meta", style:"cursor:pointer" }, "Original text"), h("p", { style:"margin-top:.4rem;white-space:pre-wrap;font-family:Fraunces,Georgia,serif;font-size:15px" }, n.text)) : null,
   (n.cites || []).map(E.citeView),
   h("div", { class:"row", style:"margin-top:.6rem" },
     (n.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
     n.url ? h("a", { class:"btn sm", href:n.url, target:"_blank", rel:"noopener" }, "Open ↗") : null,
     h("button", { class:"btn sm", onclick:() => { n.read = !n.read; E.upsert("notices", n); render(); } }, n.read ? "Mark unread" : "Mark read"),
     h("button", { class:"btn sm", onclick:() => editForm(n) }, "Edit")));
+
+// Reads a saved copy of the DragonKind library page and stores each notice's text in this browser only.
+function importText() {
+  E.form({
+    title:"Import original text", value:{},
+    fields:[{ k:"html", label:"Page source", type:"textarea", hint:"On dragonkind.com/library press Ctrl/Cmd+U (view source), select all, copy, and paste it here. Nothing leaves your browser. New notices are added automatically; existing ones get their original text filled in." }],
+    onSave:o => {
+      const doc = new DOMParser().parseFromString(o.html || "", "text/html"), arts = [...doc.querySelectorAll("article.notice-sheet")];
+      if (!arts.length) { alert("I couldn’t find any notices in that. Make sure you copied the whole page source."); return; }
+      const seqs = data.notices.map(x => x.seq).filter(x => x != null), base = Math.min(0, ...seqs) - arts.length;
+      let filled = 0, created = 0;
+      arts.forEach((a, i) => {
+        const num = (a.id || "").replace(/^notice-/, "").replace("-", "."), id = "s-n-" + (a.id || "").replace(/^notice-/, "");
+        const text = [...a.querySelectorAll(".notice-body p")].map(p => p.textContent.trim()).join("\n\n");
+        const who = (a.querySelector(".notice-transcriber")?.textContent || "").replace(/^Transcribed by\s*/i, "").trim();
+        if (!num || !text) return;
+        const ex = E.byId("notices", id);
+        if (ex) { ex.text = text; if (!ex.transcriber) ex.transcriber = who; E.upsert("notices", ex); filled++; }
+        else { E.upsert("notices", { id, title:"Public Notice " + num, source:"dragonkind", url:"https://dragonkind.com/library", inWorld:"Year " + num.split(".")[0], transcriber:who, seq:base + i, book:"OT", read:false, theoryIds:[], summary:"", text, cites:[] }); created++; }
+      });
+      alert("Done: original text added to " + filled + " notice(s), " + created + " new notice(s) created.");
+      render();
+    },
+  });
+}
 
 function render() {
   app.replaceChildren(
@@ -52,6 +79,7 @@ function render() {
     h("div", { class:"toolbar" },
       E.tabs([["all","All"], ...SOURCES], src, k => { src = k; render(); }), h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search notices…", value:q, "aria-label":"Search notices", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn", onclick:importText }, "Import original text"),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Log a notice")),
     h("div", { id:"list" }));
   renderList();

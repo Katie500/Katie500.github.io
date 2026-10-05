@@ -1,42 +1,690 @@
-/* Starter data. Everything here was pre-filled from memory and is flagged "check" until you edit it.
-   Statuses, family trees and page numbers are deliberately left for you to fill in from your own copies. */
+/* Starter data, shared by everyone who opens the notebook.
+   Entries marked unverified were assembled from public web summaries of the books (not the author's own text) and
+   are flagged "check" until you edit and save them. Statuses are as of the latest book the summaries covered.
+   Page numbers are deliberately left blank because they differ by edition. */
 window.EMPYREAN_SEED = {
-  v: 1,
-  characters: [
-    { id:"s-violet",  name:"Violet Sorrengail", group:"rider", status:"unknown", rebelChild:false, dragonId:"s-tairn", notes:"Main POV.", unverified:true },
-    { id:"s-xaden",   name:"Xaden Riorson",     group:"rider", status:"unknown", rebelChild:true,  dragonId:"s-sgaeyl", notes:"", unverified:true },
-    { id:"s-brennan", name:"Brennan Sorrengail", group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-mira",    name:"Mira Sorrengail",   group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-dain",    name:"Dain Aetos",        group:"rider", status:"unknown", rebelChild:false, dragonId:"s-cath", notes:"", unverified:true },
-    { id:"s-liam",    name:"Liam Mairi",        group:"rider", status:"unknown", rebelChild:false, dragonId:"s-deigh", notes:"", unverified:true },
-    { id:"s-sloane",  name:"Sloane Mairi",      group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-rhi",     name:"Rhiannon Matthias", group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-ridoc",   name:"Ridoc Gamlyn",      group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-garrick", name:"Garrick Tavis",     group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-bodhi",   name:"Bodhi",             group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-imogen",  name:"Imogen",            group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-sawyer",  name:"Sawyer",            group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
-    { id:"s-aaric",   name:"Aaric",             group:"rider", status:"unknown", rebelChild:false, notes:"", unverified:true },
+  "v": 1,
+  "characters": [
+    {
+      "id": "s-violet",
+      "name": "Violet Sorrengail",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": false,
+      "notes": "Main POV. Signets: stopping time and lightning wielding. Also bonded to Andarna. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-tairn"
+    },
+    {
+      "id": "s-xaden",
+      "name": "Xaden Riorson",
+      "group": "rider",
+      "status": "missing",
+      "rebelChild": true,
+      "notes": "Wingleader of Fourth Wing and secret leader of the rebel children. Reported missing at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-sgaeyl",
+      "fateEventId": "s-ev-os-end"
+    },
+    {
+      "id": "s-brennan",
+      "name": "Brennan Sorrengail",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": false,
+      "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame; heads toward Marbh with Mira in Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "fateEventId": "s-ev-fw-brennan"
+    },
+    {
+      "id": "s-mira",
+      "name": "Mira Sorrengail",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": false,
+      "notes": "Violet's sister. Dragon Teine is listed as green. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-teine"
+    },
+    {
+      "id": "s-dain",
+      "name": "Dain Aetos",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Status after Onyx Storm not confirmed in the sources I could reach. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-cath"
+    },
+    {
+      "id": "s-liam",
+      "name": "Liam Mairi",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": true,
+      "notes": "Signet: farsight. Dies at Resson (Iron Flame) when Deigh is killed. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-deigh",
+      "fateEventId": "s-ev-if-resson"
+    },
+    {
+      "id": "s-sloane",
+      "name": "Sloane Mairi",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": false,
+      "notes": "Liam's sister. Alive and in Violet's squad at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-rhi",
+      "name": "Rhiannon Matthias",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Signet lets her make items disappear and reappear. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-feirge"
+    },
+    {
+      "id": "s-ridoc",
+      "name": "Ridoc Gamlyn",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-aotrom"
+    },
+    {
+      "id": "s-garrick",
+      "name": "Garrick Tavis",
+      "group": "rider",
+      "status": "missing",
+      "rebelChild": true,
+      "notes": "One of the missing riders at the end of Onyx Storm (the only one confirmed by name in the sources I found). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "fateEventId": "s-ev-os-end"
+    },
+    {
+      "id": "s-bodhi",
+      "name": "Bodhi Durran",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Rebel child. Absent when Violet wakes at Riorson House at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-imogen",
+      "name": "Imogen Cardulo",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": true,
+      "notes": "Rebel child. Wiped Violet's memory of the last 12 hours at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-glane"
+    },
+    {
+      "id": "s-sawyer",
+      "name": "Sawyer",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-aaric",
+      "name": "Aaric Graycastle",
+      "group": "rider",
+      "status": "active",
+      "rebelChild": false,
+      "notes": "Alive and in Violet's squad at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "aliases": "Cam Tauri"
+    },
+    {
+      "id": "s-lilith",
+      "name": "Lilith Sorrengail",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "notes": "General and storm wielder; Violet's mother. She and Aimsir sacrifice themselves at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-aimsir",
+      "fateEventId": "s-ev-if-lilith"
+    },
+    {
+      "id": "s-jack",
+      "name": "Jack Barlowe",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-baide"
+    },
+    {
+      "id": "s-melgren",
+      "name": "General Melgren",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "dragonId": "s-codagh"
+    },
+    {
+      "id": "s-tynan",
+      "name": "Tynan",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "notes": "Joined Jack Barlowe and Oren Seifert in an attempt on Andarna during Threshing; incinerated by Tairn. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-soleil",
+      "name": "Soleil Telery",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": true,
+      "notes": "Dies in the same battle at Resson as Liam (Iron Flame). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "fateEventId": "s-ev-if-resson"
+    },
+    {
+      "id": "s-quinn",
+      "name": "Quinn Hollis",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "notes": "Stabbed by a venin and dies in Imogen's arms during the battle at Draithus (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "fateEventId": "s-ev-os-draithus"
+    },
+    {
+      "id": "s-trager",
+      "name": "Trager",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "notes": "Shot during the game on Zehyllna; his gryphon Sila dies shortly after (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2,
+      "fateEventId": "s-ev-os-zehyllna"
+    },
+    {
+      "id": "s-aura",
+      "name": "Aura Beinhaven",
+      "group": "rider",
+      "status": "deceased",
+      "rebelChild": false,
+      "notes": "Killed by a wyvern's claws while the riders were escaping (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-oren",
+      "name": "Oren Seifert",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-mason",
+      "name": "Mason Sanborn",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-carrigan",
+      "name": "Carrigan Wyckley",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-cerella",
+      "name": "Cerella Wyckley",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-jace",
+      "name": "Jace Sutherland",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-bryn",
+      "name": "Bryn",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-howell",
+      "name": "Howell",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-weylan",
+      "name": "Weylan",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-keanan",
+      "name": "Keanan",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-eya",
+      "name": "Eya",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ciaran",
+      "name": "Ciaran",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-norwood",
+      "name": "Norwood",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": true,
+      "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    }
   ],
-  dragons: [
-    { id:"s-tairn",  name:"Tairn",  color:"", family:"", sire:"", dam:"", riderId:"s-violet", status:"unknown", notes:"", unverified:true },
-    { id:"s-andarna",name:"Andarna",color:"", family:"", sire:"", dam:"", riderId:"s-violet", status:"unknown", notes:"Violet's second bond.", unverified:true },
-    { id:"s-sgaeyl", name:"Sgaeyl", color:"", family:"", sire:"", dam:"", riderId:"s-xaden", status:"unknown", notes:"", unverified:true },
-    { id:"s-cath",   name:"Cath",   color:"", family:"", sire:"", dam:"", riderId:"s-dain", status:"unknown", notes:"", unverified:true },
-    { id:"s-deigh",  name:"Deigh",  color:"", family:"", sire:"", dam:"", riderId:"s-liam", status:"unknown", notes:"", unverified:true },
+  "dragons": [
+    {
+      "id": "s-tairn",
+      "name": "Tairn",
+      "color": "Black",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-violet",
+      "status": "unknown",
+      "notes": "Mated to Sgaeyl.",
+      "unverified": false,
+      "tail": "morningstartail",
+      "rev": 2,
+      "aliases": "Tairneanach"
+    },
+    {
+      "id": "s-andarna",
+      "name": "Andarna",
+      "color": "Irid",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-violet",
+      "status": "unknown",
+      "notes": "Violet's second bond.",
+      "unverified": false,
+      "tail": "feathertail",
+      "rev": 2,
+      "aliases": "Andarnaurram"
+    },
+    {
+      "id": "s-sgaeyl",
+      "name": "Sgaeyl",
+      "color": "Blue",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-xaden",
+      "status": "unknown",
+      "notes": "Mated to Tairn.",
+      "unverified": false,
+      "tail": "daggertail",
+      "rev": 2
+    },
+    {
+      "id": "s-deigh",
+      "name": "Deigh",
+      "color": "Red",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-liam",
+      "status": "deceased",
+      "notes": "Killed at Resson (Iron Flame), which also kills Liam. Starter note from web summaries; check against your copy.",
+      "unverified": true,
+      "tail": "daggertail",
+      "rev": 2
+    },
+    {
+      "id": "s-cath",
+      "name": "Cath",
+      "color": "Red",
+      "tail": "swordtail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-dain",
+      "status": "unknown",
+      "notes": "Dain's dragon. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-feirge",
+      "name": "Feirge",
+      "color": "Green",
+      "tail": "daggertail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-rhi",
+      "status": "unknown",
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-aotrom",
+      "name": "Aotrom",
+      "color": "Brown",
+      "tail": "swordtail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-ridoc",
+      "status": "unknown",
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-glane",
+      "name": "Glane",
+      "color": "Orange",
+      "tail": "daggertail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-imogen",
+      "status": "unknown",
+      "notes": "Claimed Imogen before Threshing began. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-teine",
+      "name": "Teine",
+      "color": "Green",
+      "tail": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-mira",
+      "status": "unknown",
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-aimsir",
+      "name": "Aimsir",
+      "color": "",
+      "tail": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-lilith",
+      "status": "deceased",
+      "notes": "Dies with Lilith at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-baide",
+      "name": "Baide",
+      "color": "Orange",
+      "tail": "scorpiontail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-jack",
+      "status": "unknown",
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-codagh",
+      "name": "Codagh",
+      "color": "Black",
+      "tail": "swordtail",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-melgren",
+      "status": "unknown",
+      "notes": "Starter note from web summaries of the books; check against your copy.",
+      "unverified": true,
+      "rev": 2
+    }
   ],
-  events: [
-    { id:"s-ev-threshing", title:"Violet's Threshing", book:"FW", order:10, chapter:"", page:"", edition:"", kind:"event",
-      desc:"Violet takes part in Threshing at Basgiath. Add the page, chapter and details from your copy.", chars:["s-violet"], unverified:true },
+  "events": [
+    {
+      "id": "s-ev-threshing",
+      "title": "Violet's Threshing",
+      "book": "FW",
+      "order": 10,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet takes part in Threshing at Basgiath and bonds Tairn and Andarna. Add the page, chapter and details from your copy.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-fw-brennan",
+      "title": "Violet learns Brennan is alive in Aretia",
+      "book": "FW",
+      "order": 90,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "reveal",
+      "desc": "Violet wakes up at the end of Fourth Wing and discovers Brennan, believed dead after the rebellion, is alive in Aretia.",
+      "chars": [
+        "s-violet",
+        "s-brennan"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-if-resson",
+      "title": "Battle at Resson (Athebyne)",
+      "book": "IF",
+      "order": 50,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Liam and Soleil Telery die at Resson; Liam dies when Deigh is killed.",
+      "chars": [
+        "s-liam",
+        "s-soleil"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-if-lilith",
+      "title": "Lilith and Aimsir sacrifice themselves",
+      "book": "IF",
+      "order": 90,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Lilith has Sloane siphon her power into the stone and dies with Aimsir, protecting Basgiath.",
+      "chars": [
+        "s-lilith",
+        "s-sloane"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-os-zehyllna",
+      "title": "The game on Zehyllna: Trager shot",
+      "book": "OS",
+      "order": 40,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Trager is shot during the game on Zehyllna and his gryphon Sila dies shortly after.",
+      "chars": [
+        "s-trager"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-os-draithus",
+      "title": "Battle of Draithus: Quinn dies",
+      "book": "OS",
+      "order": 50,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Quinn Hollis is stabbed by a venin and dies in Imogen's arms.",
+      "chars": [
+        "s-quinn",
+        "s-imogen"
+      ],
+      "unverified": true,
+      "rev": 2
+    },
+    {
+      "id": "s-ev-os-end",
+      "title": "Onyx Storm ending: the missing twelve hours",
+      "book": "OS",
+      "order": 99,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "Violet wakes at Riorson House after killing Theophanie, wearing a wedding ring, with Imogen having wiped the last 12 hours. Xaden, Garrick, three other riders and six dragon eggs are missing. A rich ground for book 4 theories.",
+      "chars": [
+        "s-violet",
+        "s-xaden",
+        "s-garrick",
+        "s-imogen"
+      ],
+      "unverified": true,
+      "rev": 2
+    }
   ],
-  theories: [
-    { id:"s-th-example", title:"Example theory — delete me", status:"speculative", confidence:2,
-      body:"This is a placeholder showing how a theory works. Pick the timeline events that foreshadow it, then either link the event where it pays off or leave it as 'not yet revealed'. Add evidence with a book, edition and page number, and mark each piece as support or against.",
-      foreshadow:["s-ev-threshing"], revealId:"", revealText:"",
-      evidence:[{ book:"FW", edition:"Hardcover", page:"123", note:"Example reference — replace with a real one.", stance:"support" }], created:0, updated:0 },
+  "theories": [
+    {
+      "id": "s-th-example",
+      "title": "Example theory — delete me",
+      "status": "speculative",
+      "confidence": 2,
+      "body": "This is a placeholder showing how a theory works. Pick the timeline events that foreshadow it, then either link the event where it pays off or leave it as 'not yet revealed'. Add evidence with a book, edition and page number, and mark each piece as support or against.",
+      "foreshadow": [
+        "s-ev-threshing"
+      ],
+      "revealId": "",
+      "revealText": "",
+      "evidence": [
+        {
+          "book": "FW",
+          "edition": "Hardcover",
+          "page": "123",
+          "note": "Example reference — replace with a real one.",
+          "stance": "support"
+        }
+      ],
+      "created": 0,
+      "updated": 0
+    }
   ],
-  // Public notices from the DragonKind library: numbers and transcribers as listed there, summaries paraphrased.
-  notices: [
+  "notices": [
     {
       "id": "s-n-634-23",
       "title": "Public Notice 634.23",
@@ -275,5 +923,5 @@ window.EMPYREAN_SEED = {
       "summary": "Calldyr, Elsum, Luceras, Morainne and Tyrrendor accept the Unification Scrolls and swear fealty to King Reginald Navarrius. The kingdom is named Navarre and the calendar restarts at year 1.",
       "cites": []
     }
-  ],
+  ]
 };

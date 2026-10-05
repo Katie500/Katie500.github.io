@@ -42,17 +42,24 @@ const E = (() => {
       const raw = localStorage.getItem(KEY);
       if (raw) {
         data = Object.assign(empty(), JSON.parse(raw)); data.removedSeed = data.removedSeed || [];
-        // bring in starter entries added since this browser last loaded the notebook (never resurrecting ones you deleted)
+        // bring in starter entries added since this browser last loaded the notebook (never resurrecting ones you deleted),
+        // and refresh starter entries you haven't edited yet when the starter data has a newer revision
         let added = false;
-        for (const list of ["characters","dragons","events","theories","notices"]) for (const s of (window.EMPYREAN_SEED?.[list] || []))
-          if (!data[list].some(x => x.id === s.id) && !data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; }
+        for (const list of ["characters","dragons","events","theories","notices"]) for (const s of (window.EMPYREAN_SEED?.[list] || [])) {
+          const i = data[list].findIndex(x => x.id === s.id);
+          if (i < 0) { if (!data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; } continue; }
+          if (data[list][i].unverified === true && (s.rev || 0) > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); added = true; continue; }
+          // entries you've edited keep your values; only blank fields (and "not set" statuses) are filled from the starter data
+          for (const k of ["aliases","tail","fateEventId"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
+        }
         if (added) save();
         return;
       }
     } catch (e) { console.warn(e); }
     data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); save();
   };
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { console.warn("Could not save", e); } };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { console.warn("Could not save", e); alert("Your browser couldn\u2019t save this (storage may be full). Export a backup, then try smaller pictures."); } };
   const upsert = (list, item) => { const i = data[list].findIndex(x => x.id === item.id); item.updated = Date.now(); if (i >= 0) data[list][i] = item; else data[list].push(item); save(); };
   const remove = (list, id) => { if (id.startsWith("s-")) (data.removedSeed ||= []).push(id); data[list] = data[list].filter(x => x.id !== id); save(); };
   const byId = (list, id) => data[list].find(x => x.id === id);
@@ -81,6 +88,17 @@ const E = (() => {
   const citeView = c => h("div", { class:"cite " + (c.stance || "") },
     h("b", {}, citeLabel(c) || "No reference"), c.stance ? h("span", { class:"meta" }, " — " + c.stance) : null,
     c.note ? h("div", {}, c.note) : null);
+
+  /* ---------- images: downscale to a small JPEG data URL ---------- */
+  const shrink = (file, max) => new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), im = new Image();
+    im.onload = () => {
+      const k = Math.min(1, max / Math.max(im.width, im.height)), c = document.createElement("canvas");
+      c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+      c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(url); res(c.toDataURL("image/jpeg", .82));
+    };
+    im.onerror = rej; im.src = url;
+  });
 
   /* ---------- modal form ---------- */
   // fields: {k,label,type:text|textarea|number|select|multi|cites|checkbox|url|date, options:[{v,l}], stance:bool}
@@ -111,6 +129,17 @@ const E = (() => {
         render(); input = box;
         getters[f.k] = () => rows.filter(r => r.page || r.note || r.chapter).map(r => { if (r.edition) data.lastEdition = r.edition; if (f.stance && !r.stance) r.stance = "support"; return r; });
         return h("div", { class:"f" }, h("label", {}, f.label), input);
+      }
+      if (f.type === "image") {
+        let cur = v || "";
+        const prev = h("img", { alt:"", style:"width:96px;height:96px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:" + (cur ? "block" : "none") + ";margin-bottom:.5rem", src:cur || null });
+        const pick = h("input", { type:"file", accept:"image/*", onchange:async e => {
+          const file = e.target.files[0]; if (!file) return;
+          try { cur = await shrink(file, 360); prev.src = cur; prev.style.display = "block"; } catch (err) { alert("That image couldn\u2019t be read."); }
+        } });
+        const clear = h("button", { type:"button", class:"btn sm", style:"margin-left:.5rem", onclick:() => { cur = ""; prev.removeAttribute("src"); prev.style.display = "none"; pick.value = ""; } }, "Remove picture");
+        getters[f.k] = () => cur;
+        return h("div", { class:"f" }, h("label", {}, f.label), prev, pick, clear, h("div", { class:"meta" }, "Resized in your browser and saved only there (and in your backup file)."));
       }
       if (f.type === "text" || f.type === "number" || f.type === "url" || f.type === "date") input = h("input", { type:f.type, value:v ?? "", placeholder:f.placeholder || "", step:f.type === "number" ? "any" : null });
       getters[f.k] = () => f.type === "checkbox" ? input.checked : f.type === "multi" ? [...input.querySelectorAll("input:checked")].map(x => x.value) : f.type === "number" ? (input.value === "" ? null : Number(input.value)) : input.value.trim();
