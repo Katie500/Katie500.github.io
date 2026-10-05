@@ -487,14 +487,20 @@
   },
   {
    "id": "s-jesinia",
-   "name": "Jesinia",
+   "name": "Jesinia Neilwart",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Scribe who reveals in Iron Flame that Andarna is the key to activating the wardstone. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Scribe who reveals in Iron Flame that Andarna is the key to activating the wardstone. Also deaf.",
+   "unverified": false,
+   "rev": 3,
+   "aliases": "",
+   "origin": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791233311875
   },
   {
    "id": "s-dylan",
@@ -1031,29 +1037,12 @@
    "updated": 1791213110592
   },
   {
-   "id": "s-ev-if-resson",
-   "title": "Battle at Resson (Athebyne)",
-   "book": "IF",
-   "order": 400,
-   "chapter": "",
-   "page": "",
-   "edition": "",
-   "kind": "event",
-   "desc": "Liam and Soleil Telery die at Resson; Liam dies when Deigh is killed. Add the page number; until then its position among page-numbered events is approximate.",
-   "chars": [
-    "s-liam",
-    "s-soleil"
-   ],
-   "unverified": true,
-   "rev": 7
-  },
-  {
    "id": "s-ev-if-lilith",
    "title": "Lilith and Aimsir sacrifice themselves",
    "book": "IF",
    "order": 615,
    "chapter": "",
-   "page": "",
+   "page": "612",
    "edition": "",
    "kind": "event",
    "desc": "Just before Violet burns out, Lilith kicks her aside and forces Sloane to siphon all her power into the stone. Lilith and Aimsir die, and the wards at Basgiath are restored. Add the page number; until then its position among page-numbered events is approximate.",
@@ -1061,8 +1050,10 @@
     "s-lilith",
     "s-sloane"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791233626050
   },
   {
    "id": "s-ev-os-zehyllna",
@@ -1156,7 +1147,7 @@
    "book": "IF",
    "order": 560,
    "chapter": "",
-   "page": "",
+   "page": "599",
    "edition": "",
    "kind": "reveal",
    "desc": "Jesinia reveals that Andarna is the secret to activating the wardstone, and that she is a breed of her own who waited about 650 years for Violet to hatch. Add the page number; until then its position among page-numbered events is approximate.",
@@ -1164,8 +1155,10 @@
     "s-jesinia",
     "s-violet"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791233191306
   },
   {
    "id": "s-ev-if-jack-ward",
@@ -1173,15 +1166,17 @@
    "book": "IF",
    "order": 600,
    "chapter": "",
-   "page": "",
+   "page": "562",
    "edition": "",
    "kind": "reveal",
    "desc": "Jack survived Violet dropping a mountain on him because he turned venin. He kills his own dragon, which cracks the wardstone in half and brings down Basgiath's wards. Add the page number; until then its position among page-numbered events is approximate.",
    "chars": [
     "s-jack"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791233494712
   },
   {
    "id": "s-ev-if-xaden-signet",
@@ -1189,15 +1184,17 @@
    "book": "IF",
    "order": 605,
    "chapter": "",
-   "page": "",
+   "page": "522",
    "edition": "",
    "kind": "reveal",
    "desc": "Xaden is revealed to have a second signet. Add the page number; until then its position among page-numbered events is approximate.",
    "chars": [
     "s-xaden"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791234008729
   },
   {
    "id": "s-ev-if-xaden-venin",
@@ -1205,16 +1202,18 @@
    "book": "IF",
    "order": 610,
    "chapter": "",
-   "page": "",
+   "page": "619",
    "edition": "",
    "kind": "reveal",
    "desc": "While Violet is burning out to save everyone, Xaden loses to a venin general. Feeling Violet dying, he channels power from the earth to save her and turns venin. Onyx Storm opens with him held at Basgiath under constant watch and the question of whether he can be turned back. Add the page number; until then its position among page-numbered events is approximate.",
    "chars": [
-    "s-xaden",
-    "s-violet"
+    "s-violet",
+    "s-xaden"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791233595770
   },
   {
    "id": "s-ev-os-panchek",
@@ -1494,17 +1493,18 @@
    "book": "IF",
    "order": 250,
    "chapter": "",
-   "page": "",
+   "page": "211",
    "edition": "",
    "kind": "reveal",
-   "desc": "It comes out that the favor General Sorrengail asked of Xaden, in exchange for putting the marked ones under his oversight in the Riders Quadrant, was to keep Violet alive. Add the page number; until then its position among page-numbered events is approximate.",
+   "desc": "It comes out that the favor General Sorrengail asked of Xaden, in exchange for putting the marked ones under his oversight in the Riders Quadrant, was to keep Violet alive.",
    "chars": [
-    "s-xaden",
-    "s-lilith",
+    "s-dain",
     "s-violet"
    ],
-   "unverified": true,
-   "rev": 7
+   "unverified": false,
+   "rev": 7,
+   "story": null,
+   "updated": 1791232696740
   },
   {
    "id": "s-ev-td-trial",
@@ -1727,6 +1727,24 @@
    ],
    "unverified": true,
    "rev": 7
+  },
+  {
+   "book": "IF",
+   "kind": "event",
+   "order": 470,
+   "edition": "Hardcover",
+   "unverified": false,
+   "title": "Sawyer Loses a Leg",
+   "story": null,
+   "chapter": "",
+   "page": "588",
+   "desc": "",
+   "chars": [
+    "s-sawyer",
+    "s-violet"
+   ],
+   "id": "ev-iryenkb",
+   "updated": 1791233027938
   }
  ],
  "theories": [
@@ -1869,6 +1887,42 @@
    ],
    "created": 0,
    "updated": 0
+  },
+  {
+   "status": "speculative",
+   "confidence": 3,
+   "foreshadow": [],
+   "evidence": [],
+   "unverified": false,
+   "title": "Brennan's Rune Shaped Scar",
+   "body": "Brennan nearly died and his lover potentially saved him by becoming venin",
+   "revealId": "",
+   "revealText": "",
+   "id": "th-ikt0q3c",
+   "created": 1791232919502,
+   "updated": 1791232919502
+  },
+  {
+   "status": "speculative",
+   "confidence": 3,
+   "foreshadow": [],
+   "evidence": [
+    {
+     "book": "IF",
+     "edition": "Hardcover",
+     "stance": "support",
+     "page": "596",
+     "note": "She kills a venin with fire"
+    }
+   ],
+   "unverified": false,
+   "title": "Andarna is the key to killing venin",
+   "body": "",
+   "revealId": "",
+   "revealText": "",
+   "id": "th-eerj0jt",
+   "created": 1791233131846,
+   "updated": 1791233131846
   }
  ],
  "notices": [
@@ -2643,6 +2697,8 @@
    "updated": 1791220395145
   }
  ],
- "removedSeed": [],
+ "removedSeed": [
+  "s-ev-if-resson"
+ ],
  "lastEdition": "Hardcover"
 }
