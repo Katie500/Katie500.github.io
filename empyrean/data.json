@@ -973,7 +973,7 @@
   {
    "book": "FW",
    "kind": "event",
-   "order": 20,
+   "order": 460,
    "edition": "Hardcover",
    "unverified": false,
    "title": "Liam's Death",
@@ -989,7 +989,8 @@
     "s-xaden"
    ],
    "id": "ev-yk1kv6r",
-   "updated": 1791210376775
+   "updated": 1791230541289,
+   "story": null
   },
   {
    "id": "s-ev-fw-brennan",
