@@ -18,6 +18,7 @@ const editForm = (c = {}) => E.form({
   fields: [
     { k:"name", label:"Name", type:"text" },
     { k:"aliases", label:"Alternate names", type:"text", hint:"Comma-separated: nicknames, titles, former names." },
+    { k:"origin", label:"Home province / origin", type:"text", placeholder:"e.g. Krovla (Poromiel)" },
     { k:"group", label:"Role", type:"select", options:[{v:"rider",l:"Rider"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
     { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
     { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
@@ -36,7 +37,7 @@ function card(c) {
   return h("div", { class:"card", id:c.id },
     h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, c.name, E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
     c.aliases ? h("div", { class:"meta" }, "also known as " + c.aliases) : null,
-    h("div", { class:"meta" }, c.group, c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
+    h("div", { class:"meta" }, c.group, c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
     ev ? h("div", { class:"meta" }, "Changed at: ", h("a", { href:"timeline.html#" + ev.id }, ev.title)) : null,
     c.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, c.notes) : null,
     (c.cites || []).map(E.citeView),
@@ -47,11 +48,11 @@ function card(c) {
 }
 
 function render() {
-  const list = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" : c.status === tab)) && (c.name + " " + (c.aliases || "")).toLowerCase().includes(q));
+  const list = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "krovla" ? /krovla/i.test(c.origin || "") : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" : c.status === tab)) && (c.name + " " + (c.aliases || "") + " " + (c.origin || "")).toLowerCase().includes(q));
   const counts = k => data.characters.filter(c => c.status === k).length;
   app.replaceChildren(
     h("div", { class:"toolbar" },
-      E.tabs([["all","All"],["riders","Riders"],["rebel","Rebel children"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"]], tab, k => { tab = k; render(); }),
+      E.tabs([["all","All"],["riders","Riders"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"]], tab, k => { tab = k; render(); }),
       h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search characters", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add character")),
@@ -61,9 +62,9 @@ function render() {
     h("div", { id:"list" }));
   renderList();
   function renderList() {
-    const l = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" : c.status === tab)) && (c.name + " " + (c.aliases || "")).toLowerCase().includes(q))
+    const l = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "krovla" ? /krovla/i.test(c.origin || "") : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" : c.status === tab)) && (c.name + " " + (c.aliases || "") + " " + (c.origin || "")).toLowerCase().includes(q))
       .sort((a, b) => a.name.localeCompare(b.name));
-    document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState(tab === "rebel" ? "No rebel children marked yet. Edit a character and tick “Rebel child”." : tab === "venin" ? "No one is marked as venin. Edit a character and tick “Venin”." : "Nothing matches."));
+    document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState(tab === "rebel" ? "No rebel children marked yet. Edit a character and tick “Rebel child”." : tab === "krovla" ? "No one is marked as from Krovla yet. Edit a character and set their home province." : tab === "venin" ? "No one is marked as venin. Edit a character and tick “Venin”." : "Nothing matches."));
   }
 }
 render();

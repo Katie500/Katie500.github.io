@@ -59,7 +59,8 @@ const E = (() => {
           if (i < 0) { if (!data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; } continue; }
           if (data[list][i].unverified === true && (s.rev || 0) > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); added = true; continue; }
           // entries you've edited keep your values; only blank fields (and "not set" statuses) are filled from the starter data
-          for (const k of ["aliases","tail","fateEventId","text"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          for (const k of ["aliases","tail","fateEventId","text","sex","family","origin","dragonId"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          for (const k of ["age","riders"]) if (data[list][i][k] == null && s[k] != null) { data[list][i][k] = s[k]; added = true; }
           if (data[list][i].venin === undefined && s.venin) { data[list][i].venin = true; added = true; }
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
         }
@@ -85,7 +86,11 @@ const E = (() => {
   const upsert = (list, item) => { delete data.fromSeed; const i = data[list].findIndex(x => x.id === item.id); item.updated = Date.now(); if (i >= 0) data[list][i] = item; else data[list].push(item); save(); };
   const remove = (list, id) => { delete data.fromSeed; if (id.startsWith("s-")) (data.removedSeed ||= []).push(id); data[list] = data[list].filter(x => x.id !== id); save(); };
   const byId = (list, id) => data[list].find(x => x.id === id);
-  const sortEvents = list => [...list].sort((a, b) => BOOKS.findIndex(x => x.id === a.book) - BOOKS.findIndex(x => x.id === b.book) || (a.order ?? 0) - (b.order ?? 0));
+  // Chronological position: an explicit "story" number wins; otherwise book base + order within the book.
+  const BASE = { FW:1000, IF:2000, OS:3000, TD:4000, OT:5000 };
+  const eventKey = e => e.story != null && e.story !== "" ? Number(e.story) : (BASE[e.book] ?? 5000) + (e.order ?? 0);
+  const eraOf = e => { const k = eventKey(e); return k < 1000 ? "Before Fourth Wing" : k < 2000 ? "Fourth Wing" : k < 3000 ? "Iron Flame" : k < 4000 ? "Onyx Storm" : k < 5000 ? "Threshing Day (not placed yet)" : "Other"; };
+  const sortEvents = list => [...list].sort((a, b) => eventKey(a) - eventKey(b));
 
   const exportData = () => {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type:"application/json" });
@@ -252,5 +257,5 @@ const E = (() => {
   const optionsOf = (list, label = x => x.name, blank) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));
 
   load();
-  return { BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
+  return { BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
 })();
