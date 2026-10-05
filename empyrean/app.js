@@ -88,7 +88,9 @@ const E = (() => {
   const byId = (list, id) => data[list].find(x => x.id === id);
   // Chronological position: an explicit "story" number wins; otherwise book base + order within the book.
   const BASE = { FW:1000, IF:2000, OS:3000, TD:4000, OT:5000 };
-  const eventKey = e => e.story != null && e.story !== "" ? Number(e.story) : (BASE[e.book] ?? 5000) + (e.order ?? 0);
+  // A page number, when there is one, decides the position within the book; the "order" number is only the fallback.
+  const pageNum = e => { const m = String(e.page ?? "").match(/\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; };
+  const eventKey = e => e.story != null && e.story !== "" ? Number(e.story) : (BASE[e.book] ?? 5000) + (pageNum(e) ?? e.order ?? 0);
   const eraOf = e => { const k = eventKey(e); return k < 1000 ? "Before Fourth Wing" : k < 2000 ? "Fourth Wing" : k < 3000 ? "Iron Flame" : k < 4000 ? "Onyx Storm" : k < 5000 ? "Threshing Day (not placed yet)" : "Other"; };
   const sortEvents = list => [...list].sort((a, b) => eventKey(a) - eventKey(b));
 

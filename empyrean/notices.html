@@ -43,6 +43,30 @@ const editForm = (n = {}) => E.form({
   onDelete: n.id ? () => { E.remove("notices", n.id); render(); } : null,
 });
 
+// Paste many chapter openings at once: "# 12" starts a snippet for chapter 12, its text follows.
+function bulkSnippets() {
+  E.form({
+    title:"Bulk add chapter snippets", value:{ book:bookFilter !== "all" ? bookFilter : "FW" },
+    fields:[
+      { k:"book", label:"Book", type:"select", options:SNIPPET_BOOKS.map(id => ({ v:id, l:E.bookOf(id).name })) },
+      { k:"raw", label:"Snippets", type:"textarea", hint:"Start each snippet with a line like “# 12” (the chapter number), then its text on the lines below. Snippets that already exist for the same book and chapter are updated." },
+    ],
+    onSave:o => {
+      const blocks = []; let cur = null;
+      (o.raw || "").split(/\r?\n/).forEach(line => { const m = line.match(/^#\s*(.+?)\s*$/); if (m) { cur = { chapter:m[1], text:[] }; blocks.push(cur); } else if (cur) cur.text.push(line); });
+      let made = 0, updated = 0;
+      blocks.forEach(b => {
+        const text = b.text.join("\n").trim(); if (!text) return;
+        const id = "snip-" + o.book + "-" + b.chapter.replace(/\W+/g, "_"), ex = E.byId("notices", id);
+        const item = ex || { id, snippet:true, source:"book", book:o.book, chapter:b.chapter, title:E.bookOf(o.book).name + " — Chapter " + b.chapter, read:false, theoryIds:[], cites:[] };
+        item.text = text; E.upsert("notices", item); ex ? updated++ : made++;
+      });
+      alert(made + " snippet(s) added, " + updated + " updated." + (blocks.length ? "" : " I didn’t find any lines starting with “# ” followed by a chapter number."));
+      render();
+    },
+  });
+}
+
 // Reads a saved copy of the DragonKind library page and stores each notice's text in this browser only.
 function importText() {
   E.form({
@@ -152,6 +176,7 @@ function render() {
       h("span", { class:"grow" }),
       h("button", { class:"btn sm", onclick:() => { newestFirst = !newestFirst; render(); } }, newestFirst ? "Newest first ↓" : "Oldest first ↑"),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn", onclick:bulkSnippets }, "Bulk add snippets"),
       h("button", { class:"btn", onclick:importText }, "Import from DragonKind"),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Notice or snippet")),
     h("div", { id:"list" }));
