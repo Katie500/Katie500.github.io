@@ -611,6 +611,18 @@ window.EMPYREAN_SEED = {
       "fateEventId": "s-ev-fw-amber",
       "unverified": true,
       "rev": 5
+    },
+    {
+      "id": "s-fen",
+      "name": "Fen Riorson",
+      "group": "civilian",
+      "status": "deceased",
+      "rebelChild": false,
+      "venin": false,
+      "origin": "Tyrrendor",
+      "notes": "Led the failed Tyrrish rebellion and was executed; his last words are recorded as “You're all cowards” (redacted). Starter note from web summaries and your snippets; check against your copy.",
+      "unverified": true,
+      "rev": 6
     }
   ],
   "dragons": [
@@ -1617,6 +1629,38 @@ window.EMPYREAN_SEED = {
       ],
       "unverified": true,
       "rev": 5
+    },
+    {
+      "id": "s-ev-fw-tairn-channel",
+      "title": "Tairn starts channeling to Violet",
+      "book": "FW",
+      "order": 271,
+      "chapter": "",
+      "page": "271",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Tairn starts channeling power to Violet. (Compare the Iron Flame event where her dragons decide she is ready to begin channeling.)",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 6
+    },
+    {
+      "id": "s-ev-fw-resson-start",
+      "title": "The Battle of Resson starts",
+      "book": "FW",
+      "order": 452,
+      "chapter": "",
+      "page": "452",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "The Battle of Resson begins. Note: the Iron Flame event “Battle at Resson (Athebyne)” came from web summaries and may belong here or in a different battle; check it against your copy.",
+      "chars": [
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 6
     }
   ],
   "theories": [
