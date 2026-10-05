@@ -630,7 +630,7 @@ window.EMPYREAN_SEED = {
       "id": "s-tairn",
       "name": "Tairn",
       "color": "Black",
-      "family": "",
+      "family": "Dubhmadinn",
       "sire": "",
       "dam": "",
       "riderId": "s-violet",
@@ -638,7 +638,7 @@ window.EMPYREAN_SEED = {
       "notes": "Mated to Sgaeyl.",
       "unverified": false,
       "tail": "morningstartail",
-      "rev": 2,
+      "rev": 7,
       "aliases": "Tairneanach"
     },
     {
@@ -689,14 +689,14 @@ window.EMPYREAN_SEED = {
       "name": "Codagh",
       "color": "Black",
       "tail": "swordtail",
-      "family": "",
+      "family": "Dubhmadinn",
       "sire": "",
       "dam": "",
       "riderId": "s-melgren",
       "status": "unknown",
       "notes": "Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-solas",
@@ -987,18 +987,18 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-if-resson",
       "title": "Battle at Resson (Athebyne)",
       "book": "IF",
-      "order": 50,
+      "order": 400,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "event",
-      "desc": "Liam and Soleil Telery die at Resson; Liam dies when Deigh is killed.",
+      "desc": "Liam and Soleil Telery die at Resson; Liam dies when Deigh is killed. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-liam",
         "s-soleil"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-os-zehyllna",
@@ -1072,100 +1072,100 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-if-channeling",
       "title": "Channeling begins",
       "book": "IF",
-      "order": 30,
+      "order": 150,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "After Violet stands up to Jack Barlowe's taunting without losing her temper, her dragons decide she is ready to begin channeling, the point where riders start drawing magic directly from the earth.",
+      "desc": "After Violet stands up to Jack Barlowe's taunting without losing her temper, her dragons decide she is ready to begin channeling, the point where riders start drawing magic directly from the earth. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-violet"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-if-andarna-ward",
       "title": "Andarna is the key to the wardstone",
       "book": "IF",
-      "order": 60,
+      "order": 560,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Jesinia reveals that Andarna is the secret to activating the wardstone, and that she is a breed of her own who waited about 650 years for Violet to hatch.",
+      "desc": "Jesinia reveals that Andarna is the secret to activating the wardstone, and that she is a breed of her own who waited about 650 years for Violet to hatch. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-jesinia",
         "s-violet"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-if-jack-ward",
       "title": "Jack returns as venin and cracks the wardstone",
       "book": "IF",
-      "order": 70,
+      "order": 600,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Jack survived Violet dropping a mountain on him because he turned venin. He kills his own dragon, which cracks the wardstone in half and brings down Basgiath's wards.",
+      "desc": "Jack survived Violet dropping a mountain on him because he turned venin. He kills his own dragon, which cracks the wardstone in half and brings down Basgiath's wards. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-jack"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-if-xaden-signet",
       "title": "Xaden's second signet is revealed",
       "book": "IF",
-      "order": 80,
+      "order": 605,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "Xaden is revealed to have a second signet.",
+      "desc": "Xaden is revealed to have a second signet. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-if-xaden-venin",
       "title": "Xaden channels earth magic and turns venin",
       "book": "IF",
-      "order": 85,
+      "order": 610,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "While Violet is burning out to save everyone, Xaden loses to a venin general. Feeling Violet dying, he channels power from the earth to save her and turns venin. Onyx Storm opens with him held at Basgiath under constant watch and the question of whether he can be turned back.",
+      "desc": "While Violet is burning out to save everyone, Xaden loses to a venin general. Feeling Violet dying, he channels power from the earth to save her and turns venin. Onyx Storm opens with him held at Basgiath under constant watch and the question of whether he can be turned back. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-xaden",
         "s-violet"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-if-lilith",
       "title": "Lilith and Aimsir sacrifice themselves",
       "book": "IF",
-      "order": 90,
+      "order": 615,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "event",
-      "desc": "Just before Violet burns out, Lilith kicks her aside and forces Sloane to siphon all her power into the stone. Lilith and Aimsir die, and the wards at Basgiath are restored.",
+      "desc": "Just before Violet burns out, Lilith kicks her aside and forces Sloane to siphon all her power into the stone. Lilith and Aimsir die, and the wards at Basgiath are restored. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-lilith",
         "s-sloane"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 7
     },
     {
       "id": "s-ev-os-panchek",
@@ -1443,19 +1443,19 @@ window.EMPYREAN_SEED = {
       "id": "s-ev-if-deal",
       "title": "Iron Flame reveals what the deal included",
       "book": "IF",
-      "order": 40,
+      "order": 250,
       "chapter": "",
       "page": "",
       "edition": "",
       "kind": "reveal",
-      "desc": "It comes out that the favor General Sorrengail asked of Xaden, in exchange for putting the marked ones under his oversight in the Riders Quadrant, was to keep Violet alive.",
+      "desc": "It comes out that the favor General Sorrengail asked of Xaden, in exchange for putting the marked ones under his oversight in the Riders Quadrant, was to keep Violet alive. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [
         "s-xaden",
         "s-lilith",
         "s-violet"
       ],
       "unverified": true,
-      "rev": 4
+      "rev": 7
     },
     {
       "id": "s-ev-td-trial",
@@ -1661,6 +1661,23 @@ window.EMPYREAN_SEED = {
       ],
       "unverified": true,
       "rev": 6
+    },
+    {
+      "id": "s-ev-if-rescue",
+      "title": "Xaden rescues Violet from the torture",
+      "book": "IF",
+      "order": 321,
+      "chapter": "",
+      "page": "321",
+      "edition": "Hardcover",
+      "kind": "event",
+      "desc": "Xaden shows up to rescue Violet from the torture.",
+      "chars": [
+        "s-xaden",
+        "s-violet"
+      ],
+      "unverified": true,
+      "rev": 7
     }
   ],
   "theories": [
