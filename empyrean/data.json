@@ -31,10 +31,11 @@
    "group": "rider",
    "status": "active",
    "rebelChild": false,
-   "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame; heads toward Marbh with Mira in Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+   "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame. One Onyx Storm summary says he takes Mira and heads toward Marbh. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3,
-   "fateEventId": "s-ev-fw-brennan"
+   "rev": 4,
+   "fateEventId": "s-ev-fw-brennan",
+   "dragonId": "s-marbh"
   },
   {
    "id": "s-mira",
@@ -111,8 +112,9 @@
    "rebelChild": true,
    "notes": "One of the missing riders at the end of Onyx Storm (the only one confirmed by name in the sources I found). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3,
-   "fateEventId": "s-ev-os-end"
+   "rev": 4,
+   "fateEventId": "s-ev-os-end",
+   "dragonId": "s-chradh"
   },
   {
    "id": "s-bodhi",
@@ -122,7 +124,8 @@
    "rebelChild": true,
    "notes": "Rebel child. Absent when Violet wakes at Riorson House at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 4,
+   "dragonId": "s-cuir"
   },
   {
    "id": "s-imogen",
@@ -137,13 +140,14 @@
   },
   {
    "id": "s-sawyer",
-   "name": "Sawyer",
+   "name": "Sawyer Henrick",
    "group": "rider",
    "status": "unknown",
    "rebelChild": false,
-   "notes": "Starter note from web summaries of the books; check against your copy.",
+   "notes": "Signet reported as manipulating metals. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 4,
+   "dragonId": "s-sliseag"
   },
   {
    "id": "s-aaric",
@@ -153,7 +157,7 @@
    "rebelChild": false,
    "notes": "",
    "unverified": false,
-   "dragonId": "",
+   "dragonId": "s-molvic",
    "fateEventId": "",
    "cites": [],
    "updated": 1791209772279,
@@ -459,25 +463,27 @@
   },
   {
    "id": "s-cat",
-   "name": "Catriona (Cat)",
+   "name": "Catriona (Cat) Cordella",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Xaden's ex and the niece of Count Tecarus. Starter note from web summaries of the books; check against your copy.",
+   "notes": "Gryphon flier of Poromiel and Xaden's ex-fiancée (betrothed for nine months). Niece of Viscount Tecarus. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 4,
+   "origin": "Krovla, Poromiel"
   },
   {
    "id": "s-tecarus",
-   "name": "Count Tecarus",
+   "name": "Viscount (later King) Tecarus",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Uncle of Cat. Starter note from web summaries of the books; check against your copy.",
+   "notes": "Viscount of the Poromish province of Krovla. After Queen Maraya's death he becomes King of Poromiel. Has a gryphon gift for sensing what motivates someone to give up their treasure. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 4,
+   "origin": "Krovla, Poromiel"
   },
   {
    "id": "s-jesinia",
@@ -500,6 +506,98 @@
    "notes": "Dies on the parapet in Fourth Wing. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3
+  },
+  {
+   "id": "s-syrena",
+   "name": "Syrena Cordella",
+   "group": "civilian",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Cat's older sister and Tecarus's niece. Works with Xaden to distribute stolen venin-killing daggers to fliers. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4,
+   "origin": "Krovla, Poromiel"
+  },
+  {
+   "id": "s-drake",
+   "name": "Drake Cordella",
+   "group": "civilian",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Cousin of Syrena and Cat. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4,
+   "origin": "Krovla, Poromiel"
+  },
+  {
+   "id": "s-maraya",
+   "name": "Queen Maraya",
+   "group": "civilian",
+   "status": "deceased",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Queen of Poromiel; Tecarus becomes king after her death. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4,
+   "origin": "Poromiel"
+  },
+  {
+   "id": "s-heaton",
+   "name": "Heaton",
+   "group": "rider",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Violet's squadmate. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4
+  },
+  {
+   "id": "s-naolin",
+   "name": "Naolin",
+   "group": "civilian",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Tairn's previous rider. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4
+  },
+  {
+   "id": "s-nolon",
+   "name": "Nolon",
+   "group": "civilian",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Healer who mends Jack Barlowe in the infirmary after Violet drops the mountain on him. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4
+  },
+  {
+   "id": "s-caroline",
+   "name": "Caroline Ashton",
+   "group": "rider",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "First-year unbonded cadet in Fourth Wing until she bonds Gleann after his previous rider died during their first flight lesson. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4,
+   "dragonId": "s-gleann"
+  },
+  {
+   "id": "s-winifred",
+   "name": "Winifred Colbersy",
+   "group": "rider",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Makes a brief appearance in the early chapters of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 4
   }
  ],
  "dragons": [
@@ -539,7 +637,7 @@
    "id": "s-sgaeyl",
    "name": "Sgaeyl",
    "color": "Blue",
-   "family": "",
+   "family": "Gormfaileas",
    "sire": "",
    "dam": "",
    "riderId": "s-xaden",
@@ -548,27 +646,33 @@
    "unverified": false,
    "cites": [],
    "updated": 1791209689007,
-   "tail": "daggertail"
+   "tail": "daggertail",
+   "sex": "female",
+   "age": 64,
+   "riders": 3
   },
   {
    "id": "s-cath",
    "name": "Cath",
    "color": "Red",
-   "tail": "swordtail",
-   "family": "",
+   "tail": "Sword",
+   "sex": "male",
+   "family": "Berradhdyr",
+   "age": 86,
+   "riders": 2,
    "sire": "",
    "dam": "",
    "riderId": "s-dain",
    "status": "unknown",
-   "notes": "Dain's dragon. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Dain's dragon.",
+   "unverified": false,
+   "rev": 4
   },
   {
    "id": "s-deigh",
    "name": "Deigh",
    "color": "Red",
-   "family": "",
+   "family": "Wybjorian",
    "sire": "",
    "dam": "",
    "riderId": "s-liam",
@@ -577,63 +681,78 @@
    "unverified": false,
    "cites": [],
    "updated": 1791209649186,
-   "tail": "daggertail"
+   "tail": "daggertail",
+   "sex": "male",
+   "age": 62,
+   "riders": 1
   },
   {
    "id": "s-feirge",
    "name": "Feirge",
    "color": "Green",
-   "tail": "daggertail",
-   "family": "",
+   "tail": "Dagger",
+   "sex": "female",
+   "family": "Uaineloidsig",
+   "age": 87,
+   "riders": 3,
    "sire": "",
    "dam": "",
    "riderId": "s-rhi",
    "status": "unknown",
    "notes": "Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "unverified": false,
+   "rev": 4
   },
   {
    "id": "s-aotrom",
    "name": "Aotrom",
    "color": "Brown",
-   "tail": "swordtail",
-   "family": "",
+   "tail": "Sword",
+   "sex": "male",
+   "family": "Aldayrmar",
+   "age": 21,
+   "riders": 0,
    "sire": "",
    "dam": "",
    "riderId": "s-ridoc",
    "status": "unknown",
    "notes": "Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "unverified": false,
+   "rev": 4
   },
   {
    "id": "s-glane",
    "name": "Glane",
    "color": "Orange",
-   "tail": "daggertail",
-   "family": "",
+   "tail": "Dagger",
+   "sex": "female",
+   "family": "Fhaicorain",
+   "age": 19,
+   "riders": 0,
    "sire": "",
    "dam": "",
    "riderId": "s-imogen",
    "status": "unknown",
    "notes": "Claimed Imogen before Threshing began. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "unverified": false,
+   "rev": 4
   },
   {
    "id": "s-teine",
    "name": "Teine",
    "color": "Green",
-   "tail": "",
-   "family": "",
+   "tail": "Club",
+   "sex": "male",
+   "family": "Cruaidhuaine",
+   "age": 41,
+   "riders": 0,
    "sire": "",
    "dam": "",
    "riderId": "s-mira",
    "status": "unknown",
-   "notes": "Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Mira's dragon.",
+   "unverified": false,
+   "rev": 4
   },
   {
    "id": "s-aimsir",
@@ -695,15 +814,118 @@
    "id": "s-molvic",
    "name": "Molvic",
    "color": "Blue",
-   "tail": "",
-   "family": "",
+   "tail": "Club",
+   "sex": "male",
+   "family": "Gormfaileas",
+   "age": 39,
+   "riders": 0,
    "sire": "",
    "dam": "",
    "riderId": "s-aaric",
    "status": "unknown",
-   "notes": "Aaric's dragon. Starter note from web summaries of the books; check against your copy.",
+   "notes": "Aaric's dragon.",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-marbh",
+   "name": "Marbh",
+   "color": "Orange",
+   "tail": "Dagger",
+   "sex": "male",
+   "family": "Fhaicorain",
+   "age": 76,
+   "riders": 3,
+   "sire": "",
+   "dam": "",
+   "riderId": "s-brennan",
+   "status": "unknown",
+   "notes": "Brennan's dragon; in Threshing Day Brennan meets him in a tree.",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-chradh",
+   "name": "Chradh",
+   "color": "Brown",
+   "tail": "Scorpion",
+   "sex": "male",
+   "family": "Aldayrmar",
+   "age": 27,
+   "riders": 0,
+   "sire": "",
+   "dam": "",
+   "riderId": "s-garrick",
+   "status": "unknown",
+   "notes": "",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-cuir",
+   "name": "Cuir",
+   "color": "Green",
+   "tail": "Sword",
+   "sex": "male",
+   "family": "Uaineloidsig",
+   "age": 59,
+   "riders": 1,
+   "sire": "",
+   "dam": "",
+   "riderId": "s-bodhi",
+   "status": "unknown",
+   "notes": "",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-sliseag",
+   "name": "Sliseag",
+   "color": "Red",
+   "tail": "Sword",
+   "sex": "male",
+   "family": "Berradhdyr",
+   "age": 73,
+   "riders": 2,
+   "sire": "",
+   "dam": "",
+   "riderId": "s-sawyer",
+   "status": "unknown",
+   "notes": "",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-thoirt",
+   "name": "Thoirt",
+   "color": "Red",
+   "tail": "Dagger",
+   "sex": "female",
+   "family": "Wybjorian",
+   "age": 62,
+   "riders": 1,
+   "sire": "",
+   "dam": "",
+   "riderId": "",
+   "status": "unknown",
+   "notes": "Rider not recorded here. Shares line and age with Deigh, so possibly the sibling of Liam's dragon; set the rider once you confirm.",
+   "unverified": false,
+   "rev": 4
+  },
+  {
+   "id": "s-gleann",
+   "name": "Gleann",
+   "color": "",
+   "tail": "",
+   "sex": "",
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-caroline",
+   "status": "unknown",
+   "notes": "Bonded Caroline Ashton after his previous rider died during their first flight lesson. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 4
   }
  ],
  "events": [
@@ -982,6 +1204,263 @@
    ],
    "unverified": true,
    "rev": 3
+  },
+  {
+   "id": "s-ev-td-brennan",
+   "title": "Threshing Day: Brennan",
+   "book": "TD",
+   "order": 1,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Brennan enters Threshing determined to prove himself beyond the Sorrengail name. His father gives him a good-luck bracelet, and alone he climbs a tree and meets Marbh, an orange daggertail. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-brennan"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 100
+  },
+  {
+   "id": "s-ev-td-mira",
+   "title": "Threshing Day: Mira",
+   "book": "TD",
+   "order": 2,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Teine digs a talon into Mira's thigh to find her breaking point, and she tells him to take his fingernail out of her leg. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-mira"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 105
+  },
+  {
+   "id": "s-ev-fw-deal",
+   "title": "Xaden's deal with General Sorrengail",
+   "book": "FW",
+   "order": 0,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "As the oldest of the separatist children, Xaden takes responsibility for the 107 marked children and receives 107 scars across his back, an archaic Tyrrish custom. In return General Lilith Sorrengail lets the children fight for their lives in the Riders Quadrant instead of being executed. Placement before Fourth Wing is approximate.",
+   "chars": [
+    "s-xaden",
+    "s-lilith"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 108
+  },
+  {
+   "id": "s-ev-td-xaden",
+   "title": "Threshing Day: Xaden",
+   "book": "TD",
+   "order": 3,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Set in the snow, Xaden says he'd love nothing more than to burn the place to the ground. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-xaden"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 110
+  },
+  {
+   "id": "s-ev-td-garrick",
+   "title": "Threshing Day: Garrick",
+   "book": "TD",
+   "order": 4,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Garrick's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-garrick"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 120
+  },
+  {
+   "id": "s-ev-td-bodhi",
+   "title": "Threshing Day: Bodhi",
+   "book": "TD",
+   "order": 5,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Bodhi's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-bodhi"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 130
+  },
+  {
+   "id": "s-ev-td-imogen",
+   "title": "Threshing Day: Imogen",
+   "book": "TD",
+   "order": 6,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Imogen's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-imogen"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 140
+  },
+  {
+   "id": "s-ev-td-dain",
+   "title": "Threshing Day: Dain",
+   "book": "TD",
+   "order": 7,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Dain's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-dain"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 150
+  },
+  {
+   "id": "s-ev-td-liam",
+   "title": "Threshing Day: Liam",
+   "book": "TD",
+   "order": 8,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Liam's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-liam"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 1010.1
+  },
+  {
+   "id": "s-ev-td-rhi",
+   "title": "Threshing Day: Rhiannon",
+   "book": "TD",
+   "order": 9,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Rhiannon's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-rhi"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 1010.2
+  },
+  {
+   "id": "s-ev-td-ridoc",
+   "title": "Threshing Day: Ridoc",
+   "book": "TD",
+   "order": 10,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Ridoc's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-ridoc"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 1010.3
+  },
+  {
+   "id": "s-ev-td-sawyer",
+   "title": "Threshing Day: Sawyer",
+   "book": "TD",
+   "order": 11,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Sawyer's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-sawyer"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 1010.4
+  },
+  {
+   "id": "s-ev-td-sloane",
+   "title": "Threshing Day: Sloane",
+   "book": "TD",
+   "order": 12,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Sloane's Threshing, early in Iron Flame. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-sloane"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 2005.1
+  },
+  {
+   "id": "s-ev-td-aaric",
+   "title": "Threshing Day: Aaric",
+   "book": "TD",
+   "order": 13,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "event",
+   "desc": "Aaric's Threshing, early in Iron Flame. The collection's final story has a prince in rider black telling his dragon he intends to tear the kingdom apart. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
+   "chars": [
+    "s-aaric"
+   ],
+   "unverified": true,
+   "rev": 4,
+   "story": 2005.2
+  },
+  {
+   "id": "s-ev-if-deal",
+   "title": "Iron Flame reveals what the deal included",
+   "book": "IF",
+   "order": 40,
+   "chapter": "",
+   "page": "",
+   "edition": "",
+   "kind": "reveal",
+   "desc": "It comes out that the favor General Sorrengail asked of Xaden, in exchange for putting the marked ones under his oversight in the Riders Quadrant, was to keep Violet alive.",
+   "chars": [
+    "s-xaden",
+    "s-lilith",
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 4
   }
  ],
  "theories": [
@@ -1021,6 +1500,47 @@
    "id": "th-fpa58xl",
    "created": 1791210526021,
    "updated": 1791210526021
+  },
+  {
+   "id": "s-th-imogen-trip",
+   "title": "Imogen disappeared on the field trip and the memory of her being there was wiped",
+   "status": "speculative",
+   "confidence": 3,
+   "body": "Imogen went on the field trip but did not come back with the others. Working theory: she vanished, and the memories that she was ever there were wiped. Add the scene where the group returns without her, who does and doesn't remember her, and any clue about how it was done. Per summaries, Imogen later wipes Violet's memory of twelve hours at the end of Onyx Storm, which may be related.",
+   "foreshadow": [
+    "s-ev-os-end"
+   ],
+   "revealId": "",
+   "revealText": "",
+   "evidence": [],
+   "created": 0,
+   "updated": 0
+  },
+  {
+   "id": "s-th-blood",
+   "title": "Some riders draw blood on their Threshing day",
+   "status": "speculative",
+   "confidence": 2,
+   "body": "Several of the Threshing Day stories have a rider drawing blood during their Threshing. List which riders, what the dragon did, and whether blood changes the bond, the signet or how the dragon chooses.",
+   "foreshadow": [],
+   "revealId": "",
+   "revealText": "",
+   "evidence": [],
+   "created": 0,
+   "updated": 0
+  },
+  {
+   "id": "s-th-transcribers",
+   "title": "Threshing Day is transcribed by different people than the main books",
+   "status": "speculative",
+   "confidence": 1,
+   "body": "Threshing Day credits Colonel Valin Kaori and Lieutenant Ellery Mynna with the transcription, not Jesinia Neilwart who frames the main trilogy. What does that say about who compiled it and when?",
+   "foreshadow": [],
+   "revealId": "",
+   "revealText": "",
+   "evidence": [],
+   "created": 0,
+   "updated": 0
   }
  ],
  "notices": [
