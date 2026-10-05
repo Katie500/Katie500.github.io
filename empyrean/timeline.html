@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timeline — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div><div class="tt" id="tt"></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, svg, data } = E;
+E.layout("timeline.html", "Everything that’s <em>happened</em>", "A running timeline of the story. Foreshadowing arcs connect a clue to the moment it pays off; arcs that run to the dashed node on the right are still unrevealed.");
+const app = document.getElementById("app"), tt = document.getElementById("tt");
+let book = "all", q = "";
+const KINDS = [["event","Event"],["foreshadow","Foreshadowing / clue"],["reveal","Reveal / truth"]];
+const STATUS_COLOR = { speculative:"#b7862b", supported:"#3f7d6e", confirmed:"#2f6b4f", debunked:"#a8402d" };
+
+const editForm = (ev = {}) => E.form({
+  title: ev.id ? "Edit event" : "Add event", value:ev.id ? ev : { book:book === "all" ? "FW" : book, kind:"event", order:(Math.max(0, ...data.events.filter(e => e.book === (book === "all" ? "FW" : book)).map(e => e.order || 0)) + 10), edition:data.lastEdition || "" },
+  fields: [
+    { k:"title", label:"What happened", type:"text" },
+    { k:"book", label:"Book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
+    { k:"order", label:"Order within the book", type:"number", hint:"Smaller numbers come first. Use decimals (e.g. 25.5) to slot an event between two others." },
+    { k:"kind", label:"Type", type:"select", options:KINDS.map(([v, l]) => ({ v, l })) },
+    { k:"edition", label:"Edition", type:"select", options:[{ v:"", l:"—" }, ...E.EDITIONS.map(x => ({ v:x, l:x }))] },
+    { k:"chapter", label:"Chapter", type:"text" },
+    { k:"page", label:"Page", type:"text" },
+    { k:"desc", label:"Details (your own words)", type:"textarea" },
+    { k:"chars", label:"Characters involved", type:"multi", options:E.optionsOf("characters") },
+  ],
+  onSave: o => { o.id = o.id || E.uid("ev"); if (o.edition) data.lastEdition = o.edition; E.upsert("events", o); render(); },
+  onDelete: ev.id ? () => { data.theories.forEach(t => { t.foreshadow = (t.foreshadow || []).filter(x => x !== ev.id); if (t.revealId === ev.id) t.revealId = ""; }); E.remove("events", ev.id); render(); } : null,
+});
+
+function axis(events) {
+  const GAP = 84, PAD = 80, base = 215, n = events.length, W = PAD * 2 + (n + 1) * GAP, idx = Object.fromEntries(events.map((e, i) => [e.id, i]));
+  const el = svg("svg", { width:W, height:300, role:"img", "aria-label":"Timeline with foreshadowing arcs" });
+  const X = i => PAD + i * GAP, futureX = X(n);
+  el.append(svg("line", { x1:PAD - 20, x2:W - PAD + 10, y1:base, y2:base, stroke:"rgba(35,34,31,.25)" }));
+  // arcs
+  data.theories.forEach(t => {
+    const target = t.revealId && idx[t.revealId] != null ? idx[t.revealId] : (t.revealId ? null : n);
+    if (target == null) return;
+    (t.foreshadow || []).forEach(id => {
+      if (idx[id] == null) return;
+      const a = X(idx[id]), b = X(target), ht = Math.min(190, 34 + Math.abs(b - a) * .32);
+      const p = svg("path", { d:`M${a},${base - 8} C${a},${base - ht} ${b},${base - ht} ${b},${base - 8}`, fill:"none", stroke:STATUS_COLOR[t.status] || "#999", "stroke-width":2, "stroke-opacity":.6, "stroke-dasharray":target === n ? "5 4" : null, style:"cursor:pointer" });
+      p.addEventListener("mouseenter", () => { p.setAttribute("stroke-opacity", 1); p.setAttribute("stroke-width", 3.2); tt.textContent = t.title + " (" + t.status + ")"; tt.style.display = "block"; });
+      p.addEventListener("mousemove", e => { tt.style.left = e.clientX + 12 + "px"; tt.style.top = e.clientY + 12 + "px"; });
+      p.addEventListener("mouseleave", () => { p.setAttribute("stroke-opacity", .6); p.setAttribute("stroke-width", 2); tt.style.display = "none"; });
+      p.addEventListener("click", () => location.href = "theories.html#" + t.id);
+      el.append(p);
+    });
+  });
+  events.forEach((e, i) => {
+    const b = E.bookOf(e.book), colorVar = getComputedStyle(document.documentElement).getPropertyValue("--" + b.id).trim() || "#999";
+    const g = svg("g", { style:"cursor:pointer", tabindex:0, role:"link", "aria-label":e.title });
+    g.append(svg("circle", { cx:X(i), cy:base, r:e.kind === "event" ? 7 : 9, fill:colorVar, stroke:e.kind === "foreshadow" ? "#b7862b" : e.kind === "reveal" ? "#3f7d6e" : "#fff", "stroke-width":e.kind === "event" ? 1.5 : 3 }));
+    const lab = svg("text", { x:X(i), y:base + 18, "font-size":10, "text-anchor":"end", fill:"#7c776d", transform:`rotate(-35 ${X(i)} ${base + 18})` }); lab.textContent = e.title.length > 22 ? e.title.slice(0, 21) + "…" : e.title; g.append(lab);
+    g.addEventListener("mouseenter", () => { tt.textContent = e.title + " — " + b.name + (e.page ? ", p. " + e.page : ""); tt.style.display = "block"; });
+    g.addEventListener("mousemove", ev => { tt.style.left = ev.clientX + 12 + "px"; tt.style.top = ev.clientY + 12 + "px"; });
+    g.addEventListener("mouseleave", () => tt.style.display = "none");
+    const go = () => { location.hash = e.id; document.getElementById(e.id)?.scrollIntoView({ behavior:"smooth", block:"center" }); };
+    g.addEventListener("click", go); g.addEventListener("keydown", k => { if (k.key === "Enter") go(); });
+    el.append(g);
+  });
+  el.append(svg("circle", { cx:futureX, cy:base, r:9, fill:"none", stroke:"#7c776d", "stroke-dasharray":"3 3" }));
+  const fl = svg("text", { x:futureX, y:base + 28, "font-size":10, "text-anchor":"middle", fill:"#7c776d" }); fl.textContent = "not yet revealed"; el.append(fl);
+  return h("div", { class:"axis-wrap" }, el);
+}
+
+function render() {
+  const all = E.sortEvents(data.events).filter(e => book === "all" || e.book === book);
+  const events = all.filter(e => (e.title + " " + (e.desc || "")).toLowerCase().includes(q));
+  app.replaceChildren(
+    h("div", { class:"toolbar" },
+      E.tabs([["all","All books"], ...E.BOOKS.filter(b => b.id !== "OT" || data.events.some(e => e.book === "OT")).map(b => [b.id, b.name])], book, k => { book = k; render(); }),
+      h("span", { class:"grow" }),
+      h("input", { type:"search", placeholder:"Search events…", value:q, "aria-label":"Search events", oninput:e => { q = e.target.value.toLowerCase(); clearTimeout(render.t); render.t = setTimeout(() => { const pos = e.target.selectionStart; render(); const i = document.querySelector("input[type=search]"); i.focus(); i.setSelectionRange(pos, pos); }, 250); } }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add event")),
+    ...(events.length ? [
+      axis(events),
+      h("div", { class:"legend" },
+        E.BOOKS.slice(0, 4).map(b => h("span", {}, h("span", { class:"dot", style:"background:" + b.color }), b.name)),
+        h("span", {}, h("b", { style:"color:#b7862b" }, "◯"), " clue"), h("span", {}, h("b", { style:"color:#3f7d6e" }, "◯"), " reveal"),
+        h("span", {}, "Arc colors: ", Object.entries(STATUS_COLOR).map(([k, c]) => h("b", { style:"color:" + c + ";margin-right:.4rem" }, "━ " + k)))),
+      list(events)] : [E.emptyState("No events yet. Add the first one with “+ Add event”.")]));
+}
+
+function list(events) {
+  const out = [];
+  let last = "";
+  events.forEach(e => {
+    const b = E.bookOf(e.book);
+    if (b.id !== last) { last = b.id; out.push(h("h2", {}, b.name)); }
+    const rel = data.theories.filter(t => (t.foreshadow || []).includes(e.id) || t.revealId === e.id);
+    out.push(h("article", { class:"ev", id:e.id },
+      h("div", { class:"when" }, h("span", { class:"dot", style:"background:" + b.color }), [e.chapter && "Ch. " + e.chapter, e.page && "p. " + e.page, e.edition].filter(Boolean).join(" · ") || "no page yet",
+        e.kind !== "event" ? h("div", {}, h("span", { class:"pill " + (e.kind === "reveal" ? "s-confirmed" : "s-missing") }, e.kind)) : null),
+      h("div", {}, h("h3", {}, e.title, E.unverified(e)), e.desc ? h("p", {}, e.desc) : null,
+        h("div", { class:"row", style:"margin-top:.5rem" },
+          (e.chars || []).map(id => E.byId("characters", id)).filter(Boolean).map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, c.name)),
+          rel.map(t => h("a", { class:"chip", href:"theories.html#" + t.id, style:"border-color:" + STATUS_COLOR[t.status] }, "✦ " + t.title)),
+          h("button", { class:"btn sm", onclick:() => editForm(e) }, "Edit")))));
+  });
+  return h("div", {}, out);
+}
+render();
+if (location.hash) setTimeout(() => document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"center" }), 50);
+</script></body></html>

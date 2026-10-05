@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dragons — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, svg, data } = E;
+E.layout("dragons.html", "Dragons &amp; <em>bloodlines</em>", "Record each dragon’s family, sire and dam, rider and fate. The genealogy view draws the tree from the parents you enter.");
+const app = document.getElementById("app");
+const COLORS = { black:"#2b2b2b", red:"#b0372a", orange:"#d9822b", brown:"#7b5434", green:"#4c8a55", blue:"#4a6fa8", tan:"#c4a77d", gold:"#c9a227", gray:"#8a8a8a", grey:"#8a8a8a", white:"#bdb7ad", yellow:"#d4b83c" };
+const colorOf = d => COLORS[(d.color || "").toLowerCase().split(/[\s,/]/)[0]] || "#a8a29a";
+const STATUS = [["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]];
+let tab = "families";
+
+const editForm = (d = {}) => E.form({
+  title: d.id ? "Edit dragon" : "Add dragon", value:d,
+  fields: [
+    { k:"name", label:"Name", type:"text" },
+    { k:"color", label:"Color", type:"text", placeholder:"e.g. black, red, green…" },
+    { k:"family", label:"Family / bloodline / herd", type:"text", hint:"Dragons sharing this text are grouped together." },
+    { k:"sire", label:"Sire (father)", type:"select", options:E.optionsOf("dragons", x => x.name, "— unknown —").filter(o => o.v !== d.id) },
+    { k:"dam", label:"Dam (mother)", type:"select", options:E.optionsOf("dragons", x => x.name, "— unknown —").filter(o => o.v !== d.id) },
+    { k:"riderId", label:"Bonded rider", type:"select", options:E.optionsOf("characters", c => c.name, "— none —") },
+    { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
+    { k:"notes", label:"Notes", type:"textarea" },
+    { k:"cites", label:"Page references", type:"cites" },
+  ],
+  onSave: o => { o.id = o.id || E.uid("d"); E.upsert("dragons", o); render(); },
+  onDelete: d.id ? () => { data.dragons.forEach(x => { if (x.sire === d.id) x.sire = ""; if (x.dam === d.id) x.dam = ""; }); E.remove("dragons", d.id); render(); } : null,
+});
+
+const dragonCard = d => {
+  const rider = E.byId("characters", d.riderId), s = E.byId("dragons", d.sire), m = E.byId("dragons", d.dam);
+  return h("div", { class:"card", id:d.id },
+    h("div", { class:"row", style:"justify-content:space-between" },
+      h("h3", {}, h("span", { class:"dot", style:"background:" + colorOf(d) }), d.name, E.unverified(d)), h("span", { class:"pill s-" + d.status }, d.status === "unknown" ? "not set" : d.status)),
+    h("div", { class:"meta" }, [d.color, rider && "rider: " + rider.name, s && "sire: " + s.name, m && "dam: " + m.name].filter(Boolean).join(" · ") || "Nothing recorded yet"),
+    d.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, d.notes) : null,
+    (d.cites || []).map(E.citeView),
+    h("div", { style:"margin-top:.7rem" }, h("button", { class:"btn sm", onclick:() => editForm(d) }, "Edit")));
+};
+
+function families() {
+  if (!data.dragons.length) return E.emptyState("No dragons yet.");
+  const groups = {};
+  data.dragons.forEach(d => (groups[d.family || "No family recorded"] ||= []).push(d));
+  return Object.entries(groups).sort(([a], [b]) => a.startsWith("No ") ? 1 : b.startsWith("No ") ? -1 : a.localeCompare(b)).map(([name, list]) =>
+    h("section", {}, h("h2", {}, name, h("span", { class:"meta" }, "  " + list.length)), h("div", { class:"grid" }, list.sort((a, b) => a.name.localeCompare(b.name)).map(dragonCard))));
+}
+
+function tree() {
+  const ds = data.dragons, map = Object.fromEntries(ds.map(d => [d.id, d]));
+  const gen = {}, g = (d, seen = new Set()) => {
+    if (gen[d.id] != null) return gen[d.id]; if (seen.has(d.id)) return 0; seen.add(d.id);
+    const ps = [map[d.sire], map[d.dam]].filter(Boolean);
+    return gen[d.id] = ps.length ? Math.max(...ps.map(p => g(p, seen))) + 1 : 0;
+  };
+  ds.forEach(d => g(d));
+  const linked = new Set(); ds.forEach(d => { if (map[d.sire] || map[d.dam]) { linked.add(d.id); linked.add(d.sire); linked.add(d.dam); } });
+  const shown = ds.filter(d => linked.has(d.id));
+  if (!shown.length) return E.emptyState("No parent links yet. Edit a dragon and choose its sire and dam; dragons with no recorded parents appear once they are someone’s parent.");
+  const cols = {}; shown.forEach(d => (cols[gen[d.id]] ||= []).push(d));
+  const W = 170, H = 46, GX = 70, GY = 18, pos = {};
+  const maxGen = Math.max(...Object.keys(cols).map(Number));
+  for (let k = 0; k <= maxGen; k++) {
+    const col = cols[k] || [];
+    col.sort((a, b) => {
+      const avg = d => { const ys = [d.sire, d.dam].map(p => pos[p]?.y).filter(v => v != null); return ys.length ? ys.reduce((x, y) => x + y) / ys.length : 0; };
+      return avg(a) - avg(b) || a.name.localeCompare(b.name);
+    });
+    col.forEach((d, i) => pos[d.id] = { x:k * (W + GX) + 10, y:i * (H + GY) + 10 });
+  }
+  const rows = Math.max(...Object.values(cols).map(c => c.length));
+  const el = svg("svg", { width:(maxGen + 1) * (W + GX) + 20, height:rows * (H + GY) + 20, role:"img", "aria-label":"Dragon genealogy tree" });
+  shown.forEach(d => [["sire","#4a6fa8"], ["dam","#a8502d"]].forEach(([k, col]) => {
+    const p = pos[d[k]], c = pos[d.id]; if (!p || !c) return;
+    const x1 = p.x + W, y1 = p.y + H / 2, x2 = c.x, y2 = c.y + H / 2, mx = (x1 + x2) / 2;
+    el.append(svg("path", { d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`, fill:"none", stroke:col, "stroke-width":1.6, opacity:.7 }));
+  }));
+  shown.forEach(d => {
+    const p = pos[d.id], r = E.byId("characters", d.riderId);
+    const gEl = svg("g", { style:"cursor:pointer", tabindex:0, role:"button", "aria-label":"Edit " + d.name });
+    gEl.append(svg("rect", { x:p.x, y:p.y, width:W, height:H, rx:10, fill:"#fbf9f5", stroke:"rgba(35,34,31,.25)" }),
+      svg("circle", { cx:p.x + 16, cy:p.y + H / 2, r:6, fill:colorOf(d) }),
+      Object.assign(svg("text", { x:p.x + 30, y:p.y + 20, "font-size":14, fill:"#23221f" }), { textContent:d.name }),
+      Object.assign(svg("text", { x:p.x + 30, y:p.y + 36, "font-size":11, fill:"#7c776d" }), { textContent:(r ? r.name : "no rider recorded") + (d.status === "deceased" ? " †" : "") }));
+    gEl.addEventListener("click", () => editForm(d));
+    gEl.addEventListener("keydown", e => { if (e.key === "Enter") editForm(d); });
+    el.append(gEl);
+  });
+  return h("div", {}, h("div", { class:"legend" }, h("span", {}, h("b", { style:"color:#4a6fa8" }, "━"), " sire"), h("span", {}, h("b", { style:"color:#a8502d" }, "━"), " dam"), h("span", {}, "Click a dragon to edit")),
+    h("div", { class:"axis-wrap", style:"padding:10px" }, el));
+}
+
+function render() {
+  app.replaceChildren(
+    h("div", { class:"toolbar" }, E.tabs([["families","Families"],["tree","Genealogy tree"]], tab, k => { tab = k; render(); }), h("span", { class:"grow" }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add dragon")),
+    tab === "families" ? h("div", {}, families()) : tree());
+}
+render();
+</script></body></html>

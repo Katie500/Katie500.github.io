@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, data } = E;
+E.layout("index.html", "The Empyrean <em>notebook</em>", "A private place to track theories, foreshadowing, dragon bloodlines and who is still standing across Fourth Wing, Iron Flame, Onyx Storm and Threshing Day.");
+const app = document.getElementById("app");
+app.append(h("p", { class:"banner" }, "Contains spoilers for every book covered. Your notebook is stored in this browser only, so use “Export backup” in the footer now and then."));
+
+const tiles = [
+  ["timeline.html","Timeline", data.events.length + " events", "Everything that has happened, with foreshadowing arcs that connect clues to reveals."],
+  ["theories.html","Theories", data.theories.length + " theories", "Track each theory with page-numbered evidence for and against."],
+  ["notices.html","Notices", data.notices.length + " logged", "Public notices and bonus content from Rebecca’s sites, tracked as read or unread."],
+  ["dragons.html","Dragons", data.dragons.length + " dragons", "Families, sires and dams, plus a genealogy tree."],
+  ["characters.html","Characters", data.characters.length + " characters", "Active, missing or dead, with a separate view for the rebel children."],
+];
+app.append(h("div", { class:"grid", style:"margin-top:1.6rem" }, tiles.map(([href, t, n, d]) =>
+  h("a", { class:"card", href, style:"text-decoration:none" }, h("h3", {}, t), h("div", { class:"meta" }, n), h("p", { style:"margin-top:.5rem;font-size:14px" }, d)))));
+
+const by = s => data.characters.filter(c => c.status === s).length;
+app.append(h("h2", {}, "At a glance"),
+  h("div", { class:"row" },
+    h("span", { class:"pill s-active" }, by("active") + " active"),
+    h("span", { class:"pill s-missing" }, by("missing") + " missing"),
+    h("span", { class:"pill s-deceased" }, by("deceased") + " deceased"),
+    h("span", { class:"pill s-unknown" }, by("unknown") + " not set yet")));
+
+const recent = [...data.theories].sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 4);
+app.append(h("h2", {}, "Recently touched theories"),
+  recent.length ? h("div", { class:"grid" }, recent.map(t => h("a", { class:"card", href:"theories.html#" + t.id, style:"text-decoration:none" },
+    h("h3", {}, t.title), h("span", { class:"pill s-" + t.status }, t.status)))) : E.emptyState("No theories yet."));
+app.append(h("h2", {}, "How page numbers work"),
+  h("p", { class:"lede" }, "Page numbers differ between hardcover, paperback, ebook and audiobook, so every reference stores the book, the edition and the page together. The edition you used last is remembered as the default for your next entry."),
+  h("p", { class:"lede", style:"margin-top:.6rem" }, "Entries marked ", h("span", { class:"unv" }, "check"), " were pre-filled from memory. Open one, confirm it against your copy, and save to clear the flag."));
+</script></body></html>

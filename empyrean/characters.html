@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Characters — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, data } = E;
+E.layout("characters.html", "Who’s <em>still standing</em>", "Track every character’s status, their dragon, and the rebel children separately.");
+const app = document.getElementById("app");
+const STATUS = [["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]];
+let tab = "all", q = "";
+
+const editForm = (c = {}) => E.form({
+  title: c.id ? "Edit character" : "Add character", value:c,
+  fields: [
+    { k:"name", label:"Name", type:"text" },
+    { k:"group", label:"Role", type:"select", options:[{v:"rider",l:"Rider"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
+    { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
+    { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
+    { k:"dragonId", label:"Bonded dragon", type:"select", options:E.optionsOf("dragons", d => d.name, "— none —") },
+    { k:"fateEventId", label:"Event where their status changed", type:"select", options:E.optionsOf("events", e => E.bookOf(e.book).id + ": " + e.title, "— none —") },
+    { k:"notes", label:"Notes", type:"textarea" },
+    { k:"cites", label:"Page references", type:"cites" },
+  ],
+  onSave: o => { o.id = o.id || E.uid("c"); E.upsert("characters", o); render(); },
+  onDelete: c.id ? () => { E.remove("characters", c.id); render(); } : null,
+});
+
+function card(c) {
+  const d = E.byId("dragons", c.dragonId), ev = E.byId("events", c.fateEventId);
+  return h("div", { class:"card", id:c.id },
+    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, c.name, E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
+    h("div", { class:"meta" }, c.group, c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : ""),
+    ev ? h("div", { class:"meta" }, "Changed at: ", h("a", { href:"timeline.html#" + ev.id }, ev.title)) : null,
+    c.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, c.notes) : null,
+    (c.cites || []).map(E.citeView),
+    h("div", { class:"row", style:"margin-top:.7rem" },
+      h("select", { "aria-label":"Status of " + c.name, style:"width:auto;padding:.25rem .5rem;font-size:13px", onchange:e => { c.status = e.target.value; E.upsert("characters", c); render(); } },
+        STATUS.map(([v, l]) => h("option", { value:v, selected:c.status === v }, l))),
+      h("button", { class:"btn sm", onclick:() => editForm(c) }, "Edit")));
+}
+
+function render() {
+  const list = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "riders" ? c.group === "rider" : c.status === tab)) && c.name.toLowerCase().includes(q));
+  const counts = k => data.characters.filter(c => c.status === k).length;
+  app.replaceChildren(
+    h("div", { class:"toolbar" },
+      E.tabs([["all","All"],["riders","Riders"],["rebel","Rebel children"],["active","Active"],["missing","Missing"],["deceased","Deceased"]], tab, k => { tab = k; render(); }),
+      h("span", { class:"grow" }),
+      h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search characters", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add character")),
+    h("div", { class:"row", style:"margin-bottom:1rem" },
+      h("span", { class:"pill s-active" }, counts("active") + " active"), h("span", { class:"pill s-missing" }, counts("missing") + " missing"),
+      h("span", { class:"pill s-deceased" }, counts("deceased") + " deceased"), h("span", { class:"pill s-unknown" }, counts("unknown") + " not set")),
+    h("div", { id:"list" }));
+  renderList();
+  function renderList() {
+    const l = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "riders" ? c.group === "rider" : c.status === tab)) && c.name.toLowerCase().includes(q))
+      .sort((a, b) => a.name.localeCompare(b.name));
+    document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState(tab === "rebel" ? "No rebel children marked yet. Edit a character and tick “Rebel child”." : "Nothing matches."));
+  }
+}
+render();
+</script></body></html>

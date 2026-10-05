@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notices — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, data } = E;
+E.layout("notices.html", "Notices <em>&amp; bonus content</em>", "A log of the public notices and bonus material from Rebecca Yarros’s sites, so you can track what you’ve read and what it might mean.");
+const app = document.getElementById("app");
+const SOURCES = [["dragonkind","DragonKind library"],["bonus","Bonus content"],["other","Other"]];
+let src = "all", q = "";
+
+const editForm = (n = {}) => E.form({
+  title: n.id ? "Edit notice" : "Log a notice", value:n.id ? n : { source:src === "all" ? "dragonkind" : src, book:"OT", read:false, theoryIds:[] },
+  fields: [
+    { k:"title", label:"Title", type:"text" },
+    { k:"source", label:"Where it’s from", type:"select", options:SOURCES.map(([v, l]) => ({ v, l })) },
+    { k:"url", label:"Link", type:"url", placeholder:"https://…" },
+    { k:"date", label:"Date posted", type:"date" },
+    { k:"book", label:"Related book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
+    { k:"summary", label:"Summary (your own words)", type:"textarea", hint:"The original text belongs to the author, so keep to your own notes and use the link above to read it." },
+    { k:"read", label:"I’ve read this", type:"checkbox" },
+    { k:"theoryIds", label:"Theories it relates to", type:"multi", options:E.optionsOf("theories", t => t.title) },
+    { k:"cites", label:"Book page references it connects to", type:"cites" },
+  ],
+  onSave: o => { o.id = o.id || E.uid("n"); E.upsert("notices", o); render(); },
+  onDelete: n.id ? () => { E.remove("notices", n.id); render(); } : null,
+});
+
+const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top:20px" },
+  h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, n.title),
+    h("span", { class:"pill " + (n.read ? "s-active" : "s-missing") }, n.read ? "read" : "unread")),
+  h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.date, E.bookOf(n.book).name].filter(Boolean).join(" · ")),
+  n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
+  (n.cites || []).map(E.citeView),
+  h("div", { class:"row", style:"margin-top:.6rem" },
+    (n.theoryIds || []).map(id => E.byId("theories", id)).filter(Boolean).map(t => h("a", { class:"chip", href:"theories.html#" + t.id }, "✦ " + t.title)),
+    n.url ? h("a", { class:"btn sm", href:n.url, target:"_blank", rel:"noopener" }, "Open ↗") : null,
+    h("button", { class:"btn sm", onclick:() => { n.read = !n.read; E.upsert("notices", n); render(); } }, n.read ? "Mark unread" : "Mark read"),
+    h("button", { class:"btn sm", onclick:() => editForm(n) }, "Edit")));
+
+function render() {
+  app.replaceChildren(
+    h("div", { class:"grid", style:"margin:1.6rem 0 1.4rem" },
+      h("a", { class:"card", href:"https://dragonkind.com/library", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "DragonKind library ↗"), h("p", { class:"meta" }, "dragonkind.com/library — open it in a new tab, then log what you find here.")),
+      h("a", { class:"card", href:"https://rebeccayarros.com/bonus-content", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "Bonus content ↗"), h("p", { class:"meta" }, "rebeccayarros.com/bonus-content — the author’s official extras."))),
+    h("div", { class:"toolbar" },
+      E.tabs([["all","All"], ...SOURCES], src, k => { src = k; render(); }), h("span", { class:"grow" }),
+      h("input", { type:"search", placeholder:"Search notices…", value:q, "aria-label":"Search notices", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Log a notice")),
+    h("div", { id:"list" }));
+  renderList();
+}
+function renderList() {
+  const l = data.notices.filter(n => (src === "all" || n.source === src) && (n.title + " " + (n.summary || "")).toLowerCase().includes(q)).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState("Nothing logged yet. Open one of the sources above and add notices as you read them."));
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
+}
+render();
+</script></body></html>

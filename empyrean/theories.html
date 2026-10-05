@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theories — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, data } = E;
+E.layout("theories.html", "Theories <em>&amp; evidence</em>", "Every theory gets a status, the clues that foreshadow it, the reveal (or a note that it’s still open), and page-numbered evidence for and against.");
+const app = document.getElementById("app");
+const STATUSES = [["speculative","Speculative"],["supported","Well supported"],["confirmed","Confirmed"],["debunked","Debunked"]];
+let st = "all", q = "";
+
+const evLabel = e => E.bookOf(e.book).id + ": " + e.title;
+const editForm = (t = {}) => E.form({
+  title: t.id ? "Edit theory" : "New theory", value:t.id ? t : { status:"speculative", confidence:3, foreshadow:[], evidence:[] },
+  fields: [
+    { k:"title", label:"Theory", type:"text", placeholder:"One sentence, e.g. “X is secretly …”" },
+    { k:"body", label:"Reasoning", type:"textarea" },
+    { k:"status", label:"Status", type:"select", options:STATUSES.map(([v, l]) => ({ v, l })) },
+    { k:"confidence", label:"Your confidence (1–5)", type:"number" },
+    { k:"foreshadow", label:"Timeline events that foreshadow it", type:"multi", options:E.optionsOf("events", evLabel), hint:"Add the clues on the Timeline page first, then link them here to draw the arcs." },
+    { k:"revealId", label:"Event where it’s revealed", type:"select", options:E.optionsOf("events", evLabel, "— not yet revealed —") },
+    { k:"revealText", label:"The truth that was revealed (if any)", type:"text" },
+    { k:"evidence", label:"Evidence (with page numbers)", type:"cites", stance:true },
+  ],
+  onSave: o => { o.id = o.id || E.uid("th"); o.created = o.created || Date.now(); o.confidence = Math.max(1, Math.min(5, o.confidence || 3)); E.upsert("theories", o); render(); },
+  onDelete: t.id ? () => { E.remove("theories", t.id); render(); } : null,
+});
+
+function card(t) {
+  const ev = (t.evidence || []), sup = ev.filter(x => x.stance === "support").length, ag = ev.filter(x => x.stance === "against").length;
+  const clues = (t.foreshadow || []).map(id => E.byId("events", id)).filter(Boolean), rev = E.byId("events", t.revealId);
+  const notices = data.notices.filter(n => (n.theoryIds || []).includes(t.id));
+  return h("article", { class:"card", id:t.id, style:"scroll-margin-top:20px" },
+    h("div", { class:"row", style:"justify-content:space-between" },
+      h("h3", {}, t.title, E.unverified(t)),
+      h("span", { class:"pill s-" + t.status }, t.status)),
+    h("div", { class:"meta" }, "Confidence ", "●".repeat(t.confidence || 0) + "○".repeat(5 - (t.confidence || 0))),
+    t.body ? h("p", { style:"margin:.6rem 0;white-space:pre-wrap" }, t.body) : null,
+    h("div", { class:"f" }, h("label", {}, "Clues → reveal"),
+      h("div", { class:"row" },
+        clues.length ? clues.map(e => h("a", { class:"chip", href:"timeline.html#" + e.id }, evLabel(e) + (e.page ? " · p. " + e.page : ""))) : h("span", { class:"meta" }, "no clues linked"),
+        h("span", {}, "→"),
+        rev ? h("a", { class:"chip", href:"timeline.html#" + rev.id, style:"border-color:var(--ok)" }, evLabel(rev)) : h("span", { class:"chip", style:"border-style:dashed" }, t.revealText || "not yet revealed"),
+        rev && t.revealText ? h("span", { class:"meta" }, t.revealText) : null)),
+    ev.length ? h("div", { class:"f" }, h("label", {}, "Evidence — " + sup + " for, " + ag + " against"),
+      sup + ag ? h("div", { class:"bar", title:sup + " supporting, " + ag + " against" }, h("i", { style:"width:" + Math.round(100 * sup / (sup + ag)) + "%" })) : null, ev.map(E.citeView)) : null,
+    notices.length ? h("div", { class:"row" }, h("span", { class:"meta" }, "Related notices:"), notices.map(n => h("a", { class:"chip", href:"notices.html#" + n.id }, n.title))) : null,
+    h("div", { style:"margin-top:.8rem" }, h("button", { class:"btn sm", onclick:() => editForm(t) }, "Edit")));
+}
+
+function render() {
+  app.replaceChildren(
+    h("div", { class:"toolbar" },
+      E.tabs([["all","All"], ...STATUSES], st, k => { st = k; render(); }), h("span", { class:"grow" }),
+      h("input", { type:"search", placeholder:"Search theories…", value:q, "aria-label":"Search theories", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ New theory")),
+    h("div", { id:"list" }));
+  renderList();
+}
+function renderList() {
+  const l = data.theories.filter(t => (st === "all" || t.status === st) && (t.title + " " + (t.body || "") + (t.evidence || []).map(e => e.note).join(" ")).toLowerCase().includes(q))
+    .sort((a, b) => (b.updated || 0) - (a.updated || 0));
+  document.getElementById("list").replaceChildren(l.length ? h("div", { style:"display:grid;gap:14px" }, l.map(card)) : E.emptyState("No theories here yet."));
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
+}
+render();
+</script></body></html>
