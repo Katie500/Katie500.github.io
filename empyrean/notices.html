@@ -19,7 +19,9 @@ const editForm = (n = {}) => E.form({
     { k:"title", label:"Title", type:"text" },
     { k:"source", label:"Where it’s from", type:"select", options:SOURCES.map(([v, l]) => ({ v, l })) },
     { k:"url", label:"Link", type:"url", placeholder:"https://…" },
-    { k:"date", label:"Date posted", type:"date" },
+    { k:"inWorld", label:"In-world year", type:"text", placeholder:"e.g. Year 628" },
+    { k:"transcriber", label:"Transcribed by", type:"text" },
+    { k:"date", label:"Date posted (real world)", type:"date" },
     { k:"book", label:"Related book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
     { k:"summary", label:"Summary (your own words)", type:"textarea", hint:"The original text belongs to the author, so keep to your own notes and use the link above to read it." },
     { k:"read", label:"I’ve read this", type:"checkbox" },
@@ -33,7 +35,7 @@ const editForm = (n = {}) => E.form({
 const card = n => h("article", { class:"card", id:n.id, style:"scroll-margin-top:20px" },
   h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, n.title),
     h("span", { class:"pill " + (n.read ? "s-active" : "s-missing") }, n.read ? "read" : "unread")),
-  h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.date, E.bookOf(n.book).name].filter(Boolean).join(" · ")),
+  h("div", { class:"meta" }, [SOURCES.find(s => s[0] === n.source)?.[1], n.inWorld, n.date, n.transcriber && "transcribed by " + n.transcriber, n.book !== "OT" && E.bookOf(n.book).name].filter(Boolean).join(" · ")),
   n.summary ? h("p", { style:"margin:.5rem 0;white-space:pre-wrap" }, n.summary) : null,
   (n.cites || []).map(E.citeView),
   h("div", { class:"row", style:"margin-top:.6rem" },
@@ -55,7 +57,7 @@ function render() {
   renderList();
 }
 function renderList() {
-  const l = data.notices.filter(n => (src === "all" || n.source === src) && (n.title + " " + (n.summary || "")).toLowerCase().includes(q)).sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  const l = data.notices.filter(n => (src === "all" || n.source === src) && (n.title + " " + (n.summary || "")).toLowerCase().includes(q)).sort((a, b) => (b.date || "").localeCompare(a.date || "") || (a.seq ?? 999) - (b.seq ?? 999));
   document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState("Nothing logged yet. Open one of the sources above and add notices as you read them."));
   if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
 }

@@ -38,12 +38,23 @@ const E = (() => {
   let data;
   const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[] });
   const load = () => {
-    try { const raw = localStorage.getItem(KEY); if (raw) { data = Object.assign(empty(), JSON.parse(raw)); return; } } catch (e) { console.warn(e); }
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        data = Object.assign(empty(), JSON.parse(raw)); data.removedSeed = data.removedSeed || [];
+        // bring in starter entries added since this browser last loaded the notebook (never resurrecting ones you deleted)
+        let added = false;
+        for (const list of ["characters","dragons","events","theories","notices"]) for (const s of (window.EMPYREAN_SEED?.[list] || []))
+          if (!data[list].some(x => x.id === s.id) && !data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; }
+        if (added) save();
+        return;
+      }
+    } catch (e) { console.warn(e); }
     data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); save();
   };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) { console.warn("Could not save", e); } };
   const upsert = (list, item) => { const i = data[list].findIndex(x => x.id === item.id); item.updated = Date.now(); if (i >= 0) data[list][i] = item; else data[list].push(item); save(); };
-  const remove = (list, id) => { data[list] = data[list].filter(x => x.id !== id); save(); };
+  const remove = (list, id) => { if (id.startsWith("s-")) (data.removedSeed ||= []).push(id); data[list] = data[list].filter(x => x.id !== id); save(); };
   const byId = (list, id) => data[list].find(x => x.id === id);
   const sortEvents = list => [...list].sort((a, b) => BOOKS.findIndex(x => x.id === a.book) - BOOKS.findIndex(x => x.id === b.book) || (a.order ?? 0) - (b.order ?? 0));
 
