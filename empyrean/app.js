@@ -64,12 +64,23 @@ const E = (() => {
           if (data[list][i].venin === undefined && s.venin) { data[list][i].venin = true; added = true; }
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
         }
+        if (fixSpellings()) added = true;
         if (added) save();
         return;
       }
     } catch (e) { console.warn(e); }
     data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); data.fromSeed = true; data.removedSeed = []; save();
     fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
+  };
+  // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
+  const SPELLING_FIXES = [[/Offendra/g, "Affendra"]];
+  const fixSpellings = () => {
+    let changed = false;
+    for (const n of data.notices || []) for (const k of ["title", "text", "summary"]) if (typeof n[k] === "string") {
+      let v = n[k]; for (const [re, to] of SPELLING_FIXES) v = v.replace(re, to);
+      if (v !== n[k]) { n[k] = v; changed = true; }
+    }
+    return changed;
   };
   async function fetchPublished() {
     try {
@@ -198,24 +209,52 @@ const E = (() => {
   const gh = (s, extra = {}) => ({ headers:{ Accept:"application/vnd.github+json", Authorization:"Bearer " + s.token, "X-GitHub-Api-Version":"2022-11-28", ...extra } });
   const ghUrl = s => `https://api.github.com/repos/${encodeURIComponent(s.owner)}/${encodeURIComponent(s.repo)}/contents/${DATA_PATH}`;
   const ghError = async r => { let m = ""; try { m = (await r.json()).message; } catch (e) {} return r.status === 401 ? "GitHub rejected the token (expired or mistyped)." : r.status === 403 || r.status === 404 ? "GitHub says no access (" + r.status + "). Check the token has Contents: Read and write on this repository. " + (m || "") : "GitHub error " + r.status + ". " + (m || ""); };
+  const SHA_KEY = "empyrean.publishedSha.v1";
+  const noCache = u => u + (u.includes("?") ? "&" : "?") + "t=" + Date.now();
+  // GitHub's API answers can be cached by the browser for a minute, which hands back an out-of-date file id (sha) and causes a 409.
+  // So every read asks for a fresh copy, and a write that hits a 409 re-reads the id and tries again.
+  async function remoteInfo(s) {
+    const r = await fetch(noCache(ghUrl(s) + "?ref=" + encodeURIComponent(s.branch)), { cache:"no-store", ...gh(s) });
+    if (r.status === 404) return null;
+    if (!r.ok) throw new Error(await ghError(r));
+    return r.json();
+  }
   async function publish(s) {
-    let sha; const r = await fetch(ghUrl(s) + "?ref=" + encodeURIComponent(s.branch), gh(s));
-    if (r.ok) sha = (await r.json()).sha; else if (r.status !== 404) throw new Error(await ghError(r));
     const snap = { ...data }; delete snap.fromSeed;
-    const body = { message:"Update Empyrean notebook data", content:b64(JSON.stringify(snap, null, 1)), branch:s.branch }; if (sha) body.sha = sha;
-    const w = await fetch(ghUrl(s), { method:"PUT", ...gh(s, { "Content-Type":"application/json" }), body:JSON.stringify(body) });
-    if (!w.ok) throw new Error(await ghError(w));
-    try { localStorage.setItem(PUB_KEY, hash(JSON.stringify(data))); } catch (e) {}
-    updateBadge();
+    const content = b64(JSON.stringify(snap, null, 1));
+    let known = null; try { known = localStorage.getItem(SHA_KEY); } catch (e) {}
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const info = await remoteInfo(s);
+      if (attempt === 0 && info && known && info.sha !== known &&
+          !confirm("The saved copy on the site has changed since you last saved or loaded it (for example, it was edited directly). Saving now replaces those changes with what is in this browser.\n\nPress OK to save anyway, or Cancel and use “Load from site” first.")) throw new Error("Not saved. Use “Load from site” to bring in the newer copy first.");
+      const body = { message:"Update Empyrean notebook data", content, branch:s.branch }; if (info) body.sha = info.sha;
+      const w = await fetch(ghUrl(s), { method:"PUT", cache:"no-store", ...gh(s, { "Content-Type":"application/json" }), body:JSON.stringify(body) });
+      if (w.ok) {
+        const res = await w.json();
+        try { localStorage.setItem(PUB_KEY, hash(JSON.stringify(data))); if (res.content && res.content.sha) localStorage.setItem(SHA_KEY, res.content.sha); } catch (e) {}
+        updateBadge(); return;
+      }
+      if ((w.status === 409 || w.status === 422) && attempt < 2) continue;   // stale file id: read it again and retry
+      throw new Error(await ghError(w));
+    }
   }
   async function pull(s) {
-    let r;
-    if (s.token) r = await fetch(ghUrl(s) + "?ref=" + encodeURIComponent(s.branch), gh(s, { Accept:"application/vnd.github.raw+json" }));
-    else r = await fetch(new URL("data.json", location.href) + "?t=" + Date.now(), { cache:"no-store" });
-    if (r.status === 404) throw new Error("Nothing has been saved to the site yet.");
-    if (!r.ok) throw new Error(await ghError(r));
-    const obj = JSON.parse(await r.text());
+    let text, sha = null;
+    if (s.token) {
+      const info = await remoteInfo(s);
+      if (!info) throw new Error("Nothing has been saved to the site yet.");
+      sha = info.sha;
+      text = new TextDecoder().decode(Uint8Array.from(atob((info.content || "").replace(/\s/g, "")), c => c.charCodeAt(0)));
+      if (!text && info.download_url) text = await (await fetch(noCache(info.download_url), { cache:"no-store" })).text();
+    } else {
+      const r = await fetch(noCache(new URL("data.json", location.href).href), { cache:"no-store" });
+      if (r.status === 404) throw new Error("Nothing has been saved to the site yet.");
+      if (!r.ok) throw new Error("Couldn\u2019t load the saved copy (" + r.status + ").");
+      text = await r.text();
+    }
+    const obj = JSON.parse(text);
     if (!obj || !Array.isArray(obj.theories)) throw new Error("The saved file isn\u2019t a notebook.");
+    if (sha) { try { localStorage.setItem(SHA_KEY, sha); } catch (e) {} }
     return obj;
   }
   const updateBadge = () => {
