@@ -1,47 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-        <title>Katie's Portfolio</title>
-        <style>
-            body,h1,h5 {font-family: "Raleway", sans-serif}
-            body, html {height: 100%}
-            .bgimg {
-            opacity: 0.9;
-            background-image: url('./pictures/backgroudPortfolio.JPG');
-            min-height: 100%;
-            background-position: center;
-            background-size: cover;
-            }
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katie Duthie</title>
+<meta name="description" content="Programmer, designer, artist. Solver of problems you didn't know you had.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f4f0e9; --ink:#23221f; --soft:#7c776d; --line:rgba(35,34,31,.16); --acc:#8b78a8; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { min-height:100%; background:var(--bg); color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
 
-        </style>
+  .page { min-height:100vh; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:clamp(24px,6vw,96px); align-items:center; padding:clamp(24px,5vw,72px); max-width:1400px; margin:0 auto; position:relative; }
 
-    </head>
-    <body>
-        
-        <div class="bgimg w3-display-container w3-text-white">
-            <div class="w3-display-middle w3-jumbo">
-              <p style="-webkit-text-stroke: 1px grey;">portfolio of katie knauss</p>
-            </div>
-            <div class="w3-display-topleft w3-container w3-xlarge">
-              <p><button onclick="window.location.href='./proj.html', handleClick(event);"  class="w3-button w3-black" style="width: 100%">projects</button></p>
-              <p><button onclick="window.location.href='./projects/decidr.html', handleClick(event);" class="w3-button w3-black " style="width: 100%">latest endeavor</button></p>
-            </div>
-            <div class="w3-display-bottomleft w3-container">
-              <p class="w3-xlarge">programmer | designer | artist</p>
-              <p class="w3-large">solver of problems you didn't know you had</p>
-              <p>powered by <a href="https://katie500.github.io/index.html" target="_blank">KT Designs</a></p>
-            </div>
-          </div>
-          
-         
-          
-      
+  .top { position:absolute; left:clamp(24px,5vw,72px); right:clamp(24px,5vw,72px); top:clamp(20px,3.5vw,44px);
+    display:flex; justify-content:space-between; font-size:13px; letter-spacing:.02em; }
+  .top nav { display:flex; gap:1.8rem; }
+  .top a { color:var(--soft); transition:color .3s; }
+  .top a:hover { color:var(--ink); }
+  .top .mark { color:var(--ink); font-family:"Fraunces",serif; font-size:16px; font-weight:300; }
 
-        
-    </body>
+  .copy { opacity:0; transform:translateY(14px); animation:in 1.4s .15s cubic-bezier(.2,.7,.2,1) forwards; }
+  .eyebrow { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--soft); margin-bottom:1.6rem; display:flex; align-items:center; gap:.9rem; }
+  .eyebrow::before { content:""; width:36px; height:1px; background:var(--soft); }
+  h1 { font-family:"Fraunces",Georgia,serif; font-weight:300; font-size:clamp(2.8rem,6.6vw,6.2rem); line-height:1.02; letter-spacing:-.025em; }
+  h1 em { font-style:italic; color:var(--acc); }
+  .lede { margin-top:1.8rem; max-width:30ch; font-size:clamp(1rem,1.3vw,1.2rem); line-height:1.6; color:var(--soft); }
+  .cta { margin-top:2.4rem; display:flex; gap:1.6rem; align-items:center; flex-wrap:wrap; }
+  .btn { display:inline-flex; align-items:center; gap:.7rem; padding:.85rem 1.5rem; border:1px solid var(--ink); border-radius:999px; font-size:14px; font-weight:500;
+    transition:background .35s, color .35s, gap .35s; }
+  .btn:hover { background:var(--ink); color:var(--bg); gap:1rem; }
+  .ghost { font-size:14px; color:var(--soft); border-bottom:1px solid var(--line); padding-bottom:2px; transition:color .3s, border-color .3s; }
+  .ghost:hover { color:var(--ink); border-color:var(--ink); }
+
+  .frame { position:relative; width:min(100%,520px,calc((100vh - 170px)*.74)); justify-self:center; aspect-ratio:4/5.4; opacity:0; animation:in 1.6s .35s cubic-bezier(.2,.7,.2,1) forwards; }
+  .frame canvas, .frame .still { position:absolute; inset:0; width:100%; height:100%; border-radius:999px 999px 18px 18px; display:block; }
+  .frame .still { background:url(pictures/backgroudPortfolio.JPG) 82% 75%/cover; }
+  .frame::after { content:""; position:absolute; inset:-14px; border:1px solid var(--line); border-radius:999px 999px 28px 28px; pointer-events:none; }
+  .cap { position:absolute; left:0; right:0; bottom:-34px; display:flex; justify-content:space-between; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--soft); }
+
+  @keyframes in { to { opacity:1; transform:none; } }
+  @media (max-width:820px) {
+    .page { grid-template-columns:1fr; padding-top:84px; padding-bottom:64px; gap:56px; }
+    .frame { order:-1; width:min(78%,380px); }
+  }
+  @media (prefers-reduced-motion:reduce) { .copy,.frame { animation-duration:.01s; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <a class="mark" href="./">Katie Duthie</a>
+    <nav>
+      <a href="proj.html">Work</a>
+      <a href="https://www.linkedin.com/in/katieknauss19/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+
+  <section class="copy">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Programmer,<br>designer, <em>artist.</em></h1>
+    <p class="lede">I solve problems you didn't know you had.</p>
+    <div class="cta">
+      <a class="btn" href="proj.html">See my work <span aria-hidden="true">→</span></a>
+      <a class="ghost" href="index-classic.html">Previous version</a>
+    </div>
+  </section>
+
+  <div class="frame" id="frame">
+    <div class="still" id="still"></div>
+    <canvas id="gl" aria-label="Photo of Katie in a prairie, gently rippling under your cursor" role="img"></canvas>
+    <div class="cap"><span>Prairie, 2023</span><span>Move through it</span></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const SRC = "pictures/backgroudPortfolio.JPG";
+  const FOCUS = [0.82, 0.62];            // where to anchor the crop (x from left, y from top)
+  const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const canvas = document.getElementById("gl"), still = document.getElementById("still"), frame = document.getElementById("frame");
+  const gl = canvas.getContext("webgl", { antialias:false, alpha:true, premultipliedAlpha:false });
+  if (!gl) { canvas.style.display = "none"; return; }
+
+  const MAXR = 10;
+  const vs = `attribute vec2 p; varying vec2 uv; void main(){ uv = p*.5+.5; gl_Position = vec4(p,0.,1.); }`;
+  const fs = `precision highp float; varying vec2 uv;
+    uniform sampler2D tex; uniform vec2 size, res, mouse, focus; uniform float t, near; uniform vec4 rip[${MAXR}];
+    float h(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
+    float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
+      return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }
+    void main(){
+      float asp = res.x/res.y; vec2 off = vec2(0.);
+      for(int i=0;i<${MAXR};i++){
+        vec4 r = rip[i]; float age = t - r.z; if(age<0.||age>4.) continue;
+        vec2 d = (uv-r.xy)*vec2(asp,1.); float L = length(d); float front = age*.22;
+        float w = exp(-pow((L-front)*7.,2.)) * exp(-age*1.1) * r.w;
+        off += normalize(d+1e-5) * sin((L-front)*26.) * w * .007;
+      }
+      // barely-there drift, like wind in the grass
+      float g = smoothstep(.0,.45,1.-uv.y);
+      off += vec2(sin(uv.y*9.+t*.7), cos(uv.x*7.+t*.55)) * .0016 * (.4+g);
+      vec2 dm = (uv-mouse)*vec2(asp,1.); off += -dm * exp(-dot(dm,dm)*9.) * .05 * near;
+      float ra = res.x/res.y, rt = size.x/size.y;
+      vec2 k = ra>rt ? vec2(1., rt/ra) : vec2(ra/rt, 1.);
+      vec2 lo = k*.5, hi = 1.-k*.5; vec2 q = vec2(clamp(mix(lo.x,hi.x,focus.x)+(uv.x+off.x-.5)*k.x, 0., 1.), clamp(mix(lo.y,hi.y,1.-focus.y)+(uv.y+off.y-.5)*k.y, 0., 1.));
+      vec3 c = texture2D(tex, q).rgb;
+      c = c*1.05 + .015;                      // lift the moody original toward soft daylight
+      c = mix(vec3(dot(c,vec3(.3,.59,.11))), c, 1.08);
+      gl_FragColor = vec4(c, 1.);
+    }`;
+  const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+  let prog;
+  try { prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(prog); gl.useProgram(prog); }
+  catch (e) { console.warn(e); canvas.style.display = "none"; return; }
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const U = {}; ["tex","size","res","mouse","focus","t","near"].forEach(k => U[k] = gl.getUniformLocation(prog, k));
+  const uRip = gl.getUniformLocation(prog, "rip");
+  gl.uniform2f(U.focus, FOCUS[0], FOCUS[1]);
+
+  // canvas stays hidden (the CSS still shows) until the texture is ready, so there is never a flash of black
+  canvas.style.opacity = 0; canvas.style.transition = "opacity 1.2s";
+  const tex = gl.createTexture(); let ready = false;
+  const im = new Image();
+  im.onload = () => {
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, im); } catch (e) { console.warn(e); return; }
+    gl.uniform2f(U.size, im.naturalWidth, im.naturalHeight); ready = true; canvas.style.opacity = 1;
+  };
+  im.src = SRC;
+
+  const ripples = Array.from({length:MAXR}, () => [0,0,-100,0]); let rp = 0;
+  const drop = (x, y, s) => { ripples[rp++ % MAXR] = [x, y, performance.now()/1000, s]; };
+  let mx = .5, my = .5, sx = .5, sy = .5, near = 0, over = false, lastDrop = 0;
+  const local = e => { const r = canvas.getBoundingClientRect(); return [(e.clientX-r.left)/r.width, 1-(e.clientY-r.top)/r.height]; };
+  frame.addEventListener("pointermove", e => { [mx, my] = local(e); over = true; });
+  frame.addEventListener("pointerleave", () => over = false);
+  frame.addEventListener("pointerdown", e => { const [x, y] = local(e); drop(x, y, 1.4); });
+  setTimeout(() => drop(.7, .3, 1), 900);
+
+  const flat = new Float32Array(MAXR*4);
+  const resize = () => { const d = Math.min(devicePixelRatio || 1, 2), r = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, r.width*d|0); canvas.height = Math.max(1, r.height*d|0);
+    gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(U.res, canvas.width, canvas.height); };
+  addEventListener("resize", resize); resize();
+
+  (function frameLoop(ts) {
+    const t = ts/1000;
+    sx += (mx-sx)*.1; sy += (my-sy)*.1; near += ((over ? 1 : 0) - near)*.06;
+    if (over && !reduce && t - lastDrop > .18 && Math.hypot(mx-sx, my-sy) > .004) { drop(mx, my, .5); lastDrop = t; }
+    if (ready) {
+      ripples.forEach((r,i) => flat.set(r, i*4)); gl.uniform4fv(uRip, flat);
+      gl.uniform2f(U.mouse, sx, sy); gl.uniform1f(U.near, near); gl.uniform1f(U.t, reduce ? 0 : t);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    requestAnimationFrame(frameLoop);
+  })(0);
+})();
+</script>
+</body>
 </html>
-
