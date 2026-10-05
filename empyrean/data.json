@@ -598,6 +598,18 @@
    "notes": "Makes a brief appearance in the early chapters of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4
+  },
+  {
+   "id": "s-amber",
+   "name": "Amber Mavis",
+   "group": "rider",
+   "status": "deceased",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "Put to death on page 246 of Fourth Wing, per your notes. Starter note; check against your copy.",
+   "fateEventId": "s-ev-fw-amber",
+   "unverified": true,
+   "rev": 5
   }
  ],
  "dragons": [
@@ -1210,16 +1222,16 @@
    "title": "Threshing Day: Brennan",
    "book": "TD",
    "order": 1,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "2",
+   "page": "7",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Brennan enters Threshing determined to prove himself beyond the Sorrengail name. His father gives him a good-luck bracelet, and alone he climbs a tree and meets Marbh, an orange daggertail. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-brennan"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 100
   },
   {
@@ -1227,16 +1239,16 @@
    "title": "Threshing Day: Mira",
    "book": "TD",
    "order": 2,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "3",
+   "page": "23",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Teine digs a talon into Mira's thigh to find her breaking point, and she tells him to take his fingernail out of her leg. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-mira"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 105
   },
   {
@@ -1262,16 +1274,16 @@
    "title": "Threshing Day: Xaden",
    "book": "TD",
    "order": 3,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "4",
+   "page": "37",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Set in the snow, Xaden says he'd love nothing more than to burn the place to the ground. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 110
   },
   {
@@ -1279,16 +1291,16 @@
    "title": "Threshing Day: Garrick",
    "book": "TD",
    "order": 4,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "5",
+   "page": "61",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Garrick's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-garrick"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 120
   },
   {
@@ -1296,16 +1308,16 @@
    "title": "Threshing Day: Bodhi",
    "book": "TD",
    "order": 5,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "7",
+   "page": "87",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Bodhi's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-bodhi"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 130
   },
   {
@@ -1313,16 +1325,16 @@
    "title": "Threshing Day: Imogen",
    "book": "TD",
    "order": 6,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "8",
+   "page": "103",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Imogen's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-imogen"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 140
   },
   {
@@ -1330,16 +1342,16 @@
    "title": "Threshing Day: Dain",
    "book": "TD",
    "order": 7,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "6",
+   "page": "71",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Dain's Threshing. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-dain"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 150
   },
   {
@@ -1347,16 +1359,16 @@
    "title": "Threshing Day: Liam",
    "book": "TD",
    "order": 8,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "12",
+   "page": "167",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Liam's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-liam"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 1010.1
   },
   {
@@ -1364,16 +1376,16 @@
    "title": "Threshing Day: Rhiannon",
    "book": "TD",
    "order": 9,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "9",
+   "page": "123",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Rhiannon's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-rhi"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 1010.2
   },
   {
@@ -1381,16 +1393,16 @@
    "title": "Threshing Day: Ridoc",
    "book": "TD",
    "order": 10,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "11",
+   "page": "153",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Ridoc's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-ridoc"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 1010.3
   },
   {
@@ -1398,16 +1410,16 @@
    "title": "Threshing Day: Sawyer",
    "book": "TD",
    "order": 11,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "10",
+   "page": "135",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Sawyer's Threshing, on the same day as Violet's. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-sawyer"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 1010.4
   },
   {
@@ -1415,16 +1427,16 @@
    "title": "Threshing Day: Sloane",
    "book": "TD",
    "order": 12,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "13",
+   "page": "181",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Sloane's Threshing, early in Iron Flame. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-sloane"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 2005.1
   },
   {
@@ -1432,16 +1444,16 @@
    "title": "Threshing Day: Aaric",
    "book": "TD",
    "order": 13,
-   "chapter": "",
-   "page": "",
-   "edition": "",
+   "chapter": "14",
+   "page": "199",
+   "edition": "Hardcover",
    "kind": "event",
    "desc": "Aaric's Threshing, early in Iron Flame. The collection's final story has a prince in rider black telling his dragon he intends to tear the kingdom apart. Where this sits in the timeline is inferred from the rider's year at Basgiath; check against the book.",
    "chars": [
     "s-aaric"
    ],
    "unverified": true,
-   "rev": 4,
+   "rev": 5,
    "story": 2005.2
   },
   {
@@ -1461,6 +1473,179 @@
    ],
    "unverified": true,
    "rev": 4
+  },
+  {
+   "id": "s-ev-td-trial",
+   "title": "Threshing Day: “Trial by Fire” (Threshing advice for dragonkind)",
+   "book": "TD",
+   "order": 0,
+   "chapter": "1",
+   "page": "1",
+   "edition": "Hardcover",
+   "kind": "event",
+   "desc": "Opening chapter of Threshing Day: Threshing advice for dragonkind, credited to Colonel Thaddeus Palme.",
+   "chars": [],
+   "unverified": true,
+   "rev": 5,
+   "story": 90
+  },
+  {
+   "id": "s-ev-fw-parapet",
+   "title": "Violet takes her first step onto the parapet",
+   "book": "FW",
+   "order": 23,
+   "chapter": "",
+   "page": "23",
+   "edition": "Hardcover",
+   "kind": "event",
+   "desc": "Violet takes her first step onto the parapet.",
+   "chars": [
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-wakes",
+   "title": "Violet wakes up before she is murdered",
+   "book": "FW",
+   "order": 220,
+   "chapter": "",
+   "page": "220",
+   "edition": "Hardcover",
+   "kind": "event",
+   "desc": "Violet wakes up just before she would have been murdered.",
+   "chars": [
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-andarna-time",
+   "title": "Andarna freezes time",
+   "book": "FW",
+   "order": 222,
+   "chapter": "",
+   "page": "222",
+   "edition": "Hardcover",
+   "kind": "reveal",
+   "desc": "Andarna freezes time.",
+   "chars": [
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-feather-fail",
+   "title": "Failed feathertails shouldn't bond: they can gift their powers to humans",
+   "book": "FW",
+   "order": 233,
+   "chapter": "",
+   "page": "233",
+   "edition": "Hardcover",
+   "kind": "reveal",
+   "desc": "We learn that failed feathertails shouldn't bond, because they can accidentally gift their powers to humans.",
+   "chars": [],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-feather-baby",
+   "title": "Feathertails are actually baby dragons",
+   "book": "FW",
+   "order": 233.1,
+   "chapter": "",
+   "page": "233",
+   "edition": "Hardcover",
+   "kind": "reveal",
+   "desc": "We learn that feathertails are actually just baby dragons.",
+   "chars": [],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-amber",
+   "title": "Amber Mavis is put to death",
+   "book": "FW",
+   "order": 246,
+   "chapter": "",
+   "page": "246",
+   "edition": "Hardcover",
+   "kind": "event",
+   "desc": "Amber Mavis is put to death. Possibly connected to the question of the right of benefaction; see that theory.",
+   "chars": [
+    "s-amber"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-jack-power",
+   "title": "Jack forces his power into Violet while sparring",
+   "book": "FW",
+   "order": 294,
+   "chapter": "",
+   "page": "294",
+   "edition": "Hardcover",
+   "kind": "foreshadow",
+   "desc": "On the mat, Jack Barlowe forces his power into Violet's body while they spar. Read as foreshadowing.",
+   "chars": [
+    "s-violet",
+    "s-jack"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-lightning",
+   "title": "Violet learns she is a lightning wielder",
+   "book": "FW",
+   "order": 362,
+   "chapter": "",
+   "page": "362",
+   "edition": "Hardcover",
+   "kind": "reveal",
+   "desc": "Violet finds out she is a lightning wielder.",
+   "chars": [
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-jack-dies",
+   "title": "Violet kills Jack Barlowe (or so it seemed)",
+   "book": "FW",
+   "order": 362.1,
+   "chapter": "",
+   "page": "362",
+   "edition": "Hardcover",
+   "kind": "event",
+   "desc": "Violet kills Jack Barlowe, or at least that is what we thought at the time.",
+   "chars": [
+    "s-violet",
+    "s-jack"
+   ],
+   "unverified": true,
+   "rev": 5
+  },
+  {
+   "id": "s-ev-fw-note",
+   "title": "Violet finds a note from her father",
+   "book": "FW",
+   "order": 391,
+   "chapter": "",
+   "page": "391",
+   "edition": "Hardcover",
+   "kind": "foreshadow",
+   "desc": "Violet finds a note her father left for her in a book. In his own words he tells her that folklore passes from one generation to the next to teach us about our past, that losing it breaks our link to that past, that it takes only one desperate generation to change history or even erase it, and that he knows she will make the right choice when the time comes. Add the exact wording from your copy if you like.",
+   "chars": [
+    "s-violet"
+   ],
+   "unverified": true,
+   "rev": 5
   }
  ],
  "theories": [
@@ -1539,6 +1724,68 @@
    "revealId": "",
    "revealText": "",
    "evidence": [],
+   "created": 0,
+   "updated": 0
+  },
+  {
+   "id": "s-th-benefaction",
+   "title": "What is the “right of benefaction”?",
+   "status": "speculative",
+   "confidence": 2,
+   "body": "It seems to be something a feathertail can do, or maybe any baby dragon. The related clues so far: failed feathertails can accidentally gift their powers to humans, feathertails are baby dragons, and on page 246 Amber Mavis is put to death. Work out what the right of benefaction is and whether the execution is connected.",
+   "foreshadow": [
+    "s-ev-fw-feather-fail",
+    "s-ev-fw-feather-baby",
+    "s-ev-fw-amber"
+   ],
+   "revealId": "",
+   "revealText": "",
+   "evidence": [
+    {
+     "book": "FW",
+     "edition": "Hardcover",
+     "page": "233",
+     "note": "Failed feathertails can gift their powers to humans.",
+     "stance": "support"
+    },
+    {
+     "book": "FW",
+     "edition": "Hardcover",
+     "page": "233",
+     "note": "Feathertails are actually just baby dragons.",
+     "stance": "support"
+    },
+    {
+     "book": "FW",
+     "edition": "Hardcover",
+     "page": "246",
+     "note": "Amber Mavis is put to death; link to the right of benefaction unclear.",
+     "stance": "neutral"
+    }
+   ],
+   "created": 0,
+   "updated": 0
+  },
+  {
+   "id": "s-th-jack-power",
+   "title": "Jack forcing his power into Violet (p. 294) foreshadows something bigger",
+   "status": "speculative",
+   "confidence": 3,
+   "body": "While sparring on the mat, Jack Barlowe forces his power into Violet's body. Candidate payoff, linked here as a tentative arc: Jack's later return as venin in Iron Flame. Change the reveal if you think it points elsewhere.",
+   "foreshadow": [
+    "s-ev-fw-jack-power"
+   ],
+   "revealId": "s-ev-if-jack-ward",
+   "revealText": "",
+   "evidence": [
+    {
+     "book": "FW",
+     "edition": "Hardcover",
+     "page": "294",
+     "note": "Jack forces his power into Violet's body while they spar.",
+     "stance": "support"
+    }
+   ],
    "created": 0,
    "updated": 0
   }
@@ -1801,6 +2048,272 @@
    "summary": "Calldyr, Elsum, Luceras, Morainne and Tyrrendor accept the Unification Scrolls and swear fealty to King Reginald Navarrius. The kingdom is named Navarre and the calendar restarts at year 1.",
    "cites": [],
    "text": "It is hereby recorded that the territories of Calldyr, Elsum, Luceras, Morainne, and Tyrrendor have agreed to terms defined in the Unification Scrolls and sworn fealty to our magnanimous King Reginald Navarrius. All people dwelling within the safe haven of our borders shall be considered citizens of the kingdom now known as Navarre. In celebration of this momentous occasion and our new, peaceful era, our calendars shall reflect this year as our first after unification."
+  },
+  {
+   "id": "snip-FW-1",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "1",
+   "title": "Fourth Wing — Chapter 1",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "A dragon without its rider is a tragedy. A rider without their dragon is dead.\n— Article One, Section One, The Dragon Rider's Codex",
+   "updated": 1791219345655,
+   "unverified": false,
+   "url": "",
+   "inWorld": "",
+   "transcriber": "",
+   "date": "",
+   "summary": ""
+  },
+  {
+   "id": "snip-FW-2",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "2",
+   "title": "Fourth Wing — Chapter 2",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "There's a misconception that it's kill or be killed in the Riders Quadrant. Riders, as a whole, aren't out to assassinate other cadets... unless there's a shortage of dragons that year or a cadet is a liability to their wing. Then things may get... interesting.\n— Major Offendra's Guide to the Riders Quadrant, Unauthorized Edition",
+   "updated": 1791219314492
+  },
+  {
+   "id": "snip-FW-3",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "3",
+   "title": "Fourth Wing — Chapter 3",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Blue dragons descend from the extraordinary Gormfaileas line. Known for their formidable size, they are the most ruthless, especially in the case of the rare blue dagger tail, whose knife-like spikes at the tip of their tail can disembowel an enemy with one flick.\n— Colonel Kaori's Field Guide to Dragonkind",
+   "updated": 1791219314494
+  },
+  {
+   "id": "snip-FW-4",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "4",
+   "title": "Fourth Wing — Chapter 4",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "The sparring ring is where riders are made or broken. After all, no respectable dragon would choose a rider who cannot defend themselves, and no respectable cadet would allow such a threat to the wing to continue training.\n— Major Offendra's Guide to the Riders Quadrant, Unauthorized Edition",
+   "updated": 1791219314495
+  },
+  {
+   "id": "snip-FW-5",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "5",
+   "title": "Fourth Wing — Chapter 5",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Knowing I am in direct disagreement with General Melgren's orders, I am officially objecting to the plan set forth in today's briefing. It is not this general's opinion that the children of the rebellion's leaders should be forced to witness their parents' executions. No child should watch their parent put to death.\n— The Tyrrish Rebellion, an Official Brief for King Tauri by General Lilith Sorrengail",
+   "updated": 1791219314496
+  },
+  {
+   "id": "snip-FW-6",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "6",
+   "title": "Fourth Wing — Chapter 6",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "It is my opinion that of all the signet powers riders provide, mending is the most precious, but we cannot allow ourselves to become complacent in the company of such a signet. For menders are rare, and the wounded are not.\n— Major Frederick's Modern Guide for Healers",
+   "updated": 1791219314497
+  },
+  {
+   "id": "snip-FW-7",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "7",
+   "title": "Fourth Wing — Chapter 7",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "In the best interest of preserving peace within Navarre, no more than three cadets carrying rebellion relics may be assigned to any squad of any quadrant.\n— Addendum 5.2, Basgiath War College Code of Conduct",
+   "updated": 1791219314497
+  },
+  {
+   "id": "snip-FW-8",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "8",
+   "title": "Fourth Wing — Chapter 8",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "In addition to last year's changes, Marked Ones assembling in groups of three or more will now be considered an act of seditious conspiracy and is hereby a capital offense.\n— Addendum 5.3, Basgiath War College Code of Conduct",
+   "updated": 1791219314499
+  },
+  {
+   "id": "snip-FW-9",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "9",
+   "title": "Fourth Wing — Chapter 9",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "There is an art to poison not often discussed, and that is timing. Only a master can properly dose and administer for effective onset. One must take into account the mass of the individual as well as the method of delivery.\n— Effective Uses of Wild and Cultivated Herbs by Captain Lawrence Medina",
+   "updated": 1791219314499
+  },
+  {
+   "id": "snip-FW-10",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "10",
+   "title": "Fourth Wing — Chapter 10",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "I will not die today.\n— Violet Sorrengail's personal addendum to the Book of Brennan",
+   "updated": 1791219314500
+  },
+  {
+   "id": "snip-FW-11",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "11",
+   "title": "Fourth Wing — Chapter 11",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Don't underestimate the challenge of the gauntlet, Mira. It's designed to test your balance, strength, and agility. The times don't matter for shit, only that you make it to the top. Reach for the ropes when you have to. Coming in last is better than coming in dead.\n— Page 46, the Book of Brennan",
+   "updated": 1791219314501
+  },
+  {
+   "id": "snip-FW-12",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "12",
+   "title": "Fourth Wing — Chapter 12",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "It is a grave offense against Malek to keep the belongings of a dead loved one. They belong to the beyond with the god of death and the departed. In the absence of a proper temple, any fire will do. He who does not burn for Malek will be burned by Malek.\n— Major Rorilee's Guide to Appeasing the Gods, Second Edition",
+   "updated": 1791219314501
+  },
+  {
+   "id": "snip-FW-13",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "13",
+   "title": "Fourth Wing — Chapter 13",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Presentation Day is unlike any other. The air is ripe with possibilities and possibly the stench of sulfur from a dragon who's been offended. Never look a red in the eye, never back down from a green. If you show trepidation to a brown... well, just don't.\n— Colonel Kaori's Field Guide to Dragonkind",
+   "updated": 1791219314502
+  },
+  {
+   "id": "snip-FW-14",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "14",
+   "title": "Fourth Wing — Chapter 14",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "There is nothing quite as humbling or as awe-inspiring as witnessing Threshing. For those who live through it, anyway.\n— Colonel Kaori's Field Guide to Dragonkind",
+   "updated": 1791219314503
+  },
+  {
+   "id": "snip-FW-15",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "15",
+   "title": "Fourth Wing — Chapter 15",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "In the six centuries of recorded history of dragon and rider, there have been hundreds of known cases where a dragon simply cannot emotionally recover from the loss of their bonded rider. This happens when the bond is particularly strong, and in three documented cases, it has even caused the untimely death of the dragon.\n— Navarre: An Unedited History by Colonel Lewis Markham",
+   "updated": 1791219314504
+  },
+  {
+   "id": "snip-FW-16",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "16",
+   "title": "Fourth Wing — Chapter 16",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Just because you survive Threshing doesn't mean you'll survive the ride to the flight field. Being chosen isn't the only test, and if you can't hold your seat, then you'll fly straight into the ground.\n— Page 50, the Book of Brennan",
+   "updated": 1791219314505
+  },
+  {
+   "id": "snip-FW-17",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "17",
+   "title": "Fourth Wing — Chapter 17",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "Though this officer considers himself to be an expert on all matters dragonkind, there is a great deal we don't know about the way dragons govern themselves. There is a clear hierarchy among the most powerful and deference is paid to elders, but I have not been able to discern how it is they make laws for themselves or at what point a dragon decided to bond only one rider rather than go for the better odds with two.\n— Colonel Kaori's Field Guide to Dragonkind",
+   "updated": 1791219314505
+  },
+  {
+   "id": "snip-FW-18",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "18",
+   "title": "Fourth Wing — Chapter 18",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "It is therefore only natural that the more powerful the dragon, the more powerful the signet its rider manifests. One should be wary of a strong rider who bonds a smaller dragon, but even warier of the unbonded cadet who will stop at nothing to seize a chance to bond.\n— Major Offendra's Guide to the Riders Quadrant, Unauthorized Edition",
+   "updated": 1791219314506
+  },
+  {
+   "id": "snip-FW-19",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "19",
+   "title": "Fourth Wing — Chapter 19",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "There is nothing more sacred than the archives. Even temples can be rebuilt, but books cannot be rewritten.\n— Colonel Daxton's Guide to Excelling in the Scribe Quadrant",
+   "updated": 1791219314507
+  },
+  {
+   "id": "snip-FW-20",
+   "snippet": true,
+   "source": "book",
+   "book": "FW",
+   "chapter": "20",
+   "title": "Fourth Wing — Chapter 20",
+   "read": false,
+   "theoryIds": [],
+   "cites": [],
+   "text": "In response to the Great War, dragons claimed the western lands and the gryphons the central ones, [?] abandoning the [?] in the memory of General [?] Moore, who nearly destroyed the continent with his army. Our allies sailed home and we began a period of peace and prosperity as the provinces of Navarre united for the first time behind the safety of our wards under the protection of the first bonded riders.\n— Navarre: An Unedited History by Colonel Lewis Markham",
+   "updated": 1791219314507
   }
  ],
  "removedSeed": [],
