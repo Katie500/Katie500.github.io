@@ -557,7 +557,7 @@
   {
    "id": "s-dylan",
    "name": "Dylan",
-   "group": "rider",
+   "group": "civilian",
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
@@ -569,7 +569,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791324825326
+   "updated": 1791327866173,
+   "gryphon": ""
   },
   {
    "id": "s-syrena",
@@ -1710,13 +1711,20 @@
   {
    "id": "s-w-nadine",
    "name": "Nadine",
-   "group": "civilian",
-   "status": "unknown",
+   "group": "rider",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "notes": "Character in violet's squad. Dies in an assassination attempt by claiming to be violet as a joke",
+   "unverified": false,
+   "rev": 10,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791327818576
   },
   {
    "id": "s-w-neve",
@@ -1871,13 +1879,18 @@
    "sire": "",
    "dam": "",
    "riderId": "s-violet",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
    "cites": [],
-   "updated": 1791209672602,
+   "updated": 1791328030794,
    "aliases": "Tairneanach",
-   "tail": "morningstartail"
+   "tail": "Morningstar",
+   "gryphon": false,
+   "img": "",
+   "sex": "male",
+   "age": null,
+   "riders": null
   },
   {
    "id": "s-andarna",
@@ -1930,10 +1943,15 @@
    "sire": "",
    "dam": "",
    "riderId": "s-dain",
-   "status": "unknown",
+   "status": "active",
    "notes": "Dain's dragon.",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791328077866
   },
   {
    "id": "s-deigh",
@@ -1987,14 +2005,15 @@
    "sire": "",
    "dam": "",
    "riderId": "s-ridoc",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
    "rev": 4,
    "img": "",
    "aliases": "",
    "cites": [],
-   "updated": 1791230815425
+   "updated": 1791328082818,
+   "gryphon": false
   },
   {
    "id": "s-glane",
@@ -2015,7 +2034,8 @@
    "img": "",
    "aliases": "",
    "cites": [],
-   "updated": 1791230904227
+   "updated": 1791328049226,
+   "gryphon": false
   },
   {
    "id": "s-teine",
@@ -2029,14 +2049,15 @@
    "sire": "",
    "dam": "",
    "riderId": "s-mira",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
    "rev": 4,
    "img": "",
    "aliases": "",
    "cites": [],
-   "updated": 1791230851205
+   "updated": 1791328011348,
+   "gryphon": false
   },
   {
    "id": "s-aimsir",
@@ -2075,17 +2096,18 @@
    "sire": "",
    "dam": "",
    "riderId": "s-melgren",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
    "rev": 7,
    "img": "",
    "aliases": "",
-   "sex": "",
+   "sex": "male",
    "age": null,
    "riders": null,
    "cites": [],
-   "updated": 1791230867234
+   "updated": 1791328037487,
+   "gryphon": false
   },
   {
    "id": "s-solas",
@@ -2147,10 +2169,15 @@
    "sire": "",
    "dam": "",
    "riderId": "s-garrick",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791327985416
   },
   {
    "id": "s-cuir",
@@ -2181,10 +2208,15 @@
    "sire": "",
    "dam": "",
    "riderId": "s-sawyer",
-   "status": "unknown",
+   "status": "active",
    "notes": "",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791328005102
   },
   {
    "id": "s-thoirt",
@@ -2234,9 +2266,16 @@
    "dam": "",
    "riderId": "s-soleil",
    "status": "deceased",
-   "notes": "Soleil's dragon; killed at Resson with her. Starter note from web summaries; check against your copy.",
-   "unverified": true,
-   "rev": 8
+   "notes": "Soleil's dragon; killed at Resson with her.",
+   "unverified": false,
+   "rev": 8,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791327937591
   },
   {
    "id": "s-leothan",
@@ -2277,11 +2316,18 @@
    "family": "",
    "sire": "",
    "dam": "",
-   "riderId": "",
+   "riderId": "s-kaori",
    "status": "unknown",
    "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "unverified": false,
+   "rev": 10,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791327680984
   },
   {
    "id": "s-d-cruth",
@@ -4767,7 +4813,8 @@
   }
  ],
  "removedSeed": [
-  "s-ev-if-resson"
+  "s-ev-if-resson",
+  "s-d-trissa"
  ],
  "lastEdition": "Hardcover"
 }
