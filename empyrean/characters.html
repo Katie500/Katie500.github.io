@@ -48,27 +48,39 @@ function card(c) {
       h("button", { class:"btn sm", onclick:() => editForm(c) }, "Edit")));
 }
 
+const matches = x => {
+  const byTab = tab === "all" || (tab === "rebel" ? x.rebelChild : tab === "fliers" ? (x.group === "flier" || !!x.gryphon) : tab === "krovla" ? /krovla/i.test(x.origin || "") : tab === "venin" ? x.venin : tab === "riders" ? x.group === "rider" && !x.gryphon : x.status === tab);
+  return !!byTab && (x.name + " " + (x.aliases || "") + " " + (x.origin || "")).toLowerCase().includes(q);
+};
+const EMPTY = {
+  rebel:"No rebel children marked yet. Edit a character and tick “Rebel child”.",
+  fliers:"No gryphon riders yet. Edit a character, set their role to Gryphon rider and add their gryphon.",
+  krovla:"No one is marked as from Krovla yet. Edit a character and set their home province.",
+  venin:"No one is marked as venin. Edit a character and tick “Venin”.",
+  active:"No one is marked Active yet. Use the status menu on a card.",
+  missing:"No one is marked Missing yet. Use the status menu on a card.",
+  deceased:"No one is marked Deceased yet. Use the status menu on a card.",
+  unknown:"Everyone has a status set.",
+};
+
 function render() {
-  const list = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "fliers" ? (c.group === "flier" || !!c.gryphon) : tab === "krovla" ? /krovla/i.test(c.origin || "") : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" && !c.gryphon : c.status === tab)) && (c.name + " " + (c.aliases || "") + " " + (c.origin || "")).toLowerCase().includes(q));
   const counts = k => data.characters.filter(c => c.status === k).length;
+  const pill = (k, cls, label) => h("button", { type:"button", class:"pill " + cls, "aria-pressed":String(tab === k), style:"background:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase" + (tab === k ? ";background:rgba(35,34,31,.08)" : ""), onclick:() => { tab = tab === k ? "all" : k; render(); } }, counts(k) + " " + label);
   app.replaceChildren(
     h("div", { class:"toolbar" },
-      E.tabs([["all","All"],["riders","Dragon riders"],["fliers","Gryphon riders"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"]], tab, k => { tab = k; render(); }),
+      E.tabs([["all","All"],["riders","Dragon riders"],["fliers","Gryphon riders"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]], tab, k => { tab = k; render(); }),
       h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search characters", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add character")),
-    h("div", { class:"row", style:"margin-bottom:1rem" },
-      h("span", { class:"pill s-active" }, counts("active") + " active"), h("span", { class:"pill s-missing" }, counts("missing") + " missing"),
-      h("span", { class:"pill s-deceased" }, counts("deceased") + " deceased"), h("span", { class:"pill s-unknown" }, counts("unknown") + " not set")),
+    h("div", { class:"row", style:"margin-bottom:1rem" }, pill("active", "s-active", "active"), pill("missing", "s-missing", "missing"), pill("deceased", "s-deceased", "deceased"), pill("unknown", "s-unknown", "not set")),
     h("div", { id:"count", class:"meta", role:"status", style:"margin:-.3rem 0 .8rem" }),
     h("div", { id:"list" }));
   renderList();
-  function renderList() {
-    const l = data.characters.filter(c => (tab === "all" || (tab === "rebel" ? c.rebelChild : tab === "fliers" ? (c.group === "flier" || !!c.gryphon) : tab === "krovla" ? /krovla/i.test(c.origin || "") : tab === "venin" ? c.venin : tab === "riders" ? c.group === "rider" && !c.gryphon : c.status === tab)) && (c.name + " " + (c.aliases || "") + " " + (c.origin || "")).toLowerCase().includes(q))
-      .sort((a, b) => a.name.localeCompare(b.name));
-    document.getElementById("count").textContent = "Showing " + l.length + " of " + data.characters.length + " characters";
-    document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState(tab === "rebel" ? "No rebel children marked yet. Edit a character and tick “Rebel child”." : tab === "fliers" ? (c.group === "flier" || !!c.gryphon) : tab === "fliers" ? "No gryphon riders yet. Edit a character, set their role to Gryphon rider and add their gryphon." : tab === "krovla" ? "No one is marked as from Krovla yet. Edit a character and set their home province." : tab === "venin" ? "No one is marked as venin. Edit a character and tick “Venin”." : "Nothing matches."));
-  }
+}
+function renderList() {
+  const l = data.characters.filter(matches).sort((a, b) => a.name.localeCompare(b.name));
+  document.getElementById("count").textContent = "Showing " + l.length + " of " + data.characters.length + " characters";
+  document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState(q ? "Nothing matches that search." : EMPTY[tab] || "Nothing matches."));
 }
 render();
 </script></body></html>
