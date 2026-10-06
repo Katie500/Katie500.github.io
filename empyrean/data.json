@@ -270,13 +270,14 @@
   {
    "id": "s-trager",
    "name": "Trager Karis",
-   "group": "rider",
+   "group": "flier",
    "status": "deceased",
    "rebelChild": false,
    "notes": "Shot during the game on Zehyllna; his gryphon Sila dies shortly after (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 9,
-   "fateEventId": "s-ev-os-zehyllna"
+   "rev": 11,
+   "fateEventId": "s-ev-os-zehyllna",
+   "gryphon": "Sila"
   },
   {
    "id": "s-aura",
@@ -443,13 +444,14 @@
    "id": "s-varrish",
    "name": "Major Burton Varrish",
    "group": "professor",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
    "notes": "Vice Commander of Basgiath War College in Iron Flame; ruthless, previously suspended for killing during his tortures. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-solas"
+   "dragonId": "s-solas",
+   "updated": 1791326964567
   },
   {
    "id": "s-kaori",
@@ -509,7 +511,7 @@
   {
    "id": "s-cat",
    "name": "Catriona Cordella",
-   "group": "civilian",
+   "group": "flier",
    "status": "active",
    "rebelChild": false,
    "venin": false,
@@ -539,7 +541,7 @@
    "id": "s-jesinia",
    "name": "Jesinia Neilwart",
    "group": "civilian",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "Scribe who reveals in Iron Flame that Andarna is the key to activating the wardstone. Also deaf.",
@@ -550,7 +552,7 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791233311875
+   "updated": 1791326927300
   },
   {
    "id": "s-dylan",
@@ -572,14 +574,15 @@
   {
    "id": "s-syrena",
    "name": "Syrena Cordella",
-   "group": "civilian",
-   "status": "unknown",
+   "group": "flier",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "Cat's older sister and Tecarus's niece. Works with Xaden to distribute stolen venin-killing daggers to fliers. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 4,
-   "origin": "Krovla, Poromiel"
+   "rev": 11,
+   "origin": "Krovla, Poromiel",
+   "updated": 1791327028385
   },
   {
    "id": "s-drake",
@@ -620,12 +623,13 @@
    "id": "s-naolin",
    "name": "Naolin",
    "group": "civilian",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
    "notes": "Tairn's previous rider. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 4
+   "rev": 4,
+   "updated": 1791326977065
   },
   {
    "id": "s-nolon",
@@ -748,14 +752,15 @@
   {
    "id": "s-maren",
    "name": "Maren Zina",
-   "group": "rider",
+   "group": "flier",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Flier cadet who transferred from Cliffsbane Flight Academy to Aretia after the attack on Zolya; her gryphon is Dajalair (Daja). Helps Violet alter the wards in Onyx Storm. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9,
-   "origin": "Poromiel"
+   "rev": 11,
+   "origin": "Poromiel",
+   "gryphon": "Dajalair"
   },
   {
    "id": "s-ewan",
@@ -871,12 +876,13 @@
    "id": "s-asher",
    "name": "Asher Sorrengail",
    "group": "civilian",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
    "notes": "Appears on the wiki among the Scribe Quadrant characters; likely Violet's father (the note on page 391). Confirm his status. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "updated": 1791326810639
   },
   {
    "id": "s-dyre",
@@ -885,9 +891,16 @@
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Cadet in the Healer Quadrant. Listed on the Empyrean wiki (found through search results); check against your copy.",
-   "unverified": true,
-   "rev": 9
+   "notes": "Cadet in the Healer Quadrant.",
+   "unverified": false,
+   "rev": 9,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791326896855
   },
   {
    "id": "s-pierson",
@@ -916,12 +929,13 @@
    "id": "s-tauri",
    "name": "King Tauri",
    "group": "civilian",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "King of Navarre. Gives Xaden his royal title back, making him Duke of Tyrrendor; Aaric is described as his missing son. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "updated": 1791326947932
   },
   {
    "id": "s-w-cerella-neilwart",
@@ -1049,12 +1063,13 @@
    "id": "s-w-katrina-cardulo",
    "name": "Katrina Cardulo",
    "group": "civilian",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "Shares Imogen's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "updated": 1791326941466
   },
   {
    "id": "s-w-tracila-cardulo",
@@ -1071,34 +1086,37 @@
    "id": "s-w-raegan-matthias",
    "name": "Raegan Matthias",
    "group": "civilian",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "Shares Rhiannon's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "updated": 1791327019413
   },
   {
    "id": "s-w-isaac-mairi",
    "name": "Isaac Mairi",
    "group": "civilian",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
    "notes": "Shares Liam's and Sloane's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "updated": 1791326920084
   },
   {
    "id": "s-w-colonel-mairi",
    "name": "Colonel Mairi",
    "group": "professor",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
    "notes": "Shares Liam's and Sloane's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "updated": 1791326865225
   },
   {
    "id": "s-w-talia-riorson",
@@ -1814,6 +1832,17 @@
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10
+  },
+  {
+   "id": "s-w-pryor",
+   "name": "Pryor",
+   "group": "civilian",
+   "status": "unknown",
+   "rebelChild": false,
+   "venin": false,
+   "notes": "A person (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
+   "unverified": false,
+   "rev": 12
   }
  ],
  "dragons": [
@@ -2281,6 +2310,70 @@
    "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
    "unverified": true,
    "rev": 10
+  },
+  {
+   "id": "s-g-dajalair",
+   "name": "Dajalair",
+   "gryphon": true,
+   "color": "",
+   "tail": "",
+   "sex": "",
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-maren",
+   "status": "unknown",
+   "notes": "Maren Zina's gryphon (Daja for short). Starter note from the Empyrean wiki and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 12
+  },
+  {
+   "id": "s-g-sila",
+   "name": "Sila",
+   "gryphon": true,
+   "color": "",
+   "tail": "",
+   "sex": "",
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-trager",
+   "status": "deceased",
+   "notes": "Trager's gryphon; gryphons die with their riders, so Sila dies shortly after Trager on Zehyllna. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 12
+  },
+  {
+   "id": "s-g-kiralair",
+   "name": "Kiralair",
+   "gryphon": true,
+   "color": "",
+   "tail": "",
+   "sex": "",
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "",
+   "status": "unknown",
+   "notes": "Appears on the wiki's character list; rider unconfirmed. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 12
+  },
+  {
+   "id": "s-g-cibbelair",
+   "name": "Cibbelair",
+   "gryphon": true,
+   "color": "",
+   "tail": "",
+   "sex": "",
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "",
+   "status": "unknown",
+   "notes": "Appears on the wiki's character list; probably a gryphon (the name matches the others). Rider unconfirmed. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 12
   }
  ],
  "events": [
