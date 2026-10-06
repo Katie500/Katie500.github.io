@@ -31,11 +31,16 @@
    "group": "rider",
    "status": "active",
    "rebelChild": false,
-   "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame. One Onyx Storm summary says he takes Mira and heads toward Marbh. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Believed dead after the Tyrrish rebellion; Violet finds him alive in Aretia at the end of Fourth Wing. Alive at the end of Iron Flame.",
+   "unverified": false,
    "rev": 4,
    "fateEventId": "s-ev-fw-brennan",
-   "dragonId": "s-marbh"
+   "dragonId": "s-marbh",
+   "aliases": "",
+   "origin": "",
+   "venin": false,
+   "cites": [],
+   "updated": 1791324756695
   },
   {
    "id": "s-mira",
@@ -378,9 +383,15 @@
    "status": "unknown",
    "rebelChild": false,
    "venin": true,
-   "notes": "Venin sage and maven (the equivalent of a general), a dream walker who throws blue fire. Summaries say he turned Xaden. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Venin sage and maven (the equivalent of a general), a dream walker who throws blue fire. Summaries say he turned Xaden.",
+   "unverified": false,
+   "rev": 3,
+   "aliases": "",
+   "origin": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791324601617
   },
   {
    "id": "s-theophanie",
@@ -463,15 +474,20 @@
   },
   {
    "id": "s-cat",
-   "name": "Catriona (Cat) Cordella",
+   "name": "Catriona Cordella",
    "group": "civilian",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
-   "notes": "Gryphon flier of Poromiel and Xaden's ex-fiancée (betrothed for nine months). Niece of Viscount Tecarus. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Gryphon flier of Poromiel and Xaden's ex-fiancée (betrothed for nine months). Niece of Viscount Tecarus.",
+   "unverified": false,
    "rev": 4,
-   "origin": "Krovla, Poromiel"
+   "origin": "Krovla, Poromiel",
+   "aliases": "Cat",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791324711384
   },
   {
    "id": "s-tecarus",
@@ -509,9 +525,15 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Dies on the parapet in Fourth Wing. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Dies on the parapet in Fourth Wing. Carried a ring around his neck for his girlfriend that he was going to marry.",
+   "unverified": false,
+   "rev": 3,
+   "aliases": "",
+   "origin": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791324825326
   },
   {
    "id": "s-syrena",
@@ -625,9 +647,46 @@
    "rebelChild": false,
    "venin": false,
    "origin": "Tyrrendor",
-   "notes": "Led the failed Tyrrish rebellion and was executed; his last words are recorded as “You're all cowards” (redacted). Starter note from web summaries and your snippets; check against your copy.",
-   "unverified": true,
-   "rev": 6
+   "notes": "Father of Xaden. Led the failed Tyrrish rebellion and was executed; his last words are recorded as “You're all cowards” (redacted). Starter note from web summaries and your snippets; check against your copy.",
+   "unverified": false,
+   "rev": 6,
+   "aliases": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791324855751
+  },
+  {
+   "unverified": false,
+   "name": "Major Feris",
+   "aliases": "",
+   "origin": "",
+   "group": "rider",
+   "status": "active",
+   "rebelChild": false,
+   "venin": false,
+   "dragonId": "",
+   "fateEventId": "",
+   "notes": "One of the leaders of the rebellion",
+   "cites": [],
+   "id": "c-ev8zlgw",
+   "updated": 1791325103087
+  },
+  {
+   "unverified": false,
+   "name": "Viscount Tacarus",
+   "aliases": "",
+   "origin": "",
+   "group": "civilian",
+   "status": "active",
+   "rebelChild": false,
+   "venin": false,
+   "dragonId": "",
+   "fateEventId": "",
+   "notes": "",
+   "cites": [],
+   "id": "c-lyz6p3l",
+   "updated": 1791325209941
   }
  ],
  "dragons": [
@@ -1923,6 +1982,20 @@
    "id": "th-eerj0jt",
    "created": 1791233131846,
    "updated": 1791233131846
+  },
+  {
+   "status": "speculative",
+   "confidence": 3,
+   "foreshadow": [],
+   "evidence": [],
+   "unverified": false,
+   "title": "Who was Xaden's mother",
+   "body": "She left when Xaden turned a certain age.",
+   "revealId": "",
+   "revealText": "",
+   "id": "th-w4ewrhp",
+   "created": 1791324916891,
+   "updated": 1791324916891
   }
  ],
  "notices": [
