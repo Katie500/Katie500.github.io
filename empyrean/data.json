@@ -7,10 +7,17 @@
    "group": "rider",
    "status": "active",
    "rebelChild": false,
-   "notes": "Main POV. Signets: stopping time and lightning wielding. Also bonded to Andarna. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Main POV. Signets: dream walking and lightning wielding. Also bonded to Andarna.",
+   "unverified": false,
    "rev": 3,
-   "dragonId": "s-tairn"
+   "dragonId": "s-tairn",
+   "aliases": "",
+   "origin": "",
+   "venin": false,
+   "gryphon": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791326732864
   },
   {
    "id": "s-xaden",
@@ -62,12 +69,13 @@
    "id": "s-dain",
    "name": "Dain Aetos",
    "group": "rider",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "notes": "Wingleader of Fourth Wing by Iron Flame. Shows steadfast loyalty to Violet in Onyx Storm, even stealing from his father to help her. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-cath"
+   "dragonId": "s-cath",
+   "updated": 1791326596500
   },
   {
    "id": "s-liam",
@@ -96,23 +104,25 @@
    "id": "s-rhi",
    "name": "Rhiannon Matthias",
    "group": "rider",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "notes": "Signet lets her make items disappear and reappear (summoning). A squad leader by Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-feirge"
+   "dragonId": "s-feirge",
+   "updated": 1791326643308
   },
   {
    "id": "s-ridoc",
    "name": "Ridoc Gamlyn",
    "group": "rider",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "notes": "Signet: ice wielding. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-aotrom"
+   "dragonId": "s-aotrom",
+   "updated": 1791326645643
   },
   {
    "id": "s-garrick",
@@ -152,12 +162,19 @@
    "id": "s-sawyer",
    "name": "Sawyer Henrick",
    "group": "rider",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
-   "notes": "Signet reported as manipulating metals. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Signet reported as manipulating metals. Lost a leg in Iron Flame",
+   "unverified": false,
    "rev": 4,
-   "dragonId": "s-sliseag"
+   "dragonId": "s-sliseag",
+   "updated": 1791326673186,
+   "aliases": "",
+   "origin": "",
+   "venin": false,
+   "gryphon": "",
+   "fateEventId": "",
+   "cites": []
   },
   {
    "id": "s-aaric",
@@ -195,7 +212,8 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-baide",
-   "venin": true
+   "venin": true,
+   "updated": 1791326619929
   },
   {
    "id": "s-melgren",
@@ -214,9 +232,17 @@
    "group": "rider",
    "status": "deceased",
    "rebelChild": false,
-   "notes": "Joined Jack Barlowe and Oren Seifert in an attempt on Andarna during Threshing; incinerated by Tairn. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Joined Jack Barlowe and Oren Seifert in an attempt on Andarna during Threshing; incinerated by Tairn.",
+   "unverified": false,
+   "rev": 3,
+   "aliases": "",
+   "origin": "",
+   "venin": false,
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791326692527
   },
   {
    "id": "s-soleil",
@@ -266,21 +292,23 @@
    "id": "s-oren",
    "name": "Oren Seifert",
    "group": "rider",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "notes": "Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "updated": 1791326638452
   },
   {
    "id": "s-mason",
    "name": "Masen Sanborn",
    "group": "rider",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "updated": 1791326631447
   },
   {
    "id": "s-carrigan",
