@@ -234,13 +234,13 @@ window.EMPYREAN_SEED = {
     },
     {
       "id": "s-trager",
-      "name": "Trager",
+      "name": "Trager Karis",
       "group": "rider",
       "status": "deceased",
       "rebelChild": false,
       "notes": "Shot during the game on Zehyllna; his gryphon Sila dies shortly after (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 3,
+      "rev": 9,
       "fateEventId": "s-ev-os-zehyllna"
     },
     {
@@ -443,14 +443,14 @@ window.EMPYREAN_SEED = {
     },
     {
       "id": "s-markham",
-      "name": "Professor Markham",
+      "name": "Colonel Lewis Markham",
       "group": "professor",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
-      "notes": "Curator of the Riders Quadrant; teaches Battle Brief. Starter note from web summaries of the books; check against your copy.",
+      "notes": "Curator of the Scribe Quadrant and a professor who teaches Battle Brief; author of “Navarre: An Unedited History”. Listed on the Empyrean wiki (found through search results); check against your copy.",
       "unverified": true,
-      "rev": 3
+      "rev": 9
     },
     {
       "id": "s-panchek",
@@ -489,14 +489,14 @@ window.EMPYREAN_SEED = {
     },
     {
       "id": "s-jesinia",
-      "name": "Jesinia",
+      "name": "Jesinia Neilwart",
       "group": "civilian",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
       "notes": "Scribe who reveals in Iron Flame that Andarna is the key to activating the wardstone. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 3
+      "rev": 9
     },
     {
       "id": "s-dylan",
@@ -649,14 +649,181 @@ window.EMPYREAN_SEED = {
     },
     {
       "id": "s-maren",
-      "name": "Maren",
+      "name": "Maren Zina",
       "group": "rider",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
-      "notes": "Helps Violet alter the wards at Basgiath in Onyx Storm. Starter note from web summaries; check against your copy.",
+      "notes": "Flier cadet who transferred from Cliffsbane Flight Academy to Aretia after the attack on Zolya; her gryphon is Dajalair (Daja). Helps Violet alter the wards in Onyx Storm. Listed on the Empyrean wiki (found through search results); check against your copy.",
       "unverified": true,
-      "rev": 8
+      "rev": 9,
+      "origin": "Poromiel"
+    },
+    {
+      "id": "s-ewan",
+      "name": "Ewan Faber",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Wing Leader of Fourth Wing for part of 634 AU to January 635 AU, between Xaden and Dain on the wiki's list. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-emery",
+      "name": "Emery Barnes",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Third-year cadet in Violet's squad (Second Squad, Flame Section, Fourth Wing). Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-cianna",
+      "name": "Cianna",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Held the Executive Officer position in Second Squad, Flame Section, Fourth Wing during her second year. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-baylor",
+      "name": "Baylor Norris",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Cadet appearing in the Fourth Wing listings; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-luca",
+      "name": "Luca",
+      "group": "rider",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Cadet appearing in the Fourth Wing listings; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-emetterio",
+      "name": "Professor Emetterio",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Combat professor at Basgiath; oversees the weekly sparring matches and Gauntlet practice. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-levini",
+      "name": "Professor Levini",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "History professor in the Riders Quadrant. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-carr",
+      "name": "Professor Carr",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Teaches signet manifestation and practice. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-kiandra",
+      "name": "Professor Kiandra",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Joins the flier cadets in Aretia and teaches their classes separately from the riders. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-fitzgibbons",
+      "name": "Captain Fitzgibbons",
+      "group": "professor",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Scribe assigned to the Riders Quadrant who reads the death roll at morning formations; author of “On Tyrrish History”. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-asher",
+      "name": "Asher Sorrengail",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Appears on the wiki among the Scribe Quadrant characters; likely Violet's father (the note on page 391). Confirm his status. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-dyre",
+      "name": "Dyre",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Cadet in the Healer Quadrant. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-pierson",
+      "name": "Cadet Pierson",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Scribe-quadrant cadet on the wiki; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
+    },
+    {
+      "id": "s-lewellen",
+      "name": "Earl Lewellen",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "Tyrrish nobility; House Lewellen takes over Tyrrendor's Senarium seat in Public Notice 628.86. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9,
+      "origin": "Tyrrendor"
+    },
+    {
+      "id": "s-tauri",
+      "name": "King Tauri",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "King of Navarre. Gives Xaden his royal title back, making him Duke of Tyrrendor; Aaric is described as his missing son. Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
     }
   ],
   "dragons": [
@@ -996,6 +1163,21 @@ window.EMPYREAN_SEED = {
       "notes": "Soleil's dragon; killed at Resson with her. Starter note from web summaries; check against your copy.",
       "unverified": true,
       "rev": 8
+    },
+    {
+      "id": "s-leothan",
+      "name": "Leothan",
+      "color": "Irid",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "",
+      "status": "unknown",
+      "notes": "An irid dragon (Onyx Storm). Listed on the Empyrean wiki (found through search results); check against your copy.",
+      "unverified": true,
+      "rev": 9
     }
   ],
   "events": [
@@ -2348,6 +2530,24 @@ window.EMPYREAN_SEED = {
       ],
       "unverified": true,
       "rev": 8
+    },
+    {
+      "id": "s-ev-os-duke",
+      "title": "Xaden becomes Duke of Tyrrendor",
+      "book": "OS",
+      "order": 95,
+      "chapter": "",
+      "page": "",
+      "edition": "",
+      "kind": "event",
+      "desc": "After the Second Aretian Accord, King Tauri gives Xaden his royal title back, making him Duke of Tyrrendor with a seat on the Senarium; at the end of Onyx Storm he marries Violet, who becomes Duchess. Add the page number; until then its position among page-numbered events is approximate.",
+      "chars": [
+        "s-xaden",
+        "s-violet",
+        "s-tauri"
+      ],
+      "unverified": true,
+      "rev": 9
     }
   ],
   "theories": [
