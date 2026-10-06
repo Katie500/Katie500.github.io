@@ -879,10 +879,16 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Appears on the wiki among the Scribe Quadrant characters; likely Violet's father (the note on page 391). Confirm his status. Listed on the Empyrean wiki (found through search results); check against your copy.",
-   "unverified": true,
+   "notes": "Scribe Quadrant ;  Violet's father",
+   "unverified": false,
    "rev": 9,
-   "updated": 1791326810639
+   "updated": 1791327116388,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": []
   },
   {
    "id": "s-dyre",
@@ -1870,13 +1876,18 @@
    "sire": "",
    "dam": "",
    "riderId": "s-violet",
-   "status": "unknown",
+   "status": "active",
    "notes": "Violet's second bond.",
    "unverified": false,
    "cites": [],
-   "updated": 1791209625061,
+   "updated": 1791327320015,
    "aliases": "Andarnaurram",
-   "tail": "feathertail"
+   "tail": "Feather",
+   "gryphon": false,
+   "img": "",
+   "sex": "female",
+   "age": null,
+   "riders": 1
   },
   {
    "id": "s-sgaeyl",
@@ -1944,9 +1955,14 @@
    "dam": "",
    "riderId": "s-rhi",
    "status": "unknown",
-   "notes": "Starter note from web summaries of the books; check against your copy.",
+   "notes": "",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791327211197
   },
   {
    "id": "s-aotrom",
@@ -2170,11 +2186,16 @@
    "riders": 1,
    "sire": "",
    "dam": "",
-   "riderId": "",
+   "riderId": "s-sloane",
    "status": "unknown",
-   "notes": "Rider not recorded here. Shares line and age with Deigh, so possibly the sibling of Liam's dragon; set the rider once you confirm.",
+   "notes": "Shares line and age with Deigh, the sibling of Liam's dragon;",
    "unverified": false,
-   "rev": 4
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "cites": [],
+   "updated": 1791327278309
   },
   {
    "id": "s-gleann",
