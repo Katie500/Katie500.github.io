@@ -73,10 +73,15 @@ const E = (() => {
     fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
   };
   // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
-  const SPELLING_FIXES = [[/Offendra/g, "Affendra"]];
+  const SPELLING_FIXES = [
+    [/Tacarus/g, "Tecarus"], [/Offendra/g, "Affendra"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
+    [/Battle of Aretia \[\? you said "Arisha"\]/g, "Battle of Aretia"], [/Treaty of Aretia \[\?\]/g, "Treaty of Aretia"],
+    [/\[\?\] abandoning the \[\?\] in the memory of General \[\?\] Moore/g, "abandoning the Barrens and the memory of General Daramor"],
+  ];
+  const SPELLING_FIELDS = { characters:["name","notes"], dragons:["name","notes"], events:["title","desc"], theories:["title","body"], notices:["title","text","summary"] };
   const fixSpellings = () => {
     let changed = false;
-    for (const n of data.notices || []) for (const k of ["title", "text", "summary"]) if (typeof n[k] === "string") {
+    for (const [list, keys] of Object.entries(SPELLING_FIELDS)) for (const n of data[list] || []) for (const k of keys) if (typeof n[k] === "string") {
       let v = n[k]; for (const [re, to] of SPELLING_FIXES) v = v.replace(re, to);
       if (v !== n[k]) { n[k] = v; changed = true; }
     }
