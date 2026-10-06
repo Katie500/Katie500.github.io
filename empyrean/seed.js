@@ -1730,6 +1730,17 @@ window.EMPYREAN_SEED = {
       "notes": "A person (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
       "unverified": false,
       "rev": 12
+    },
+    {
+      "id": "s-w-trissa",
+      "name": "Trissa",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "A character (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
+      "unverified": false,
+      "rev": 13
     }
   ],
   "dragons": [
@@ -2148,21 +2159,6 @@ window.EMPYREAN_SEED = {
     {
       "id": "s-d-nuirlach",
       "name": "Nuirlach",
-      "color": "",
-      "tail": "",
-      "sex": "",
-      "family": "",
-      "sire": "",
-      "dam": "",
-      "riderId": "",
-      "status": "unknown",
-      "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
-      "unverified": true,
-      "rev": 10
-    },
-    {
-      "id": "s-d-trissa",
-      "name": "Trissa",
       "color": "",
       "tail": "",
       "sex": "",

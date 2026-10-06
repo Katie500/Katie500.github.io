@@ -66,6 +66,7 @@ const E = (() => {
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
         }
         if (fixSpellings()) added = true;
+        if (retire()) added = true;
         if (added) save();
         return;
       }
@@ -74,6 +75,9 @@ const E = (() => {
     fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
   };
   // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
+  // Starter entries that turned out to be wrong are removed from anything already saved in this browser.
+  const RETIRED = { dragons:["s-d-trissa"] };
+  const retire = () => { let changed = false; for (const [list, ids] of Object.entries(RETIRED)) { const keep = (data[list] || []).filter(x => !ids.includes(x.id)); if (keep.length !== (data[list] || []).length) { data[list] = keep; changed = true; } } return changed; };
   const SPELLING_FIXES = [
     [/Tacarus/g, "Tecarus"], [/Thaddeus Palme/g, "Thadeus Palme"], [/Mason Sanborn/g, "Masen Sanborn"], [/Offendra/g, "Affendra"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
     [/Battle of Aretia \[\? you said "Arisha"\]/g, "Battle of Aretia"], [/Treaty of Aretia \[\?\]/g, "Treaty of Aretia"],
