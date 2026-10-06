@@ -24,7 +24,7 @@ const editForm = (c = {}) => E.form({
     { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
     { k:"venin", label:"Venin", type:"checkbox" },
     { k:"gryphon", label:"Gryphon (name)", type:"text", hint:"For gryphon riders (fliers). Leave blank for dragon riders." },
-    { k:"dragonId", label:"Bonded dragon", type:"select", options:E.optionsOf("dragons", d => d.name, "— none —") },
+    { k:"dragonId", label:"Bonded dragon", type:"select", options:E.optionsOf("dragons", d => d.name, "— none —", d => !d.gryphon) },
     { k:"fateEventId", label:"Event where their status changed", type:"select", options:E.optionsOf("events", e => E.bookOf(e.book).id + ": " + e.title, "— none —") },
     { k:"notes", label:"Notes", type:"textarea" },
     { k:"cites", label:"Page references", type:"cites" },

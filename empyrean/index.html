@@ -16,7 +16,7 @@ const tiles = [
   ["timeline.html","Timeline", data.events.length + " events", "Everything that has happened, with foreshadowing arcs that connect clues to reveals."],
   ["theories.html","Theories", data.theories.length + " theories", "Track each theory with page-numbered evidence for and against."],
   ["notices.html","Notices", data.notices.length + " logged", "Public notices and bonus content from Rebecca’s sites, tracked as read or unread."],
-  ["dragons.html","Dragons", data.dragons.length + " dragons", "Families, sires and dams, plus a genealogy tree."],
+  ["dragons.html","Dragons", data.dragons.filter(d => !d.gryphon).length + " dragons, " + data.dragons.filter(d => d.gryphon).length + " gryphons", "Families, sires and dams, plus a genealogy tree."],
   ["characters.html","Characters", data.characters.length + " characters", "Active, missing or dead, with a separate view for the rebel children."],
 ];
 app.append(h("div", { class:"grid", style:"margin-top:1.6rem" }, tiles.map(([href, t, n, d]) =>

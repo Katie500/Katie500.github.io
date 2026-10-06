@@ -1719,6 +1719,17 @@ window.EMPYREAN_SEED = {
       "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
       "unverified": true,
       "rev": 10
+    },
+    {
+      "id": "s-w-pryor",
+      "name": "Pryor",
+      "group": "civilian",
+      "status": "unknown",
+      "rebelChild": false,
+      "venin": false,
+      "notes": "A person (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
+      "unverified": false,
+      "rev": 12
     }
   ],
   "dragons": [
@@ -2163,6 +2174,70 @@ window.EMPYREAN_SEED = {
       "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
       "unverified": true,
       "rev": 10
+    },
+    {
+      "id": "s-g-dajalair",
+      "name": "Dajalair",
+      "gryphon": true,
+      "color": "",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-maren",
+      "status": "unknown",
+      "notes": "Maren Zina's gryphon (Daja for short). Starter note from the Empyrean wiki and web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 12
+    },
+    {
+      "id": "s-g-sila",
+      "name": "Sila",
+      "gryphon": true,
+      "color": "",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "s-trager",
+      "status": "deceased",
+      "notes": "Trager's gryphon; gryphons die with their riders, so Sila dies shortly after Trager on Zehyllna. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 12
+    },
+    {
+      "id": "s-g-kiralair",
+      "name": "Kiralair",
+      "gryphon": true,
+      "color": "",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "",
+      "status": "unknown",
+      "notes": "Appears on the wiki's character list; rider unconfirmed. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 12
+    },
+    {
+      "id": "s-g-cibbelair",
+      "name": "Cibbelair",
+      "gryphon": true,
+      "color": "",
+      "tail": "",
+      "sex": "",
+      "family": "",
+      "sire": "",
+      "dam": "",
+      "riderId": "",
+      "status": "unknown",
+      "notes": "Appears on the wiki's character list; probably a gryphon (the name matches the others). Rider unconfirmed. Starter note from the Empyrean wiki and web summaries; check against your copy.",
+      "unverified": true,
+      "rev": 12
     }
   ],
   "events": [

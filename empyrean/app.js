@@ -307,7 +307,7 @@ const E = (() => {
   const tabs = (items, current, onPick) => h("div", { class:"tabs", role:"group" }, items.map(([k, l]) => h("button", { class:"tab", "aria-pressed":String(k === current), onclick:() => onPick(k) }, l)));
   const emptyState = msg => h("div", { class:"empty" }, msg);
   const unverified = x => x.unverified ? h("span", { class:"unv", title:"Pre-filled from memory — check against your copy, then edit to clear this flag" }, "check") : null;
-  const optionsOf = (list, label = x => x.name, blank) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));
+  const optionsOf = (list, label = x => x.name, blank, keep = () => true) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].filter(keep).map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));
 
   load();
   return { BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
