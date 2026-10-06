@@ -59,8 +59,9 @@ const E = (() => {
           if (i < 0) { if (!data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); added = true; } continue; }
           if (data[list][i].unverified === true && (s.rev || 0) > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); added = true; continue; }
           // entries you've edited keep your values; only blank fields (and "not set" statuses) are filled from the starter data
-          for (const k of ["aliases","tail","fateEventId","text","sex","family","origin","dragonId"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
+          for (const k of ["aliases","tail","fateEventId","text","sex","family","origin","dragonId","gryphon"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
           for (const k of ["age","riders"]) if (data[list][i][k] == null && s[k] != null) { data[list][i][k] = s[k]; added = true; }
+          if (list === "characters" && s.group === "flier" && data[list][i].gryphon === undefined && ["rider", "civilian"].includes(data[list][i].group)) { data[list][i].group = "flier"; added = true; }
           if (data[list][i].venin === undefined && s.venin) { data[list][i].venin = true; added = true; }
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
         }
@@ -303,7 +304,7 @@ const E = (() => {
         h("button", { class:"btn sm", onclick:importData }, "Import"),
         h("a", { class:"meta", href:"../index.html" }, "← Portfolio"))));
   };
-  const tabs = (items, current, onPick) => h("div", { class:"tabs", role:"group" }, items.map(([k, l]) => h("button", { class:"tab", "aria-pressed":k === current, onclick:() => onPick(k) }, l)));
+  const tabs = (items, current, onPick) => h("div", { class:"tabs", role:"group" }, items.map(([k, l]) => h("button", { class:"tab", "aria-pressed":String(k === current), onclick:() => onPick(k) }, l)));
   const emptyState = msg => h("div", { class:"empty" }, msg);
   const unverified = x => x.unverified ? h("span", { class:"unv", title:"Pre-filled from memory — check against your copy, then edit to clear this flag" }, "check") : null;
   const optionsOf = (list, label = x => x.name, blank) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));

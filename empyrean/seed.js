@@ -235,13 +235,14 @@ window.EMPYREAN_SEED = {
     {
       "id": "s-trager",
       "name": "Trager Karis",
-      "group": "rider",
+      "group": "flier",
       "status": "deceased",
       "rebelChild": false,
       "notes": "Shot during the game on Zehyllna; his gryphon Sila dies shortly after (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 9,
-      "fateEventId": "s-ev-os-zehyllna"
+      "rev": 11,
+      "fateEventId": "s-ev-os-zehyllna",
+      "gryphon": "Sila"
     },
     {
       "id": "s-aura",
@@ -466,13 +467,13 @@ window.EMPYREAN_SEED = {
     {
       "id": "s-cat",
       "name": "Catriona (Cat) Cordella",
-      "group": "civilian",
+      "group": "flier",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
       "notes": "Gryphon flier of Poromiel and Xaden's ex-fiancée (betrothed for nine months). Niece of Viscount Tecarus. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 4,
+      "rev": 11,
       "origin": "Krovla, Poromiel"
     },
     {
@@ -512,13 +513,13 @@ window.EMPYREAN_SEED = {
     {
       "id": "s-syrena",
       "name": "Syrena Cordella",
-      "group": "civilian",
+      "group": "flier",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
       "notes": "Cat's older sister and Tecarus's niece. Works with Xaden to distribute stolen venin-killing daggers to fliers. Starter note from web summaries of the books; check against your copy.",
       "unverified": true,
-      "rev": 4,
+      "rev": 11,
       "origin": "Krovla, Poromiel"
     },
     {
@@ -651,14 +652,15 @@ window.EMPYREAN_SEED = {
     {
       "id": "s-maren",
       "name": "Maren Zina",
-      "group": "rider",
+      "group": "flier",
       "status": "unknown",
       "rebelChild": false,
       "venin": false,
       "notes": "Flier cadet who transferred from Cliffsbane Flight Academy to Aretia after the attack on Zolya; her gryphon is Dajalair (Daja). Helps Violet alter the wards in Onyx Storm. Listed on the Empyrean wiki (found through search results); check against your copy.",
       "unverified": true,
-      "rev": 9,
-      "origin": "Poromiel"
+      "rev": 11,
+      "origin": "Poromiel",
+      "gryphon": "Dajalair"
     },
     {
       "id": "s-ewan",
