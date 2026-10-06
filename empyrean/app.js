@@ -74,7 +74,7 @@ const E = (() => {
   };
   // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
   const SPELLING_FIXES = [
-    [/Tacarus/g, "Tecarus"], [/Offendra/g, "Affendra"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
+    [/Tacarus/g, "Tecarus"], [/Thaddeus Palme/g, "Thadeus Palme"], [/Mason Sanborn/g, "Masen Sanborn"], [/Offendra/g, "Affendra"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
     [/Battle of Aretia \[\? you said "Arisha"\]/g, "Battle of Aretia"], [/Treaty of Aretia \[\?\]/g, "Treaty of Aretia"],
     [/\[\?\] abandoning the \[\?\] in the memory of General \[\?\] Moore/g, "abandoning the Barrens and the memory of General Daramor"],
   ];
