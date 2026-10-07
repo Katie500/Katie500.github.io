@@ -11,7 +11,11 @@ const { h, data } = E;
 E.layout("characters.html", "Who’s <em>still standing</em>", "Track every character’s status, their dragon, and the rebel children separately.");
 const app = document.getElementById("app");
 const STATUS = [["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]];
-let tab = "all", q = "";
+const QUADRANTS = [["riders","Riders Quadrant"],["infantry","Infantry Quadrant"],["scribe","Scribe Quadrant"],["healer","Healer Quadrant"],["none","No quadrant"]];
+const QLABEL = Object.fromEntries(QUADRANTS);
+// dragon riders default to the Riders Quadrant and Jesinia to Scribes until you set one; anything you choose wins
+const quadOf = c => c.quadrant || (c.group === "rider" ? "riders" : /^Jesinia Neilwart$/.test(c.name) ? "scribe" : "");
+let tab = "all", q = "", quad = "all";
 
 const editForm = (c = {}) => E.form({
   title: c.id ? "Edit character" : "Add character", value:c,
@@ -21,6 +25,7 @@ const editForm = (c = {}) => E.form({
     { k:"aliases", label:"Alternate names", type:"text", hint:"Comma-separated: nicknames, titles, former names." },
     { k:"origin", label:"Home province / origin", type:"text", placeholder:"e.g. Krovla (Poromiel)" },
     { k:"group", label:"Role", type:"select", options:[{v:"rider",l:"Dragon rider"},{v:"flier",l:"Gryphon rider (flier)"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
+    { k:"quadrant", label:"Quadrant (Basgiath)", type:"select", options:[{ v:"", l:"— not set —" }, ...QUADRANTS.map(([v, l]) => ({ v, l }))], hint:"Which Basgiath quadrant a Navarrian cadet belongs to. Leave blank for people outside it." },
     { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
     { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
     { k:"venin", label:"Venin", type:"checkbox" },
@@ -40,7 +45,7 @@ function card(c) {
   return h("div", { class:"card", id:c.id },
     h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, E.fullName(c), E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
     c.aliases ? h("div", { class:"meta" }, "also known as " + c.aliases) : null,
-    h("div", { class:"meta" }, c.group, c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.gryphon ? " · gryphon " + c.gryphon : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
+    h("div", { class:"meta" }, c.group, quadOf(c) ? " · " + QLABEL[quadOf(c)] : "", c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.gryphon ? " · gryphon " + c.gryphon : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
     sigs.length ? h("div", { class:"row", style:"margin:.35rem 0" }, h("span", { class:"meta" }, sigs.length > 1 ? "Signets:" : "Signet:"), sigs.map(s => h("a", { class:"chip", href:"signets.html#" + s.id }, s.name))) : null,
     ev ? h("div", { class:"meta" }, "Changed at: ", h("a", { href:"timeline.html#" + ev.id }, ev.title)) : null,
     c.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, c.notes) : null,
@@ -54,7 +59,8 @@ function card(c) {
 const signetNames = x => (x.signetIds || []).map(id => (E.byId("signets", id) || {}).name || "").join(" ");
 const matches = x => {
   const byTab = tab === "all" || (tab === "signet" ? (x.signetIds || []).length > 0 : tab === "nosignet" ? (x.group === "rider" || x.group === "flier") && !(x.signetIds || []).length : tab === "rebel" ? x.rebelChild : tab === "fliers" ? (x.group === "flier" || !!x.gryphon) : tab === "krovla" ? /krovla/i.test(x.origin || "") : tab === "venin" ? x.venin : tab === "riders" ? x.group === "rider" && !x.gryphon : x.status === tab);
-  return !!byTab && (E.fullName(x) + " " + (x.aliases || "") + " " + (x.origin || "") + " " + signetNames(x)).toLowerCase().includes(q);
+  if (quad !== "all" && (quad === "unset" ? quadOf(x) : quadOf(x) !== quad)) return false;
+  return !!byTab && (E.fullName(x) + " " + (x.aliases || "") + " " + (x.origin || "") + " " + (QLABEL[quadOf(x)] || "") + " " + signetNames(x)).toLowerCase().includes(q);
 };
 const EMPTY = {
   signet:"No one has a signet recorded yet. Edit a character and tick their signets.",
@@ -75,6 +81,7 @@ function render() {
   app.replaceChildren(
     h("div", { class:"toolbar" },
       E.tabs([["all","All"],["riders","Dragon riders"],["fliers","Gryphon riders"],["signet","Has a signet"],["nosignet","Riders with no signet"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]], tab, k => { tab = k; render(); }),
+      h("select", { "aria-label":"Quadrant", onchange:e => { quad = e.target.value; render(); } }, h("option", { value:"all" }, "All quadrants"), QUADRANTS.map(([v, l]) => h("option", { value:v, selected:quad === v }, l)), h("option", { value:"unset", selected:quad === "unset" }, "No quadrant set")),
       h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search characters", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add character")),
