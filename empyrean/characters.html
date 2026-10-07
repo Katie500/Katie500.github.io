@@ -14,7 +14,9 @@ const STATUS = [["active","Active"],["missing","Missing"],["deceased","Deceased"
 const QUADRANTS = [["riders","Riders Quadrant"],["infantry","Infantry Quadrant"],["scribe","Scribe Quadrant"],["healer","Healer Quadrant"],["none","No quadrant"]];
 const QLABEL = Object.fromEntries(QUADRANTS);
 // dragon riders default to the Riders Quadrant and Jesinia to Scribes until you set one; anything you choose wins
-const quadOf = c => c.quadrant || (c.group === "rider" ? "riders" : /^Jesinia Neilwart$/.test(c.name) ? "scribe" : "");
+const GROUP_QUAD = { rider:"riders", infantry:"infantry", scribe:"scribe", healer:"healer" };
+const ROLE_LABEL = { rider:"Dragon rider", flier:"Gryphon rider", infantry:"Infantry cadet", scribe:"Scribe", healer:"Healer", professor:"Professor / officer", civilian:"Civilian / other", antagonist:"Antagonist" };
+const quadOf = c => GROUP_QUAD[c.group] || c.quadrant || (/^Jesinia Neilwart$/.test(c.name) ? "scribe" : "");
 let tab = "all", q = "", quad = "all";
 
 const editForm = (c = {}) => E.form({
@@ -24,8 +26,7 @@ const editForm = (c = {}) => E.form({
     { k:"name", label:"Name", type:"text", hint:"Without the title, e.g. Kaori rather than Professor Kaori." },
     { k:"aliases", label:"Alternate names", type:"text", hint:"Comma-separated: nicknames, titles, former names." },
     { k:"origin", label:"Home province / origin", type:"text", placeholder:"e.g. Krovla (Poromiel)" },
-    { k:"group", label:"Role", type:"select", options:[{v:"rider",l:"Dragon rider"},{v:"flier",l:"Gryphon rider (flier)"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
-    { k:"quadrant", label:"Quadrant (Basgiath)", type:"select", options:[{ v:"", l:"— not set —" }, ...QUADRANTS.map(([v, l]) => ({ v, l }))], hint:"Which Basgiath quadrant a Navarrian cadet belongs to. Leave blank for people outside it." },
+    { k:"group", label:"Role", hint:"Scribe, Infantry and Healer also set their Basgiath quadrant.", type:"select", options:[{v:"rider",l:"Dragon rider"},{v:"flier",l:"Gryphon rider (flier)"},{v:"infantry",l:"Infantry cadet"},{v:"scribe",l:"Scribe"},{v:"healer",l:"Healer"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
     { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
     { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
     { k:"venin", label:"Venin", type:"checkbox" },
@@ -45,7 +46,7 @@ function card(c) {
   return h("div", { class:"card", id:c.id },
     h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, E.fullName(c), E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
     c.aliases ? h("div", { class:"meta" }, "also known as " + c.aliases) : null,
-    h("div", { class:"meta" }, c.group, quadOf(c) ? " · " + QLABEL[quadOf(c)] : "", c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.gryphon ? " · gryphon " + c.gryphon : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
+    h("div", { class:"meta" }, ROLE_LABEL[c.group] || c.group, quadOf(c) && quadOf(c) !== "riders" || c.group === "rider" ? " · " + QLABEL[quadOf(c)] : "", c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.gryphon ? " · gryphon " + c.gryphon : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
     sigs.length ? h("div", { class:"row", style:"margin:.35rem 0" }, h("span", { class:"meta" }, sigs.length > 1 ? "Signets:" : "Signet:"), sigs.map(s => h("a", { class:"chip", href:"signets.html#" + s.id }, s.name))) : null,
     ev ? h("div", { class:"meta" }, "Changed at: ", h("a", { href:"timeline.html#" + ev.id }, ev.title)) : null,
     c.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, c.notes) : null,
