@@ -1868,6 +1868,23 @@
    "notes": "A character (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
    "unverified": false,
    "rev": 13
+  },
+  {
+   "unverified": false,
+   "name": "Prince Alic Tauri Baran",
+   "aliases": "",
+   "origin": "",
+   "group": "rider",
+   "status": "deceased",
+   "rebelChild": false,
+   "venin": false,
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "notes": "Prince Alic Tauri Baran was the second son of King Tauri and the twin brother of Halden Tauri, the Crown Prince of Navarre.[1] A cadet in the Riders Quadrant, he bullied the marked ones at Basgiath War College and was killed by Xaden Riorson during their Threshing on October 1, 631 AU, after holding Garrick Tavis at knifepoint. His death is the reason his younger brother Cam hates Xaden.",
+   "cites": [],
+   "id": "c-ny79pei",
+   "updated": 1791379516884
   }
  ],
  "dragons": [
