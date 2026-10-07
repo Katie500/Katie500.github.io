@@ -17,7 +17,12 @@
    "gryphon": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791326732864
+   "updated": 1791326732864,
+   "signetIds": [
+    "s-sg-lightning",
+    "s-sg-time"
+   ],
+   "title": ""
   },
   {
    "id": "s-xaden",
@@ -35,7 +40,11 @@
    "origin": "",
    "gryphon": "",
    "cites": [],
-   "updated": 1791326495028
+   "updated": 1791326495028,
+   "signetIds": [
+    "s-sg-shadow"
+   ],
+   "title": ""
   },
   {
    "id": "s-brennan",
@@ -52,7 +61,11 @@
    "origin": "",
    "venin": false,
    "cites": [],
-   "updated": 1791324756695
+   "updated": 1791324756695,
+   "signetIds": [
+    "s-sg-mending"
+   ],
+   "title": ""
   },
   {
    "id": "s-mira",
@@ -63,7 +76,8 @@
    "notes": "Violet's sister. Dragon Teine is listed as green. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-teine"
+   "dragonId": "s-teine",
+   "title": ""
   },
   {
    "id": "s-dain",
@@ -75,7 +89,11 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-cath",
-   "updated": 1791326596500
+   "updated": 1791326596500,
+   "signetIds": [
+    "s-sg-memory-read"
+   ],
+   "title": ""
   },
   {
    "id": "s-liam",
@@ -88,7 +106,11 @@
    "unverified": false,
    "fateEventId": "s-ev-if-resson",
    "cites": [],
-   "updated": 1791209792532
+   "updated": 1791209792532,
+   "signetIds": [
+    "s-sg-farsight"
+   ],
+   "title": ""
   },
   {
    "id": "s-sloane",
@@ -98,7 +120,11 @@
    "rebelChild": false,
    "notes": "Liam's sister, daughter of a former Lord of Tyrrendor. Her ability to siphon magic proves vital (she siphons Lilith's power into the stone in Iron Flame). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "signetIds": [
+    "s-sg-siphon"
+   ],
+   "title": ""
   },
   {
    "id": "s-rhi",
@@ -110,7 +136,11 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-feirge",
-   "updated": 1791326643308
+   "updated": 1791326643308,
+   "signetIds": [
+    "s-sg-summoning"
+   ],
+   "title": ""
   },
   {
    "id": "s-ridoc",
@@ -122,7 +152,11 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-aotrom",
-   "updated": 1791326645643
+   "updated": 1791326645643,
+   "signetIds": [
+    "s-sg-ice"
+   ],
+   "title": ""
   },
   {
    "id": "s-garrick",
@@ -134,7 +168,8 @@
    "unverified": true,
    "rev": 4,
    "fateEventId": "s-ev-os-end",
-   "dragonId": "s-chradh"
+   "dragonId": "s-chradh",
+   "title": ""
   },
   {
    "id": "s-bodhi",
@@ -145,7 +180,11 @@
    "notes": "Rebel child. Absent when Violet wakes at Riorson House at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "dragonId": "s-cuir"
+   "dragonId": "s-cuir",
+   "signetIds": [
+    "s-sg-counter"
+   ],
+   "title": ""
   },
   {
    "id": "s-imogen",
@@ -156,7 +195,11 @@
    "notes": "Rebel child. Wiped Violet's memory of the last 12 hours at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-glane"
+   "dragonId": "s-glane",
+   "signetIds": [
+    "s-sg-memory-wipe"
+   ],
+   "title": ""
   },
   {
    "id": "s-sawyer",
@@ -174,7 +217,11 @@
    "venin": false,
    "gryphon": "",
    "fateEventId": "",
-   "cites": []
+   "cites": [],
+   "signetIds": [
+    "s-sg-metal"
+   ],
+   "title": ""
   },
   {
    "id": "s-aaric",
@@ -191,7 +238,11 @@
    "aliases": "Cam Tauri",
    "origin": "",
    "venin": false,
-   "gryphon": ""
+   "gryphon": "",
+   "signetIds": [
+    "s-sg-precog"
+   ],
+   "title": ""
   },
   {
    "id": "s-lilith",
@@ -203,7 +254,11 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-aimsir",
-   "fateEventId": "s-ev-if-lilith"
+   "fateEventId": "s-ev-if-lilith",
+   "signetIds": [
+    "s-sg-storm"
+   ],
+   "title": ""
   },
   {
    "id": "s-jack",
@@ -216,18 +271,20 @@
    "rev": 3,
    "dragonId": "s-baide",
    "venin": true,
-   "updated": 1791326619929
+   "updated": 1791326619929,
+   "title": ""
   },
   {
    "id": "s-melgren",
-   "name": "General Melgren",
+   "name": "Melgren",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "notes": "Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "dragonId": "s-codagh"
+   "dragonId": "s-codagh",
+   "title": "General"
   },
   {
    "id": "s-tynan",
@@ -245,7 +302,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791326692527
+   "updated": 1791326692527,
+   "title": ""
   },
   {
    "id": "s-soleil",
@@ -257,7 +315,8 @@
    "unverified": true,
    "rev": 8,
    "fateEventId": "s-ev-if-resson",
-   "dragonId": "s-fuil"
+   "dragonId": "s-fuil",
+   "title": ""
   },
   {
    "id": "s-quinn",
@@ -268,7 +327,8 @@
    "notes": "Stabbed by a venin and dies in Imogen's arms during the battle at Draithus (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "fateEventId": "s-ev-os-draithus"
+   "fateEventId": "s-ev-os-draithus",
+   "title": ""
   },
   {
    "id": "s-trager",
@@ -280,7 +340,8 @@
    "unverified": true,
    "rev": 11,
    "fateEventId": "s-ev-os-zehyllna",
-   "gryphon": "Sila"
+   "gryphon": "Sila",
+   "title": ""
   },
   {
    "id": "s-aura",
@@ -290,7 +351,8 @@
    "rebelChild": false,
    "notes": "Killed by a wyvern's claws while the riders were escaping (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-oren",
@@ -301,7 +363,8 @@
    "notes": "Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "updated": 1791326638452
+   "updated": 1791326638452,
+   "title": ""
   },
   {
    "id": "s-mason",
@@ -312,7 +375,8 @@
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "updated": 1791326631447
+   "updated": 1791326631447,
+   "title": ""
   },
   {
    "id": "s-carrigan",
@@ -322,7 +386,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-cerella",
@@ -332,7 +397,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-jace",
@@ -342,7 +408,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-bryn",
@@ -352,7 +419,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-howell",
@@ -362,7 +430,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-weylan",
@@ -372,7 +441,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-keanan",
@@ -382,7 +452,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-eya",
@@ -392,7 +463,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-ciaran",
@@ -402,7 +474,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-norwood",
@@ -412,7 +485,8 @@
    "rebelChild": true,
    "notes": "Listed among the marked rebel children. Fill in details as you read. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": ""
   },
   {
    "id": "s-berwyn",
@@ -429,7 +503,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791324601617
+   "updated": 1791324601617,
+   "title": ""
   },
   {
    "id": "s-theophanie",
@@ -441,11 +516,12 @@
    "notes": "Main antagonist of Onyx Storm: a maven and dark wielder who is also a powerful storm wielder and rides a huge wyvern. Killed by Violet, with Aaric's help, using a shard from Dunne's temple. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 3,
-   "fateEventId": "s-ev-os-theo"
+   "fateEventId": "s-ev-os-theo",
+   "title": ""
   },
   {
    "id": "s-varrish",
-   "name": "Major Burton Varrish",
+   "name": "Burton Varrish",
    "group": "professor",
    "status": "deceased",
    "rebelChild": false,
@@ -454,62 +530,68 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-solas",
-   "updated": 1791326964567
+   "updated": 1791326964567,
+   "title": "Major"
   },
   {
    "id": "s-kaori",
-   "name": "Professor Kaori",
+   "name": "Kaori",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Dragonkind professor at Basgiath. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": "Professor"
   },
   {
    "id": "s-grady",
-   "name": "Professor Grady",
+   "name": "Grady",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Runs the Rider Survival Course (RSC). Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": "Professor"
   },
   {
    "id": "s-devera",
-   "name": "Professor Devera",
+   "name": "Devera",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Teaches history and Battle Brief; defects from the college to join the rebellion in Aretia. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": "Professor"
   },
   {
    "id": "s-markham",
-   "name": "Colonel Lewis Markham",
+   "name": "Lewis Markham",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Curator of the Scribe Quadrant and a professor who teaches Battle Brief; author of “Navarre: An Unedited History”. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Colonel"
   },
   {
    "id": "s-panchek",
-   "name": "Commandant Panchek",
+   "name": "Panchek",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Identified in Onyx Storm as the traitor at Basgiath. One summary says Panchek's dragon is killed at Berwyn's hands. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 3
+   "rev": 3,
+   "title": "Commandant"
   },
   {
    "id": "s-cat",
@@ -526,7 +608,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791324711384
+   "updated": 1791324711384,
+   "title": ""
   },
   {
    "id": "s-tecarus",
@@ -538,7 +621,8 @@
    "notes": "Viscount of the Poromish province of Krovla. After Queen Maraya's death he becomes King of Poromiel. Has a gryphon gift for sensing what motivates someone to give up their treasure. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "origin": "Krovla, Poromiel"
+   "origin": "Krovla, Poromiel",
+   "title": ""
   },
   {
    "id": "s-jesinia",
@@ -555,7 +639,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791326927300
+   "updated": 1791326927300,
+   "title": ""
   },
   {
    "id": "s-dylan",
@@ -573,7 +658,8 @@
    "fateEventId": "",
    "cites": [],
    "updated": 1791327866173,
-   "gryphon": ""
+   "gryphon": "",
+   "title": ""
   },
   {
    "id": "s-syrena",
@@ -586,7 +672,8 @@
    "unverified": true,
    "rev": 11,
    "origin": "Krovla, Poromiel",
-   "updated": 1791327028385
+   "updated": 1791327028385,
+   "title": ""
   },
   {
    "id": "s-drake",
@@ -598,11 +685,12 @@
    "notes": "Cousin of Syrena and Cat. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "origin": "Krovla, Poromiel"
+   "origin": "Krovla, Poromiel",
+   "title": ""
   },
   {
    "id": "s-maraya",
-   "name": "Queen Maraya",
+   "name": "Maraya",
    "group": "civilian",
    "status": "deceased",
    "rebelChild": false,
@@ -610,7 +698,8 @@
    "notes": "Queen of Poromiel; Tecarus becomes king after her death. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "origin": "Poromiel"
+   "origin": "Poromiel",
+   "title": "Queen"
   },
   {
    "id": "s-heaton",
@@ -621,7 +710,8 @@
    "venin": false,
    "notes": "Violet's squadmate. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 4
+   "rev": 4,
+   "title": ""
   },
   {
    "id": "s-naolin",
@@ -633,7 +723,11 @@
    "notes": "Tairn's previous rider. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "updated": 1791326977065
+   "updated": 1791379929475,
+   "title": "",
+   "signetIds": [
+    "s-sg-mending"
+   ]
   },
   {
    "id": "s-nolon",
@@ -644,7 +738,8 @@
    "venin": false,
    "notes": "Healer who mends Jack Barlowe in the infirmary after Violet drops the mountain on him. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-caroline",
@@ -656,7 +751,8 @@
    "notes": "First-year unbonded cadet in Fourth Wing until she bonds Gleann after his previous rider died during their first flight lesson. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 4,
-   "dragonId": "s-gleann"
+   "dragonId": "s-gleann",
+   "title": ""
   },
   {
    "id": "s-winifred",
@@ -667,7 +763,8 @@
    "venin": false,
    "notes": "Makes a brief appearance in the early chapters of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
-   "rev": 4
+   "rev": 4,
+   "title": ""
   },
   {
    "id": "s-amber",
@@ -685,7 +782,8 @@
    "gryphon": "",
    "dragonId": "s-d-claidh",
    "cites": [],
-   "updated": 1791379625166
+   "updated": 1791379625166,
+   "title": ""
   },
   {
    "id": "s-fen",
@@ -702,11 +800,12 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791324855751
+   "updated": 1791324855751,
+   "title": ""
   },
   {
    "unverified": false,
-   "name": "Major Feris",
+   "name": "Feris",
    "aliases": "",
    "origin": "",
    "group": "rider",
@@ -718,11 +817,12 @@
    "notes": "One of the leaders of the rebellion",
    "cites": [],
    "id": "c-ev8zlgw",
-   "updated": 1791325103087
+   "updated": 1791325103087,
+   "title": "Major"
   },
   {
    "unverified": false,
-   "name": "Viscount Tecarus",
+   "name": "Tecarus",
    "aliases": "",
    "origin": "",
    "group": "civilian",
@@ -734,11 +834,12 @@
    "notes": "",
    "cites": [],
    "id": "c-lyz6p3l",
-   "updated": 1791325209941
+   "updated": 1791325209941,
+   "title": "Viscount"
   },
   {
    "id": "s-aetos",
-   "name": "Colonel Aetos",
+   "name": "Aetos",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
@@ -746,18 +847,20 @@
    "notes": "Dain's father. Sends assassins after the Athebyne survivors and led the Fourth Wing cadets into the trap at Resson. Starter note from web summaries; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "aliases": "General Aetos"
+   "aliases": "General Aetos",
+   "title": "Colonel"
   },
   {
    "id": "s-halden",
-   "name": "Prince Halden Tauri",
+   "name": "Halden Tauri",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Part of Violet's squad searching for the irids in Onyx Storm. Starter note from web summaries; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Prince"
   },
   {
    "id": "s-maren",
@@ -770,7 +873,8 @@
    "unverified": true,
    "rev": 11,
    "origin": "Poromiel",
-   "gryphon": "Dajalair"
+   "gryphon": "Dajalair",
+   "title": ""
   },
   {
    "id": "s-ewan",
@@ -781,7 +885,8 @@
    "venin": false,
    "notes": "Wing Leader of Fourth Wing for part of 634 AU to January 635 AU, between Xaden and Dain on the wiki's list. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": ""
   },
   {
    "id": "s-emery",
@@ -792,7 +897,8 @@
    "venin": false,
    "notes": "Third-year cadet in Violet's squad (Second Squad, Flame Section, Fourth Wing). Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": ""
   },
   {
    "id": "s-cianna",
@@ -803,7 +909,8 @@
    "venin": false,
    "notes": "Held the Executive Officer position in Second Squad, Flame Section, Fourth Wing during her second year. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": ""
   },
   {
    "id": "s-baylor",
@@ -814,7 +921,8 @@
    "venin": false,
    "notes": "Cadet appearing in the Fourth Wing listings; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": ""
   },
   {
    "id": "s-luca",
@@ -825,62 +933,68 @@
    "venin": false,
    "notes": "Cadet appearing in the Fourth Wing listings; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": ""
   },
   {
    "id": "s-emetterio",
-   "name": "Professor Emetterio",
+   "name": "Emetterio",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Combat professor at Basgiath; oversees the weekly sparring matches and Gauntlet practice. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Professor"
   },
   {
    "id": "s-levini",
-   "name": "Professor Levini",
+   "name": "Levini",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "History professor in the Riders Quadrant. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Professor"
   },
   {
    "id": "s-carr",
-   "name": "Professor Carr",
+   "name": "Carr",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Teaches signet manifestation and practice. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Professor"
   },
   {
    "id": "s-kiandra",
-   "name": "Professor Kiandra",
+   "name": "Kiandra",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Joins the flier cadets in Aretia and teaches their classes separately from the riders. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Professor"
   },
   {
    "id": "s-fitzgibbons",
-   "name": "Captain Fitzgibbons",
+   "name": "Fitzgibbons",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Scribe assigned to the Riders Quadrant who reads the death roll at morning formations; author of “On Tyrrish History”. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Captain"
   },
   {
    "id": "s-asher",
@@ -898,7 +1012,8 @@
    "gryphon": "",
    "dragonId": "",
    "fateEventId": "",
-   "cites": []
+   "cites": [],
+   "title": ""
   },
   {
    "id": "s-dyre",
@@ -916,22 +1031,24 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791326896855
+   "updated": 1791326896855,
+   "title": ""
   },
   {
    "id": "s-pierson",
-   "name": "Cadet Pierson",
+   "name": "Pierson",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Scribe-quadrant cadet on the wiki; add details. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
-   "rev": 9
+   "rev": 9,
+   "title": "Cadet"
   },
   {
    "id": "s-lewellen",
-   "name": "Earl Lewellen",
+   "name": "Lewellen",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
@@ -939,11 +1056,12 @@
    "notes": "Tyrrish nobility; House Lewellen takes over Tyrrendor's Senarium seat in Public Notice 628.86. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
    "rev": 9,
-   "origin": "Tyrrendor"
+   "origin": "Tyrrendor",
+   "title": "Earl"
   },
   {
    "id": "s-tauri",
-   "name": "King Tauri",
+   "name": "Tauri",
    "group": "civilian",
    "status": "active",
    "rebelChild": false,
@@ -951,7 +1069,8 @@
    "notes": "King of Navarre. Gives Xaden his royal title back, making him Duke of Tyrrendor; Aaric is described as his missing son. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
    "rev": 9,
-   "updated": 1791326947932
+   "updated": 1791326947932,
+   "title": "King"
   },
   {
    "id": "s-w-cerella-neilwart",
@@ -962,7 +1081,8 @@
    "venin": false,
    "notes": "Transcribed Public Notices 628.85 and 628.86. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-ellery-mynna",
@@ -973,7 +1093,8 @@
    "venin": false,
    "notes": "Lieutenant credited, with Colonel Valin Kaori, as transcriber of Threshing Day. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-felix-gerault",
@@ -984,29 +1105,32 @@
    "venin": false,
    "notes": "Colonel; author of “The Tyrrish Rebellion: A Forbidden History”. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-colonel-daxton",
-   "name": "Colonel Daxton",
+   "name": "Daxton",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Author of “Guide to Excelling in the Scribe Quadrant”. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Colonel"
   },
   {
    "id": "s-w-lieutenant-colonel-degrensi",
-   "name": "Lieutenant Colonel Degrensi",
+   "name": "Degrensi",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Wrote the missive from Samara Outpost asking that Major Varrish be reassigned from active wing. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Lieutenant Colonel"
   },
   {
    "id": "s-w-lyron-panchek",
@@ -1017,18 +1141,20 @@
    "venin": false,
    "notes": "Lieutenant; author of “Tactics: A Personal Memoir”. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-major-afendra",
-   "name": "Major Afendra",
+   "name": "Afendra",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Author of the “Guide to the Riders Quadrant (Unauthorized Edition)”. The wiki spells it with one f; check your book. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Major"
   },
   {
    "id": "s-w-thadeus-palme",
@@ -1039,7 +1165,8 @@
    "venin": false,
    "notes": "Colonel credited with the “Trial by Fire” Threshing advice in Threshing Day. The wiki spells it Thadeus. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-warrick",
@@ -1050,22 +1177,24 @@
    "venin": false,
    "notes": "Warrick of Luceras, whose journal Violet translates for the epigraphs. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-general-daramor",
-   "name": "General Daramor",
+   "name": "Daramor",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "The general whose army nearly destroyed the Continent after the Great War, per a chapter epigraph. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "General"
   },
   {
    "id": "s-w-king-reginald",
-   "name": "King Reginald",
+   "name": "Reginald",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
@@ -1073,7 +1202,8 @@
    "notes": "King Reginald Navarrius, who unified Navarre (Public Notice 1.1). Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "origin": "Navarre"
+   "origin": "Navarre",
+   "title": "King"
   },
   {
    "id": "s-w-katrina-cardulo",
@@ -1085,7 +1215,8 @@
    "notes": "Shares Imogen's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "updated": 1791326941466
+   "updated": 1791326941466,
+   "title": ""
   },
   {
    "id": "s-w-tracila-cardulo",
@@ -1096,7 +1227,8 @@
    "venin": false,
    "notes": "Shares Imogen's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-raegan-matthias",
@@ -1108,7 +1240,8 @@
    "notes": "Shares Rhiannon's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "updated": 1791327019413
+   "updated": 1791327019413,
+   "title": ""
   },
   {
    "id": "s-w-isaac-mairi",
@@ -1120,11 +1253,12 @@
    "notes": "Shares Liam's and Sloane's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "updated": 1791326920084
+   "updated": 1791326920084,
+   "title": ""
   },
   {
    "id": "s-w-colonel-mairi",
-   "name": "Colonel Mairi",
+   "name": "Mairi",
    "group": "professor",
    "status": "deceased",
    "rebelChild": false,
@@ -1132,7 +1266,8 @@
    "notes": "Shares Liam's and Sloane's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
    "rev": 10,
-   "updated": 1791326865225
+   "updated": 1791326865225,
+   "title": "Colonel"
   },
   {
    "id": "s-w-talia-riorson",
@@ -1143,106 +1278,116 @@
    "venin": false,
    "notes": "Shares Xaden's surname. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-colonel-hashbeigh",
-   "name": "Colonel Hashbeigh",
+   "name": "Hashbeigh",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Colonel"
   },
   {
    "id": "s-w-general-cadao",
-   "name": "General Cadao",
+   "name": "Cadao",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "General"
   },
   {
    "id": "s-w-major-gillstead",
-   "name": "Major Gillstead",
+   "name": "Gillstead",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Major"
   },
   {
    "id": "s-w-major-safah",
-   "name": "Major Safah",
+   "name": "Safah",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Major"
   },
   {
    "id": "s-w-professor-culley",
-   "name": "Professor Culley",
+   "name": "Culley",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Professor"
   },
   {
    "id": "s-w-septon-izar",
-   "name": "Septon Izar",
+   "name": "Izar",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Septon"
   },
   {
    "id": "s-w-king-courtlyn",
-   "name": "King Courtlyn",
+   "name": "Courtlyn",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "King"
   },
   {
    "id": "s-w-queen-marlis",
-   "name": "Queen Marlis",
+   "name": "Marlis",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Queen"
   },
   {
    "id": "s-w-duke-lindell",
-   "name": "Duke Lindell",
+   "name": "Lindell",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Duke"
   },
   {
    "id": "s-w-duchess-of-elsum",
@@ -1253,7 +1398,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-duchess-of-morraine",
@@ -1264,7 +1410,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-duke-of-calldyr",
@@ -1275,7 +1422,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-duke-of-luceras",
@@ -1286,7 +1434,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-ulices-ferris",
@@ -1297,18 +1446,20 @@
    "venin": false,
    "notes": "Check whether this is the “Major Feris” you added. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-cadet-samuelson",
-   "name": "Cadet Samuelson",
+   "name": "Samuelson",
    "group": "rider",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": "Cadet"
   },
   {
    "id": "s-w-calvin-atwater",
@@ -1319,7 +1470,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-anna-winshire",
@@ -1344,7 +1496,8 @@
      "stance": "support",
      "page": "124"
     }
-   ]
+   ],
+   "title": ""
   },
   {
    "id": "s-w-aurelie-donans",
@@ -1355,7 +1508,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-cornelia-sahalie",
@@ -1366,7 +1520,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-cowan-zana",
@@ -1377,7 +1532,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-dasha-fabrren",
@@ -1388,7 +1544,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-eleni-jareth",
@@ -1399,7 +1556,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-lamani-zohar",
@@ -1410,7 +1568,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-loran-yashil",
@@ -1421,7 +1580,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-mischa-levin",
@@ -1432,7 +1592,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-mushin-vedie",
@@ -1443,7 +1604,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-narelle-anselm",
@@ -1454,7 +1616,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-navil-jacek",
@@ -1465,7 +1628,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-newland-jahvon",
@@ -1476,7 +1640,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-nyra-voldaren",
@@ -1487,7 +1652,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-tyvon-varen",
@@ -1498,7 +1664,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-visia-hawelynn",
@@ -1509,7 +1676,8 @@
    "venin": false,
    "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-avalynn",
@@ -1520,7 +1688,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-calixta",
@@ -1531,7 +1700,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-calvin",
@@ -1542,7 +1712,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-cohen",
@@ -1553,7 +1724,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-fann",
@@ -1564,7 +1736,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-faris",
@@ -1575,7 +1748,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-gaius",
@@ -1586,7 +1760,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-greely",
@@ -1597,7 +1772,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-greim",
@@ -1608,7 +1784,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-gwen",
@@ -1619,7 +1796,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-jax",
@@ -1630,7 +1808,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-jeremiah",
@@ -1641,7 +1820,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-kai",
@@ -1652,7 +1832,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-kylynn",
@@ -1663,7 +1844,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-luella",
@@ -1674,7 +1856,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-lynx",
@@ -1685,7 +1868,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-lyra",
@@ -1696,7 +1880,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-maise",
@@ -1707,7 +1892,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-malla",
@@ -1718,7 +1904,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-mirabel",
@@ -1729,7 +1916,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-nadine",
@@ -1747,7 +1935,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791327818576
+   "updated": 1791327818576,
+   "title": ""
   },
   {
    "id": "s-w-neve",
@@ -1758,7 +1947,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-niara",
@@ -1776,7 +1966,8 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791379895432
+   "updated": 1791379895432,
+   "title": ""
   },
   {
    "id": "s-w-nora",
@@ -1787,7 +1978,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-roslyn",
@@ -1798,7 +1990,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-simeon",
@@ -1809,7 +2002,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-suri",
@@ -1820,7 +2014,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-tara",
@@ -1831,7 +2026,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-tomas",
@@ -1842,7 +2038,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-trina",
@@ -1853,7 +2050,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-trysten",
@@ -1864,7 +2062,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-bragen",
@@ -1875,7 +2074,8 @@
    "venin": false,
    "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
    "unverified": true,
-   "rev": 10
+   "rev": 10,
+   "title": ""
   },
   {
    "id": "s-w-pryor",
@@ -1886,7 +2086,8 @@
    "venin": false,
    "notes": "A person (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
    "unverified": false,
-   "rev": 12
+   "rev": 12,
+   "title": ""
   },
   {
    "id": "s-w-trissa",
@@ -1897,11 +2098,12 @@
    "venin": false,
    "notes": "A character (per you); listed on the Empyrean wiki's Characters category. Add details as you read.",
    "unverified": false,
-   "rev": 13
+   "rev": 13,
+   "title": ""
   },
   {
    "unverified": false,
-   "name": "Prince Alic Tauri Baran",
+   "name": "Alic Tauri Baran",
    "aliases": "",
    "origin": "",
    "group": "rider",
@@ -1914,7 +2116,8 @@
    "notes": "Prince Alic Tauri Baran was the second son of King Tauri and the twin brother of Halden Tauri, the Crown Prince of Navarre.[1] A cadet in the Riders Quadrant, he bullied the marked ones at Basgiath War College and was killed by Xaden Riorson during their Threshing on October 1, 631 AU, after holding Garrick Tavis at knifepoint. His death is the reason his younger brother Cam hates Xaden.",
    "cites": [],
    "id": "c-ny79pei",
-   "updated": 1791379516884
+   "updated": 1791379516884,
+   "title": "Prince"
   }
  ],
  "dragons": [
@@ -4857,6 +5060,138 @@
    "cites": [],
    "text": "You're all cowards.\n— The last words of Fen Riorson, redacted",
    "updated": 1791220395145
+  }
+ ],
+ "signets": [
+  {
+   "id": "s-sg-lightning",
+   "name": "Lightning wielding",
+   "category": "Wielding",
+   "desc": "Calls and controls lightning. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-time",
+   "name": "Stopping time",
+   "category": "Time",
+   "desc": "Briefly stops time. Summaries tie Violet's second signet to Andarna. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-shadow",
+   "name": "Shadow wielding",
+   "category": "Wielding",
+   "desc": "Wields shadows. Xaden also has a second signet revealed in Iron Flame; add it here once you know which. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-ice",
+   "name": "Ice wielding",
+   "category": "Wielding",
+   "desc": "Calls and controls ice. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-storm",
+   "name": "Storm wielding",
+   "category": "Wielding",
+   "desc": "Calls and controls storms. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-mending",
+   "name": "Mending",
+   "category": "Healing",
+   "desc": "Heals wounds. An epigraph calls menders rare and the most precious of signets. Starter note from web summaries of the books; check against your copy.",
+   "unverified": false,
+   "rev": 1,
+   "cites": [],
+   "updated": 1791379929472
+  },
+  {
+   "id": "s-sg-farsight",
+   "name": "Farsight",
+   "category": "Mind",
+   "desc": "Sees things at a distance. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-memory-read",
+   "name": "Memory reading",
+   "category": "Mind",
+   "desc": "Reads another person's memories. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-memory-wipe",
+   "name": "Memory wiping",
+   "category": "Mind",
+   "desc": "Wipes memories. Seen when Violet loses twelve hours at the end of Onyx Storm. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-precog",
+   "name": "Precognition",
+   "category": "Mind",
+   "desc": "Sees what is about to happen. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-summoning",
+   "name": "Summoning",
+   "category": "Objects",
+   "desc": "Makes items disappear and reappear in the rider's possession. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-metal",
+   "name": "Metal manipulation",
+   "category": "Objects",
+   "desc": "Manipulates metal. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-siphon",
+   "name": "Siphoning",
+   "category": "Other",
+   "desc": "Siphons magic from others; Sloane's power is vital to the Basgiath ritual in Iron Flame. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-counter",
+   "name": "Signet countering",
+   "category": "Defensive",
+   "desc": "Counters or dampens other signets. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-truthsayer",
+   "name": "Truthsayer",
+   "category": "Mind",
+   "desc": "Named in an epigraph as the signet more terrifying than an intrinsic. Details unknown. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sg-intrinsic",
+   "name": "Intrinsic",
+   "category": "Other",
+   "desc": "Named in an epigraph as a terrifying signet type. Details unknown. Starter note from web summaries of the books; check against your copy.",
+   "unverified": true,
+   "rev": 1
   }
  ],
  "removedSeed": [
