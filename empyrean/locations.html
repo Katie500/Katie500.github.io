@@ -18,18 +18,25 @@
 <script src="seed.js"></script><script src="app.js"></script>
 <script>
 const { h, svg, data } = E;
-E.layout("locations.html", "The <em>map</em>", "A map drawn from data, not a picture. Every place is a point you can drag, and the canvas has no edges, so new lands can go anywhere as the books reveal them. Positions start as rough guesses: drag them to match the book maps.");
+E.layout("locations.html", "The <em>map</em>", "A map drawn from data, not a picture. Coasts, provinces, rivers and ranges are shapes whose points you can drag, every place is a point you can move, and the canvas has no edges, so new lands can go anywhere as the books reveal them.");
 const app = document.getElementById("app");
 
 const KINDS = [["kingdom","Kingdom"],["province","Province"],["region","Region or range"],["sea","Sea"],["city","City"],["town","Town or village"],["fortress","Fortress or college"],["outpost","Outpost"],["island","Island"],["temple","Temple"],["other","Other"]];
 const KIND_LABEL = Object.fromEntries(KINDS);
-const AREA = { kingdom:30, province:20, region:17, sea:19 };                       // drawn as big spaced-out labels instead of dots
+const AREA = { kingdom:24, province:14, region:11, sea:15 };                       // drawn as big spaced-out labels instead of dots
 const COLOR = { kingdom:"#8b78a8", province:"#7c776d", region:"#6f8a5d", sea:"#4a6fa8", city:"#a8502d", town:"#c07a4a", fortress:"#23221f", outpost:"#b7862b", island:"#3f7d6e", temple:"#8b78a8", other:"#7c776d" };
 const ROUTE = { road:["Road","#a8502d",""], sea:["Sea route","#4a6fa8","7 5"], border:["Border","#7c776d","2 5"], other:["Other","#7c776d",""] };
+const SHAPE_KINDS = [["land","Land or island"],["realm","Kingdom territory"],["province","Province area"],["water","Lake or inland sea"],["river","River"],["mountains","Mountain range"],["road","Road"],["border","Border line"]];
+const SHAPE_LABEL = Object.fromEntries(SHAPE_KINDS);
+const CLOSED = k => ["land", "realm", "province", "water"].includes(k);
+const TINT = { green:"#c5d6a4", blue:"#c6d3e2", sand:"#e3cf9f", rose:"#e5c3b6", lavender:"#d4c9e0", gold:"#e8d79a", teal:"#b8d6cf", grey:"#d6d2c8" };
+const TINT_LIST = Object.values(TINT);
+const tintOf = s => TINT[s.color] || (s.kind === "land" ? "#f1eadb" : s.kind === "water" ? "#cfe0ea" : TINT_LIST[[...s.name].reduce((a, c) => a + c.charCodeAt(0), 0) % TINT_LIST.length]);
 const placed = l => l.x != null && l.y != null && !isNaN(l.x) && !isNaN(l.y);
 
-let view = "map", mode = "browse", selId = location.hash ? location.hash.slice(1) : null, kindFilter = "all", q = "", connectFrom = null, placing = null;
+let view = "map", mode = "browse", selId = location.hash ? location.hash.slice(1) : null, selShape = null, selVi = null, drawing = null, kindFilter = "all", q = "", connectFrom = null, placing = null;
 const cam = { x:0, y:0, k:1, fitted:false };
+const shapeById = id => data.shapes.find(s => s.id === id);
 const byId = id => data.locations.find(l => l.id === id);
 const childrenOf = id => data.locations.filter(l => l.parent === id);
 const descendants = id => childrenOf(id).flatMap(c => [c.id, ...descendants(c.id)]);
@@ -66,17 +73,32 @@ const routeForm = (r = {}) => E.form({
   onDelete: r.id ? () => { E.remove("routes", r.id); render(); } : null,
 });
 
+const shapeForm = (s = {}) => E.form({
+  title: s.id ? "Edit shape" : "Draw a new shape", value: s.id ? s : { kind:"province", color:"", ...s },
+  fields: [
+    { k:"name", label:"Name", type:"text" },
+    { k:"kind", label:"What is it?", type:"select", options:SHAPE_KINDS.map(([v, t]) => ({ v, l:t })), hint:"Areas are filled in; rivers, ranges, roads and borders are lines. Changing this redraws the same points the other way." },
+    { k:"color", label:"Colour", type:"select", options:[{ v:"", l:"Automatic" }, ...Object.keys(TINT).map(v => ({ v, l:v[0].toUpperCase() + v.slice(1) }))] },
+  ],
+  onSave: o => {
+    if (s.id) { o.id = s.id; o.pts = s.pts; o.unverified = false; E.upsert("shapes", o); selShape = o.id; render(); }
+    else { drawing = { name:o.name || "New shape", kind:o.kind, color:o.color || "", pts:[] }; mode = "draw"; selShape = null; selId = null; view = "map"; render(); }
+  },
+  onDelete: s.id ? () => { E.remove("shapes", s.id); selShape = null; selVi = null; render(); } : null,
+});
+
 /* ---------- the map ---------- */
-let svgEl, world, markerRefs = [], hintEl;
+let svgEl, world, markerRefs = [], hintEl, shapeRefs = {}, clipRefs = {}, shapeLayer, handleLayer, handleRefs = [];
 const toWorld = (cx, cy) => { const r = svgEl.getBoundingClientRect(); return [(cx - r.left - cam.x) / cam.k, (cy - r.top - cam.y) / cam.k]; };
 function applyCam() {
   world.setAttribute("transform", `translate(${cam.x} ${cam.y}) scale(${cam.k})`);
   markerRefs.forEach(m => m.inner.setAttribute("transform", `scale(${1 / cam.k})`));
+  handleLayer && handleLayer.querySelectorAll(".hs").forEach(e => e.setAttribute("transform", `scale(${1 / cam.k})`));
 }
 function fit() {
-  const r = svgEl.getBoundingClientRect(), pts = data.locations.filter(placed);
+  const r = svgEl.getBoundingClientRect(), pts = [...data.locations.filter(placed).map(p => ({ x:p.x, y:p.y })), ...data.shapes.flatMap(sh => sh.pts.map(([x, y]) => ({ x, y })))];
   if (!pts.length || !r.width) { cam.x = r.width / 2; cam.y = r.height / 2; cam.k = 1; applyCam(); return; }
-  const xs = pts.map(p => +p.x), ys = pts.map(p => +p.y), pad = 70;
+  const xs = pts.map(p => +p.x), ys = pts.map(p => +p.y), pad = 40;
   const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad, minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
   cam.k = Math.min(r.width / (maxX - minX), r.height / (maxY - minY), 2.5);
   cam.x = r.width / 2 - ((minX + maxX) / 2) * cam.k; cam.y = r.height / 2 - ((minY + maxY) / 2) * cam.k; applyCam();
@@ -86,11 +108,83 @@ function zoomAt(cx, cy, factor) {
   cam.k = Math.max(0.15, Math.min(8, cam.k * factor)); cam.x = sx - wx * cam.k; cam.y = sy - wy * cam.k; applyCam();
 }
 
+function pathD(sh) {
+  const pts = sh.pts, closed = CLOSED(sh.kind), n = pts.length; if (n < 2) return "";
+  const k = sh.kind === "land" || sh.kind === "water" || sh.kind === "river" ? 1 : sh.kind === "road" ? .8 : sh.kind === "border" ? 0 : .3;
+  const P = i => closed ? pts[((i % n) + n) % n] : pts[Math.max(0, Math.min(n - 1, i))];
+  let d = "M" + pts[0][0] + " " + pts[0][1];
+  for (let i = 0; i < (closed ? n : n - 1); i++) {
+    const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+    d += "C" + [p1[0] + (p2[0] - p0[0]) * k / 6, p1[1] + (p2[1] - p0[1]) * k / 6, p2[0] - (p3[0] - p1[0]) * k / 6, p2[1] - (p3[1] - p1[1]) * k / 6, p2[0], p2[1]].map(v => Math.round(v * 10) / 10).join(" ");
+  }
+  return d + (closed ? "Z" : "");
+}
+function peaks(pts) {
+  let d = "", t = 0;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [x1, y1] = pts[i], [x2, y2] = pts[i + 1], len = Math.hypot(x2 - x1, y2 - y1) || 1;
+    for (; t < len; t += 22) { const x = x1 + (x2 - x1) * t / len, y = y1 + (y2 - y1) * t / len, s = 8 + ((i * 7 + Math.round(t)) % 5); d += `M${x - s} ${y + s * .6}L${x} ${y - s}L${x + s} ${y + s * .6}`; }
+    t -= len;
+  }
+  return d;
+}
+function buildShape(sh, g) {
+  g.replaceChildren();
+  if (sh.pts.length < 2) return;
+  const d = pathD(sh), nse = "vector-effect";
+  if (sh.kind === "land") g.append(svg("path", { d, fill:"none", stroke:"#b4d0df", "stroke-width":16, "stroke-linejoin":"round" }), svg("path", { d, fill:tintOf(sh), stroke:"#6f8794", "stroke-width":1.6, [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "realm") g.append(svg("path", { d, fill:tintOf(sh), opacity:.9 }));
+  else if (sh.kind === "province") g.append(svg("path", { d, fill:tintOf(sh), "fill-opacity":.7, stroke:"#8a806b", "stroke-width":1.2, "stroke-dasharray":"5 3", [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "water") g.append(svg("path", { d, fill:"#cfe0ea", stroke:"#6f8794", "stroke-width":1.4, [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "mountains") g.append(svg("path", { d:peaks(sh.pts), fill:"#d9d2c2", stroke:"#6e6558", "stroke-width":1.4, "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }), svg("path", { d, fill:"none", stroke:"transparent", "stroke-width":18, [nse]:"non-scaling-stroke" }));
+  else {
+    const style = { river:["#4f86b8", 2.6, ""], road:["#8a5a35", 2, "6 4"], border:["#7a3b3b", 2, "10 4 2 4"] }[sh.kind] || ["#555", 2, ""];
+    g.append(svg("path", { d, fill:"none", stroke:style[0], "stroke-width":style[1], "stroke-dasharray":style[2] || null, "stroke-linecap":"round", [nse]:"non-scaling-stroke" }),
+      svg("path", { d, fill:"none", stroke:"transparent", "stroke-width":18, [nse]:"non-scaling-stroke" }));
+    if (sh.kind === "river" && sh.name) { const m = sh.pts[Math.floor(sh.pts.length / 2)], t = svg("text", { x:m[0] + 8, y:m[1], "font-size":12, "font-style":"italic", fill:"#35688f", style:"paint-order:stroke;stroke:#d6e5ee;stroke-width:3px", "pointer-events":"none" }); t.textContent = sh.name; g.append(t); }
+  }
+}
+function refreshShape(sh) {
+  const g = shapeRefs[sh.id]; if (g) buildShape(sh, g);
+  if (clipRefs[sh.id]) clipRefs[sh.id].setAttribute("d", pathD(sh));
+}
+function drawDraft() {
+  const old = world.querySelector(".draft"); if (old) old.remove();
+  if (!drawing) return;
+  const g = svg("g", { class:"draft", "pointer-events":"none" }), pts = drawing.pts;
+  if (pts.length > 1) g.append(svg("path", { d:"M" + pts.map(p => p.join(" ")).join("L") + (CLOSED(drawing.kind) && pts.length > 2 ? "Z" : ""), fill:CLOSED(drawing.kind) ? "rgba(168,80,45,.15)" : "none", stroke:"#a8502d", "stroke-width":2, "stroke-dasharray":"4 3", "vector-effect":"non-scaling-stroke" }));
+  pts.forEach(p => g.append(svg("circle", { cx:p[0], cy:p[1], r:4 / cam.k, fill:"#a8502d" })));
+  world.insertBefore(g, handleLayer.parentNode === world ? handleLayer : null);
+}
+function drawHandles() {
+  if (!handleLayer) return; handleLayer.replaceChildren(); handleRefs = [];
+  const sh = mode === "shapes" && selShape && shapeById(selShape); if (!sh) return;
+  const n = sh.pts.length, closed = CLOSED(sh.kind);
+  for (let i = 0; i < (closed ? n : n - 1); i++) {                                   // midpoints: drag one to add a new point
+    const a = sh.pts[i], b = sh.pts[(i + 1) % n], g = svg("g", { transform:`translate(${(a[0] + b[0]) / 2} ${(a[1] + b[1]) / 2})`, "data-mi":i });
+    g.append(svg("g", { transform:`scale(${1 / cam.k})`, class:"hs" }, svg("circle", { r:12, fill:"transparent" }), svg("circle", { r:4, fill:"#fff", stroke:"#a8502d", "stroke-width":1.5, opacity:.8 }))); handleLayer.append(g);
+  }
+  sh.pts.forEach((p, i) => {
+    const g = svg("g", { transform:`translate(${p[0]} ${p[1]})`, "data-vi":i });
+    g.append(svg("g", { transform:`scale(${1 / cam.k})`, class:"hs" }, svg("circle", { r:15, fill:"transparent" }), svg("circle", { r:i === selVi ? 8 : 6, fill:i === selVi ? "#a8502d" : "#fff", stroke:"#a8502d", "stroke-width":2 })));
+    handleLayer.append(g); handleRefs[i] = g;
+  });
+}
+
 function drawMap() {
   svgEl = svg("svg", { role:"img", "aria-label":"Editable map" });
   const defs = svg("defs", {}, svg("pattern", { id:"grid", width:100, height:100, patternUnits:"userSpaceOnUse" }, svg("path", { d:"M100 0H0V100", fill:"none", stroke:"rgba(35,34,31,.07)", "stroke-width":1 })));
   world = svg("g"); markerRefs = [];
-  world.append(svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#grid)" }));
+  world.append(svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"#d6e5ee" }), svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#grid)", opacity:.6 }));
+  shapeRefs = {}; clipRefs = {}; handleLayer = svg("g");
+  const lands = data.shapes.filter(sh => sh.kind === "land" && sh.pts.length > 2);
+  if (lands.length) defs.append(svg("clipPath", { id:"landclip" }, lands.map(sh => (clipRefs[sh.id] = svg("path", { d:pathD(sh) })))));
+  shapeLayer = svg("g"); world.append(shapeLayer);
+  ["land", "realm", "province", "water", "mountains", "river", "border", "road"].forEach(k => data.shapes.filter(sh => sh.kind === k).forEach(sh => {
+    const g = svg("g", { "data-sid":sh.id }); if (lands.length && (k === "realm" || k === "province")) g.setAttribute("clip-path", "url(#landclip)");
+    shapeRefs[sh.id] = g; buildShape(sh, g); shapeLayer.append(g);
+  }));
+  if (drawing) drawDraft();
   // routes
   data.routes.forEach(r => {
     const a = byId(r.from), b = byId(r.to); if (!a || !b || !placed(a) || !placed(b)) return;
@@ -104,7 +198,7 @@ function drawMap() {
     const inner = svg("g", { transform:`scale(${1 / cam.k})` }); g.append(inner);
     const col = COLOR[l.kind] || COLOR.other, area = AREA[l.kind], sel = l.id === selId || l.id === connectFrom;
     if (area) {
-      const t = svg("text", { "text-anchor":"middle", "font-size":area, "letter-spacing":".18em", fill:col, opacity:sel ? 1 : .6, "font-style":l.kind === "sea" ? "italic" : "normal", "font-family":"Fraunces,Georgia,serif" });
+      const t = svg("text", { "text-anchor":"middle", "font-size":area, "letter-spacing":".14em", fill:col, opacity:sel ? 1 : .75, "font-style":l.kind === "sea" ? "italic" : "normal", "font-family":"Fraunces,Georgia,serif" });
       t.textContent = l.name.toUpperCase(); inner.append(svg("rect", { x:-l.name.length * area * .42, y:-area, width:l.name.length * area * .84, height:area * 1.4, fill:"transparent" }), t);
       if (sel) inner.append(svg("line", { x1:-l.name.length * area * .4, x2:l.name.length * area * .4, y1:6, y2:6, stroke:col, "stroke-width":2 }));
     } else {
@@ -117,7 +211,9 @@ function drawMap() {
     }
     world.append(g); markerRefs.push({ loc:l, g, inner });
   });
+  world.append(handleLayer);
   svgEl.append(defs, world);
+  drawHandles();
   attachPointers();
   return svgEl;
 }
@@ -128,9 +224,13 @@ function attachPointers() {
   svgEl.addEventListener("pointerdown", e => {
     svgEl.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
     if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinch = { d:Math.hypot(a.x - b.x, a.y - b.y), k:cam.k }; drag = null; return; }
-    const id = idAt(e);
-    drag = { id, sx:e.clientX, sy:e.clientY, cx:cam.x, cy:cam.y, moved:false, loc:id ? byId(id) : null };
+    const id = idAt(e), t = e.target.closest ? e.target : null, vh = t && t.closest("[data-vi]"), mh = t && t.closest("[data-mi]"), sg = t && t.closest("[data-sid]");
+    drag = { id, sx:e.clientX, sy:e.clientY, cx:cam.x, cy:cam.y, moved:false, loc:id ? byId(id) : null, shape:sg ? shapeById(sg.getAttribute("data-sid")) : null };
     if (drag.loc) { drag.ox = +drag.loc.x; drag.oy = +drag.loc.y; }
+    const cur = mode === "shapes" && selShape && shapeById(selShape);
+    if (cur && mh) { const i = +mh.getAttribute("data-mi"), a = cur.pts[i], b = cur.pts[(i + 1) % cur.pts.length]; cur.pts.splice(i + 1, 0, [Math.round((a[0] + b[0]) / 2), Math.round((a[1] + b[1]) / 2)]); selVi = i + 1; refreshShape(cur); drawHandles(); drag.vi = selVi; drag.shape = cur; drag.fresh = true; }
+    else if (cur && vh) { drag.vi = +vh.getAttribute("data-vi"); drag.shape = cur; }
+    if (drag.vi != null) { const pt = drag.shape.pts[drag.vi]; drag.ox = pt[0]; drag.oy = pt[1]; drag.loc = null; }
   });
   svgEl.addEventListener("pointermove", e => {
     if (!pointers.has(e.pointerId)) return; pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
@@ -139,7 +239,10 @@ function attachPointers() {
     const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
     if (Math.hypot(dx, dy) > 4) drag.moved = true;
     if (!drag.moved) return;
-    if (drag.loc && mode === "move") {
+    if (drag.vi != null) {
+      const sh = drag.shape; sh.pts[drag.vi] = [Math.round(drag.ox + dx / cam.k), Math.round(drag.oy + dy / cam.k)];
+      refreshShape(sh); const hd = handleRefs[drag.vi]; if (hd) hd.setAttribute("transform", `translate(${sh.pts[drag.vi][0]} ${sh.pts[drag.vi][1]})`);
+    } else if (drag.loc && mode === "move") {
       drag.loc.x = Math.round(drag.ox + dx / cam.k); drag.loc.y = Math.round(drag.oy + dy / cam.k);
       const m = markerRefs.find(r => r.loc === drag.loc); if (m) m.g.setAttribute("transform", `translate(${drag.loc.x} ${drag.loc.y})`);
     } else { cam.x = drag.cx + dx; cam.y = drag.cy + dy; applyCam(); }
@@ -147,16 +250,23 @@ function attachPointers() {
   const end = e => {
     pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null;
     if (!drag) return; const d = drag; drag = null;
+    if (d.vi != null) {
+      if (d.moved || d.fresh) { d.shape.unverified = false; E.upsert("shapes", d.shape); }
+      selVi = d.vi; render(); return;
+    }
     if (d.loc && mode === "move" && d.moved) { d.loc.unverified = false; E.upsert("locations", d.loc); render(); return; }
     if (d.moved) return;                                                       // it was a pan
+    if (mode === "draw" && drawing) { const [wx, wy] = toWorld(e.clientX, e.clientY); drawing.pts.push([Math.round(wx), Math.round(wy)]); drawDraft(); hint(); drawToolbarUpdate(); return; }
     if (d.loc) {                                                               // tapped a place
       if (mode === "connect") {
         if (!connectFrom) { connectFrom = d.loc.id; hint(); drawKeep(); }
         else if (connectFrom !== d.loc.id) { const from = connectFrom; connectFrom = null; routeForm({ from, to:d.loc.id }); }
         return;
       }
-      selId = d.loc.id; render(); return;
+      selId = d.loc.id; selShape = null; selVi = null; render(); return;
     }
+    if (d.shape && (mode === "browse" || mode === "shapes" || mode === "move")) { selShape = d.shape.id; selId = null; selVi = null; render(); return; }
+    if (mode === "shapes") { selShape = null; selVi = null; render(); return; }
     if (mode === "add") {                                                      // tapped empty map in add mode
       const [wx, wy] = toWorld(e.clientX, e.clientY), x = Math.round(wx), y = Math.round(wy);
       if (placing) { const l = byId(placing); placing = null; l.x = x; l.y = y; l.unverified = false; E.upsert("locations", l); selId = l.id; mode = "browse"; render(); }
@@ -169,14 +279,32 @@ function attachPointers() {
 const drawKeep = () => { const keep = { ...cam }; const box = document.querySelector(".mapbox"); if (!box) return; box.querySelector("svg").replaceWith(drawMap()); Object.assign(cam, keep); applyCam(); };
 
 const HINTS = { browse:"Drag to pan, scroll or pinch to zoom, tap a place for details.", move:"Move mode: drag a place to reposition it. Changes save as soon as you let go.",
-  add:"Add mode: tap the map where the new place goes.", connect:"Connect mode: tap one place, then another, to draw a route between them." };
+  add:"Add mode: tap the map where the new place goes.", shapes:"Lines & areas: tap a coast, province, river or range to select it, then drag its dots. Drag a faint dot between two points to add a new point.",
+  draw:"Tap the map to lay down points one by one, then press Finish.", connect:"Connect mode: tap one place, then another, to draw a route between them." };
+const drawNeeded = () => drawing ? (CLOSED(drawing.kind) ? 3 : 2) : 0;
+function drawToolbarUpdate() {
+  const i = document.getElementById("drawinfo"); if (i && drawing) i.textContent = "Drawing “" + drawing.name + "”: " + drawing.pts.length + " point" + (drawing.pts.length === 1 ? "" : "s") + (drawing.pts.length < drawNeeded() ? " (needs at least " + drawNeeded() + ")" : "");
+  const f = document.getElementById("drawfinish"); if (f && drawing) f.disabled = drawing.pts.length < drawNeeded();
+}
 function hint() {
   if (!hintEl) return;
   hintEl.textContent = placing ? "Tap the map to place “" + (byId(placing) || {}).name + "”." : mode === "connect" && connectFrom ? "Now tap the place to connect “" + (byId(connectFrom) || {}).name + "” to." : HINTS[mode];
 }
 
 /* ---------- details ---------- */
+function shapeDetails(sh) {
+  const min = CLOSED(sh.kind) ? 3 : 2;
+  return h("div", { class:"card", id:"detail" },
+    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, sh.name || SHAPE_LABEL[sh.kind], E.unverified(sh)), h("span", { class:"pill s-unknown" }, SHAPE_LABEL[sh.kind] || sh.kind)),
+    h("div", { class:"meta" }, sh.pts.length + " points" + (selVi != null ? " · point " + (selVi + 1) + " selected" : "")),
+    h("p", { class:"meta", style:"margin:.5rem 0" }, "Choose “Lines & areas” above, then drag the dots to reshape it. The faint dots between points add a new point when dragged."),
+    h("div", { class:"row", style:"margin-top:.7rem" },
+      h("button", { class:"btn sm", onclick:() => shapeForm(sh) }, "Rename, recolour or delete"),
+      mode !== "shapes" ? h("button", { class:"btn sm", onclick:() => { mode = "shapes"; render(); } }, "Reshape") : null,
+      selVi != null && sh.pts.length > min ? h("button", { class:"btn sm", onclick:() => { sh.pts.splice(selVi, 1); selVi = null; sh.unverified = false; E.upsert("shapes", sh); render(); } }, "Remove selected point") : null));
+}
 function details() {
+  const sh = selShape && shapeById(selShape); if (sh) return shapeDetails(sh);
   const l = selId && byId(selId); if (!l) return h("div", { class:"empty" }, "Tap a place on the map or in the list to see its details.");
   const parent = byId(l.parent), kids = childrenOf(l.id);
   const routes = data.routes.filter(r => r.from === l.id || r.to === l.id);
@@ -212,15 +340,22 @@ function treeList() {
 /* ---------- page ---------- */
 function render() {
   const unplaced = data.locations.filter(l => !placed(l));
-  app.replaceChildren(
-    h("p", { class:"banner" }, "Positions are rough and schematic until you drag them into place; they are not copied from the books’ maps. Pick Move mode, drag a place, and it saves instantly."),
+  app.replaceChildren(...[
+    h("p", { class:"banner" }, "The coastlines, provinces, rivers and ranges are drawn by eye from the book’s world map, so some will be off. Use “Move places” to drag a place, or “Lines & areas” to drag the points of a coast, province or river. Everything saves as soon as you let go."),
     h("div", { class:"toolbar" },
       E.tabs([["map","Map"],["list","List"]], view, k => { view = k; render(); }),
-      view === "map" ? E.tabs([["browse","Browse"],["move","Move"],["add","Add place"],["connect","Connect"]], mode, k => { mode = k; connectFrom = null; if (k !== "add") placing = null; render(); }) : null,
+      view === "map" ? E.tabs([["browse","Browse"],["move","Move places"],["add","Add place"],["connect","Connect"],["shapes","Lines & areas"]], mode === "draw" ? "shapes" : mode, k => { mode = k; connectFrom = null; drawing = null; selVi = null; if (k !== "add") placing = null; render(); }) : null,
       h("select", { "aria-label":"Kind", onchange:e => { kindFilter = e.target.value; render(); } }, h("option", { value:"all" }, "All kinds"), KINDS.map(([v, t]) => h("option", { value:v, selected:kindFilter === v }, t))),
       h("span", { class:"grow" }),
       view === "list" ? h("input", { type:"search", placeholder:"Search places…", value:q, "aria-label":"Search places", oninput:e => { q = e.target.value.toLowerCase(); document.getElementById("treebox").replaceChildren(treeList()); } }) : null,
+      h("button", { class:"btn", onclick:() => shapeForm() }, "+ Draw shape"),
       h("button", { class:"btn primary", onclick:() => locForm() }, "+ Add place")),
+    mode === "draw" && drawing ? h("div", { class:"row", style:"margin-bottom:.6rem" }, h("b", { id:"drawinfo" }),
+      h("button", { class:"btn sm", onclick:() => { drawing.pts.pop(); drawDraft(); drawToolbarUpdate(); } }, "Undo point"),
+      h("button", { class:"btn sm primary", id:"drawfinish", onclick:() => {
+        const o = { id:E.uid("shape"), name:drawing.name, kind:drawing.kind, color:drawing.color, pts:drawing.pts };
+        E.upsert("shapes", o); drawing = null; mode = "shapes"; selShape = o.id; selVi = null; render(); } }, "Finish"),
+      h("button", { class:"btn sm", onclick:() => { drawing = null; mode = "browse"; render(); } }, "Cancel")) : null,
     view === "map" ? h("div", { class:"mapbox" }, drawMap(),
       h("div", { class:"mapbtns" }, h("button", { "aria-label":"Zoom in", onclick:() => { const r = svgEl.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.4); } }, "+"),
         h("button", { "aria-label":"Zoom out", onclick:() => { const r = svgEl.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1 / 1.4); } }, "−"),
@@ -228,8 +363,8 @@ function render() {
       (hintEl = h("div", { class:"maphint" }))) : h("div", { id:"treebox" }, treeList()),
     unplaced.length && view === "map" ? h("div", { style:"margin-top:.9rem" }, h("span", { class:"meta" }, "Not on the map yet (tap one, then tap the map): "), h("span", { class:"row", style:"display:inline-flex" }, unplaced.map(l => h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => { placing = l.id; mode = "add"; selId = l.id; render(); } }, l.name)))) : null,
     h("div", { style:"margin-top:1rem" }, details()),
-    data.routes.length ? h("div", {}, h("h2", {}, "Routes"), h("div", { class:"row" }, data.routes.map(r => { const a = byId(r.from), b = byId(r.to); return h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => routeForm(r) }, (a ? a.name : "?") + " ↔ " + (b ? b.name : "?") + (r.label ? " (" + r.label + ")" : "")); }))) : null);
-  if (view === "map") { hint(); if (!cam.fitted) { cam.fitted = true; fit(); } else applyCam(); }
+    data.routes.length ? h("div", {}, h("h2", {}, "Routes"), h("div", { class:"row" }, data.routes.map(r => { const a = byId(r.from), b = byId(r.to); return h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => routeForm(r) }, (a ? a.name : "?") + " ↔ " + (b ? b.name : "?") + (r.label ? " (" + r.label + ")" : "")); }))) : null].filter(Boolean));
+  if (view === "map") { hint(); drawToolbarUpdate(); if (!cam.fitted) { cam.fitted = true; fit(); } else applyCam(); }
 }
 render();
 if (selId && !byId(selId)) selId = null;
