@@ -12,7 +12,7 @@ E.layout("notices.html", "Notices <em>&amp; snippets</em>", "The public notices 
 const app = document.getElementById("app");
 const SOURCES = [["dragonkind","DragonKind library"],["bonus","Bonus content"],["other","Other"]];
 const SNIPPET_BOOKS = ["FW","IF","OS"];
-let type = "all", q = "", bookFilter = "all", newestFirst = false;
+let type = "all", q = "", bookFilter = "all", newestFirst = false, srcFilter = "all", sortMode = "chapter";
 const isSnip = x => !!x.snippet;
 
 const editForm = (n = {}) => E.form({
@@ -22,6 +22,7 @@ const editForm = (n = {}) => E.form({
     { k:"snippet", label:"This is a snippet from a book (the opening of a chapter), not a public notice", type:"checkbox" },
     { k:"book", label:"Book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })), hint:"For a snippet, pick the book it opens a chapter in.", autoSet:{ when:"snippet", ifIn:SNIPPET_BOOKS, to:"FW" } },
     { k:"chapter", label:"Chapter", type:"text", showIf:"snippet", placeholder:"e.g. 12" },
+    { k:"from", label:"Source it quotes", type:"text", showIf:"snippet", placeholder:"e.g. Article 5, Section 7, the Dragon Rider’s Codex", hint:"Optional. If blank, it is read from the last line of the snippet (the part after the dash)." },
     { k:"title", label:"Title", type:"text", hint:"Optional for snippets; it defaults to the book and chapter." },
     { k:"source", label:"Where it’s from", type:"select", hideIf:"snippet", options:SOURCES.map(([v, l]) => ({ v, l })) },
     { k:"url", label:"Link", type:"url", hideIf:"snippet", placeholder:"https://…" },
@@ -97,12 +98,42 @@ const chapterOf = x => { const v = parseFloat(x.chapter); return isNaN(v) ? 1e9 
 const bookIdx = x => E.BOOKS.findIndex(b => b.id === x.book);
 const NOTICE_COLOR = "#a8502d", SNIPPET_COLOR = "#8b78a8";
 
-// Notices by in-world number, then snippets by book and chapter.
+// Which in-world work a snippet quotes (the Codex, the Book of Brennan, Colonel Kaori's field guide...) and where in it.
+const NUMWORDS = { one:1, two:2, three:3, four:4, five:5, six:6, seven:7, eight:8, nine:9, ten:10 };
+const numFrom = w => NUMWORDS[String(w).toLowerCase()] ?? parseInt(w, 10);
+const lastLine = x => { const m = (x.text || "").trim().split("\n").pop().match(/^[—–-]\s*(.+)$/); return m ? m[1].trim() : ""; };
+const srcRaw = x => (x.from || "").trim() || lastLine(x);
+const WORKS = [
+  [/Dragon (Rider|Writer)['’]?s Codex/i, "The Dragon Rider’s Codex"], [/Code of Conduct/i, "Basgiath War College Code of Conduct"], [/Book of Brennan/i, "The Book of Brennan"],
+  [/Af?fendra|Offendra/i, "Major Affendra’s Guide to the Riders Quadrant"], [/Kaori/i, "Colonel Kaori’s Field Guide to Dragonkind"], [/Markham/i, "Navarre: An Unedited History"],
+  [/Daxton/i, "Colonel Daxton’s Guide to the Scribe Quadrant"], [/Frederick/i, "Major Frederick’s Modern Guide for Healers"], [/Recovered correspondence/i, "Xaden’s correspondence to Violet"],
+  [/Warrick/i, "The Journal of Warrick of Luceras"], [/Journey of the First Six/i, "The Journey of the First Six"], [/Tyrrish Rebellion/i, "The Tyrrish Rebellion"],
+  [/Treaty of/i, "The Treaty of Aretia"], [/Royal Proclamation/i, "Royal Proclamation"], [/Panchek/i, "Panchek"],
+];
+const workOf = x => {
+  const s = srcRaw(x).replace(/\s*\[\?[^\]]*\]/g, "").trim(); if (!s) return "No source recorded";
+  for (const [re, name] of WORKS) if (re.test(s)) return name;
+  return s.replace(/^Page\s+\d+,?\s*/i, "").replace(/^Article\s+\w+,?\s*Section\s+\w+,?\s*/i, "").replace(/^Addendum\s+[\d.]+,?\s*/i, "").replace(/,?\s*(Unauthorized|Unedited|Second|Third)\s+Edition.*$/i, "").trim() || s;
+};
+const sectionOf = x => {
+  const s = srcRaw(x);
+  let m = s.match(/Article\s+(\w+)\s*,?\s*Section\s+(\w+)/i);
+  if (m) { const a = numFrom(m[1]), b = numFrom(m[2]); return { key:a * 100 + b, label:"Article " + a + ", Section " + b }; }
+  m = s.match(/Addendum\s+(\d+)\.(\d+)/i);
+  if (m) return { key:10000 + (+m[1]) * 100 + (+m[2]), label:"Addendum " + m[1] + "." + m[2] };
+  m = s.match(/Page\s+(\d+)/i);
+  if (m) return { key:+m[1], label:"Page " + m[1] };
+  return { key:1e9, label:"" };
+};
+
+// Notices by in-world number, then snippets by book and chapter (or by source and section within it).
 function ordered(list) {
   const notices = list.filter(x => !isSnip(x)).map(x => ({ x, num:numOf(x) })).sort((a, b) => ((a.num[0] ?? 1e9) - (b.num[0] ?? 1e9)) || ((a.num[1] ?? 0) - (b.num[1] ?? 0)));
-  const snippets = list.filter(isSnip).map(x => ({ x, num:[null, null] })).sort((a, b) => (bookIdx(a.x) - bookIdx(b.x)) || (chapterOf(a.x) - chapterOf(b.x)));
+  const bySource = sortMode === "section";
+  const snippets = list.filter(isSnip).map(x => ({ x, num:[null, null], work:workOf(x), sec:sectionOf(x) })).sort((a, b) =>
+    (bySource ? a.work.localeCompare(b.work) || (a.sec.key - b.sec.key) : 0) || (bookIdx(a.x) - bookIdx(b.x)) || (chapterOf(a.x) - chapterOf(b.x)));
   const all = [...notices, ...snippets];
-  all.forEach(it => { it.group = isSnip(it.x) ? E.bookOf(it.x.book).name : (it.num[0] != null ? "Year " + it.num[0] : "Undated"); it.short = isSnip(it.x) ? it.x.book + " " + (it.x.chapter || "?") : (it.num[0] != null ? it.num[0] + "." + it.num[1] : "—"); });
+  all.forEach(it => { it.group = isSnip(it.x) ? (bySource ? it.work : E.bookOf(it.x.book).name) : (it.num[0] != null ? "Year " + it.num[0] : "Undated"); it.short = isSnip(it.x) ? it.x.book + " " + (it.x.chapter || "?") : (it.num[0] != null ? it.num[0] + "." + it.num[1] : "—"); });
   return newestFirst ? all.reverse() : all;
 }
 
@@ -150,10 +181,10 @@ function entries(items) {
     if (!snip) lastYear = it.num[0];
     out.push(h("article", { class:"note", id:x.id },
       h("div", { class:"row", style:"justify-content:space-between" },
-        h("span", { class:"num", style:snip ? "color:" + SNIPPET_COLOR : "" }, snip ? "SNIPPET · " + E.bookOf(x.book).name.toUpperCase() + " · CHAPTER " + (x.chapter || "?") : (it.num[0] != null ? "PUBLIC NOTICE " + it.num[0] + "." + it.num[1] : (x.title || "").toUpperCase())),
-        h("span", { class:"pill " + (x.read ? "s-active" : "s-missing") }, x.read ? "read" : "unread")),
+        h("span", { class:"num", style:snip ? "color:" + SNIPPET_COLOR : "" }, snip ? "SNIPPET · " + E.bookOf(x.book).name.toUpperCase() + " · CHAPTER " + (x.chapter || "?") : (it.num[0] != null ? "PUBLIC NOTICE " + it.num[0] + "." + it.num[1] : (x.title || "").toUpperCase())),        h("span", { class:"pill " + (x.read ? "s-active" : "s-missing") }, x.read ? "read" : "unread")),
       x.text ? h("p", { class:"body", style:"white-space:pre-wrap" }, x.text) : h("p", { class:"body meta" }, x.summary || (snip ? "No text yet. Use Edit to add this chapter’s opening." : "No text yet. Use “Import from DragonKind” or Edit.")),
       x.text && x.summary ? h("div", { class:"meta" }, "In brief: " + x.summary) : null,
+      snip && srcRaw(x) ? h("div", { class:"row", style:"margin:.3rem 0" }, h("span", { class:"meta" }, "From:"), h("button", { type:"button", class:"chip", title:"Show only snippets from this source", style:"cursor:pointer", onclick:() => { srcFilter = workOf(x); render(); } }, workOf(x)), sectionOf(x).label ? h("span", { class:"chip" }, sectionOf(x).label) : null) : null,
       !snip && x.transcriber ? h("div", { class:"meta" }, "Transcribed by " + x.transcriber) : null,
       (x.cites || []).map(E.citeView),
       h("div", { class:"row", style:"margin-top:.5rem" },
@@ -165,7 +196,14 @@ function entries(items) {
   return h("div", { class:"nt" }, out);
 }
 
+// every in-world work the saved snippets quote, with how many snippets each has
+const snippetWorks = () => {
+  const counts = {}; data.notices.filter(isSnip).forEach(n => { const w = workOf(n); counts[w] = (counts[w] || 0) + 1; });
+  return Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
+};
+
 function render() {
+  if (srcFilter !== "all" && !snippetWorks().some(([w]) => w === srcFilter)) srcFilter = "all";
   app.replaceChildren(
     h("div", { class:"grid", style:"margin:1.6rem 0 1.4rem" },
       h("a", { class:"card", href:"https://dragonkind.com/library", target:"_blank", rel:"noopener", style:"text-decoration:none" }, h("h3", {}, "DragonKind library ↗"), h("p", { class:"meta" }, "dragonkind.com/library — open it in a new tab, then log what you find here.")),
@@ -173,6 +211,8 @@ function render() {
     h("div", { class:"toolbar" },
       E.tabs([["all","All"],["notice","Public notices"],["snippet","Book snippets"],["bonus","Bonus content"]], type, k => { type = k; render(); }),
       type === "snippet" || type === "all" ? h("select", { "aria-label":"Book", onchange:e => { bookFilter = e.target.value; renderList(); } }, h("option", { value:"all" }, "All books"), SNIPPET_BOOKS.map(id => h("option", { value:id, selected:bookFilter === id }, E.bookOf(id).name))) : null,
+      snippetWorks().length && (type === "snippet" || type === "all") ? h("select", { "aria-label":"Source", onchange:e => { srcFilter = e.target.value; renderList(); } }, h("option", { value:"all" }, "All sources"), snippetWorks().map(([w, n]) => h("option", { value:w, selected:srcFilter === w }, w + " (" + n + ")"))) : null,
+      snippetWorks().length && (type === "snippet" || type === "all") ? h("select", { "aria-label":"Snippet order", onchange:e => { sortMode = e.target.value; renderList(); } }, h("option", { value:"chapter", selected:sortMode === "chapter" }, "Snippets by chapter"), h("option", { value:"section", selected:sortMode === "section" }, "Snippets by source, then section")) : null,
       h("span", { class:"grow" }),
       h("button", { class:"btn sm", onclick:() => { newestFirst = !newestFirst; render(); } }, newestFirst ? "Newest first ↓" : "Oldest first ↑"),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
@@ -188,6 +228,7 @@ function renderList() {
     if (type === "snippet" && !isSnip(n)) return false;
     if (type === "bonus" && (isSnip(n) || n.source !== "bonus")) return false;
     if (isSnip(n) && bookFilter !== "all" && n.book !== bookFilter) return false;
+    if (isSnip(n) && srcFilter !== "all" && workOf(n) !== srcFilter) return false;
     return ((n.title || "") + " " + (n.summary || "") + " " + (n.text || "")).toLowerCase().includes(q);
   });
   const box = document.getElementById("list");

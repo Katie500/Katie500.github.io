@@ -85,3 +85,5 @@ nav.main { align-items:center; } code { background:#23221f10; padding:.05rem .35
 @keyframes fl { from { background:#a8502d26; } }
 .flash { animation:fl 1.6s ease-out; }
 .axis-wrap svg text { font-family:"Inter",system-ui,sans-serif; }
+
+.toolbar select { max-width:min(100%,280px); }

@@ -16,13 +16,15 @@ let tab = "all", q = "";
 const editForm = (c = {}) => E.form({
   title: c.id ? "Edit character" : "Add character", value:c,
   fields: [
-    { k:"name", label:"Name", type:"text" },
+    { k:"title", label:"Title", type:"select", options:[{ v:"", l:"— none —" }, ...[...E.TITLES, ...(c.title && !E.TITLES.includes(c.title) ? [c.title] : [])].map(t => ({ v:t, l:t }))] },
+    { k:"name", label:"Name", type:"text", hint:"Without the title, e.g. Kaori rather than Professor Kaori." },
     { k:"aliases", label:"Alternate names", type:"text", hint:"Comma-separated: nicknames, titles, former names." },
     { k:"origin", label:"Home province / origin", type:"text", placeholder:"e.g. Krovla (Poromiel)" },
     { k:"group", label:"Role", type:"select", options:[{v:"rider",l:"Dragon rider"},{v:"flier",l:"Gryphon rider (flier)"},{v:"professor",l:"Professor / officer"},{v:"civilian",l:"Civilian / other"},{v:"antagonist",l:"Antagonist"}] },
     { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
     { k:"rebelChild", label:"Rebel child (child of an executed rebel)", type:"checkbox" },
     { k:"venin", label:"Venin", type:"checkbox" },
+    { k:"signetIds", label:"Signets", type:"multi", options:E.optionsOf("signets", s => s.name), hint:"Tick every signet they have (a double-signet rider gets two). Add new kinds on the Signets page." },
     { k:"gryphon", label:"Gryphon (name)", type:"text", hint:"For gryphon riders (fliers). Leave blank for dragon riders." },
     { k:"dragonId", label:"Bonded dragon", type:"select", options:E.optionsOf("dragons", d => d.name, "— none —", d => !d.gryphon) },
     { k:"fateEventId", label:"Event where their status changed", type:"select", options:E.optionsOf("events", e => E.bookOf(e.book).id + ": " + e.title, "— none —") },
@@ -34,11 +36,12 @@ const editForm = (c = {}) => E.form({
 });
 
 function card(c) {
-  const d = E.byId("dragons", c.dragonId), ev = E.byId("events", c.fateEventId);
+  const d = E.byId("dragons", c.dragonId), ev = E.byId("events", c.fateEventId), sigs = (c.signetIds || []).map(id => E.byId("signets", id)).filter(Boolean);
   return h("div", { class:"card", id:c.id },
-    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, c.name, E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
+    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, E.fullName(c), E.unverified(c)), h("span", { class:"pill s-" + c.status }, c.status === "unknown" ? "not set" : c.status)),
     c.aliases ? h("div", { class:"meta" }, "also known as " + c.aliases) : null,
     h("div", { class:"meta" }, c.group, c.origin ? " · from " + c.origin : "", c.rebelChild ? " · rebel child" : "", d ? " · bonded to " + d.name : "", c.gryphon ? " · gryphon " + c.gryphon : "", c.venin ? h("span", { class:"pill s-deceased", style:"margin-left:.4rem" }, "venin") : null),
+    sigs.length ? h("div", { class:"row", style:"margin:.35rem 0" }, h("span", { class:"meta" }, sigs.length > 1 ? "Signets:" : "Signet:"), sigs.map(s => h("a", { class:"chip", href:"signets.html#" + s.id }, s.name))) : null,
     ev ? h("div", { class:"meta" }, "Changed at: ", h("a", { href:"timeline.html#" + ev.id }, ev.title)) : null,
     c.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, c.notes) : null,
     (c.cites || []).map(E.citeView),
@@ -48,11 +51,14 @@ function card(c) {
       h("button", { class:"btn sm", onclick:() => editForm(c) }, "Edit")));
 }
 
+const signetNames = x => (x.signetIds || []).map(id => (E.byId("signets", id) || {}).name || "").join(" ");
 const matches = x => {
-  const byTab = tab === "all" || (tab === "rebel" ? x.rebelChild : tab === "fliers" ? (x.group === "flier" || !!x.gryphon) : tab === "krovla" ? /krovla/i.test(x.origin || "") : tab === "venin" ? x.venin : tab === "riders" ? x.group === "rider" && !x.gryphon : x.status === tab);
-  return !!byTab && (x.name + " " + (x.aliases || "") + " " + (x.origin || "")).toLowerCase().includes(q);
+  const byTab = tab === "all" || (tab === "signet" ? (x.signetIds || []).length > 0 : tab === "nosignet" ? (x.group === "rider" || x.group === "flier") && !(x.signetIds || []).length : tab === "rebel" ? x.rebelChild : tab === "fliers" ? (x.group === "flier" || !!x.gryphon) : tab === "krovla" ? /krovla/i.test(x.origin || "") : tab === "venin" ? x.venin : tab === "riders" ? x.group === "rider" && !x.gryphon : x.status === tab);
+  return !!byTab && (E.fullName(x) + " " + (x.aliases || "") + " " + (x.origin || "") + " " + signetNames(x)).toLowerCase().includes(q);
 };
 const EMPTY = {
+  signet:"No one has a signet recorded yet. Edit a character and tick their signets.",
+  nosignet:"Every rider has a signet recorded.",
   rebel:"No rebel children marked yet. Edit a character and tick “Rebel child”.",
   fliers:"No gryphon riders yet. Edit a character, set their role to Gryphon rider and add their gryphon.",
   krovla:"No one is marked as from Krovla yet. Edit a character and set their home province.",
@@ -68,7 +74,7 @@ function render() {
   const pill = (k, cls, label) => h("button", { type:"button", class:"pill " + cls, "aria-pressed":String(tab === k), style:"background:none;cursor:pointer;font:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase" + (tab === k ? ";background:rgba(35,34,31,.08)" : ""), onclick:() => { tab = tab === k ? "all" : k; render(); } }, counts(k) + " " + label);
   app.replaceChildren(
     h("div", { class:"toolbar" },
-      E.tabs([["all","All"],["riders","Dragon riders"],["fliers","Gryphon riders"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]], tab, k => { tab = k; render(); }),
+      E.tabs([["all","All"],["riders","Dragon riders"],["fliers","Gryphon riders"],["signet","Has a signet"],["nosignet","Riders with no signet"],["rebel","Rebel children"],["krovla","Krovla"],["venin","Venin"],["active","Active"],["missing","Missing"],["deceased","Deceased"],["unknown","Not set"]], tab, k => { tab = k; render(); }),
       h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search…", value:q, "aria-label":"Search characters", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add character")),

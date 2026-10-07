@@ -34,7 +34,7 @@ const editForm = (d = {}) => E.form({
     { k:"family", hideIf:"gryphon", label:"Line (bloodline)", type:"text", hint:"e.g. Fhaicorain. Dragons sharing a line are grouped together on the Families tab." },
     { k:"sire", hideIf:"gryphon", label:"Sire (father)", type:"select", options:E.optionsOf("dragons", x => x.name, "— unknown —", x => !x.gryphon).filter(o => o.v !== d.id) },
     { k:"dam", hideIf:"gryphon", label:"Dam (mother)", type:"select", options:E.optionsOf("dragons", x => x.name, "— unknown —", x => !x.gryphon).filter(o => o.v !== d.id) },
-    { k:"riderId", label:"Bonded rider", type:"select", options:E.optionsOf("characters", c => c.name, "— none —") },
+    { k:"riderId", label:"Bonded rider", type:"select", options:E.optionsOf("characters", E.fullName, "— none —") },
     { k:"status", label:"Status", type:"select", options:STATUS.map(([v, l]) => ({ v, l })) },
     { k:"notes", label:"Notes", type:"textarea" },
     { k:"cites", label:"Page references", type:"cites" },
@@ -50,7 +50,7 @@ const dragonCard = d => {
     h("div", { class:"row", style:"justify-content:space-between" },
       h("h3", {}, d.gryphon ? "🪶 " : h("span", { class:"dot", style:"background:" + colorOf(d) }), d.name, E.unverified(d)), h("span", { class:"pill s-" + d.status }, d.status === "unknown" ? "not set" : d.status)),
     d.aliases ? h("div", { class:"meta" }, "also known as " + d.aliases) : null,
-    h("div", { class:"meta" }, [d.gryphon ? [d.sex, "gryphon"].filter(Boolean).join(" ") : summary(d), rider && "rider: " + rider.name, s && "sire: " + s.name, m && "dam: " + m.name].filter(Boolean).join(" · ") || "Nothing recorded yet"),
+    h("div", { class:"meta" }, [d.gryphon ? [d.sex, "gryphon"].filter(Boolean).join(" ") : summary(d), rider && "rider: " + E.fullName(rider), s && "sire: " + s.name, m && "dam: " + m.name].filter(Boolean).join(" · ") || "Nothing recorded yet"),
     d.notes ? h("p", { style:"margin:.5rem 0;font-size:14px" }, d.notes) : null,
     (d.cites || []).map(E.citeView),
     h("div", { style:"margin-top:.7rem" }, h("button", { class:"btn sm", onclick:() => editForm(d) }, "Edit")));
@@ -100,7 +100,7 @@ function tree() {
     gEl.append(svg("rect", { x:p.x, y:p.y, width:W, height:H, rx:10, fill:"#fbf9f5", stroke:"rgba(35,34,31,.25)" }),
       d.img ? svg("image", { href:d.img, x:p.x + 6, y:p.y + 7, width:32, height:32, preserveAspectRatio:"xMidYMid slice", "clip-path":"url(#cp-" + d.id + ")" }) : svg("circle", { cx:p.x + 22, cy:p.y + H / 2, r:7, fill:colorOf(d) }),
       Object.assign(svg("text", { x:p.x + 44, y:p.y + 20, "font-size":14, fill:"#23221f" }), { textContent:d.name }),
-      Object.assign(svg("text", { x:p.x + 44, y:p.y + 36, "font-size":11, fill:"#7c776d" }), { textContent:(r ? r.name : "no rider recorded") + (d.status === "deceased" ? " †" : "") }));
+      Object.assign(svg("text", { x:p.x + 44, y:p.y + 36, "font-size":11, fill:"#7c776d" }), { textContent:(r ? E.fullName(r) : "no rider recorded") + (d.status === "deceased" ? " †" : "") }));
     gEl.addEventListener("click", () => editForm(d));
     gEl.addEventListener("keydown", e => { if (e.key === "Enter") editForm(d); });
     el.append(gEl);
@@ -111,14 +111,14 @@ function tree() {
 
 function table() {
   const cols = [["name","Name"],["color","Color"],["tail","Tail"],["sex","Sex"],["family","Line"],["age","Est. age"],["riders","Recorded riders"],["rider","Bonded rider"],["status","Status"]];
-  const val = x => ({ rider:(E.byId("characters", x.riderId) || {}).name || "", tail:tailOf(x), status:x.status })[sortKey] ?? x[sortKey];
+  const val = x => ({ rider:E.byId("characters", x.riderId) ? E.fullName(E.byId("characters", x.riderId)) : "", tail:tailOf(x), status:x.status })[sortKey] ?? x[sortKey];
   const rows = data.dragons.filter(x => !x.gryphon).sort((a, b) => { const x = val(a), y = val(b); return (x == null || x === "" ? 1 : y == null || y === "" ? -1 : typeof x === "number" && typeof y === "number" ? x - y : String(x).localeCompare(String(y))) * sortDir; });
   const cell = x => h("td", { style:"padding:.5rem .7rem;border-top:1px solid var(--line);white-space:nowrap" }, x);
   return h("div", { class:"axis-wrap" }, h("table", { style:"border-collapse:collapse;width:100%;font-size:14px" },
     h("thead", {}, h("tr", {}, cols.map(([k, l]) => h("th", { style:"text-align:left;padding:.6rem .7rem;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);cursor:pointer", onclick:() => { sortDir = sortKey === k ? -sortDir : 1; sortKey = k; render(); } }, l + (sortKey === k ? (sortDir > 0 ? " ↑" : " ↓") : ""))))),
     h("tbody", {}, rows.map(x => h("tr", { style:"cursor:pointer", onclick:() => editForm(x) },
       cell(h("span", {}, h("span", { class:"dot", style:"background:" + colorOf(x) }), x.name)), cell(x.color || "—"), cell(tailOf(x) ? tailOf(x) + " tail" : "—"), cell(x.sex || "—"), cell(x.family || "—"),
-      cell(x.age != null && x.age !== "" ? x.age : "—"), cell(x.riders != null && x.riders !== "" ? x.riders : "—"), cell((E.byId("characters", x.riderId) || {}).name || "—"), cell(x.status === "unknown" ? "not set" : x.status))))));
+      cell(x.age != null && x.age !== "" ? x.age : "—"), cell(x.riders != null && x.riders !== "" ? x.riders : "—"), cell(E.byId("characters", x.riderId) ? E.fullName(E.byId("characters", x.riderId)) : "—"), cell(x.status === "unknown" ? "not set" : x.status))))));
 }
 
 function gryphons() {

@@ -45,7 +45,65 @@ const E = (() => {
     let pub = null; try { pub = localStorage.getItem(PUB_KEY); } catch (e) {}
     return !pub ? "never" : pub === hash(JSON.stringify(data)) ? "clean" : "dirty";
   };
-  const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[] });
+  const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[], signets:[] });
+  // Signet kinds and who is known to have them. Everything here comes from web summaries and your notes; entries are flagged "check".
+  const SG = "Starter note from web summaries of the books; check against your copy.";
+  const SIGNET_SEED = {
+    signets: [
+      ["s-sg-lightning", "Lightning wielding", "Wielding", "Calls and controls lightning."],
+      ["s-sg-time", "Stopping time", "Time", "Briefly stops time. Summaries tie Violet's second signet to Andarna."],
+      ["s-sg-shadow", "Shadow wielding", "Wielding", "Wields shadows. Xaden also has a second signet revealed in Iron Flame; add it here once you know which."],
+      ["s-sg-ice", "Ice wielding", "Wielding", "Calls and controls ice."],
+      ["s-sg-storm", "Storm wielding", "Wielding", "Calls and controls storms."],
+      ["s-sg-mending", "Mending", "Healing", "Heals wounds. An epigraph calls menders rare and the most precious of signets."],
+      ["s-sg-farsight", "Farsight", "Mind", "Sees things at a distance."],
+      ["s-sg-memory-read", "Memory reading", "Mind", "Reads another person's memories."],
+      ["s-sg-memory-wipe", "Memory wiping", "Mind", "Wipes memories. Seen when Violet loses twelve hours at the end of Onyx Storm."],
+      ["s-sg-precog", "Precognition", "Mind", "Sees what is about to happen."],
+      ["s-sg-summoning", "Summoning", "Objects", "Makes items disappear and reappear in the rider's possession."],
+      ["s-sg-metal", "Metal manipulation", "Objects", "Manipulates metal."],
+      ["s-sg-siphon", "Siphoning", "Other", "Siphons magic from others; Sloane's power is vital to the Basgiath ritual in Iron Flame."],
+      ["s-sg-counter", "Signet countering", "Defensive", "Counters or dampens other signets."],
+      ["s-sg-truthsayer", "Truthsayer", "Mind", "Named in an epigraph as the signet more terrifying than an intrinsic. Details unknown."],
+      ["s-sg-intrinsic", "Intrinsic", "Other", "Named in an epigraph as a terrifying signet type. Details unknown."],
+    ].map(([id, name, category, desc]) => ({ id, name, category, desc:desc + " " + SG, unverified:true, rev:1 })),
+    assign: { "s-violet":["s-sg-lightning","s-sg-time"], "s-xaden":["s-sg-shadow"], "s-ridoc":["s-sg-ice"], "s-lilith":["s-sg-storm"], "s-brennan":["s-sg-mending"],
+      "s-liam":["s-sg-farsight"], "s-dain":["s-sg-memory-read"], "s-imogen":["s-sg-memory-wipe"], "s-aaric":["s-sg-precog"], "s-rhi":["s-sg-summoning"],
+      "s-sawyer":["s-sg-metal"], "s-sloane":["s-sg-siphon"], "s-bodhi":["s-sg-counter"] },
+  };
+  const applySignets = () => {
+    let changed = false; data.signets = data.signets || []; data.removedSeed = data.removedSeed || [];
+    for (const s of SIGNET_SEED.signets) {
+      const i = data.signets.findIndex(x => x.id === s.id);
+      if (i < 0) { if (!data.removedSeed.includes(s.id)) { data.signets.push({ ...s }); changed = true; } }
+      else if (data.signets[i].unverified === true && s.rev > (data.signets[i].rev || 0)) { data.signets[i] = { ...s }; changed = true; }
+    }
+    for (const [cid, sids] of Object.entries(SIGNET_SEED.assign)) {
+      const c = data.characters.find(x => x.id === cid);
+      if (c && c.signetIds === undefined) { c.signetIds = sids.filter(id => data.signets.some(x => x.id === id)); changed = true; }
+    }
+    return changed;
+  };
+  // Titles are a separate dropdown field; names that started with a title are split once when loaded.
+  const TITLES = ["Prince","Princess","King","Queen","Duke","Duchess","Earl","Viscount","Count","Lord","Lady","Professor","Colonel","Lieutenant Colonel","Major","General","Captain","Lieutenant","Commandant","Curator","Cadet","Septon","Healer"];
+  const fullName = c => [c.title, c.name].filter(Boolean).join(" ");
+  const migrateTitles = () => {
+    let changed = false;
+    const byLen = [...TITLES].sort((a, b) => b.length - a.length);
+    for (const c of data.characters || []) {
+      if (c.title !== undefined) continue;
+      c.title = "";
+      for (const t of byLen) {
+        if (c.name.startsWith(t + " ")) {
+          const rest = c.name.slice(t.length + 1);
+          if (rest && !rest.startsWith("(") && !/^of\b/.test(rest)) { c.title = t; c.name = rest; }
+          break;
+        }
+      }
+      changed = true;
+    }
+    return changed;
+  };
   const load = () => {
     try {
       const raw = localStorage.getItem(KEY);
@@ -67,11 +125,13 @@ const E = (() => {
         }
         if (fixSpellings()) added = true;
         if (retire()) added = true;
+        if (applySignets()) added = true;
+        if (migrateTitles()) added = true;
         if (added) save();
         return;
       }
     } catch (e) { console.warn(e); }
-    data = JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty())); data.fromSeed = true; data.removedSeed = []; save();
+    data = Object.assign(empty(), JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty()))); data.fromSeed = true; data.removedSeed = []; applySignets(); migrateTitles(); save();
     fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
   };
   // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
@@ -293,7 +353,7 @@ const E = (() => {
   }
 
   /* ---------- layout ---------- */
-  const NAV = [["index.html","Home"],["timeline.html","Timeline"],["theories.html","Theories"],["notices.html","Notices"],["dragons.html","Dragons"],["characters.html","Characters"]];
+  const NAV = [["index.html","Home"],["timeline.html","Timeline"],["theories.html","Theories"],["notices.html","Notices"],["dragons.html","Dragons"],["characters.html","Characters"],["signets.html","Signets"]];
   const layout = (active, title, lede) => {
     const root = document.getElementById("app");
     root.before(h("header", { class:"site" },
@@ -314,5 +374,5 @@ const E = (() => {
   const optionsOf = (list, label = x => x.name, blank, keep = () => true) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].filter(keep).map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));
 
   load();
-  return { BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
+  return { TITLES, fullName, BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
 })();

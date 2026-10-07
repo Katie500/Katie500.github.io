@@ -26,7 +26,7 @@ const editForm = (ev = {}) => E.form({
     { k:"chapter", label:"Chapter", type:"text" },
     { k:"page", label:"Page", type:"text", hint:"If you enter a page number it decides where this event sits in its book, instead of the order number above. Use the same edition for all your pages (hardcover is a good choice)." },
     { k:"desc", label:"Details (your own words)", type:"textarea" },
-    { k:"chars", label:"Characters involved", type:"multi", options:E.optionsOf("characters") },
+    { k:"chars", label:"Characters involved", type:"multi", options:E.optionsOf("characters", E.fullName) },
   ],
   onSave: o => { o.id = o.id || E.uid("ev"); if (o.edition) data.lastEdition = o.edition; E.upsert("events", o); render(); },
   onDelete: ev.id ? () => { data.theories.forEach(t => { t.foreshadow = (t.foreshadow || []).filter(x => x !== ev.id); if (t.revealId === ev.id) t.revealId = ""; }); E.remove("events", ev.id); render(); } : null,
@@ -99,7 +99,7 @@ function list(events) {
         e.kind !== "event" ? h("div", {}, h("span", { class:"pill " + (e.kind === "reveal" ? "s-confirmed" : "s-missing") }, e.kind)) : null),
       h("div", {}, h("h3", {}, e.title, E.unverified(e)), e.desc ? h("p", {}, e.desc) : null,
         h("div", { class:"row", style:"margin-top:.5rem" },
-          (e.chars || []).map(id => E.byId("characters", id)).filter(Boolean).map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, c.name)),
+          (e.chars || []).map(id => E.byId("characters", id)).filter(Boolean).map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, E.fullName(c))),
           rel.map(t => h("a", { class:"chip", href:"theories.html#" + t.id, style:"border-color:" + STATUS_COLOR[t.status] }, "✦ " + t.title)),
           h("button", { class:"btn sm", onclick:() => editForm(e) }, "Edit")))));
   });

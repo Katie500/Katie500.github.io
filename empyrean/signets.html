@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signets — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, data } = E;
+E.layout("signets.html", "Every <em>signet</em>, and who has it", "All the kinds of signet in the series and the riders who hold them. A rider can have more than one (a double-signet rider). You can also tick a rider’s signets from the Characters page.");
+const app = document.getElementById("app");
+let cat = "all", q = "";
+
+const holdersOf = id => data.characters.filter(c => (c.signetIds || []).includes(id));
+
+const editForm = (s = {}) => E.form({
+  title: s.id ? "Edit signet" : "Add signet",
+  value: { ...s, holders: s.id ? holdersOf(s.id).map(c => c.id) : [] },
+  fields: [
+    { k:"name", label:"Signet", type:"text", placeholder:"e.g. Lightning wielding" },
+    { k:"category", label:"Category", type:"text", hint:"Examples: Wielding, Mind, Healing, Objects, Time, Defensive, Other. Signets with the same category are grouped together.", placeholder:"Wielding" },
+    { k:"desc", label:"What it does (your words)", type:"textarea" },
+    { k:"holders", label:"Who has it", type:"multi", options:E.optionsOf("characters", E.fullName) },
+    { k:"cites", label:"Page references", type:"cites" },
+  ],
+  onSave: o => {
+    o.id = o.id || E.uid("sg");
+    const holders = new Set(o.holders || []); delete o.holders;
+    E.upsert("signets", o);
+    data.characters.forEach(c => {
+      const has = (c.signetIds || []).includes(o.id), want = holders.has(c.id);
+      if (has !== want) { c.signetIds = want ? [...(c.signetIds || []), o.id] : (c.signetIds || []).filter(x => x !== o.id); E.upsert("characters", c); }
+    });
+    render();
+  },
+  onDelete: s.id ? () => { data.characters.forEach(c => { if ((c.signetIds || []).includes(s.id)) { c.signetIds = c.signetIds.filter(x => x !== s.id); E.upsert("characters", c); } }); E.remove("signets", s.id); render(); } : null,
+});
+
+const card = s => {
+  const holders = holdersOf(s.id);
+  return h("article", { class:"card", id:s.id, style:"scroll-margin-top:20px" },
+    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, s.name, E.unverified(s)), h("span", { class:"pill s-unknown", style:"color:var(--acc2)" }, s.category || "Other")),
+    s.desc ? h("p", { style:"margin:.5rem 0;font-size:14px" }, s.desc) : null,
+    h("div", { class:"f", style:"margin:.6rem 0" }, h("label", {}, holders.length ? "Held by (" + holders.length + ")" : "Held by"),
+      holders.length ? h("div", { class:"row" }, holders.map(c => h("a", { class:"chip", href:"characters.html#" + c.id, title:(c.signetIds || []).length > 1 ? "Has " + c.signetIds.length + " signets" : "" }, E.fullName(c) + ((c.signetIds || []).length > 1 ? " ·2" : ""))))
+        : h("span", { class:"meta" }, "No one recorded yet")),
+    (s.cites || []).map(E.citeView),
+    h("div", { style:"margin-top:.7rem" }, h("button", { class:"btn sm", onclick:() => editForm(s) }, "Edit")));
+};
+
+function render() {
+  const cats = [...new Set(data.signets.map(s => s.category || "Other"))].sort();
+  if (cat !== "all" && !cats.includes(cat)) cat = "all";
+  app.replaceChildren(
+    h("div", { class:"toolbar" },
+      E.tabs([["all","All"], ...cats.map(c => [c, c])], cat, k => { cat = k; render(); }), h("span", { class:"grow" }),
+      h("input", { type:"search", placeholder:"Search signets or riders…", value:q, "aria-label":"Search signets", oninput:e => { q = e.target.value.toLowerCase(); renderList(); } }),
+      h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add signet")),
+    h("div", { id:"count", class:"meta", role:"status", style:"margin:-.3rem 0 .8rem" }),
+    h("div", { id:"list" }),
+    h("div", { id:"gaps" }));
+  renderList();
+}
+
+function renderList() {
+  const l = data.signets.filter(s => (cat === "all" || (s.category || "Other") === cat) &&
+    (s.name + " " + (s.desc || "") + " " + holdersOf(s.id).map(E.fullName).join(" ")).toLowerCase().includes(q))
+    .sort((a, b) => (a.category || "").localeCompare(b.category || "") || a.name.localeCompare(b.name));
+  document.getElementById("count").textContent = "Showing " + l.length + " of " + data.signets.length + " signets";
+  document.getElementById("list").replaceChildren(l.length ? h("div", { class:"grid" }, l.map(card)) : E.emptyState("Nothing matches."));
+  // riders with no signet recorded
+  const open = data.characters.filter(c => (c.group === "rider" || c.group === "flier") && !(c.signetIds || []).length);
+  const doubles = data.characters.filter(c => (c.signetIds || []).length > 1);
+  document.getElementById("gaps").replaceChildren(
+    doubles.length ? h("div", {}, h("h2", {}, "Riders with more than one signet"), h("div", { class:"row" }, doubles.map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, E.fullName(c) + " — " + c.signetIds.map(id => (E.byId("signets", id) || {}).name).filter(Boolean).join(" + "))))) : null,
+    open.length ? h("div", {}, h("h2", {}, "Riders with no signet recorded yet"), h("p", { class:"meta" }, "Open a rider on the Characters page and tick their signets."), h("div", { class:"row" }, open.sort((a, b) => a.name.localeCompare(b.name)).map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, E.fullName(c))))) : null);
+  if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block:"start" });
+}
+render();
+</script></body></html>
