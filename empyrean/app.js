@@ -109,14 +109,14 @@ const E = (() => {
   ].map(([id, name, kind, parent, x, y, desc]) => ({ id, name, kind, parent, x, y, desc:/map|Note|Starter/.test(desc) ? desc : desc + " " + LC, unverified:true, rev:3 }));
   // Land, mountains, rivers, roads and province areas for the map: lists of [x, y] points the map page lets you drag.
   // Coast and mountains were traced from the world map picture; provinces, rivers and roads were placed by eye.
-  const SHAPE_SEED = ((window.EMPYREAN_MAP || {}).shapes || []).map(([id, name, kind, pts, color, sharp]) => ({ id, name, kind, pts, color, sharp:!!sharp, unverified:true, rev:3 }));
+  const SHAPE_SEED = ((window.EMPYREAN_MAP || {}).shapes || []).map(([id, name, kind, pts, color, sharp]) => ({ id, name, kind, pts, color, sharp:!!sharp, unverified:true, rev:4 }));
   const applyLocations = () => {
     let changed = false; data.locations = data.locations || []; data.routes = data.routes || []; data.shapes = data.shapes || []; data.removedSeed = data.removedSeed || [];
-    if ((data.mapRev || 0) < 3 && SHAPE_SEED.length) {
+    if ((data.mapRev || 0) < 4 && SHAPE_SEED.length) {
       // earlier maps were rough; swap in the traced one, and (once) put starter places on their real positions, even ones that were dragged
       data.shapes = data.shapes.filter(s => !s.id.startsWith("s-sh-"));
       if ((data.mapRev || 0) < 2) for (const s of LOCATION_SEED) { const l = data.locations.find(x => x.id === s.id); if (l) { l.x = s.x; l.y = s.y; if (l.name === "Morainne") l.name = "Morraine"; if (l.id === "s-loc-draithus") l.kind = s.kind; if (l.parent === "s-loc-navarre" && s.parent !== l.parent && l.unverified === true) l.parent = s.parent; } }
-      data.mapRev = 3; changed = true;
+      data.mapRev = 4; changed = true;
     }
     const lists = [["locations", LOCATION_SEED]]; if (SHAPE_SEED.length) lists.push(["shapes", SHAPE_SEED]);
     for (const [list, seed] of lists) for (const s of seed) {
