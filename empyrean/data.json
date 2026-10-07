@@ -492,10 +492,10 @@
    "id": "s-berwyn",
    "name": "Berwyn",
    "group": "antagonist",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": true,
-   "notes": "Venin sage and maven (the equivalent of a general), a dream walker who throws blue fire. Summaries say he turned Xaden.",
+   "notes": "Venin sage and maven (the equivalent of a general), a dream walker who throws blue fire. Berwyn is the venin sage who turns Xaden Riorson.",
    "unverified": false,
    "rev": 3,
    "aliases": "",
@@ -503,8 +503,10 @@
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791324601617,
-   "title": ""
+   "updated": 1791380488202,
+   "title": "",
+   "signetIds": [],
+   "gryphon": ""
   },
   {
    "id": "s-theophanie",
@@ -513,11 +515,18 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": true,
-   "notes": "Main antagonist of Onyx Storm: a maven and dark wielder who is also a powerful storm wielder and rides a huge wyvern. Killed by Violet, with Aaric's help, using a shard from Dunne's temple. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Main antagonist of Onyx Storm: a maven and dark wielder who is also a powerful storm wielder and rides a huge wyvern. Killed by Violet, with Aaric's help, using a shard from Dunne's temple.",
+   "unverified": false,
    "rev": 3,
    "fateEventId": "s-ev-os-theo",
-   "title": ""
+   "title": "",
+   "aliases": "",
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "cites": [],
+   "updated": 1791380639458
   },
   {
    "id": "s-varrish",
@@ -530,8 +539,11 @@
    "unverified": true,
    "rev": 3,
    "dragonId": "s-solas",
-   "updated": 1791326964567,
-   "title": "Major"
+   "updated": 1791381003385,
+   "title": "Major",
+   "signetIds": [
+    "sg-8w6oedv"
+   ]
   },
   {
    "id": "s-kaori",
@@ -841,14 +853,21 @@
    "id": "s-aetos",
    "name": "Aetos",
    "group": "professor",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
    "notes": "Dain's father. Sends assassins after the Athebyne survivors and led the Fourth Wing cadets into the trap at Resson. Starter note from web summaries; check against your copy.",
-   "unverified": true,
+   "unverified": false,
    "rev": 10,
    "aliases": "General Aetos",
-   "title": "Colonel"
+   "title": "Colonel",
+   "updated": 1791380771090,
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": []
   },
   {
    "id": "s-halden",
@@ -1006,14 +1025,15 @@
    "notes": "Scribe Quadrant ;  Violet's father\nAsher Sorrengail (née Daxton) was a scribe and husband of Lilith Sorrengail. He is the father to Brennan, Mira and Violet Sorrengail.",
    "unverified": false,
    "rev": 9,
-   "updated": 1791379745265,
-   "aliases": "",
+   "updated": 1791380361962,
+   "aliases": "Daxton",
    "origin": "",
    "gryphon": "",
    "dragonId": "",
    "fateEventId": "",
    "cites": [],
-   "title": ""
+   "title": "",
+   "signetIds": []
   },
   {
    "id": "s-dyre",
@@ -2362,16 +2382,24 @@
   {
    "id": "s-solas",
    "name": "Solas",
-   "color": "",
-   "tail": "",
+   "color": "Orange",
+   "tail": "Dagger",
    "family": "",
    "sire": "",
    "dam": "",
    "riderId": "s-varrish",
-   "status": "unknown",
-   "notes": "Major Varrish's dragon. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "status": "deceased",
+   "notes": "Major Varrish's dragon. Killed by Andarna\nSolas is an orange daggertail who is missing one of his eyes,[1] which was taken out by Tairneanach. He is half the size of Tairneanach.[2] He looks unstable and hungry. His movements are aggressive and calculated. His swift, serpentine head movements are used in battles and threats.",
+   "unverified": false,
+   "rev": 3,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "sex": "male",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791380908571
   },
   {
    "id": "s-molvic",
@@ -2687,6 +2715,27 @@
    "notes": "Appears on the wiki's character list; probably a gryphon (the name matches the others). Rider unconfirmed. Starter note from the Empyrean wiki and web summaries; check against your copy.",
    "unverified": true,
    "rev": 12
+  },
+  {
+   "tail": "",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Foirn",
+   "img": "",
+   "aliases": "",
+   "color": "",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-aetos",
+   "status": "active",
+   "notes": "",
+   "cites": [],
+   "id": "d-vdl3vi6",
+   "updated": 1791380803288
   }
  ],
  "events": [
@@ -2705,7 +2754,9 @@
    ],
    "unverified": false,
    "rev": 3,
-   "updated": 1791212864882
+   "updated": 1791212864882,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "book": "FW",
@@ -2746,7 +2797,9 @@
    ],
    "unverified": false,
    "rev": 3,
-   "updated": 1791213110592
+   "updated": 1791213110592,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-lilith",
@@ -2765,7 +2818,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791233626050
+   "updated": 1791233626050,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-zehyllna",
@@ -2781,7 +2836,9 @@
     "s-trager"
    ],
    "unverified": true,
-   "rev": 3
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-draithus",
@@ -2798,7 +2855,9 @@
     "s-imogen"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-end",
@@ -2817,7 +2876,9 @@
     "s-imogen"
    ],
    "unverified": true,
-   "rev": 3
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-two-dragons",
@@ -2834,7 +2895,9 @@
    ],
    "unverified": false,
    "rev": 3,
-   "updated": 1791212842171
+   "updated": 1791212842171,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-channeling",
@@ -2851,7 +2914,9 @@
    ],
    "unverified": false,
    "rev": 3,
-   "updated": 1791213207885
+   "updated": 1791213207885,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-andarna-ward",
@@ -2870,7 +2935,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791233191306
+   "updated": 1791233191306,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-jack-ward",
@@ -2888,7 +2955,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791233494712
+   "updated": 1791233494712,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-xaden-signet",
@@ -2906,7 +2975,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791234008729
+   "updated": 1791234008729,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-xaden-venin",
@@ -2925,7 +2996,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791233595770
+   "updated": 1791233595770,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-panchek",
@@ -2941,7 +3014,9 @@
     "s-panchek"
    ],
    "unverified": true,
-   "rev": 3
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-theo",
@@ -2958,7 +3033,9 @@
     "s-theophanie"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-brennan",
@@ -2974,8 +3051,9 @@
     "s-brennan"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 100
+   "rev": 14,
+   "year": 626,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-mira",
@@ -2991,8 +3069,9 @@
     "s-mira"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 105
+   "rev": 14,
+   "year": 629,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-deal",
@@ -3009,8 +3088,9 @@
     "s-lilith"
    ],
    "unverified": true,
-   "rev": 4,
-   "story": 108
+   "rev": 14,
+   "year": 628,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-xaden",
@@ -3026,8 +3106,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 110
+   "rev": 14,
+   "year": 631,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-garrick",
@@ -3043,8 +3124,9 @@
     "s-garrick"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 120
+   "rev": 14,
+   "year": 631,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-bodhi",
@@ -3060,8 +3142,9 @@
     "s-bodhi"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 130
+   "rev": 14,
+   "year": 631,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-imogen",
@@ -3077,8 +3160,9 @@
     "s-imogen"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 140
+   "rev": 14,
+   "year": 631,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-dain",
@@ -3094,8 +3178,9 @@
     "s-dain"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 150
+   "rev": 14,
+   "year": 633,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-liam",
@@ -3111,8 +3196,9 @@
     "s-liam"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 1010.1
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-rhi",
@@ -3128,8 +3214,9 @@
     "s-rhi"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 1010.2
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-ridoc",
@@ -3145,8 +3232,9 @@
     "s-ridoc"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 1010.3
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-sawyer",
@@ -3162,8 +3250,9 @@
     "s-sawyer"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 1010.4
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-sloane",
@@ -3179,8 +3268,9 @@
     "s-sloane"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 2005.1
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-aaric",
@@ -3196,8 +3286,9 @@
     "s-aaric"
    ],
    "unverified": true,
-   "rev": 5,
-   "story": 2005.2
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-deal",
@@ -3216,7 +3307,9 @@
    "unverified": false,
    "rev": 7,
    "story": null,
-   "updated": 1791232696740
+   "updated": 1791232696740,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-td-trial",
@@ -3230,8 +3323,9 @@
    "desc": "Opening chapter of Threshing Day: Threshing advice for dragonkind, credited to Colonel Thadeus Palme.",
    "chars": [],
    "unverified": true,
-   "rev": 5,
-   "story": 90
+   "rev": 14,
+   "year": 625,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-parapet",
@@ -3247,7 +3341,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-wakes",
@@ -3263,7 +3359,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-andarna-time",
@@ -3279,7 +3377,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-feather-fail",
@@ -3293,7 +3393,9 @@
    "desc": "We learn that failed feathertails shouldn't bond, because they can accidentally gift their powers to humans.",
    "chars": [],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-feather-baby",
@@ -3307,7 +3409,9 @@
    "desc": "We learn that feathertails are actually just baby dragons.",
    "chars": [],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-amber",
@@ -3323,7 +3427,9 @@
     "s-amber"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-jack-power",
@@ -3340,7 +3446,9 @@
     "s-jack"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-lightning",
@@ -3356,7 +3464,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-jack-dies",
@@ -3373,7 +3483,9 @@
     "s-jack"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-note",
@@ -3389,7 +3501,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 5
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-tairn-channel",
@@ -3405,7 +3519,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 6
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-resson-start",
@@ -3421,7 +3537,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-rescue",
@@ -3438,7 +3556,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 7
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "book": "IF",
@@ -3473,8 +3593,9 @@
     "s-brennan"
    ],
    "unverified": true,
-   "rev": 8,
-   "story": 106
+   "rev": 14,
+   "year": 628,
+   "yearApprox": false
   },
   {
    "id": "s-ev-pre-executions",
@@ -3491,8 +3612,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8,
-   "story": 107
+   "rev": 14,
+   "year": 628,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-conscription",
@@ -3509,7 +3631,9 @@
     "s-lilith"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-mira-warns",
@@ -3528,7 +3652,9 @@
     "s-fen"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-boots",
@@ -3545,7 +3671,9 @@
     "s-rhi"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-parapet-jack",
@@ -3563,7 +3691,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-squad",
@@ -3582,7 +3712,9 @@
     "s-rhi"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-defend-andarna",
@@ -3602,7 +3734,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-poison",
@@ -3618,7 +3752,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-lovers",
@@ -3635,7 +3771,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-athebyne",
@@ -3652,7 +3790,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-dain-reads",
@@ -3670,7 +3810,9 @@
     "s-aetos"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-venin-reveal",
@@ -3687,7 +3829,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-fw-last-venin",
@@ -3703,7 +3847,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 634,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-assembly",
@@ -3721,7 +3867,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-return",
@@ -3739,7 +3887,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-assassins",
@@ -3756,7 +3906,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-punish",
@@ -3773,7 +3925,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-jack-alive",
@@ -3790,7 +3944,9 @@
     "s-nolon"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-samara",
@@ -3806,7 +3962,9 @@
     "s-xaden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-journals",
@@ -3822,7 +3980,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-torture",
@@ -3839,7 +3999,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-varrish-dies",
@@ -3859,7 +4021,9 @@
     "s-varrish"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-luminary",
@@ -3877,7 +4041,9 @@
     "s-tecarus"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-gryphons",
@@ -3895,7 +4061,9 @@
     "s-tecarus"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-six-blood",
@@ -3911,7 +4079,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-if-venin-attack",
@@ -3929,7 +4099,9 @@
     "s-lilith"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-open",
@@ -3949,7 +4121,9 @@
     "s-imogen"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-senarium",
@@ -3963,7 +4137,9 @@
    "desc": "The Senarium meets at Basgiath for peace talks between Navarre and Poromiel. The Aretian riders are pardoned, but leadership refuses to alter the wards so fliers can use lesser magic, so the proposed alliance fails. Add the page number; until then its position among page-numbered events is approximate.",
    "chars": [],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-wardstone",
@@ -3988,7 +4164,9 @@
     "s-brennan"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-irids",
@@ -4009,7 +4187,9 @@
     "s-halden"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-theo-taunts",
@@ -4026,7 +4206,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-mira-captured",
@@ -4044,7 +4226,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-andarna-returns",
@@ -4060,7 +4244,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-onyx-storm",
@@ -4077,7 +4263,9 @@
     "s-violet"
    ],
    "unverified": true,
-   "rev": 8
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   },
   {
    "id": "s-ev-os-duke",
@@ -4095,7 +4283,9 @@
     "s-tauri"
    ],
    "unverified": true,
-   "rev": 9
+   "rev": 14,
+   "year": 635.5,
+   "yearApprox": true
   }
  ],
  "theories": [
@@ -5192,8 +5382,295 @@
    "desc": "Named in an epigraph as a terrifying signet type. Details unknown. Starter note from web summaries of the books; check against your copy.",
    "unverified": true,
    "rev": 1
+  },
+  {
+   "unverified": false,
+   "name": "Weakness Readign",
+   "category": "Mind",
+   "desc": "The ability to read someone's weaknesses. Can be blocked by shielding.",
+   "cites": [],
+   "id": "sg-8w6oedv",
+   "updated": 1791381003379
   }
  ],
+ "locations": [
+  {
+   "id": "s-loc-navarre",
+   "name": "Navarre",
+   "kind": "kingdom",
+   "parent": "",
+   "x": 400,
+   "y": 60,
+   "desc": "The unified kingdom behind the wards, ruled from the Senarium. Five provinces joined it in year 1 (Public Notice 1.1). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-poromiel",
+   "name": "Poromiel",
+   "kind": "kingdom",
+   "parent": "",
+   "x": 820,
+   "y": 60,
+   "desc": "The gryphon kingdom. Ruled by Queen Maraya, then King Tecarus. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-tyrrendor",
+   "name": "Tyrrendor",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 380,
+   "y": 520,
+   "desc": "Largest and southernmost province of Navarre; home of House Riorson and the failed rebellion. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-calldyr",
+   "name": "Calldyr",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 300,
+   "y": 130,
+   "desc": "Province of Navarre; the Council of Calldyr agreed Navarre's marriage law (Public Notice 1.249). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-elsum",
+   "name": "Elsum",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 590,
+   "y": 250,
+   "desc": "Province of Navarre that borders Poromiel; attacked by Krovlan forces near Resson (Public Notice 1.323). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-luceras",
+   "name": "Luceras",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 190,
+   "y": 320,
+   "desc": "Province of Navarre; coastal Luceras and Tyrrendor are asked to watch for sea raiders (Public Notice 442.184). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-morainne",
+   "name": "Morainne",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 430,
+   "y": 190,
+   "desc": "Province of Navarre. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-krovla",
+   "name": "Krovla",
+   "kind": "province",
+   "parent": "s-loc-poromiel",
+   "x": 760,
+   "y": 520,
+   "desc": "Southernmost Poromish province, ruled by Viscount (later King) Tecarus. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-braevick",
+   "name": "Braevick",
+   "kind": "province",
+   "parent": "s-loc-poromiel",
+   "x": 820,
+   "y": 180,
+   "desc": "Poromish province whose second city is Zolya. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-basgiath",
+   "name": "Basgiath War College",
+   "kind": "fortress",
+   "parent": "s-loc-navarre",
+   "x": 400,
+   "y": 300,
+   "desc": "Navarre's war college: Riders, Scribe, Healer and Infantry Quadrants, and the wardstone. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-aretia",
+   "name": "Aretia",
+   "kind": "town",
+   "parent": "s-loc-tyrrendor",
+   "x": 330,
+   "y": 500,
+   "desc": "Tyrrish town burned by dragons after the rebellion; later the rebels' base with an unpowered wardstone. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-riorson",
+   "name": "Riorson House",
+   "kind": "fortress",
+   "parent": "s-loc-tyrrendor",
+   "x": 410,
+   "y": 560,
+   "desc": "Half palace, half barracks, a fortress never breached by an army until dragons burned it. The valley above it holds the old Dubhmadinn hatching grounds. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-kyllendelle",
+   "name": "Kyllendelle",
+   "kind": "town",
+   "parent": "s-loc-tyrrendor",
+   "x": 250,
+   "y": 590,
+   "desc": "Tyrrish village sacked by raiders from the Emerald Sea (Public Notice 442.184). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-resson",
+   "name": "Resson",
+   "kind": "town",
+   "parent": "s-loc-elsum",
+   "x": 620,
+   "y": 290,
+   "desc": "Village and trading post at the edge of the dragon-protected border; site of a Krovlan attack and the Fourth Wing finale battle. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-athebyne",
+   "name": "Athebyne",
+   "kind": "outpost",
+   "parent": "s-loc-elsum",
+   "x": 650,
+   "y": 320,
+   "desc": "Border outpost near Resson, repeatedly attacked. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-steelridge",
+   "name": "Steel Ridge Range",
+   "kind": "region",
+   "parent": "s-loc-navarre",
+   "x": 440,
+   "y": 120,
+   "desc": "Mountain range where the green Uaineloidsig dragons offered their hatching grounds (an epigraph). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-zolya",
+   "name": "Zolya",
+   "kind": "city",
+   "parent": "s-loc-braevick",
+   "x": 840,
+   "y": 150,
+   "desc": "Second most populous city in Braevick; home of Cliffsbane Flight Academy. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-cliffsbane",
+   "name": "Cliffsbane Flight Academy",
+   "kind": "fortress",
+   "parent": "s-loc-braevick",
+   "x": 870,
+   "y": 120,
+   "desc": "The Poromish gryphon flier academy, counterpart of Basgiath. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-cordyn",
+   "name": "Cordyn",
+   "kind": "city",
+   "parent": "s-loc-krovla",
+   "x": 800,
+   "y": 570,
+   "desc": "Seaside city in Krovla where Viscount Tecarus keeps his palace. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-emerald",
+   "name": "Emerald Sea",
+   "kind": "sea",
+   "parent": "",
+   "x": 560,
+   "y": 650,
+   "desc": "The sea south of the Continent; raiders from it sack coastal Tyrrish villages. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-barrens",
+   "name": "The Barrens",
+   "kind": "region",
+   "parent": "",
+   "x": null,
+   "y": null,
+   "desc": "Abandoned by dragons and gryphons after the Great War (an epigraph). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-samara",
+   "name": "Samara",
+   "kind": "outpost",
+   "parent": "s-loc-navarre",
+   "x": null,
+   "y": null,
+   "desc": "Outpost where Xaden is posted in Iron Flame and which is attacked. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-zehyllna",
+   "name": "Zehyllna",
+   "kind": "island",
+   "parent": "",
+   "x": null,
+   "y": null,
+   "desc": "Island whose people worship Zihnal; the card game where Trager dies. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-draithus",
+   "name": "Draithus",
+   "kind": "island",
+   "parent": "",
+   "x": null,
+   "y": null,
+   "desc": "Site of the climactic Onyx Storm battle against the venin. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-loc-dunne",
+   "name": "Temple of Dunne",
+   "kind": "temple",
+   "parent": "",
+   "x": null,
+   "y": null,
+   "desc": "Temple whose shard Violet uses against Theophanie; its head priestess certifies Violet's marriage. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 1
+  }
+ ],
+ "routes": [],
  "removedSeed": [
   "s-ev-if-resson",
   "s-d-trissa"
