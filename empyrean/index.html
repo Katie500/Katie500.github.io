@@ -18,6 +18,7 @@ const tiles = [
   ["notices.html","Notices", data.notices.length + " logged", "Public notices and bonus content from Rebecca’s sites, tracked as read or unread."],
   ["dragons.html","Dragons", data.dragons.filter(d => !d.gryphon).length + " dragons, " + data.dragons.filter(d => d.gryphon).length + " gryphons", "Families, sires and dams, plus a genealogy tree."],
   ["characters.html","Characters", data.characters.length + " characters", "Active, missing or dead, with a separate view for the rebel children."],
+  ["locations.html","Map", (data.locations || []).length + " places", "An editable map drawn from data. Drag places into position and add new ones as the world grows."],
   ["signets.html","Signets", (data.signets || []).length + " kinds", "Every kind of signet and which riders have it, including double-signet riders."],
 ];
 app.append(h("div", { class:"grid", style:"margin-top:1.6rem" }, tiles.map(([href, t, n, d]) =>

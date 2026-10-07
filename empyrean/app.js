@@ -45,7 +45,47 @@ const E = (() => {
     let pub = null; try { pub = localStorage.getItem(PUB_KEY); } catch (e) {}
     return !pub ? "never" : pub === hash(JSON.stringify(data)) ? "clean" : "dirty";
   };
-  const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[], signets:[] });
+  const empty = () => ({ v:1, characters:[], dragons:[], events:[], theories:[], notices:[], signets:[], locations:[], routes:[] });
+  // Places mentioned in the books, with rough schematic positions on a 1000 x 700 canvas. The positions are guesses meant to be dragged into place;
+  // places without coordinates start in the "not on the map yet" list. Everything is flagged "check".
+  const LC = "Starter note from the notices, snippets and web summaries; check against your copy.";
+  const LOCATION_SEED = [
+    // id, name, kind, parent, x, y, description
+    ["s-loc-navarre", "Navarre", "kingdom", "", 400, 60, "The unified kingdom behind the wards, ruled from the Senarium. Five provinces joined it in year 1 (Public Notice 1.1)."],
+    ["s-loc-poromiel", "Poromiel", "kingdom", "", 820, 60, "The gryphon kingdom. Ruled by Queen Maraya, then King Tecarus."],
+    ["s-loc-tyrrendor", "Tyrrendor", "province", "s-loc-navarre", 380, 520, "Largest and southernmost province of Navarre; home of House Riorson and the failed rebellion."],
+    ["s-loc-calldyr", "Calldyr", "province", "s-loc-navarre", 300, 130, "Province of Navarre; the Council of Calldyr agreed Navarre's marriage law (Public Notice 1.249)."],
+    ["s-loc-elsum", "Elsum", "province", "s-loc-navarre", 590, 250, "Province of Navarre that borders Poromiel; attacked by Krovlan forces near Resson (Public Notice 1.323)."],
+    ["s-loc-luceras", "Luceras", "province", "s-loc-navarre", 190, 320, "Province of Navarre; coastal Luceras and Tyrrendor are asked to watch for sea raiders (Public Notice 442.184)."],
+    ["s-loc-morainne", "Morainne", "province", "s-loc-navarre", 430, 190, "Province of Navarre."],
+    ["s-loc-krovla", "Krovla", "province", "s-loc-poromiel", 760, 520, "Southernmost Poromish province, ruled by Viscount (later King) Tecarus."],
+    ["s-loc-braevick", "Braevick", "province", "s-loc-poromiel", 820, 180, "Poromish province whose second city is Zolya."],
+    ["s-loc-basgiath", "Basgiath War College", "fortress", "s-loc-navarre", 400, 300, "Navarre's war college: Riders, Scribe, Healer and Infantry Quadrants, and the wardstone."],
+    ["s-loc-aretia", "Aretia", "town", "s-loc-tyrrendor", 330, 500, "Tyrrish town burned by dragons after the rebellion; later the rebels' base with an unpowered wardstone."],
+    ["s-loc-riorson", "Riorson House", "fortress", "s-loc-tyrrendor", 410, 560, "Half palace, half barracks, a fortress never breached by an army until dragons burned it. The valley above it holds the old Dubhmadinn hatching grounds."],
+    ["s-loc-kyllendelle", "Kyllendelle", "town", "s-loc-tyrrendor", 250, 590, "Tyrrish village sacked by raiders from the Emerald Sea (Public Notice 442.184)."],
+    ["s-loc-resson", "Resson", "town", "s-loc-elsum", 620, 290, "Village and trading post at the edge of the dragon-protected border; site of a Krovlan attack and the Fourth Wing finale battle."],
+    ["s-loc-athebyne", "Athebyne", "outpost", "s-loc-elsum", 650, 320, "Border outpost near Resson, repeatedly attacked."],
+    ["s-loc-steelridge", "Steel Ridge Range", "region", "s-loc-navarre", 440, 120, "Mountain range where the green Uaineloidsig dragons offered their hatching grounds (an epigraph)."],
+    ["s-loc-zolya", "Zolya", "city", "s-loc-braevick", 840, 150, "Second most populous city in Braevick; home of Cliffsbane Flight Academy."],
+    ["s-loc-cliffsbane", "Cliffsbane Flight Academy", "fortress", "s-loc-braevick", 870, 120, "The Poromish gryphon flier academy, counterpart of Basgiath."],
+    ["s-loc-cordyn", "Cordyn", "city", "s-loc-krovla", 800, 570, "Seaside city in Krovla where Viscount Tecarus keeps his palace."],
+    ["s-loc-emerald", "Emerald Sea", "sea", "", 560, 650, "The sea south of the Continent; raiders from it sack coastal Tyrrish villages."],
+    ["s-loc-barrens", "The Barrens", "region", "", null, null, "Abandoned by dragons and gryphons after the Great War (an epigraph)."],
+    ["s-loc-samara", "Samara", "outpost", "s-loc-navarre", null, null, "Outpost where Xaden is posted in Iron Flame and which is attacked."],
+    ["s-loc-zehyllna", "Zehyllna", "island", "", null, null, "Island whose people worship Zihnal; the card game where Trager dies."],
+    ["s-loc-draithus", "Draithus", "island", "", null, null, "Site of the climactic Onyx Storm battle against the venin."],
+    ["s-loc-dunne", "Temple of Dunne", "temple", "", null, null, "Temple whose shard Violet uses against Theophanie; its head priestess certifies Violet's marriage."],
+  ].map(([id, name, kind, parent, x, y, desc]) => ({ id, name, kind, parent, x, y, desc:desc + " " + LC, unverified:true, rev:1 }));
+  const applyLocations = () => {
+    let changed = false; data.locations = data.locations || []; data.routes = data.routes || []; data.removedSeed = data.removedSeed || [];
+    for (const s of LOCATION_SEED) {
+      const i = data.locations.findIndex(x => x.id === s.id);
+      if (i < 0) { if (!data.removedSeed.includes(s.id)) { data.locations.push({ ...s }); changed = true; } }
+      else if (data.locations[i].unverified === true && s.rev > (data.locations[i].rev || 0)) { data.locations[i] = { ...s }; changed = true; }
+    }
+    return changed;
+  };
   // Signet kinds and who is known to have them. Everything here comes from web summaries and your notes; entries are flagged "check".
   const SG = "Starter note from web summaries of the books; check against your copy.";
   const SIGNET_SEED = {
@@ -118,7 +158,7 @@ const E = (() => {
           if (data[list][i].unverified === true && (s.rev || 0) > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); added = true; continue; }
           // entries you've edited keep your values; only blank fields (and "not set" statuses) are filled from the starter data
           for (const k of ["aliases","tail","fateEventId","text","sex","family","origin","dragonId","gryphon"]) if (!data[list][i][k] && s[k]) { data[list][i][k] = s[k]; added = true; }
-          for (const k of ["age","riders"]) if (data[list][i][k] == null && s[k] != null) { data[list][i][k] = s[k]; added = true; }
+          for (const k of ["age","riders","year"]) if (data[list][i][k] == null && s[k] != null) { data[list][i][k] = s[k]; if (k === "year" && data[list][i].yearApprox === undefined) data[list][i].yearApprox = !!s.yearApprox; added = true; }
           if (list === "characters" && s.group === "flier" && data[list][i].gryphon === undefined && ["rider", "civilian"].includes(data[list][i].group)) { data[list][i].group = "flier"; added = true; }
           if (data[list][i].venin === undefined && s.venin) { data[list][i].venin = true; added = true; }
           if ((!data[list][i].status || data[list][i].status === "unknown") && s.status && s.status !== "unknown") { data[list][i].status = s.status; added = true; }
@@ -126,12 +166,13 @@ const E = (() => {
         if (fixSpellings()) added = true;
         if (retire()) added = true;
         if (applySignets()) added = true;
+        if (applyLocations()) added = true;
         if (migrateTitles()) added = true;
         if (added) save();
         return;
       }
     } catch (e) { console.warn(e); }
-    data = Object.assign(empty(), JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty()))); data.fromSeed = true; data.removedSeed = []; applySignets(); migrateTitles(); save();
+    data = Object.assign(empty(), JSON.parse(JSON.stringify(window.EMPYREAN_SEED || empty()))); data.fromSeed = true; data.removedSeed = []; applySignets(); applyLocations(); migrateTitles(); save();
     fetchPublished();   // first visit: prefer the owner's published notebook over the bare starter data
   };
   // Corrections to spellings that were dictated wrongly; applied to anything already saved in this browser.
@@ -171,9 +212,17 @@ const E = (() => {
   const BASE = { FW:1000, IF:2000, OS:3000, TD:4000, OT:5000 };
   // A page number, when there is one, decides the position within the book; the "order" number is only the fallback.
   const pageNum = e => { const m = String(e.page ?? "").match(/\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; };
-  const eventKey = e => e.story != null && e.story !== "" ? Number(e.story) : (BASE[e.book] ?? 5000) + (pageNum(e) ?? e.order ?? 0);
-  const eraOf = e => { const k = eventKey(e); return k < 1000 ? "Before Fourth Wing" : k < 2000 ? "Fourth Wing" : k < 3000 ? "Iron Flame" : k < 4000 ? "Onyx Storm" : k < 5000 ? "Threshing Day (not placed yet)" : "Other"; };
+  // In-world year (AU) is the main position. An event with no year borrows a default for its book, then page number (or the older
+  // "order" number) only breaks ties within a year.
+  const DEFAULT_YEAR = { FW:634, IF:635, OS:635.5, TD:634, OT:635 };
+  const hasYear = e => e.year != null && e.year !== "" && isFinite(Number(e.year));
+  const yearOf = e => hasYear(e) ? Number(e.year) : (e.story != null && e.story !== "" ? (Number(e.story) < 1000 ? 631 : Number(e.story) < 2000 ? 634 : Number(e.story) < 3000 ? 635 : 635.5) : (DEFAULT_YEAR[e.book] ?? 635));
+  const withinYear = e => Math.min(9999, pageNum(e) ?? e.order ?? (e.story != null && e.story !== "" ? Number(e.story) % 1000 : 9000));
+  const eventKey = e => yearOf(e) * 10000 + withinYear(e);
+  const yearLabel = e => (hasYear(e) ? (e.yearApprox ? "~" : "") : "~") + Math.floor(yearOf(e)) + " AU";
+  const eraOf = e => Math.floor(yearOf(e)) + " AU";
   const sortEvents = list => [...list].sort((a, b) => eventKey(a) - eventKey(b));
+  const sortKey = eventKey;
 
   const exportData = () => {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type:"application/json" });
@@ -353,7 +402,7 @@ const E = (() => {
   }
 
   /* ---------- layout ---------- */
-  const NAV = [["index.html","Home"],["timeline.html","Timeline"],["theories.html","Theories"],["notices.html","Notices"],["dragons.html","Dragons"],["characters.html","Characters"],["signets.html","Signets"]];
+  const NAV = [["index.html","Home"],["timeline.html","Timeline"],["theories.html","Theories"],["notices.html","Notices"],["dragons.html","Dragons"],["characters.html","Characters"],["signets.html","Signets"],["locations.html","Map"]];
   const layout = (active, title, lede) => {
     const root = document.getElementById("app");
     root.before(h("header", { class:"site" },
@@ -374,5 +423,5 @@ const E = (() => {
   const optionsOf = (list, label = x => x.name, blank, keep = () => true) => [...(blank ? [{ v:"", l:blank }] : []), ...data[list].filter(keep).map(x => ({ v:x.id, l:label(x) }))].sort((a, b) => a.v === "" ? -1 : b.v === "" ? 1 : a.l.localeCompare(b.l));
 
   load();
-  return { TITLES, fullName, BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
+  return { TITLES, fullName, yearOf, hasYear, yearLabel, sortKey, BOOKS, EDITIONS, bookOf, uid, h, svg, get data() { return data; }, upsert, remove, byId, sortEvents, eventKey, eraOf, form, layout, tabs, emptyState, unverified, citeView, citeLabel, optionsOf, exportData, importData };
 })();

@@ -10,22 +10,29 @@
 const { h, svg, data } = E;
 E.layout("timeline.html", "Everything that’s <em>happened</em>", "A running timeline of the story. Foreshadowing arcs connect a clue to the moment it pays off; arcs that run to the dashed node on the right are still unrevealed.");
 const app = document.getElementById("app"), tt = document.getElementById("tt");
-let book = "all", q = "";
+let book = "all", q = "", showNotices = true;
+const NOTICE_COLOR = "#a8502d";
+// Public notices become read-only timeline entries placed by their in-world year (the first number of the notice number).
+const noticeEntries = () => data.notices.filter(n => !n.snippet).map(n => {
+  const m = (n.title || "").match(/(\d+)\.(\d+)/) || (n.id || "").match(/(\d+)-(\d+)$/); if (!m) return null;
+  return { id:n.id, title:n.title || "Public Notice", book:"OT", kind:"notice", year:+m[1], yearApprox:false, order:+m[2], desc:n.text || n.summary || "", notice:true, transcriber:n.transcriber };
+}).filter(Boolean);
 const KINDS = [["event","Event"],["foreshadow","Foreshadowing / clue"],["reveal","Reveal / truth"]];
 const STATUS_COLOR = { speculative:"#b7862b", supported:"#3f7d6e", confirmed:"#2f6b4f", debunked:"#a8402d" };
 
 const editForm = (ev = {}) => E.form({
-  title: ev.id ? "Edit event" : "Add event", value:ev.id ? ev : { book:book === "all" ? "FW" : book, kind:"event", order:(Math.max(0, ...data.events.filter(e => e.book === (book === "all" ? "FW" : book)).map(e => e.order || 0)) + 10), edition:data.lastEdition || "" },
+  title: ev.id ? "Edit event" : "Add event", value:ev.id ? ev : { book:book === "all" ? "FW" : book, kind:"event", edition:data.lastEdition || "", yearApprox:true },
   fields: [
     { k:"title", label:"What happened", type:"text" },
     { k:"book", label:"Book", type:"select", options:E.BOOKS.map(b => ({ v:b.id, l:b.name })) },
-    { k:"order", label:"Order within the book", type:"number", hint:"Only used when there is no page number. Smaller numbers come first; use decimals (e.g. 25.5) to slot an event between two others." },
-    { k:"story", label:"Story-time position (optional)", type:"number", hint:"Only for events that happen outside their book’s order. Before Fourth Wing: under 1000. Fourth Wing: 1000–1999 (1010 = Violet’s Threshing). Iron Flame: 2000–2999. Onyx Storm: 3000–3999." },
+    { k:"year", label:"Year (in-world, AU)", type:"number", hint:"When it happens in the story, e.g. 628 for the Battle of Aretia or 634 for Violet’s first year. The timeline is ordered by this. If the book doesn’t say, give your best guess and keep “approximate” ticked. Leave blank to use the book’s usual year." },
+    { k:"yearApprox", label:"Approximate year (a guess, not stated in the book)", type:"checkbox" },
     { k:"kind", label:"Type", type:"select", options:KINDS.map(([v, l]) => ({ v, l })) },
     { k:"edition", label:"Edition", type:"select", options:[{ v:"", l:"—" }, ...E.EDITIONS.map(x => ({ v:x, l:x }))] },
     { k:"chapter", label:"Chapter", type:"text" },
-    { k:"page", label:"Page", type:"text", hint:"If you enter a page number it decides where this event sits in its book, instead of the order number above. Use the same edition for all your pages (hardcover is a good choice)." },
+    { k:"page", label:"Page", type:"text", hint:"Optional. Within the same year, events are ordered by page number. Use the same edition for all your pages (hardcover is a good choice)." },
     { k:"desc", label:"Details (your own words)", type:"textarea" },
+    { k:"locationId", label:"Where it happens", type:"select", options:E.optionsOf("locations", x => x.name, "— not set —") },
     { k:"chars", label:"Characters involved", type:"multi", options:E.optionsOf("characters", E.fullName) },
   ],
   onSave: o => { o.id = o.id || E.uid("ev"); if (o.edition) data.lastEdition = o.edition; E.upsert("events", o); render(); },
@@ -53,11 +60,11 @@ function axis(events) {
     });
   });
   events.forEach((e, i) => {
-    const b = E.bookOf(e.book), colorVar = getComputedStyle(document.documentElement).getPropertyValue("--" + b.id).trim() || "#999";
+    const b = E.bookOf(e.book), colorVar = e.notice ? NOTICE_COLOR : getComputedStyle(document.documentElement).getPropertyValue("--" + b.id).trim() || "#999";
     const g = svg("g", { style:"cursor:pointer", tabindex:0, role:"link", "aria-label":e.title });
-    g.append(svg("circle", { cx:X(i), cy:base, r:e.kind === "event" ? 7 : 9, fill:colorVar, stroke:e.kind === "foreshadow" ? "#b7862b" : e.kind === "reveal" ? "#3f7d6e" : "#fff", "stroke-width":e.kind === "event" ? 1.5 : 3 }));
+    g.append(svg("circle", { cx:X(i), cy:base, r:e.notice ? 5 : e.kind === "event" ? 7 : 9, fill:colorVar, stroke:e.kind === "foreshadow" ? "#b7862b" : e.kind === "reveal" ? "#3f7d6e" : "#fff", "stroke-width":e.kind === "event" ? 1.5 : 3 }));
     const lab = svg("text", { x:X(i), y:base + 18, "font-size":10, "text-anchor":"end", fill:"#7c776d", transform:`rotate(-35 ${X(i)} ${base + 18})` }); lab.textContent = e.title.length > 22 ? e.title.slice(0, 21) + "…" : e.title; g.append(lab);
-    g.addEventListener("mouseenter", () => { tt.textContent = e.title + " — " + b.name + (e.page ? ", p. " + e.page : ""); tt.style.display = "block"; });
+    g.addEventListener("mouseenter", () => { tt.textContent = e.title + " — " + (e.notice ? "public notice, " + Math.floor(E.yearOf(e)) + " AU" : b.name + (e.page ? ", p. " + e.page : "")); tt.style.display = "block"; });
     g.addEventListener("mousemove", ev => { tt.style.left = ev.clientX + 12 + "px"; tt.style.top = ev.clientY + 12 + "px"; });
     g.addEventListener("mouseleave", () => tt.style.display = "none");
     const go = () => { location.hash = e.id; document.getElementById(e.id)?.scrollIntoView({ behavior:"smooth", block:"center" }); };
@@ -70,11 +77,14 @@ function axis(events) {
 }
 
 function render() {
-  const all = E.sortEvents(data.events).filter(e => book === "all" || e.book === book);
+  const own = data.events.filter(e => book === "all" || e.book === book);
+  const notices = showNotices && book === "all" ? noticeEntries() : [];
+  const all = [...own, ...notices].sort((a, b) => E.sortKey(a) - E.sortKey(b));
   const events = all.filter(e => (e.title + " " + (e.desc || "")).toLowerCase().includes(q));
   app.replaceChildren(
     h("div", { class:"toolbar" },
       E.tabs([["all","All books"], ...E.BOOKS.filter(b => b.id !== "OT" || data.events.some(e => e.book === "OT")).map(b => [b.id, b.name])], book, k => { book = k; render(); }),
+      h("button", { type:"button", class:"tab", "aria-pressed":String(showNotices), title:"Mix the public notices into the timeline by year", onclick:() => { showNotices = !showNotices; render(); } }, "Public notices"),
       h("span", { class:"grow" }),
       h("input", { type:"search", placeholder:"Search events…", value:q, "aria-label":"Search events", oninput:e => { q = e.target.value.toLowerCase(); clearTimeout(render.t); render.t = setTimeout(() => { const pos = e.target.selectionStart; render(); const i = document.querySelector("input[type=search]"); i.focus(); i.setSelectionRange(pos, pos); }, 250); } }),
       h("button", { class:"btn primary", onclick:() => editForm() }, "+ Add event")),
@@ -82,6 +92,7 @@ function render() {
       axis(events),
       h("div", { class:"legend" },
         E.BOOKS.slice(0, 4).map(b => h("span", {}, h("span", { class:"dot", style:"background:" + b.color }), b.name)),
+        h("span", {}, h("span", { class:"dot", style:"background:" + NOTICE_COLOR }), "Public notice"),
         h("span", {}, h("b", { style:"color:#b7862b" }, "◯"), " clue"), h("span", {}, h("b", { style:"color:#3f7d6e" }, "◯"), " reveal"),
         h("span", {}, "Arc colors: ", Object.entries(STATUS_COLOR).map(([k, c]) => h("b", { style:"color:" + c + ";margin-right:.4rem" }, "━ " + k)))),
       list(events)] : [E.emptyState("No events yet. Add the first one with “+ Add event”.")]));
@@ -93,12 +104,21 @@ function list(events) {
   events.forEach(e => {
     const b = E.bookOf(e.book), era = E.eraOf(e);
     if (era !== last) { last = era; out.push(h("h2", {}, era)); }
+    if (e.notice) {
+      out.push(h("article", { class:"ev", id:e.id, style:"border-left:3px solid " + NOTICE_COLOR + ";padding-left:.9rem" },
+        h("div", { class:"when" }, h("span", { class:"dot", style:"background:" + NOTICE_COLOR }), E.yearLabel(e), h("div", {}, h("span", { class:"pill s-missing", style:"color:" + NOTICE_COLOR }, "public notice"))),
+        h("div", {}, h("h3", {}, e.title), e.desc ? h("p", { style:"font-family:Fraunces,Georgia,serif" }, e.desc) : null,
+          e.transcriber ? h("div", { class:"meta" }, "Transcribed by " + e.transcriber) : null,
+          h("div", { class:"row", style:"margin-top:.5rem" }, h("a", { class:"btn sm", href:"notices.html#" + e.id }, "Open in Notices ↗")))));
+      return;
+    }
     const rel = data.theories.filter(t => (t.foreshadow || []).includes(e.id) || t.revealId === e.id);
     out.push(h("article", { class:"ev", id:e.id },
-      h("div", { class:"when" }, h("span", { class:"dot", style:"background:" + b.color }), [e.chapter && "Ch. " + e.chapter, e.page && "p. " + e.page, e.edition].filter(Boolean).join(" · ") || "no page yet",
+      h("div", { class:"when" }, h("span", { class:"dot", style:"background:" + b.color }), E.yearLabel(e), h("div", {}, [b.id, e.chapter && "Ch. " + e.chapter, e.page && "p. " + e.page, e.edition].filter(Boolean).join(" · ") || "no page yet"),
         e.kind !== "event" ? h("div", {}, h("span", { class:"pill " + (e.kind === "reveal" ? "s-confirmed" : "s-missing") }, e.kind)) : null),
       h("div", {}, h("h3", {}, e.title, E.unverified(e)), e.desc ? h("p", {}, e.desc) : null,
         h("div", { class:"row", style:"margin-top:.5rem" },
+          e.locationId && E.byId("locations", e.locationId) ? h("a", { class:"chip", href:"locations.html#" + e.locationId, style:"border-color:var(--acc2)" }, "📍 " + E.byId("locations", e.locationId).name) : null,
           (e.chars || []).map(id => E.byId("characters", id)).filter(Boolean).map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, E.fullName(c))),
           rel.map(t => h("a", { class:"chip", href:"theories.html#" + t.id, style:"border-color:" + STATUS_COLOR[t.status] }, "✦ " + t.title)),
           h("button", { class:"btn sm", onclick:() => editForm(e) }, "Edit")))));

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map — Empyrean Notebook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="empyrean.css">
+<style>
+  .mapbox { position:relative; height:min(72vh,600px); background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .mapbox svg { width:100%; height:100%; display:block; touch-action:none; user-select:none; -webkit-user-select:none; }
+  .mapbtns { position:absolute; right:10px; top:10px; display:flex; flex-direction:column; gap:6px; }
+  .mapbtns button { width:36px; height:36px; border-radius:10px; border:1px solid var(--line); background:var(--bg); cursor:pointer; font-size:18px; line-height:1; }
+  .mapbtns button:hover { background:var(--ink); color:var(--bg); }
+  .maphint { position:absolute; left:10px; bottom:10px; right:60px; font-size:12px; color:var(--soft); background:#f4f0e9d9; padding:.3rem .6rem; border-radius:8px; pointer-events:none; }
+  .tree .branch { margin-left:1.2rem; border-left:1px solid var(--line); padding-left:.9rem; }
+  .mk text { paint-order:stroke; stroke:#fbf9f5; stroke-width:3px; stroke-linejoin:round; font-family:"Inter",sans-serif; }
+</style>
+</head><body><div class="wrap"><main id="app"></main></div>
+<script src="seed.js"></script><script src="app.js"></script>
+<script>
+const { h, svg, data } = E;
+E.layout("locations.html", "The <em>map</em>", "A map drawn from data, not a picture. Every place is a point you can drag, and the canvas has no edges, so new lands can go anywhere as the books reveal them. Positions start as rough guesses: drag them to match the book maps.");
+const app = document.getElementById("app");
+
+const KINDS = [["kingdom","Kingdom"],["province","Province"],["region","Region or range"],["sea","Sea"],["city","City"],["town","Town or village"],["fortress","Fortress or college"],["outpost","Outpost"],["island","Island"],["temple","Temple"],["other","Other"]];
+const KIND_LABEL = Object.fromEntries(KINDS);
+const AREA = { kingdom:30, province:20, region:17, sea:19 };                       // drawn as big spaced-out labels instead of dots
+const COLOR = { kingdom:"#8b78a8", province:"#7c776d", region:"#6f8a5d", sea:"#4a6fa8", city:"#a8502d", town:"#c07a4a", fortress:"#23221f", outpost:"#b7862b", island:"#3f7d6e", temple:"#8b78a8", other:"#7c776d" };
+const ROUTE = { road:["Road","#a8502d",""], sea:["Sea route","#4a6fa8","7 5"], border:["Border","#7c776d","2 5"], other:["Other","#7c776d",""] };
+const placed = l => l.x != null && l.y != null && !isNaN(l.x) && !isNaN(l.y);
+
+let view = "map", mode = "browse", selId = location.hash ? location.hash.slice(1) : null, kindFilter = "all", q = "", connectFrom = null, placing = null;
+const cam = { x:0, y:0, k:1, fitted:false };
+const byId = id => data.locations.find(l => l.id === id);
+const childrenOf = id => data.locations.filter(l => l.parent === id);
+const descendants = id => childrenOf(id).flatMap(c => [c.id, ...descendants(c.id)]);
+
+/* ---------- forms ---------- */
+const locForm = (l = {}) => E.form({
+  title: l.id ? "Edit place" : "Add place", value: l.id ? l : { kind:"city", parent:"" , ...l },
+  fields: [
+    { k:"name", label:"Name", type:"text" },
+    { k:"kind", label:"Kind", type:"select", options:KINDS.map(([v, t]) => ({ v, l:t })) },
+    { k:"parent", label:"Part of", type:"select", options:E.optionsOf("locations", x => x.name, "— nothing —", x => x.id !== l.id && !descendants(l.id || "").includes(x.id)) },
+    { k:"x", label:"Map x", type:"number", hint:"Easier: drag the point on the map (Move mode). Leave blank to keep it off the map for now." },
+    { k:"y", label:"Map y", type:"number" },
+    { k:"desc", label:"Notes", type:"textarea" },
+    { k:"cites", label:"Page references", type:"cites" },
+  ],
+  onSave: o => { o.id = o.id || E.uid("loc"); selId = o.id; E.upsert("locations", o); render(); },
+  onDelete: l.id ? () => {
+    data.routes.filter(r => r.from === l.id || r.to === l.id).forEach(r => E.remove("routes", r.id));
+    data.locations.forEach(x => { if (x.parent === l.id) { x.parent = l.parent || ""; E.upsert("locations", x); } });
+    data.events.forEach(e => { if (e.locationId === l.id) { e.locationId = ""; E.upsert("events", e); } });
+    E.remove("locations", l.id); selId = null; render();
+  } : null,
+});
+const routeForm = (r = {}) => E.form({
+  title: r.id ? "Edit route" : "Add route", value: r.id ? r : { kind:"road", ...r },
+  fields: [
+    { k:"from", label:"From", type:"select", options:E.optionsOf("locations", x => x.name) },
+    { k:"to", label:"To", type:"select", options:E.optionsOf("locations", x => x.name) },
+    { k:"kind", label:"Kind", type:"select", options:Object.entries(ROUTE).map(([v, [t]]) => ({ v, l:t })) },
+    { k:"label", label:"Label (optional)", type:"text", placeholder:"e.g. the border road, two days' flight" },
+  ],
+  onSave: o => { if (!o.from || !o.to || o.from === o.to) { alert("Pick two different places."); return; } o.id = o.id || E.uid("rt"); E.upsert("routes", o); render(); },
+  onDelete: r.id ? () => { E.remove("routes", r.id); render(); } : null,
+});
+
+/* ---------- the map ---------- */
+let svgEl, world, markerRefs = [], hintEl;
+const toWorld = (cx, cy) => { const r = svgEl.getBoundingClientRect(); return [(cx - r.left - cam.x) / cam.k, (cy - r.top - cam.y) / cam.k]; };
+function applyCam() {
+  world.setAttribute("transform", `translate(${cam.x} ${cam.y}) scale(${cam.k})`);
+  markerRefs.forEach(m => m.inner.setAttribute("transform", `scale(${1 / cam.k})`));
+}
+function fit() {
+  const r = svgEl.getBoundingClientRect(), pts = data.locations.filter(placed);
+  if (!pts.length || !r.width) { cam.x = r.width / 2; cam.y = r.height / 2; cam.k = 1; applyCam(); return; }
+  const xs = pts.map(p => +p.x), ys = pts.map(p => +p.y), pad = 70;
+  const minX = Math.min(...xs) - pad, maxX = Math.max(...xs) + pad, minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
+  cam.k = Math.min(r.width / (maxX - minX), r.height / (maxY - minY), 2.5);
+  cam.x = r.width / 2 - ((minX + maxX) / 2) * cam.k; cam.y = r.height / 2 - ((minY + maxY) / 2) * cam.k; applyCam();
+}
+function zoomAt(cx, cy, factor) {
+  const r = svgEl.getBoundingClientRect(), sx = cx - r.left, sy = cy - r.top, wx = (sx - cam.x) / cam.k, wy = (sy - cam.y) / cam.k;
+  cam.k = Math.max(0.15, Math.min(8, cam.k * factor)); cam.x = sx - wx * cam.k; cam.y = sy - wy * cam.k; applyCam();
+}
+
+function drawMap() {
+  svgEl = svg("svg", { role:"img", "aria-label":"Editable map" });
+  const defs = svg("defs", {}, svg("pattern", { id:"grid", width:100, height:100, patternUnits:"userSpaceOnUse" }, svg("path", { d:"M100 0H0V100", fill:"none", stroke:"rgba(35,34,31,.07)", "stroke-width":1 })));
+  world = svg("g"); markerRefs = [];
+  world.append(svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#grid)" }));
+  // routes
+  data.routes.forEach(r => {
+    const a = byId(r.from), b = byId(r.to); if (!a || !b || !placed(a) || !placed(b)) return;
+    const [, col, dash] = ROUTE[r.kind] || ROUTE.other;
+    world.append(svg("line", { x1:a.x, y1:a.y, x2:b.x, y2:b.y, stroke:col, "stroke-width":2, "stroke-dasharray":dash || null, "vector-effect":"non-scaling-stroke", opacity:.75 }));
+    if (r.label) { const t = svg("text", { x:(+a.x + +b.x) / 2, y:(+a.y + +b.y) / 2, "font-size":11, "text-anchor":"middle", fill:col, style:"paint-order:stroke;stroke:#fbf9f5;stroke-width:3px" }); t.textContent = r.label; world.append(t); }
+  });
+  // places
+  data.locations.filter(placed).filter(l => kindFilter === "all" || l.kind === kindFilter).forEach(l => {
+    const g = svg("g", { class:"mk", "data-id":l.id, transform:`translate(${l.x} ${l.y})`, style:"cursor:" + (mode === "move" ? "grab" : "pointer") });
+    const inner = svg("g", { transform:`scale(${1 / cam.k})` }); g.append(inner);
+    const col = COLOR[l.kind] || COLOR.other, area = AREA[l.kind], sel = l.id === selId || l.id === connectFrom;
+    if (area) {
+      const t = svg("text", { "text-anchor":"middle", "font-size":area, "letter-spacing":".18em", fill:col, opacity:sel ? 1 : .6, "font-style":l.kind === "sea" ? "italic" : "normal", "font-family":"Fraunces,Georgia,serif" });
+      t.textContent = l.name.toUpperCase(); inner.append(svg("rect", { x:-l.name.length * area * .42, y:-area, width:l.name.length * area * .84, height:area * 1.4, fill:"transparent" }), t);
+      if (sel) inner.append(svg("line", { x1:-l.name.length * area * .4, x2:l.name.length * area * .4, y1:6, y2:6, stroke:col, "stroke-width":2 }));
+    } else {
+      const s = 6;
+      const shape = l.kind === "fortress" ? svg("rect", { x:-s, y:-s, width:s * 2, height:s * 2, fill:col }) : l.kind === "outpost" ? svg("path", { d:`M0 ${-s - 2} L${s + 2} ${s} L${-s - 2} ${s} Z`, fill:col }) :
+        l.kind === "temple" ? svg("path", { d:`M0 ${-s - 3} L${s + 3} 0 L0 ${s + 3} L${-s - 3} 0 Z`, fill:col }) : l.kind === "island" ? svg("path", { d:`M${-s - 2} ${s} Q0 ${-s - 4} ${s + 2} ${s} Z`, fill:col }) : svg("circle", { r:l.kind === "city" ? s + 1 : s - 1, fill:col });
+      inner.append(svg("circle", { r:s + 10, fill:"transparent" }), shape);
+      if (sel) inner.append(svg("circle", { r:s + 6, fill:"none", stroke:col, "stroke-width":2 }));
+      const t = svg("text", { x:s + 7, y:4, "font-size":12, fill:"#23221f" }); t.textContent = l.name; inner.append(t);
+    }
+    world.append(g); markerRefs.push({ loc:l, g, inner });
+  });
+  svgEl.append(defs, world);
+  attachPointers();
+  return svgEl;
+}
+
+function attachPointers() {
+  const pointers = new Map(); let drag = null, pinch = null;
+  const idAt = e => e.target.closest && e.target.closest("[data-id]") ? e.target.closest("[data-id]").getAttribute("data-id") : null;
+  svgEl.addEventListener("pointerdown", e => {
+    svgEl.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+    if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinch = { d:Math.hypot(a.x - b.x, a.y - b.y), k:cam.k }; drag = null; return; }
+    const id = idAt(e);
+    drag = { id, sx:e.clientX, sy:e.clientY, cx:cam.x, cy:cam.y, moved:false, loc:id ? byId(id) : null };
+    if (drag.loc) { drag.ox = +drag.loc.x; drag.oy = +drag.loc.y; }
+  });
+  svgEl.addEventListener("pointermove", e => {
+    if (!pointers.has(e.pointerId)) return; pointers.set(e.pointerId, { x:e.clientX, y:e.clientY });
+    if (pinch && pointers.size === 2) { const [a, b] = [...pointers.values()]; const d = Math.hypot(a.x - b.x, a.y - b.y); zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, (pinch.k * d / pinch.d) / cam.k); return; }
+    if (!drag) return;
+    const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+    if (Math.hypot(dx, dy) > 4) drag.moved = true;
+    if (!drag.moved) return;
+    if (drag.loc && mode === "move") {
+      drag.loc.x = Math.round(drag.ox + dx / cam.k); drag.loc.y = Math.round(drag.oy + dy / cam.k);
+      const m = markerRefs.find(r => r.loc === drag.loc); if (m) m.g.setAttribute("transform", `translate(${drag.loc.x} ${drag.loc.y})`);
+    } else { cam.x = drag.cx + dx; cam.y = drag.cy + dy; applyCam(); }
+  });
+  const end = e => {
+    pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null;
+    if (!drag) return; const d = drag; drag = null;
+    if (d.loc && mode === "move" && d.moved) { d.loc.unverified = false; E.upsert("locations", d.loc); render(); return; }
+    if (d.moved) return;                                                       // it was a pan
+    if (d.loc) {                                                               // tapped a place
+      if (mode === "connect") {
+        if (!connectFrom) { connectFrom = d.loc.id; hint(); drawKeep(); }
+        else if (connectFrom !== d.loc.id) { const from = connectFrom; connectFrom = null; routeForm({ from, to:d.loc.id }); }
+        return;
+      }
+      selId = d.loc.id; render(); return;
+    }
+    if (mode === "add") {                                                      // tapped empty map in add mode
+      const [wx, wy] = toWorld(e.clientX, e.clientY), x = Math.round(wx), y = Math.round(wy);
+      if (placing) { const l = byId(placing); placing = null; l.x = x; l.y = y; l.unverified = false; E.upsert("locations", l); selId = l.id; mode = "browse"; render(); }
+      else locForm({ x, y });
+    }
+  };
+  svgEl.addEventListener("pointerup", end); svgEl.addEventListener("pointercancel", end);
+  svgEl.addEventListener("wheel", e => { e.preventDefault(); zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.0015)); }, { passive:false });
+}
+const drawKeep = () => { const keep = { ...cam }; const box = document.querySelector(".mapbox"); if (!box) return; box.querySelector("svg").replaceWith(drawMap()); Object.assign(cam, keep); applyCam(); };
+
+const HINTS = { browse:"Drag to pan, scroll or pinch to zoom, tap a place for details.", move:"Move mode: drag a place to reposition it. Changes save as soon as you let go.",
+  add:"Add mode: tap the map where the new place goes.", connect:"Connect mode: tap one place, then another, to draw a route between them." };
+function hint() {
+  if (!hintEl) return;
+  hintEl.textContent = placing ? "Tap the map to place “" + (byId(placing) || {}).name + "”." : mode === "connect" && connectFrom ? "Now tap the place to connect “" + (byId(connectFrom) || {}).name + "” to." : HINTS[mode];
+}
+
+/* ---------- details ---------- */
+function details() {
+  const l = selId && byId(selId); if (!l) return h("div", { class:"empty" }, "Tap a place on the map or in the list to see its details.");
+  const parent = byId(l.parent), kids = childrenOf(l.id);
+  const routes = data.routes.filter(r => r.from === l.id || r.to === l.id);
+  const events = E.sortEvents(data.events.filter(e => e.locationId === l.id));
+  const people = data.characters.filter(c => c.origin && l.name.length > 3 && c.origin.toLowerCase().includes(l.name.toLowerCase()));
+  return h("div", { class:"card", id:"detail" },
+    h("div", { class:"row", style:"justify-content:space-between" }, h("h3", {}, l.name, E.unverified(l)), h("span", { class:"pill s-unknown", style:"color:" + (COLOR[l.kind] || "#777") }, KIND_LABEL[l.kind] || l.kind)),
+    h("div", { class:"meta" }, [parent && "part of " + parent.name, placed(l) ? "x " + l.x + ", y " + l.y : "not on the map yet"].filter(Boolean).join(" · ")),
+    l.desc ? h("p", { style:"margin:.5rem 0" }, l.desc) : null,
+    (l.cites || []).map(E.citeView),
+    kids.length ? h("div", { class:"f" }, h("label", {}, "Places inside"), h("div", { class:"row" }, kids.map(k => h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => { selId = k.id; render(); } }, k.name)))) : null,
+    routes.length ? h("div", { class:"f" }, h("label", {}, "Routes"), routes.map(r => { const o = byId(r.from === l.id ? r.to : r.from); return h("div", { class:"row", style:"margin:.15rem 0" }, h("span", {}, (ROUTE[r.kind] || ROUTE.other)[0] + " to " + (o ? o.name : "?") + (r.label ? " — " + r.label : "")), h("button", { class:"btn sm", onclick:() => routeForm(r) }, "Edit")); })) : null,
+    events.length ? h("div", { class:"f" }, h("label", {}, "Timeline events here"), h("div", { class:"row" }, events.map(e => h("a", { class:"chip", href:"timeline.html#" + e.id }, e.title)))) : null,
+    people.length ? h("div", { class:"f" }, h("label", {}, "People from here"), h("div", { class:"row" }, people.map(c => h("a", { class:"chip", href:"characters.html#" + c.id }, E.fullName(c))))) : null,
+    h("div", { class:"row", style:"margin-top:.7rem" },
+      h("button", { class:"btn sm", onclick:() => locForm(l) }, "Edit"),
+      placed(l) ? h("button", { class:"btn sm", onclick:() => { mode = "move"; render(); } }, "Move on the map") : h("button", { class:"btn sm", onclick:() => { placing = l.id; mode = "add"; view = "map"; render(); } }, "Place on the map"),
+      h("button", { class:"btn sm", onclick:() => { mode = "connect"; connectFrom = l.id; view = "map"; render(); } }, "Draw a route from here")));
+}
+
+/* ---------- list view ---------- */
+function treeList() {
+  const match = l => (kindFilter === "all" || l.kind === kindFilter) && (l.name + " " + (l.desc || "")).toLowerCase().includes(q);
+  const keep = new Set(); data.locations.filter(match).forEach(l => { let c = l; while (c && !keep.has(c.id)) { keep.add(c.id); c = byId(c.parent); } });
+  const node = l => h("div", {}, h("button", { type:"button", class:"card", style:"display:block;width:100%;text-align:left;cursor:pointer;margin:.35rem 0;padding:.7rem 1rem;font:inherit;color:inherit", onclick:() => { selId = l.id; view = "map"; render(); setTimeout(() => document.getElementById("detail")?.scrollIntoView({ behavior:"smooth", block:"center" }), 50); } },
+      h("span", { class:"row", style:"justify-content:space-between" }, h("b", { style:"font-family:Fraunces,serif;font-weight:400;font-size:1.1rem" }, l.name, E.unverified(l)), h("span", { class:"meta" }, (KIND_LABEL[l.kind] || l.kind) + (placed(l) ? "" : " · not on the map"))),
+      l.desc ? h("span", { class:"meta", style:"display:block;margin-top:.2rem" }, l.desc.replace(/ Starter note from[^.]*\./, "")) : null),
+    childrenOf(l.id).filter(c => keep.has(c.id)).length ? h("div", { class:"branch" }, childrenOf(l.id).filter(c => keep.has(c.id)).sort((a, b) => a.name.localeCompare(b.name)).map(node)) : null);
+  const roots = data.locations.filter(l => (!l.parent || !byId(l.parent)) && keep.has(l.id)).sort((a, b) => a.name.localeCompare(b.name));
+  return roots.length ? h("div", { class:"tree" }, roots.map(node)) : E.emptyState("No places match.");
+}
+
+/* ---------- page ---------- */
+function render() {
+  const unplaced = data.locations.filter(l => !placed(l));
+  app.replaceChildren(
+    h("p", { class:"banner" }, "Positions are rough and schematic until you drag them into place; they are not copied from the books’ maps. Pick Move mode, drag a place, and it saves instantly."),
+    h("div", { class:"toolbar" },
+      E.tabs([["map","Map"],["list","List"]], view, k => { view = k; render(); }),
+      view === "map" ? E.tabs([["browse","Browse"],["move","Move"],["add","Add place"],["connect","Connect"]], mode, k => { mode = k; connectFrom = null; if (k !== "add") placing = null; render(); }) : null,
+      h("select", { "aria-label":"Kind", onchange:e => { kindFilter = e.target.value; render(); } }, h("option", { value:"all" }, "All kinds"), KINDS.map(([v, t]) => h("option", { value:v, selected:kindFilter === v }, t))),
+      h("span", { class:"grow" }),
+      view === "list" ? h("input", { type:"search", placeholder:"Search places…", value:q, "aria-label":"Search places", oninput:e => { q = e.target.value.toLowerCase(); document.getElementById("treebox").replaceChildren(treeList()); } }) : null,
+      h("button", { class:"btn primary", onclick:() => locForm() }, "+ Add place")),
+    view === "map" ? h("div", { class:"mapbox" }, drawMap(),
+      h("div", { class:"mapbtns" }, h("button", { "aria-label":"Zoom in", onclick:() => { const r = svgEl.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.4); } }, "+"),
+        h("button", { "aria-label":"Zoom out", onclick:() => { const r = svgEl.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1 / 1.4); } }, "−"),
+        h("button", { "aria-label":"Fit everything", title:"Fit everything", onclick:fit }, "⤢")),
+      (hintEl = h("div", { class:"maphint" }))) : h("div", { id:"treebox" }, treeList()),
+    unplaced.length && view === "map" ? h("div", { style:"margin-top:.9rem" }, h("span", { class:"meta" }, "Not on the map yet (tap one, then tap the map): "), h("span", { class:"row", style:"display:inline-flex" }, unplaced.map(l => h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => { placing = l.id; mode = "add"; selId = l.id; render(); } }, l.name)))) : null,
+    h("div", { style:"margin-top:1rem" }, details()),
+    data.routes.length ? h("div", {}, h("h2", {}, "Routes"), h("div", { class:"row" }, data.routes.map(r => { const a = byId(r.from), b = byId(r.to); return h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => routeForm(r) }, (a ? a.name : "?") + " ↔ " + (b ? b.name : "?") + (r.label ? " (" + r.label + ")" : "")); }))) : null);
+  if (view === "map") { hint(); if (!cam.fitted) { cam.fitted = true; fit(); } else applyCam(); }
+}
+render();
+if (selId && !byId(selId)) selId = null;
+</script></body></html>

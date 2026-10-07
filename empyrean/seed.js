@@ -2251,7 +2251,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-brennan",
@@ -2268,7 +2270,9 @@ window.EMPYREAN_SEED = {
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-resson",
@@ -2285,7 +2289,9 @@ window.EMPYREAN_SEED = {
         "s-soleil"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-zehyllna",
@@ -2301,7 +2307,9 @@ window.EMPYREAN_SEED = {
         "s-trager"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-draithus",
@@ -2318,7 +2326,9 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-end",
@@ -2337,7 +2347,9 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-two-dragons",
@@ -2353,7 +2365,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-channeling",
@@ -2369,7 +2383,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-andarna-ward",
@@ -2386,7 +2402,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-jack-ward",
@@ -2402,7 +2420,9 @@ window.EMPYREAN_SEED = {
         "s-jack"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-xaden-signet",
@@ -2418,7 +2438,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-xaden-venin",
@@ -2435,7 +2457,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-lilith",
@@ -2452,7 +2476,9 @@ window.EMPYREAN_SEED = {
         "s-sloane"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-panchek",
@@ -2468,7 +2494,9 @@ window.EMPYREAN_SEED = {
         "s-panchek"
       ],
       "unverified": true,
-      "rev": 3
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-theo",
@@ -2485,7 +2513,9 @@ window.EMPYREAN_SEED = {
         "s-theophanie"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-brennan",
@@ -2501,8 +2531,9 @@ window.EMPYREAN_SEED = {
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 100
+      "rev": 14,
+      "year": 626,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-mira",
@@ -2518,8 +2549,9 @@ window.EMPYREAN_SEED = {
         "s-mira"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 105
+      "rev": 14,
+      "year": 629,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-deal",
@@ -2536,8 +2568,9 @@ window.EMPYREAN_SEED = {
         "s-lilith"
       ],
       "unverified": true,
-      "rev": 4,
-      "story": 108
+      "rev": 14,
+      "year": 628,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-xaden",
@@ -2553,8 +2586,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 110
+      "rev": 14,
+      "year": 631,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-garrick",
@@ -2570,8 +2604,9 @@ window.EMPYREAN_SEED = {
         "s-garrick"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 120
+      "rev": 14,
+      "year": 631,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-bodhi",
@@ -2587,8 +2622,9 @@ window.EMPYREAN_SEED = {
         "s-bodhi"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 130
+      "rev": 14,
+      "year": 631,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-imogen",
@@ -2604,8 +2640,9 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 140
+      "rev": 14,
+      "year": 631,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-dain",
@@ -2621,8 +2658,9 @@ window.EMPYREAN_SEED = {
         "s-dain"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 150
+      "rev": 14,
+      "year": 633,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-liam",
@@ -2638,8 +2676,9 @@ window.EMPYREAN_SEED = {
         "s-liam"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 1010.1
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-rhi",
@@ -2655,8 +2694,9 @@ window.EMPYREAN_SEED = {
         "s-rhi"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 1010.2
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-ridoc",
@@ -2672,8 +2712,9 @@ window.EMPYREAN_SEED = {
         "s-ridoc"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 1010.3
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-sawyer",
@@ -2689,8 +2730,9 @@ window.EMPYREAN_SEED = {
         "s-sawyer"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 1010.4
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-sloane",
@@ -2706,8 +2748,9 @@ window.EMPYREAN_SEED = {
         "s-sloane"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 2005.1
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-aaric",
@@ -2723,8 +2766,9 @@ window.EMPYREAN_SEED = {
         "s-aaric"
       ],
       "unverified": true,
-      "rev": 5,
-      "story": 2005.2
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-deal",
@@ -2742,7 +2786,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-td-trial",
@@ -2756,8 +2802,9 @@ window.EMPYREAN_SEED = {
       "desc": "Opening chapter of Threshing Day: Threshing advice for dragonkind, credited to Colonel Thadeus Palme.",
       "chars": [],
       "unverified": true,
-      "rev": 5,
-      "story": 90
+      "rev": 14,
+      "year": 625,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-parapet",
@@ -2773,7 +2820,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-wakes",
@@ -2789,7 +2838,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-andarna-time",
@@ -2805,7 +2856,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-feather-fail",
@@ -2819,7 +2872,9 @@ window.EMPYREAN_SEED = {
       "desc": "We learn that failed feathertails shouldn't bond, because they can accidentally gift their powers to humans.",
       "chars": [],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-feather-baby",
@@ -2833,7 +2888,9 @@ window.EMPYREAN_SEED = {
       "desc": "We learn that feathertails are actually just baby dragons.",
       "chars": [],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-amber",
@@ -2849,7 +2906,9 @@ window.EMPYREAN_SEED = {
         "s-amber"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-jack-power",
@@ -2866,7 +2925,9 @@ window.EMPYREAN_SEED = {
         "s-jack"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-lightning",
@@ -2882,7 +2943,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-jack-dies",
@@ -2899,7 +2962,9 @@ window.EMPYREAN_SEED = {
         "s-jack"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-note",
@@ -2915,7 +2980,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 5
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-tairn-channel",
@@ -2931,7 +2998,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 6
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-resson-start",
@@ -2947,7 +3016,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-rescue",
@@ -2964,7 +3035,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 7
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-pre-aretia",
@@ -2981,8 +3054,9 @@ window.EMPYREAN_SEED = {
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 8,
-      "story": 106
+      "rev": 14,
+      "year": 628,
+      "yearApprox": false
     },
     {
       "id": "s-ev-pre-executions",
@@ -2999,8 +3073,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8,
-      "story": 107
+      "rev": 14,
+      "year": 628,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-conscription",
@@ -3017,7 +3092,9 @@ window.EMPYREAN_SEED = {
         "s-lilith"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-mira-warns",
@@ -3036,7 +3113,9 @@ window.EMPYREAN_SEED = {
         "s-fen"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-boots",
@@ -3053,7 +3132,9 @@ window.EMPYREAN_SEED = {
         "s-rhi"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-parapet-jack",
@@ -3071,7 +3152,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-squad",
@@ -3090,7 +3173,9 @@ window.EMPYREAN_SEED = {
         "s-rhi"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-defend-andarna",
@@ -3110,7 +3195,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-poison",
@@ -3126,7 +3213,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-lovers",
@@ -3143,7 +3232,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-athebyne",
@@ -3160,7 +3251,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-dain-reads",
@@ -3178,7 +3271,9 @@ window.EMPYREAN_SEED = {
         "s-aetos"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-venin-reveal",
@@ -3195,7 +3290,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-fw-last-venin",
@@ -3211,7 +3308,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 634,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-assembly",
@@ -3229,7 +3328,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-return",
@@ -3247,7 +3348,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-assassins",
@@ -3264,7 +3367,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-punish",
@@ -3281,7 +3386,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-jack-alive",
@@ -3298,7 +3405,9 @@ window.EMPYREAN_SEED = {
         "s-nolon"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-samara",
@@ -3314,7 +3423,9 @@ window.EMPYREAN_SEED = {
         "s-xaden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-journals",
@@ -3330,7 +3441,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-torture",
@@ -3347,7 +3460,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-varrish-dies",
@@ -3367,7 +3482,9 @@ window.EMPYREAN_SEED = {
         "s-varrish"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-luminary",
@@ -3385,7 +3502,9 @@ window.EMPYREAN_SEED = {
         "s-tecarus"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-gryphons",
@@ -3403,7 +3522,9 @@ window.EMPYREAN_SEED = {
         "s-tecarus"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-six-blood",
@@ -3419,7 +3540,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-if-venin-attack",
@@ -3437,7 +3560,9 @@ window.EMPYREAN_SEED = {
         "s-lilith"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-open",
@@ -3457,7 +3582,9 @@ window.EMPYREAN_SEED = {
         "s-imogen"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-senarium",
@@ -3471,7 +3598,9 @@ window.EMPYREAN_SEED = {
       "desc": "The Senarium meets at Basgiath for peace talks between Navarre and Poromiel. The Aretian riders are pardoned, but leadership refuses to alter the wards so fliers can use lesser magic, so the proposed alliance fails. Add the page number; until then its position among page-numbered events is approximate.",
       "chars": [],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-wardstone",
@@ -3496,7 +3625,9 @@ window.EMPYREAN_SEED = {
         "s-brennan"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-irids",
@@ -3517,7 +3648,9 @@ window.EMPYREAN_SEED = {
         "s-halden"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-theo-taunts",
@@ -3534,7 +3667,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-mira-captured",
@@ -3552,7 +3687,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-andarna-returns",
@@ -3568,7 +3705,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-onyx-storm",
@@ -3585,7 +3724,9 @@ window.EMPYREAN_SEED = {
         "s-violet"
       ],
       "unverified": true,
-      "rev": 8
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     },
     {
       "id": "s-ev-os-duke",
@@ -3603,7 +3744,9 @@ window.EMPYREAN_SEED = {
         "s-tauri"
       ],
       "unverified": true,
-      "rev": 9
+      "rev": 14,
+      "year": 635.5,
+      "yearApprox": true
     }
   ],
   "theories": [
