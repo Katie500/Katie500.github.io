@@ -182,13 +182,16 @@
    "group": "rider",
    "status": "active",
    "rebelChild": false,
-   "notes": "",
+   "notes": "Prince Camlaen Aaric Tauri, better known by his pseudonym Aaric Graycastle (or simply Cam), is the third son of King Tauri and, after the death of his brother Alic, second in line to the throne of Navarre. He secretly enrolls at Basgiath War College as a first-year cadet in the Riders Quadrant to help fight the venin threat his family ignores, and bonds the Blue Clubtail Molvic at Threshing. In Onyx Storm, his signet is revealed as true precognition, and he joins Violet Sorrengail's quest squad as the royal representative of Navarre.",
    "unverified": false,
    "dragonId": "s-molvic",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791209772279,
-   "aliases": "Cam Tauri"
+   "updated": 1791379550096,
+   "aliases": "Cam Tauri",
+   "origin": "",
+   "venin": false,
+   "gryphon": ""
   },
   {
    "id": "s-lilith",
@@ -673,10 +676,16 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Put to death on page 246 of Fourth Wing, per your notes. Starter note; check against your copy.",
+   "notes": "Put to death on page 246 of Fourth Wing \nAmber Mavis was the wingleader from Third Wing and close friend of Dain Aetos.When Violet is attacked in her room, Amber is revealed to be the one who let the attackers in. Xaden Riorson accused her of violating Article Three, Section Two of the Dragon Rider's Codex, a capital offense, during formation. The wingleaders formed a quorum and found Amber guilty by unanimous agreement after Violet's dragon, Tairneanach, shared her memory of the attack with everyone present. After initially having denied involvement, Amber declares that it is not a crime to rid the quadrant of the weakest rider, explaining that she did it to protect the integrity of the wings. Tairneanach carries out the sentence of execution by dragon fire.",
    "fateEventId": "s-ev-fw-amber",
-   "unverified": true,
-   "rev": 5
+   "unverified": false,
+   "rev": 5,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "s-d-claidh",
+   "cites": [],
+   "updated": 1791379625166
   },
   {
    "id": "s-fen",
@@ -880,10 +889,10 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Scribe Quadrant ;  Violet's father",
+   "notes": "Scribe Quadrant ;  Violet's father\nAsher Sorrengail (née Daxton) was a scribe and husband of Lilith Sorrengail. He is the father to Brennan, Mira and Violet Sorrengail.",
    "unverified": false,
    "rev": 9,
-   "updated": 1791327116388,
+   "updated": 1791379745265,
    "aliases": "",
    "origin": "",
    "gryphon": "",
@@ -1316,12 +1325,26 @@
    "id": "s-w-anna-winshire",
    "name": "Anna Winshire",
    "group": "civilian",
-   "status": "unknown",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "notes": "Anna Winshire was the former guard, chosen to protect Halden at the negotiations with Deverelli. King Courtlyn killed her during the negotiations and served her head as dessert for his 3 panthers.",
+   "unverified": false,
+   "rev": 10,
+   "updated": 1791379689235,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [
+    {
+     "book": "OS",
+     "edition": "Hardcover",
+     "stance": "support",
+     "page": "124"
+    }
+   ]
   },
   {
    "id": "s-w-aurelie-donans",
@@ -1744,9 +1767,16 @@
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "notes": "Mother of Asher Sorrengail. Grandmother to Violet, Brennan, and Mira.",
+   "unverified": false,
+   "rev": 10,
+   "aliases": "",
+   "origin": "",
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791379895432
   },
   {
    "id": "s-w-nora",
