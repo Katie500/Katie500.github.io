@@ -81,7 +81,7 @@ const E = (() => {
     ["s-loc-draithus", "Draithus", "town", "", 472, 490, "Site of the climactic Onyx Storm battle against the venin. On the south coast of the Continent, below Medaro Pass."],
     ["s-loc-dunne", "Temple of Dunne", "temple", "", null, null, "Temple whose shard Violet uses against Theophanie; its head priestess certifies Violet's marriage."],
     ["s-loc-arctile", "Arctile Ocean", "sea", "", 348, 606, "The ocean south of the Continent. " + MAPNOTE],
-    ["s-loc-malek", "Bay of Malek", "sea", "", 740, 468, "The bay between Poromiel and the Barrens. " + MAPNOTE],
+    ["s-loc-malek", "Bay of Malek", "sea", "", 748, 498, "The bay between Poromiel and the Barrens. " + MAPNOTE],
     ["s-loc-esben", "Esben Mountains", "region", "", 586, 193, "The mountain chain running down the middle of the Continent (the map labels a second stretch “Esben Mountains” near Sumerton). " + MAPNOTE],
     ["s-loc-medaro", "Medaro Pass", "region", "", 433, 460, "A pass beside a waterfall, just north of Draithus. " + MAPNOTE],
     ["s-loc-dralor", "Cliffs of Dralor", "region", "", 327, 472, "The dark cliffs along Tyrrendor's southern coast. " + MAPNOTE],
@@ -109,14 +109,14 @@ const E = (() => {
   ].map(([id, name, kind, parent, x, y, desc]) => ({ id, name, kind, parent, x, y, desc:/map|Note|Starter/.test(desc) ? desc : desc + " " + LC, unverified:true, rev:3 }));
   // Land, mountains, rivers, roads and province areas for the map: lists of [x, y] points the map page lets you drag.
   // Coast and mountains were traced from the world map picture; provinces, rivers and roads were placed by eye.
-  const SHAPE_SEED = ((window.EMPYREAN_MAP || {}).shapes || []).map(([id, name, kind, pts, color, sharp]) => ({ id, name, kind, pts, color, sharp:!!sharp, unverified:true, rev:2 }));
+  const SHAPE_SEED = ((window.EMPYREAN_MAP || {}).shapes || []).map(([id, name, kind, pts, color, sharp]) => ({ id, name, kind, pts, color, sharp:!!sharp, unverified:true, rev:3 }));
   const applyLocations = () => {
     let changed = false; data.locations = data.locations || []; data.routes = data.routes || []; data.shapes = data.shapes || []; data.removedSeed = data.removedSeed || [];
-    if ((data.mapRev || 0) < 2 && SHAPE_SEED.length) {
-      // the first map was a rough guess; swap in the traced one and put starter places on their real positions, even ones that were dragged
+    if ((data.mapRev || 0) < 3 && SHAPE_SEED.length) {
+      // earlier maps were rough; swap in the traced one, and (once) put starter places on their real positions, even ones that were dragged
       data.shapes = data.shapes.filter(s => !s.id.startsWith("s-sh-"));
-      for (const s of LOCATION_SEED) { const l = data.locations.find(x => x.id === s.id); if (l) { l.x = s.x; l.y = s.y; if (l.name === "Morainne") l.name = "Morraine"; if (l.id === "s-loc-draithus") l.kind = s.kind; if (l.parent === "s-loc-navarre" && s.parent !== l.parent && l.unverified === true) l.parent = s.parent; } }
-      data.mapRev = 2; changed = true;
+      if ((data.mapRev || 0) < 2) for (const s of LOCATION_SEED) { const l = data.locations.find(x => x.id === s.id); if (l) { l.x = s.x; l.y = s.y; if (l.name === "Morainne") l.name = "Morraine"; if (l.id === "s-loc-draithus") l.kind = s.kind; if (l.parent === "s-loc-navarre" && s.parent !== l.parent && l.unverified === true) l.parent = s.parent; } }
+      data.mapRev = 3; changed = true;
     }
     const lists = [["locations", LOCATION_SEED]]; if (SHAPE_SEED.length) lists.push(["shapes", SHAPE_SEED]);
     for (const [list, seed] of lists) for (const s of seed) {
@@ -220,7 +220,7 @@ const E = (() => {
   const RETIRED = { dragons:["s-d-trissa"] };
   const retire = () => { let changed = false; for (const [list, ids] of Object.entries(RETIRED)) { const keep = (data[list] || []).filter(x => !ids.includes(x.id)); if (keep.length !== (data[list] || []).length) { data[list] = keep; changed = true; } } return changed; };
   const SPELLING_FIXES = [
-    [/Tacarus/g, "Tecarus"], [/Thaddeus Palme/g, "Thadeus Palme"], [/Mason Sanborn/g, "Masen Sanborn"], [/Offendra/g, "Affendra"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
+    [/Tacarus/g, "Tecarus"], [/Thaddeus Palme/g, "Thadeus Palme"], [/Mason Sanborn/g, "Masen Sanborn"], [/Offendra/g, "Affendra"], [/Morainne/g, "Morraine"], [/grandmothers dragon/g, "grandmother\u2019s dragon"],
     [/Battle of Aretia \[\? you said "Arisha"\]/g, "Battle of Aretia"], [/Treaty of Aretia \[\?\]/g, "Treaty of Aretia"],
     [/\[\?\] abandoning the \[\?\] in the memory of General \[\?\] Moore/g, "abandoning the Barrens and the memory of General Daramor"],
   ];

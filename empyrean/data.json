@@ -4845,9 +4845,9 @@
    "book": "OT",
    "read": false,
    "theoryIds": [],
-   "summary": "Calldyr, Elsum, Luceras, Morainne and Tyrrendor accept the Unification Scrolls and swear fealty to King Reginald Navarrius. The kingdom is named Navarre and the calendar restarts at year 1.",
+   "summary": "Calldyr, Elsum, Luceras, Morraine and Tyrrendor accept the Unification Scrolls and swear fealty to King Reginald Navarrius. The kingdom is named Navarre and the calendar restarts at year 1.",
    "cites": [],
-   "text": "It is hereby recorded that the territories of Calldyr, Elsum, Luceras, Morainne, and Tyrrendor have agreed to terms defined in the Unification Scrolls and sworn fealty to our magnanimous King Reginald Navarrius. All people dwelling within the safe haven of our borders shall be considered citizens of the kingdom now known as Navarre. In celebration of this momentous occasion and our new, peaceful era, our calendars shall reflect this year as our first after unification."
+   "text": "It is hereby recorded that the territories of Calldyr, Elsum, Luceras, Morraine, and Tyrrendor have agreed to terms defined in the Unification Scrolls and sworn fealty to our magnanimous King Reginald Navarrius. All people dwelling within the safe haven of our borders shall be considered citizens of the kingdom now known as Navarre. In celebration of this momentous occasion and our new, peaceful era, our calendars shall reflect this year as our first after unification."
   },
   {
    "id": "snip-FW-1",
@@ -5587,7 +5587,7 @@
   },
   {
    "id": "s-loc-morainne",
-   "name": "Morainne",
+   "name": "Morraine",
    "kind": "province",
    "parent": "s-loc-navarre",
    "x": 560,
@@ -6536,7 +6536,7 @@
   },
   {
    "id": "s-sh-morainne",
-   "name": "Morainne",
+   "name": "Morraine",
    "kind": "province",
    "pts": [
     [

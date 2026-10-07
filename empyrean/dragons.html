@@ -43,6 +43,9 @@ const editForm = (d = {}) => E.form({
   onDelete: d.id ? () => { data.dragons.forEach(x => { if (x.sire === d.id) x.sire = ""; if (x.dam === d.id) x.dam = ""; }); E.remove("dragons", d.id); render(); } : null,
 });
 
+let q = "";
+const matches = d => { if (!q) return true; const r = E.byId("characters", d.riderId); return [d.name, d.aliases, d.family, d.color, d.notes, r && E.fullName(r)].filter(Boolean).join(" ").toLowerCase().includes(q); };
+const noMatch = () => E.emptyState("No dragons or gryphons match “" + q + "”.");
 const dragonCard = d => {
   const rider = E.byId("characters", d.riderId), s = E.byId("dragons", d.sire), m = E.byId("dragons", d.dam);
   return h("div", { class:"card", id:d.id },
@@ -59,7 +62,8 @@ const dragonCard = d => {
 function families() {
   if (!data.dragons.some(x => !x.gryphon)) return E.emptyState("No dragons yet.");
   const groups = {};
-  data.dragons.filter(x => !x.gryphon).forEach(d => (groups[d.family || "No family recorded"] ||= []).push(d));
+  if (!data.dragons.some(x => !x.gryphon && matches(x))) return noMatch();
+  data.dragons.filter(x => !x.gryphon && matches(x)).forEach(d => (groups[d.family || "No family recorded"] ||= []).push(d));
   return Object.entries(groups).sort(([a], [b]) => a.startsWith("No ") ? 1 : b.startsWith("No ") ? -1 : a.localeCompare(b)).map(([name, list]) =>
     h("section", {}, h("h2", {}, name, h("span", { class:"meta" }, "  " + list.length)), h("div", { class:"grid" }, list.sort((a, b) => a.name.localeCompare(b.name)).map(dragonCard))));
 }
@@ -112,7 +116,7 @@ function tree() {
 function table() {
   const cols = [["name","Name"],["color","Color"],["tail","Tail"],["sex","Sex"],["family","Line"],["age","Est. age"],["riders","Recorded riders"],["rider","Bonded rider"],["status","Status"]];
   const val = x => ({ rider:E.byId("characters", x.riderId) ? E.fullName(E.byId("characters", x.riderId)) : "", tail:tailOf(x), status:x.status })[sortKey] ?? x[sortKey];
-  const rows = data.dragons.filter(x => !x.gryphon).sort((a, b) => { const x = val(a), y = val(b); return (x == null || x === "" ? 1 : y == null || y === "" ? -1 : typeof x === "number" && typeof y === "number" ? x - y : String(x).localeCompare(String(y))) * sortDir; });
+  const rows = data.dragons.filter(x => !x.gryphon && matches(x)).sort((a, b) => { const x = val(a), y = val(b); return (x == null || x === "" ? 1 : y == null || y === "" ? -1 : typeof x === "number" && typeof y === "number" ? x - y : String(x).localeCompare(String(y))) * sortDir; });
   const cell = x => h("td", { style:"padding:.5rem .7rem;border-top:1px solid var(--line);white-space:nowrap" }, x);
   return h("div", { class:"axis-wrap" }, h("table", { style:"border-collapse:collapse;width:100%;font-size:14px" },
     h("thead", {}, h("tr", {}, cols.map(([k, l]) => h("th", { style:"text-align:left;padding:.6rem .7rem;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);cursor:pointer", onclick:() => { sortDir = sortKey === k ? -sortDir : 1; sortKey = k; render(); } }, l + (sortKey === k ? (sortDir > 0 ? " ↑" : " ↓") : ""))))),
@@ -122,15 +126,19 @@ function table() {
 }
 
 function gryphons() {
-  const list = data.dragons.filter(x => x.gryphon).sort((a, b) => a.name.localeCompare(b.name));
-  return list.length ? h("div", { class:"grid" }, list.map(dragonCard)) : E.emptyState("No gryphons yet. Press “+ Add gryphon”.");
+  const list = data.dragons.filter(x => x.gryphon && matches(x)).sort((a, b) => a.name.localeCompare(b.name));
+  return list.length ? h("div", { class:"grid" }, list.map(dragonCard)) : q ? noMatch() : E.emptyState("No gryphons yet. Press “+ Add gryphon”.");
 }
 
+const body = () => tab === "families" ? h("div", {}, families()) : tab === "table" ? table() : tab === "gryphons" ? gryphons() :
+  h("div", {}, q ? h("div", { class:"row", style:"margin-bottom:.8rem" }, h("span", { class:"meta" }, "Matches:"), data.dragons.filter(matches).map(d => h("button", { type:"button", class:"chip", style:"cursor:pointer", onclick:() => editForm(d) }, d.name))) : null, tree());
 function render() {
   app.replaceChildren(
-    h("div", { class:"toolbar" }, E.tabs([["families","Families"],["table","Details table"],["tree","Genealogy tree"],["gryphons","Gryphons"]], tab, k => { tab = k; render(); }), h("span", { class:"grow" }),
+    h("div", { class:"toolbar" }, E.tabs([["families","Families"],["table","Details table"],["tree","Genealogy tree"],["gryphons","Gryphons"]], tab, k => { tab = k; render(); }),
+      h("input", { type:"search", id:"dsearch", placeholder:"Search dragons and gryphons…", "aria-label":"Search dragons and gryphons", value:q, oninput:e => { q = e.target.value.trim().toLowerCase(); document.getElementById("dbody").replaceChildren(body()); } }),
+      h("span", { class:"grow" }),
       h("button", { class:"btn primary", onclick:() => editForm(tab === "gryphons" ? { gryphon:true, status:"unknown" } : {}) }, tab === "gryphons" ? "+ Add gryphon" : "+ Add dragon")),
-    tab === "families" ? h("div", {}, families()) : tab === "table" ? table() : tab === "gryphons" ? gryphons() : tree());
+    h("div", { id:"dbody" }, body()));
 }
 render();
 </script></body></html>
