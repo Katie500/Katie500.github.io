@@ -5,17 +5,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="empyrean.css">
 <style>
-  .mapbox { position:relative; height:min(72vh,600px); background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  :root { --bg:#0d1215; --card:#151c20; --ink:#e9e1cf; --soft:#8d9996; --line:rgba(233,225,207,.17); --acc:#e0894d; --acc2:#9fb7d8; --ok:#6fb59d; --warn:#d6b04a; --bad:#d9674f; }
+  .chip { background:#ffffff0d; } .banner { background:#1b2327; color:var(--soft); border-color:var(--line); }
+  .mapbox::after { content:""; position:absolute; inset:0; pointer-events:none; border-radius:16px; box-shadow:inset 0 0 90px 20px rgba(3,7,9,.85); }
+  .mapbox { position:relative; height:min(82vh,760px); background:#0a1317; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 20px 60px -20px rgba(0,0,0,.8); }
   .mapbox svg { width:100%; height:100%; display:block; touch-action:none; user-select:none; -webkit-user-select:none; }
   .mapbtns { position:absolute; right:10px; top:10px; display:flex; flex-direction:column; gap:6px; }
-  .mapbtns button { width:36px; height:36px; border-radius:10px; border:1px solid var(--line); background:var(--bg); cursor:pointer; font-size:18px; line-height:1; }
+  .mapbtns { z-index:2; } .mapbtns button { width:36px; height:36px; border-radius:10px; border:1px solid var(--line); background:rgba(13,18,21,.85); color:var(--ink); cursor:pointer; font-size:18px; line-height:1; }
   .mapbtns button:hover { background:var(--ink); color:var(--bg); }
-  .maphint { position:absolute; left:10px; bottom:10px; right:60px; font-size:12px; color:var(--soft); background:#f4f0e9d9; padding:.3rem .6rem; border-radius:8px; pointer-events:none; }
+  .maphint { position:absolute; left:10px; bottom:10px; right:60px; font-size:12px; color:var(--soft); z-index:2; background:rgba(13,18,21,.82); padding:.3rem .6rem; border-radius:8px; pointer-events:none; }
   .tree .branch { margin-left:1.2rem; border-left:1px solid var(--line); padding-left:.9rem; }
-  .mk text { paint-order:stroke; stroke:#fbf9f5; stroke-width:3px; stroke-linejoin:round; font-family:"Inter",sans-serif; }
+  svg.far .mk text.lbl, svg.vfar .mk text.pl:not(.sel) { display:none; } .mk text { paint-order:stroke; stroke:#071014; stroke-width:3.5px; stroke-linejoin:round; font-family:"Inter",sans-serif; }
 </style>
 </head><body><div class="wrap"><main id="app"></main></div>
-<script src="seed.js"></script><script src="app.js"></script>
+<script src="seed.js"></script><script src="map-seed.js"></script><script src="app.js"></script>
 <script>
 const { h, svg, data } = E;
 E.layout("locations.html", "The <em>map</em>", "A map drawn from data, not a picture. Coasts, provinces, rivers and ranges are shapes whose points you can drag, every place is a point you can move, and the canvas has no edges, so new lands can go anywhere as the books reveal them.");
@@ -23,15 +26,15 @@ const app = document.getElementById("app");
 
 const KINDS = [["kingdom","Kingdom"],["province","Province"],["region","Region or range"],["sea","Sea"],["city","City"],["town","Town or village"],["fortress","Fortress or college"],["outpost","Outpost"],["island","Island"],["temple","Temple"],["other","Other"]];
 const KIND_LABEL = Object.fromEntries(KINDS);
-const AREA = { kingdom:24, province:14, region:11, sea:15 };                       // drawn as big spaced-out labels instead of dots
-const COLOR = { kingdom:"#8b78a8", province:"#7c776d", region:"#6f8a5d", sea:"#4a6fa8", city:"#a8502d", town:"#c07a4a", fortress:"#23221f", outpost:"#b7862b", island:"#3f7d6e", temple:"#8b78a8", other:"#7c776d" };
-const ROUTE = { road:["Road","#a8502d",""], sea:["Sea route","#4a6fa8","7 5"], border:["Border","#7c776d","2 5"], other:["Other","#7c776d",""] };
-const SHAPE_KINDS = [["land","Land or island"],["realm","Kingdom territory"],["province","Province area"],["water","Lake or inland sea"],["river","River"],["mountains","Mountain range"],["road","Road"],["border","Border line"]];
+const AREA = { kingdom:21, province:12, region:10, sea:15 };                       // drawn as big spaced-out labels instead of dots
+const COLOR = { kingdom:"#f0e6cc", province:"#d9cfb4", region:"#bfc9a8", sea:"#7fb0bf", city:"#f0a066", town:"#e6bd85", fortress:"#f4ecd8", outpost:"#e3c35c", island:"#8fd0bd", temple:"#b9a6dc", other:"#cfc7b2" };
+const ROUTE = { road:["Road","#e0894d",""], sea:["Sea route","#7fb0bf","7 5"], border:["Border","#c9bfa5","2 5"], other:["Other","#c9bfa5",""] };
+const SHAPE_KINDS = [["land","Land or island"],["realm","Kingdom territory"],["province","Province area"],["water","Lake or inland sea"],["massif","Mountain area"],["river","River"],["mountains","Mountain line"],["road","Road"],["border","Border line"]];
 const SHAPE_LABEL = Object.fromEntries(SHAPE_KINDS);
-const CLOSED = k => ["land", "realm", "province", "water"].includes(k);
-const TINT = { green:"#c5d6a4", blue:"#c6d3e2", sand:"#e3cf9f", rose:"#e5c3b6", lavender:"#d4c9e0", gold:"#e8d79a", teal:"#b8d6cf", grey:"#d6d2c8" };
+const CLOSED = k => ["land", "realm", "province", "water", "massif"].includes(k);
+const TINT = { green:"#55703f", blue:"#41637a", sand:"#8c7046", rose:"#86503f", lavender:"#62567f", gold:"#8a7332", teal:"#3a7468", grey:"#5c6260" };
 const TINT_LIST = Object.values(TINT);
-const tintOf = s => TINT[s.color] || (s.kind === "land" ? "#f1eadb" : s.kind === "water" ? "#cfe0ea" : TINT_LIST[[...s.name].reduce((a, c) => a + c.charCodeAt(0), 0) % TINT_LIST.length]);
+const tintOf = s => TINT[s.color] || (s.kind === "land" ? "#38422f" : s.kind === "water" ? "#12313c" : TINT_LIST[[...s.name].reduce((a, c) => a + c.charCodeAt(0), 0) % TINT_LIST.length]);
 const placed = l => l.x != null && l.y != null && !isNaN(l.x) && !isNaN(l.y);
 
 let view = "map", mode = "browse", selId = location.hash ? location.hash.slice(1) : null, selShape = null, selVi = null, drawing = null, kindFilter = "all", q = "", connectFrom = null, placing = null;
@@ -92,7 +95,9 @@ let svgEl, world, markerRefs = [], hintEl, shapeRefs = {}, clipRefs = {}, shapeL
 const toWorld = (cx, cy) => { const r = svgEl.getBoundingClientRect(); return [(cx - r.left - cam.x) / cam.k, (cy - r.top - cam.y) / cam.k]; };
 function applyCam() {
   world.setAttribute("transform", `translate(${cam.x} ${cam.y}) scale(${cam.k})`);
-  markerRefs.forEach(m => m.inner.setAttribute("transform", `scale(${1 / cam.k})`));
+  const lf = Math.min(1, Math.max(.5, cam.k / .9)) / cam.k;               // markers keep their size on screen, shrinking a little when zoomed far out
+  markerRefs.forEach(m => m.inner.setAttribute("transform", `scale(${lf})`));
+  if (svgEl) { svgEl.classList.toggle("far", cam.k < .9); svgEl.classList.toggle("vfar", cam.k < .55); }
   handleLayer && handleLayer.querySelectorAll(".hs").forEach(e => e.setAttribute("transform", `scale(${1 / cam.k})`));
 }
 function fit() {
@@ -110,7 +115,7 @@ function zoomAt(cx, cy, factor) {
 
 function pathD(sh) {
   const pts = sh.pts, closed = CLOSED(sh.kind), n = pts.length; if (n < 2) return "";
-  const k = sh.kind === "land" || sh.kind === "water" || sh.kind === "river" ? 1 : sh.kind === "road" ? .8 : sh.kind === "border" ? 0 : .3;
+  const k = sh.sharp ? 0 : sh.kind === "land" || sh.kind === "water" || sh.kind === "river" ? 1 : sh.kind === "road" ? .8 : sh.kind === "border" ? 0 : .3;
   const P = i => closed ? pts[((i % n) + n) % n] : pts[Math.max(0, Math.min(n - 1, i))];
   let d = "M" + pts[0][0] + " " + pts[0][1];
   for (let i = 0; i < (closed ? n : n - 1); i++) {
@@ -128,21 +133,35 @@ function peaks(pts) {
   }
   return d;
 }
+function peaksIn(pts) {                                                              // hand-drawn-looking peaks scattered inside a mountain area
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]), step = 9, out = [];
+  const inside = (x, y) => { let c = false; for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) if ((pts[i][1] > y) !== (pts[j][1] > y) && x < (pts[j][0] - pts[i][0]) * (y - pts[i][1]) / (pts[j][1] - pts[i][1]) + pts[i][0]) c = !c; return c; };
+  const rnd = (a, b) => { const v = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453; return v - Math.floor(v); };
+  for (let y = Math.min(...ys); y < Math.max(...ys) + step; y += step) for (let x = Math.min(...xs); x < Math.max(...xs) + step; x += step) {
+    const px = x + (rnd(x, y) - .5) * step * 1.4, py = y + (rnd(y, x) - .5) * step * 1.1;
+    if (inside(px, py)) out.push([px, py, 5 + rnd(px, py) * 5]);
+  }
+  out.sort((a, b) => a[1] - b[1]);
+  let lit = "", dark = "", sil = "";
+  for (const [x, y, r] of out) { const h = r * .5, t = y - r; sil += `M${(x - r).toFixed(1)} ${(y + h).toFixed(1)}L${x.toFixed(1)} ${t.toFixed(1)}L${(x + r).toFixed(1)} ${(y + h).toFixed(1)}Z`; lit += `M${(x - r).toFixed(1)} ${(y + h).toFixed(1)}L${x.toFixed(1)} ${t.toFixed(1)}L${(x + r * .1).toFixed(1)} ${(y + h).toFixed(1)}Z`; dark += `M${x.toFixed(1)} ${t.toFixed(1)}L${(x + r).toFixed(1)} ${(y + h).toFixed(1)}L${(x + r * .1).toFixed(1)} ${(y + h).toFixed(1)}Z`; }
+  return [lit, dark, sil];
+}
 function buildShape(sh, g) {
   g.replaceChildren();
   if (sh.pts.length < 2) return;
-  const d = pathD(sh), nse = "vector-effect";
-  if (sh.kind === "land") g.append(svg("path", { d, fill:"none", stroke:"#b4d0df", "stroke-width":16, "stroke-linejoin":"round" }), svg("path", { d, fill:tintOf(sh), stroke:"#6f8794", "stroke-width":1.6, [nse]:"non-scaling-stroke" }));
-  else if (sh.kind === "realm") g.append(svg("path", { d, fill:tintOf(sh), opacity:.9 }));
-  else if (sh.kind === "province") g.append(svg("path", { d, fill:tintOf(sh), "fill-opacity":.7, stroke:"#8a806b", "stroke-width":1.2, "stroke-dasharray":"5 3", [nse]:"non-scaling-stroke" }));
-  else if (sh.kind === "water") g.append(svg("path", { d, fill:"#cfe0ea", stroke:"#6f8794", "stroke-width":1.4, [nse]:"non-scaling-stroke" }));
-  else if (sh.kind === "mountains") g.append(svg("path", { d:peaks(sh.pts), fill:"#d9d2c2", stroke:"#6e6558", "stroke-width":1.4, "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }), svg("path", { d, fill:"none", stroke:"transparent", "stroke-width":18, [nse]:"non-scaling-stroke" }));
+  const d = pathD(sh), nse = "vector-effect", sel = sh.id === selShape;
+  if (sh.kind === "land") g.append(svg("path", { d, fill:"none", stroke:"#1e4652", "stroke-width":26, "stroke-linejoin":"round", opacity:.55 }), svg("path", { d, fill:"none", stroke:"#2f6877", "stroke-width":10, "stroke-linejoin":"round", opacity:.6 }), svg("path", { d, fill:tintOf(sh), stroke:"#9ec4cc", "stroke-width":1.2, "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "realm") g.append(svg("path", { d, fill:tintOf(sh), opacity:.55 }));
+  else if (sh.kind === "province") g.append(svg("path", { d, fill:tintOf(sh), "fill-opacity":.28, stroke:"#d9cfb4", "stroke-opacity":.28, "stroke-width":1, "stroke-dasharray":"5 4", [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "water") g.append(svg("path", { d, fill:"#10303a", stroke:"#4f8793", "stroke-width":1.2, [nse]:"non-scaling-stroke" }));
+  else if (sh.kind === "massif") { const [lit, dark, sil] = peaksIn(sh.pts); g.append(svg("path", { d, fill:"#1b2221", stroke:"#05090a", "stroke-width":1.4, "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }), svg("path", { d:sil, fill:"#2c3533", stroke:"#06090a", "stroke-width":.7, "stroke-linejoin":"round" }), svg("path", { d:dark, fill:"#323b39" }), svg("path", { d:lit, fill:"#7e8982" })); }
+  else if (sh.kind === "mountains") g.append(svg("path", { d:peaks(sh.pts), fill:"#6d7771", stroke:"#05090a", "stroke-width":1.2, "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }), svg("path", { d, fill:"none", stroke:"transparent", "stroke-width":18, [nse]:"non-scaling-stroke" }));
   else {
-    const style = { river:["#4f86b8", 2.6, ""], road:["#8a5a35", 2, "6 4"], border:["#7a3b3b", 2, "10 4 2 4"] }[sh.kind] || ["#555", 2, ""];
-    g.append(svg("path", { d, fill:"none", stroke:style[0], "stroke-width":style[1], "stroke-dasharray":style[2] || null, "stroke-linecap":"round", [nse]:"non-scaling-stroke" }),
+    const style = { river:["#58b3aa", 2.4, ""], road:["#efe6d0", 3, "0.1 7"], border:["#d9674f", 2, "10 4 2 4"] }[sh.kind] || ["#ccc", 2, ""];
+    g.append(svg("path", { d, fill:"none", stroke:style[0], "stroke-width":style[1], "stroke-dasharray":style[2] || null, "stroke-linecap":"round", "stroke-linejoin":"round", [nse]:"non-scaling-stroke" }),
       svg("path", { d, fill:"none", stroke:"transparent", "stroke-width":18, [nse]:"non-scaling-stroke" }));
-    if (sh.kind === "river" && sh.name) { const m = sh.pts[Math.floor(sh.pts.length / 2)], t = svg("text", { x:m[0] + 8, y:m[1], "font-size":12, "font-style":"italic", fill:"#35688f", style:"paint-order:stroke;stroke:#d6e5ee;stroke-width:3px", "pointer-events":"none" }); t.textContent = sh.name; g.append(t); }
   }
+  if (sel) g.append(svg("path", { d, fill:"none", stroke:"#ffd08a", "stroke-width":2.5, "stroke-linejoin":"round", "pointer-events":"none", [nse]:"non-scaling-stroke" }));
 }
 function refreshShape(sh) {
   const g = shapeRefs[sh.id]; if (g) buildShape(sh, g);
@@ -173,14 +192,17 @@ function drawHandles() {
 
 function drawMap() {
   svgEl = svg("svg", { role:"img", "aria-label":"Editable map" });
-  const defs = svg("defs", {}, svg("pattern", { id:"grid", width:100, height:100, patternUnits:"userSpaceOnUse" }, svg("path", { d:"M100 0H0V100", fill:"none", stroke:"rgba(35,34,31,.07)", "stroke-width":1 })));
+  const defs = svg("defs", {}, svg("pattern", { id:"grid", width:100, height:100, patternUnits:"userSpaceOnUse" }, svg("path", { d:"M100 0H0V100", fill:"none", stroke:"rgba(160,200,210,.06)", "stroke-width":1 })),
+    svg("pattern", { id:"peaks", width:26, height:19, patternUnits:"userSpaceOnUse" }, svg("rect", { width:26, height:19, fill:"#1d2423" }), svg("path", { d:"M0 18L7 3L12 11L16 6L25 18Z", fill:"#9aa49e" }), svg("path", { d:"M7 3L12 11L8 18L0 18Z", fill:"#414a47" }), svg("path", { d:"M16 6L25 18L14 18Z", fill:"#353d3b" }), svg("path", { d:"M7 3L9.5 8L5.6 9Z", fill:"#e4e8e0", opacity:.7 })),
+    svg("pattern", { id:"waves", width:46, height:18, patternUnits:"userSpaceOnUse" }, svg("path", { d:"M0 9Q11 3 23 9T46 9", fill:"none", stroke:"rgba(150,200,210,.07)", "stroke-width":1 })),
+    svg("radialGradient", { id:"ocean", cx:"50%", cy:"45%", r:"75%" }, svg("stop", { offset:"0", "stop-color":"#173642" }), svg("stop", { offset:"1", "stop-color":"#0a171d" })));
   world = svg("g"); markerRefs = [];
-  world.append(svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"#d6e5ee" }), svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#grid)", opacity:.6 }));
+  world.append(svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#ocean)" }), svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#waves)" }), svg("rect", { x:-20000, y:-20000, width:40000, height:40000, fill:"url(#grid)" }));
   shapeRefs = {}; clipRefs = {}; handleLayer = svg("g");
   const lands = data.shapes.filter(sh => sh.kind === "land" && sh.pts.length > 2);
   if (lands.length) defs.append(svg("clipPath", { id:"landclip" }, lands.map(sh => (clipRefs[sh.id] = svg("path", { d:pathD(sh) })))));
   shapeLayer = svg("g"); world.append(shapeLayer);
-  ["land", "realm", "province", "water", "mountains", "river", "border", "road"].forEach(k => data.shapes.filter(sh => sh.kind === k).forEach(sh => {
+  ["land", "realm", "province", "water", "massif", "mountains", "river", "border", "road"].forEach(k => data.shapes.filter(sh => sh.kind === k).forEach(sh => {
     const g = svg("g", { "data-sid":sh.id }); if (lands.length && (k === "realm" || k === "province")) g.setAttribute("clip-path", "url(#landclip)");
     shapeRefs[sh.id] = g; buildShape(sh, g); shapeLayer.append(g);
   }));
@@ -207,7 +229,7 @@ function drawMap() {
         l.kind === "temple" ? svg("path", { d:`M0 ${-s - 3} L${s + 3} 0 L0 ${s + 3} L${-s - 3} 0 Z`, fill:col }) : l.kind === "island" ? svg("path", { d:`M${-s - 2} ${s} Q0 ${-s - 4} ${s + 2} ${s} Z`, fill:col }) : svg("circle", { r:l.kind === "city" ? s + 1 : s - 1, fill:col });
       inner.append(svg("circle", { r:s + 10, fill:"transparent" }), shape);
       if (sel) inner.append(svg("circle", { r:s + 6, fill:"none", stroke:col, "stroke-width":2 }));
-      const t = svg("text", { x:s + 7, y:4, "font-size":12, fill:"#23221f" }); t.textContent = l.name; inner.append(t);
+      const t = svg("text", { x:s + 7, y:4, "font-size":11.5, fill:"#efe6d0" }); t.textContent = l.name; t.setAttribute("class", "pl" + (sel ? " sel" : !["city", "fortress"].includes(l.kind) ? " lbl" : "")); inner.append(t);
     }
     world.append(g); markerRefs.push({ loc:l, g, inner });
   });
@@ -341,7 +363,7 @@ function treeList() {
 function render() {
   const unplaced = data.locations.filter(l => !placed(l));
   app.replaceChildren(...[
-    h("p", { class:"banner" }, "The coastlines, provinces, rivers and ranges are drawn by eye from the book’s world map, so some will be off. Use “Move places” to drag a place, or “Lines & areas” to drag the points of a coast, province or river. Everything saves as soon as you let go."),
+    h("p", { class:"banner" }, "Coastlines and mountains are traced from the book’s world map; province borders, rivers and roads were placed by eye, so some will be a little off. Use “Move places” to drag a place, or “Lines & areas” to drag the points of a coast, province or river. Everything saves as soon as you let go."),
     h("div", { class:"toolbar" },
       E.tabs([["map","Map"],["list","List"]], view, k => { view = k; render(); }),
       view === "map" ? E.tabs([["browse","Browse"],["move","Move places"],["add","Add place"],["connect","Connect"],["shapes","Lines & areas"]], mode === "draw" ? "shapes" : mode, k => { mode = k; connectFrom = null; drawing = null; selVi = null; if (k !== "add") placing = null; render(); }) : null,

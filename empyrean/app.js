@@ -49,90 +49,77 @@ const E = (() => {
   // Places mentioned in the books, with rough schematic positions on a 1000 x 700 canvas. The positions are guesses meant to be dragged into place;
   // places without coordinates start in the "not on the map yet" list. Everything is flagged "check".
   const LC = "Starter note from the notices, snippets and web summaries; check against your copy.";
-  const MAPNOTE = "Placed by eye from the book's world map; drag it if it is off.";
+  const MAPNOTE = "Named on the book's world map; what it is has not been checked.";
+  // Places, positioned on the book's world map (one unit = one pixel of that picture, 1000 x 903).
   const LOCATION_SEED = [
     // id, name, kind, parent, x, y, description
-    ["s-loc-navarre", "Navarre", "kingdom", "", 330, 40, "The unified kingdom behind the wards, ruled from the Senarium. Five provinces joined it in year 1 (Public Notice 1.1)."],
-    ["s-loc-poromiel", "Poromiel", "kingdom", "", 950, 26, "The gryphon kingdom. Ruled by Queen Maraya, then King Tecarus."],
-    ["s-loc-tyrrendor", "Tyrrendor", "province", "s-loc-navarre", 560, 570, "Largest and southernmost province of Navarre; home of House Riorson and the failed rebellion."],
-    ["s-loc-calldyr", "Calldyr", "province", "s-loc-navarre", 560, 190, "Province of Navarre; the Council of Calldyr agreed Navarre's marriage law (Public Notice 1.249)."],
-    ["s-loc-elsum", "Elsum", "province", "s-loc-navarre", 735, 160, "Province of Navarre that borders Poromiel; attacked by Krovlan forces near Resson (Public Notice 1.323)."],
-    ["s-loc-luceras", "Luceras", "province", "s-loc-navarre", 200, 375, "Province of Navarre; coastal Luceras and Tyrrendor are asked to watch for sea raiders (Public Notice 442.184)."],
-    ["s-loc-morainne", "Morainne", "province", "s-loc-navarre", 560, 290, "Province of Navarre."],
-    ["s-loc-deaconshire", "Deaconshire", "province", "s-loc-navarre", 385, 445, "Province of Navarre, named on the book's world map."],
-    ["s-loc-cygnisen", "Cygnisen", "province", "s-loc-navarre", 280, 215, "Province of Navarre, named on the book's world map."],
-    ["s-loc-krovla", "Krovla", "province", "s-loc-poromiel", 930, 610, "Southernmost Poromish province, ruled by Viscount (later King) Tecarus."],
-    ["s-loc-braevick", "Braevick", "province", "s-loc-poromiel", 960, 150, "Poromish province whose second city is Zolya."],
-    ["s-loc-basgiath", "Basgiath War College", "fortress", "s-loc-navarre", 500, 385, "Navarre's war college: Riders, Scribe, Healer and Infantry Quadrants, and the wardstone."],
-    ["s-loc-aretia", "Aretia", "town", "s-loc-tyrrendor", 330, 610, "Tyrrish town burned by dragons after the rebellion; later the rebels' base with an unpowered wardstone."],
-    ["s-loc-riorson", "Riorson House", "fortress", "s-loc-tyrrendor", 450, 670, "Half palace, half barracks, a fortress never breached by an army until dragons burned it. The valley above it holds the old Dubhmadinn hatching grounds."],
-    ["s-loc-kyllendelle", "Kyllendelle", "town", "s-loc-tyrrendor", 290, 725, "Tyrrish village sacked by raiders from the Emerald Sea (Public Notice 442.184)."],
-    ["s-loc-resson", "Resson", "town", "s-loc-elsum", 770, 300, "Village and trading post at the edge of the dragon-protected border; site of a Krovlan attack and the Fourth Wing finale battle."],
-    ["s-loc-athebyne", "Athebyne", "outpost", "s-loc-elsum", 790, 350, "Border outpost near Resson, repeatedly attacked."],
-    ["s-loc-steelridge", "Steel Ridge Range", "region", "s-loc-navarre", 590, 108, "Mountain range where the green Uaineloidsig dragons offered their hatching grounds (an epigraph)."],
-    ["s-loc-zolya", "Zolya", "city", "s-loc-braevick", 1010, 200, "Second most populous city in Braevick; home of Cliffsbane Flight Academy."],
-    ["s-loc-cliffsbane", "Cliffsbane Flight Academy", "fortress", "s-loc-braevick", 1070, 165, "The Poromish gryphon flier academy, counterpart of Basgiath."],
-    ["s-loc-cordyn", "Cordyn", "city", "s-loc-krovla", 900, 685, "Seaside city in Krovla where Viscount Tecarus keeps his palace."],
-    ["s-loc-emerald", "Emerald Sea", "sea", "", 440, 915, "The sea south of the Continent; raiders from it sack coastal Tyrrish villages."],
-    ["s-loc-barrens", "The Barrens", "region", "", 1250, 430, "The large eastern land. Abandoned by dragons and gryphons after the Great War (an epigraph)."],
-    ["s-loc-samara", "Samara", "outpost", "s-loc-navarre", null, null, "Outpost where Xaden is posted in Iron Flame and which is attacked."],
-    ["s-loc-zehyllna", "Zehyllna", "island", "", 560, 935, "Island whose people worship Zihnal; the card game where Trager dies."],
-    ["s-loc-draithus", "Draithus", "other", "", 945, 735, "Site of the climactic Onyx Storm battle against the venin. On the south coast of the Continent rather than an island."],
+    ["s-loc-navarre", "Navarre", "kingdom", "", 428, 177, "The unified kingdom behind the wards, ruled from the Senarium. Five provinces joined it in year 1 (Public Notice 1.1)."],
+    ["s-loc-poromiel", "Poromiel", "kingdom", "", 590, 468, "The gryphon kingdom. Ruled by Queen Maraya, then King Tecarus."],
+    ["s-loc-tyrrendor", "Tyrrendor", "province", "s-loc-navarre", 225, 402, "Largest and southernmost province of Navarre; home of House Riorson and the failed rebellion."],
+    ["s-loc-calldyr", "Calldyr", "province", "s-loc-navarre", 190, 315, "Province of Navarre; the Council of Calldyr agreed Navarre's marriage law (Public Notice 1.249)."],
+    ["s-loc-elsum", "Elsum", "province", "s-loc-navarre", 456, 258, "Province of Navarre that borders Poromiel; attacked by Krovlan forces near Resson (Public Notice 1.323)."],
+    ["s-loc-luceras", "Luceras", "province", "s-loc-navarre", 213, 205, "Province of Navarre; coastal Luceras and Tyrrendor are asked to watch for sea raiders (Public Notice 442.184)."],
+    ["s-loc-morainne", "Morraine", "province", "s-loc-navarre", 426, 220, "Province of Navarre."],
+    ["s-loc-deaconshire", "Deaconshire", "province", "s-loc-navarre", 360, 313, "Province of Navarre, named on the book's world map."],
+    ["s-loc-cygnisen", "Cygnisen", "province", "s-loc-poromiel", 592, 110, "Province named on the book's world map, at the northern tip."],
+    ["s-loc-krovla", "Krovla", "province", "s-loc-poromiel", 572, 531, "Southernmost Poromish province, ruled by Viscount (later King) Tecarus."],
+    ["s-loc-braevick", "Braevick", "province", "s-loc-poromiel", 666, 297, "Poromish province whose second city is Zolya."],
+    ["s-loc-basgiath", "Basgiath War College", "fortress", "s-loc-navarre", 326, 263, "Navarre's war college: Riders, Scribe, Healer and Infantry Quadrants, and the wardstone."],
+    ["s-loc-aretia", "Aretia", "town", "s-loc-tyrrendor", 355, 430, "Tyrrish town burned by dragons after the rebellion; later the rebels' base with an unpowered wardstone."],
+    ["s-loc-riorson", "Riorson House", "fortress", "s-loc-tyrrendor", null, null, "Half palace, half barracks, a fortress never breached by an army until dragons burned it. The valley above it holds the old Dubhmadinn hatching grounds. Not labelled on the world map: drag it into place."],
+    ["s-loc-kyllendelle", "Kyllendelle", "town", "s-loc-tyrrendor", null, null, "Tyrrish village sacked by raiders from the Emerald Sea (Public Notice 442.184). Not labelled on the world map."],
+    ["s-loc-resson", "Resson", "town", "s-loc-poromiel", 485, 456, "Village and trading post at the edge of the dragon-protected border; site of a Krovlan attack and the Fourth Wing finale battle."],
+    ["s-loc-athebyne", "Athebyne", "outpost", "s-loc-poromiel", 478, 425, "Border outpost near Resson, repeatedly attacked."],
+    ["s-loc-steelridge", "Steel Ridge Range", "region", "s-loc-navarre", null, null, "Mountain range where the green Uaineloidsig dragons offered their hatching grounds (an epigraph). Not labelled on the world map."],
+    ["s-loc-zolya", "Zolya", "city", "s-loc-braevick", 668, 368, "Second most populous city in Braevick; home of Cliffsbane Flight Academy. Labelled “Zolya (Cliffsbane)” on the world map."],
+    ["s-loc-cliffsbane", "Cliffsbane Flight Academy", "fortress", "s-loc-braevick", 684, 380, "The Poromish gryphon flier academy, counterpart of Basgiath."],
+    ["s-loc-cordyn", "Cordyn", "city", "s-loc-krovla", 575, 592, "Seaside city in Krovla where Viscount Tecarus keeps his palace."],
+    ["s-loc-emerald", "Emerald Sea", "sea", "", 105, 66, "The sea to the north-west of the Continent; raiders from it sack coastal Tyrrish villages."],
+    ["s-loc-barrens", "The Barrens", "region", "", 845, 430, "The large eastern land. Abandoned by dragons and gryphons after the Great War (an epigraph)."],
+    ["s-loc-samara", "Samara", "outpost", "s-loc-navarre", 566, 324, "Outpost where Xaden is posted in Iron Flame and which is attacked."],
+    ["s-loc-zehyllna", "Zehyllna", "island", "", 200, 703, "Island whose people worship Zihnal; the card game where Trager dies."],
+    ["s-loc-draithus", "Draithus", "town", "", 472, 490, "Site of the climactic Onyx Storm battle against the venin. On the south coast of the Continent, below Medaro Pass."],
     ["s-loc-dunne", "Temple of Dunne", "temple", "", null, null, "Temple whose shard Violet uses against Theophanie; its head priestess certifies Violet's marriage."],
-    // names read off the book's world map; what each one is has not been checked
-    ["s-loc-arctile", "Arctile Ocean", "sea", "", 700, -25, "Ocean along the northern edge of the world map. " + MAPNOTE],
-    ["s-loc-malek", "Bay of Malek", "sea", "", 150, 760, "Bay on the western coast of the world map. " + MAPNOTE],
-    ["s-loc-esben", "Esben Mountains", "region", "", 1075, 270, "Mountains between Poromiel and the Barrens on the world map. " + MAPNOTE],
-    ["s-loc-medaro", "Medaro Pass", "region", "", 810, 420, "A pass named on the world map. " + MAPNOTE],
-    ["s-loc-dralor", "Cliffs of Dralor", "region", "", 190, 660, "Named on the world map. " + MAPNOTE],
-    ["s-loc-montserrat", "Montserrat", "town", "", 880, 330, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-suniva", "Suniva", "town", "", 975, 430, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-chakir", "Chakir", "town", "", 1040, 340, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-anica", "Anica", "town", "", 860, 480, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-newhall", "Newhall", "town", "", 420, 250, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-sumerton", "Sumerton", "town", "", 600, 450, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-vale", "The Vale", "town", "", 250, 330, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-lewellen", "Lewellen", "town", "", 650, 245, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-pavis", "Pavis", "town", "", 380, 330, "Named on the world map; what it is has not been checked. " + MAPNOTE],
-    ["s-loc-loysam", "Loysam", "island", "", 1010, 890, "Island on the world map. " + MAPNOTE],
-    ["s-loc-hedotis", "Hedotis", "island", "", 840, 880, "Island on the world map. " + MAPNOTE],
-    ["s-loc-unnbriel", "Unnbriel", "island", "", 1170, 880, "Island on the world map. " + MAPNOTE],
-    ["s-loc-deverelli", "Deverelli", "island", "", 700, 950, "Island on the world map. " + MAPNOTE],
-    ["s-loc-unnamed", "Unnamed Isle", "island", "", 250, 905, "Unnamed island on the world map (it holds Xortrys, Vidirys, Eistol and Matyas). " + MAPNOTE],
-  ].map(([id, name, kind, parent, x, y, desc]) => ({ id, name, kind, parent, x, y, desc:desc.includes(MAPNOTE) ? desc : desc + " " + LC, unverified:true, rev:2 }));
-  // Land, borders, rivers and mountains for the map. Each shape is a list of [x, y] points that can be dragged on the map page.
-  // Hand-drawn from memory of the book's world map, so expect to nudge things.
-  const blob = (cx, cy, rx, ry) => Array.from({ length:9 }, (_, i) => { const a = i / 9 * 6.2832, j = 1 + .22 * Math.sin(i * 2.7 + cx); return [Math.round(cx + Math.cos(a) * rx * j), Math.round(cy + Math.sin(a) * ry * j)]; });
-  const SHAPE_SEED = [
-    // id, name, kind, points, optional colour
-    ["s-sh-continent", "The Continent", "land", [[130,260],[190,170],[300,110],[420,70],[540,60],[650,50],[780,40],[900,50],[1020,70],[1130,110],[1230,90],[1320,140],[1370,260],[1350,400],[1380,520],[1340,660],[1250,760],[1150,780],[1080,720],[1010,700],[940,730],[860,690],[780,720],[700,780],[620,820],[540,800],[470,850],[390,830],[310,780],[250,700],[170,640],[140,520],[110,400]]],
-    ["s-sh-navarre", "Navarre", "realm", [[130,260],[190,170],[300,110],[420,70],[540,60],[650,50],[780,40],[820,150],[800,260],[780,380],[790,500],[760,620],[720,720],[700,780],[620,820],[540,800],[470,850],[390,830],[310,780],[250,700],[170,640],[140,520],[110,400]], "green"],
-    ["s-sh-poromiel", "Poromiel", "realm", [[780,40],[900,50],[1020,70],[1130,110],[1150,230],[1130,340],[1110,450],[1090,560],[1080,720],[1010,700],[940,730],[860,690],[780,720],[720,720],[760,620],[790,500],[780,380],[800,260],[820,150]], "blue"],
-    ["s-sh-barrens", "The Barrens", "realm", [[1130,110],[1230,90],[1320,140],[1370,260],[1350,400],[1380,520],[1340,660],[1250,760],[1150,780],[1080,720],[1090,560],[1110,450],[1130,340],[1150,230]], "sand"],
-    ["s-sh-cygnisen", "Cygnisen", "province", [[130,260],[190,170],[300,110],[420,70],[450,230],[300,290]], "lavender"],
-    ["s-sh-calldyr", "Calldyr", "province", [[420,70],[540,60],[650,50],[690,230],[450,230]], "gold"],
-    ["s-sh-elsum", "Elsum", "province", [[650,50],[780,40],[820,150],[800,260],[780,380],[790,500],[640,480],[620,330],[690,230]], "rose"],
-    ["s-sh-morainne", "Morainne", "province", [[450,230],[690,230],[620,330],[640,480],[480,470],[430,340]], "teal"],
-    ["s-sh-deaconshire", "Deaconshire", "province", [[300,290],[450,230],[430,340],[480,470],[300,500],[330,380]], "sand"],
-    ["s-sh-luceras", "Luceras", "province", [[130,260],[300,290],[330,380],[300,500],[140,520],[110,400]], "gold"],
-    ["s-sh-tyrrendor", "Tyrrendor", "province", [[140,520],[300,500],[480,470],[640,480],[790,500],[760,620],[720,720],[700,780],[620,820],[540,800],[470,850],[390,830],[310,780],[250,700],[170,640]], "rose"],
-    ["s-sh-braevick", "Braevick", "province", [[780,40],[900,50],[1020,70],[1130,110],[1150,230],[960,300],[800,260],[820,150]], "teal"],
-    ["s-sh-krovla", "Krovla", "province", [[790,500],[1090,560],[1080,720],[1010,700],[940,730],[860,690],[780,720],[720,720],[760,620]], "lavender"],
-    ["s-sh-loysam", "Loysam", "land", blob(1010, 890, 45, 28)],
-    ["s-sh-hedotis", "Hedotis", "land", blob(840, 880, 38, 24)],
-    ["s-sh-unnbriel", "Unnbriel", "land", blob(1170, 880, 50, 30)],
-    ["s-sh-deverelli", "Deverelli", "land", blob(700, 950, 45, 26)],
-    ["s-sh-zehyllna", "Zehyllna", "land", blob(560, 935, 40, 24)],
-    ["s-sh-unnamed", "Unnamed Isle", "land", blob(250, 905, 60, 38)],
-    ["s-sh-steelridge", "Steel Ridge Range", "mountains", [[480,120],[540,100],[600,115],[660,150],[690,200]]],
-    ["s-sh-esben", "Esben Mountains", "mountains", [[1120,160],[1105,230],[1125,300],[1110,380],[1100,450]]],
-    ["s-sh-iakobos", "Iakobos River", "river", [[600,120],[570,200],[545,290],[500,380],[450,480],[410,600],[400,720],[390,830]]],
-    ["s-sh-dunness", "Dunness River", "river", [[1100,440],[1040,500],[980,540],[920,600],[880,660],[860,690]]],
-    ["s-sh-border", "Navarre–Poromiel border", "border", [[820,150],[800,260],[780,380],[790,500],[760,620],[720,720]]],
-  ].map(([id, name, kind, pts, color]) => ({ id, name, kind, pts, color:color || "", unverified:true, rev:1 }));
+    ["s-loc-arctile", "Arctile Ocean", "sea", "", 348, 606, "The ocean south of the Continent. " + MAPNOTE],
+    ["s-loc-malek", "Bay of Malek", "sea", "", 740, 468, "The bay between Poromiel and the Barrens. " + MAPNOTE],
+    ["s-loc-esben", "Esben Mountains", "region", "", 586, 193, "The mountain chain running down the middle of the Continent (the map labels a second stretch “Esben Mountains” near Sumerton). " + MAPNOTE],
+    ["s-loc-medaro", "Medaro Pass", "region", "", 433, 460, "A pass beside a waterfall, just north of Draithus. " + MAPNOTE],
+    ["s-loc-dralor", "Cliffs of Dralor", "region", "", 327, 472, "The dark cliffs along Tyrrendor's southern coast. " + MAPNOTE],
+    ["s-loc-iakobos", "Iakobos River", "region", "", 326, 222, "River that runs past Basgiath and The Vale to the west coast. " + MAPNOTE],
+    ["s-loc-dunness", "Dunness River", "region", "", 770, 235, "River along the Braevick–Barrens border. " + MAPNOTE],
+    ["s-loc-montserrat", "Montserrat", "town", "s-loc-navarre", 528, 164, MAPNOTE],
+    ["s-loc-suniva", "Suniva", "town", "s-loc-braevick", 670, 198, MAPNOTE],
+    ["s-loc-chakir", "Chakir", "town", "s-loc-braevick", 585, 266, MAPNOTE],
+    ["s-loc-anica", "Anica", "town", "s-loc-braevick", 636, 350, MAPNOTE],
+    ["s-loc-newhall", "Newhall", "town", "s-loc-poromiel", 577, 334, MAPNOTE],
+    ["s-loc-sumerton", "Sumerton", "town", "s-loc-poromiel", 515, 386, MAPNOTE],
+    ["s-loc-vale", "The Vale", "town", "s-loc-navarre", 309, 263, MAPNOTE],
+    ["s-loc-lewellen", "Lewellen", "town", "s-loc-tyrrendor", 155, 428, MAPNOTE],
+    ["s-loc-pavis", "Pavis", "town", "s-loc-poromiel", 521, 500, MAPNOTE],
+    ["s-loc-calldyr-city", "Calldyr City", "city", "s-loc-calldyr", 165, 297, MAPNOTE],
+    ["s-loc-loysam", "Loysam", "island", "", 140, 815, "Island on the world map."],
+    ["s-loc-hedotis", "Hedotis", "island", "", 305, 750, "Island on the world map."],
+    ["s-loc-unnbriel", "Unnbriel", "island", "", 430, 770, "Island on the world map."],
+    ["s-loc-deverelli", "Deverelli", "island", "", 590, 780, "Island on the world map."],
+    ["s-loc-unnamed", "Unnamed Isle", "island", "", 78, 718, "Unnamed island on the world map."],
+    ["s-loc-xortrys", "Xortrys", "town", "s-loc-zehyllna", 208, 742, MAPNOTE],
+    ["s-loc-vidirys", "Vidirys", "town", "s-loc-hedotis", 323, 765, MAPNOTE],
+    ["s-loc-eistol", "Eistol", "town", "s-loc-unnbriel", 458, 771, MAPNOTE],
+    ["s-loc-matyas", "Matyas", "town", "s-loc-deverelli", 541, 775, MAPNOTE],
+  ].map(([id, name, kind, parent, x, y, desc]) => ({ id, name, kind, parent, x, y, desc:/map|Note|Starter/.test(desc) ? desc : desc + " " + LC, unverified:true, rev:3 }));
+  // Land, mountains, rivers, roads and province areas for the map: lists of [x, y] points the map page lets you drag.
+  // Coast and mountains were traced from the world map picture; provinces, rivers and roads were placed by eye.
+  const SHAPE_SEED = ((window.EMPYREAN_MAP || {}).shapes || []).map(([id, name, kind, pts, color, sharp]) => ({ id, name, kind, pts, color, sharp:!!sharp, unverified:true, rev:2 }));
   const applyLocations = () => {
     let changed = false; data.locations = data.locations || []; data.routes = data.routes || []; data.shapes = data.shapes || []; data.removedSeed = data.removedSeed || [];
-    for (const [list, seed] of [["locations", LOCATION_SEED], ["shapes", SHAPE_SEED]]) for (const s of seed) {
+    if ((data.mapRev || 0) < 2 && SHAPE_SEED.length) {
+      // the first map was a rough guess; swap in the traced one and put starter places on their real positions, even ones that were dragged
+      data.shapes = data.shapes.filter(s => !s.id.startsWith("s-sh-"));
+      for (const s of LOCATION_SEED) { const l = data.locations.find(x => x.id === s.id); if (l) { l.x = s.x; l.y = s.y; if (l.name === "Morainne") l.name = "Morraine"; if (l.id === "s-loc-draithus") l.kind = s.kind; if (l.parent === "s-loc-navarre" && s.parent !== l.parent && l.unverified === true) l.parent = s.parent; } }
+      data.mapRev = 2; changed = true;
+    }
+    const lists = [["locations", LOCATION_SEED]]; if (SHAPE_SEED.length) lists.push(["shapes", SHAPE_SEED]);
+    for (const [list, seed] of lists) for (const s of seed) {
       const i = data[list].findIndex(x => x.id === s.id);
       if (i < 0) { if (!data.removedSeed.includes(s.id)) { data[list].push(JSON.parse(JSON.stringify(s))); changed = true; } }
       else if (data[list][i].unverified === true && s.rev > (data[list][i].rev || 0)) { data[list][i] = JSON.parse(JSON.stringify(s)); changed = true; }
