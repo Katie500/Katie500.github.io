@@ -17,10 +17,10 @@
    "gryphon": "",
    "fateEventId": "",
    "cites": [],
-   "updated": 1791326732864,
+   "updated": 1791381598359,
    "signetIds": [
-    "s-sg-lightning",
-    "s-sg-time"
+    "sg-cca6ps8",
+    "s-sg-lightning"
    ],
    "title": ""
   },
@@ -40,9 +40,10 @@
    "origin": "",
    "gryphon": "",
    "cites": [],
-   "updated": 1791326495028,
+   "updated": 1791381525139,
    "signetIds": [
-    "s-sg-shadow"
+    "s-sg-shadow",
+    "s-sg-intrinsic"
    ],
    "title": ""
   },
@@ -349,10 +350,19 @@
    "group": "rider",
    "status": "deceased",
    "rebelChild": false,
-   "notes": "Killed by a wyvern's claws while the riders were escaping (Onyx Storm). Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Aura is a squad leader in Fourth Wing until Xaden Riorson moves her to Second Wing in order to place Violet Sorrengail under his command. Aura begins her duties as senior wingleader of the quadrant as a third-year cadet.[4] She accuses Dain of lying when he tells the cadets that their leadership has been hiding the venin issue from them. She threatens Dain with a dagger. Garrick steps in to stop her, aided by Heaton, Emery, and Cianna. Aura is still in a fighting stance after Violet's dragon Tairn shares memories of a fight with venin with the whole formation, implying that she remains loyal to Navarre and stays at Basgiath. After Xaden Riorsen becomes a professor of Basgiath temporarily, Aura joins the ranks of Colonel Aetos' minions that spy on both Xaden and Violet in an attempt to catch the two in any misdeeds that could allow Colonel Aetos to dismiss Xaden from Basgiath. Aura prowls the dormitories where Violet's rooms are located in an attempt to give Aetos a reason to punish Violet for a violation of the codex. During the mission to retrieve the Amelian Citrine for the king of Deverelli, Aura disobeys Mira's order to not wield (so as not to draw the attention of any Venin that might be nearby). Aura is left with Violet when the leadership of the mission walk off to discuss where to look for the Citrine, when Aura lets her fear overcome her. A glass bottle rolls towards the pair which causes Aura to remove her gloves to reveal a flint sparking device held between her thumb and forefinger. Just then a door across the street swung open with an ear screeching creak, and a figure stepped out of the shadows, startling both cadets. In that moment Violet attempts to stop Aura from channeling, and Aura inadvertently engulfs Captain Grady in a wave of fire, thinking he was a Venin.\n\nA horrified Aura watches as the Captain is covered in foot high flames, as Violet takes command in an attempt to put out the fire. The flames jump to the building near them, and Captain Grady goes quiet in death.\n\nWhile the wind wielder in their party attempts to put out the fire, the entire town goes up in flames like a tinder-box. Aura freezes in shock and must be dragged up and out by Mira Sorrengail, as they attempt to find a way out of the fire. As they run for the town square (the only area open enough for the riders dragons can land) Aura says \"This is my fault. Grady is... gone, they'll know we're here, there's no hiding a fire like this\".\n\nAfter Mira Sorrengail leaps upon her dragon Teine, Aura is told she is next as her dragon approaches. Aura sprints forward into the open in preparation to mount her dragon when a Wyvern swoops in, picks her up with a claw through the middle of her spine and blood gushes from the wound. Aura's scream is silenced as the Wyvern drags her lifeless body into the sky, and there is a corresponding dragon bellow as Dagoth mourns for his rider. There is absolutely no doubt that Aura is dead.",
+   "unverified": false,
    "rev": 3,
-   "title": ""
+   "title": "",
+   "aliases": "",
+   "origin": "",
+   "venin": false,
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791382395163
   },
   {
    "id": "s-oren",
@@ -522,11 +532,13 @@
    "title": "",
    "aliases": "",
    "origin": "",
-   "signetIds": [],
+   "signetIds": [
+    "s-sg-storm"
+   ],
    "gryphon": "",
    "dragonId": "",
    "cites": [],
-   "updated": 1791380639458
+   "updated": 1791381549292
   },
   {
    "id": "s-varrish",
@@ -595,15 +607,23 @@
   },
   {
    "id": "s-panchek",
-   "name": "Panchek",
+   "name": "Lyron Panchek",
    "group": "professor",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
-   "venin": false,
-   "notes": "Identified in Onyx Storm as the traitor at Basgiath. One summary says Panchek's dragon is killed at Berwyn's hands. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "venin": true,
+   "notes": "Identified in Onyx Storm as the traitor at Basgiath. Panchek's dragon is killed at Berwyn's hands.",
+   "unverified": false,
    "rev": 3,
-   "title": "Commandant"
+   "title": "Commandant",
+   "aliases": "",
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791382111766
   },
   {
    "id": "s-cat",
@@ -707,11 +727,18 @@
    "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Queen of Poromiel; Tecarus becomes king after her death. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
+   "notes": "Queen of Poromiel; Tecarus becomes king after her death.",
+   "unverified": false,
    "rev": 4,
    "origin": "Poromiel",
-   "title": "Queen"
+   "title": "Queen",
+   "aliases": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791381796240
   },
   {
    "id": "s-heaton",
@@ -885,15 +912,21 @@
    "id": "s-maren",
    "name": "Maren Zina",
    "group": "flier",
-   "status": "unknown",
+   "status": "active",
    "rebelChild": false,
    "venin": false,
-   "notes": "Flier cadet who transferred from Cliffsbane Flight Academy to Aretia after the attack on Zolya; her gryphon is Dajalair (Daja). Helps Violet alter the wards in Onyx Storm. Listed on the Empyrean wiki (found through search results); check against your copy.",
-   "unverified": true,
+   "notes": "Flier cadet who transferred from Cliffsbane Flight Academy to Aretia after the attack on Zolya; her gryphon is Dajalair (Daja). Helps Violet alter the wards in Onyx Storm.",
+   "unverified": false,
    "rev": 11,
    "origin": "Poromiel",
    "gryphon": "Dajalair",
-   "title": ""
+   "title": "",
+   "aliases": "",
+   "signetIds": [],
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791381755823
   },
   {
    "id": "s-ewan",
@@ -1153,28 +1186,24 @@
    "title": "Lieutenant Colonel"
   },
   {
-   "id": "s-w-lyron-panchek",
-   "name": "Lyron Panchek",
-   "group": "professor",
-   "status": "unknown",
-   "rebelChild": false,
-   "venin": false,
-   "notes": "Lieutenant; author of “Tactics: A Personal Memoir”. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10,
-   "title": ""
-  },
-  {
    "id": "s-w-major-afendra",
    "name": "Afendra",
    "group": "professor",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Author of the “Guide to the Riders Quadrant (Unauthorized Edition)”. The wiki spells it with one f; check your book. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
+   "notes": "Author of the “Guide to the Riders Quadrant (Unauthorized Edition)”.",
+   "unverified": false,
    "rev": 10,
-   "title": "Major"
+   "title": "Major",
+   "aliases": "",
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791381672748
   },
   {
    "id": "s-w-thadeus-palme",
@@ -1344,10 +1373,18 @@
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
+   "notes": "",
+   "unverified": false,
    "rev": 10,
-   "title": "Major"
+   "title": "Major",
+   "aliases": "",
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791381701182
   },
   {
    "id": "s-w-professor-culley",
@@ -1522,14 +1559,22 @@
   {
    "id": "s-w-aurelie-donans",
    "name": "Aurelie Donans",
-   "group": "civilian",
-   "status": "unknown",
+   "group": "rider",
+   "status": "deceased",
    "rebelChild": false,
    "venin": false,
-   "notes": "Add details as you read. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
+   "notes": "During the first training lesson at the Gauntlet, she falls to her death at the fourth stage, the rotating tree trunks, because she gets distracted by a dragon who flies over them. She's then buried at Basgiath with a simple headstone, as her parents declined to retrieve her body. Her effects were burned by Violet, as the latter felt she owed it to Aurelie, as she was the last person Aurelie saw before she plummeted to her death.",
+   "unverified": false,
    "rev": 10,
-   "title": ""
+   "title": "",
+   "updated": 1791382178575,
+   "aliases": "",
+   "origin": "",
+   "signetIds": [],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": []
   },
   {
    "id": "s-w-cornelia-sahalie",
@@ -2174,9 +2219,9 @@
    "notes": "Violet's second bond.",
    "unverified": false,
    "cites": [],
-   "updated": 1791327320015,
+   "updated": 1791382615843,
    "aliases": "Andarnaurram",
-   "tail": "Feather",
+   "tail": "Scorpion",
    "gryphon": false,
    "img": "",
    "sex": "female",
@@ -2332,30 +2377,46 @@
   {
    "id": "s-aimsir",
    "name": "Aimsir",
-   "color": "",
+   "color": "Brown",
    "tail": "",
    "family": "",
    "sire": "",
    "dam": "",
    "riderId": "s-lilith",
    "status": "deceased",
-   "notes": "Dies with Lilith at the end of Iron Flame. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Dies with Lilith at the end of Iron Flame.",
+   "unverified": false,
+   "rev": 3,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791382577405
   },
   {
    "id": "s-baide",
    "name": "Baide",
    "color": "Orange",
-   "tail": "scorpiontail",
+   "tail": "Scorpion",
    "family": "",
    "sire": "",
    "dam": "",
    "riderId": "s-jack",
    "status": "deceased",
-   "notes": "Killed by Jack Barlowe in Iron Flame, which cracks the wardstone. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 3
+   "notes": "Killed by Jack Barlowe in Iron Flame, which cracks the wardstone.",
+   "unverified": false,
+   "rev": 3,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "sex": "female",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791382728837
   },
   {
    "id": "s-codagh",
@@ -2523,22 +2584,29 @@
    "name": "Gleann",
    "color": "",
    "tail": "",
-   "sex": "",
+   "sex": "male",
    "family": "",
    "sire": "",
    "dam": "",
    "riderId": "s-caroline",
    "status": "unknown",
    "notes": "Bonded Caroline Ashton after his previous rider died during their first flight lesson. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 4
+   "unverified": false,
+   "rev": 4,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791382885117
   },
   {
    "id": "s-fuil",
    "name": "Fuil",
-   "color": "",
-   "tail": "",
-   "sex": "",
+   "color": "Brown",
+   "tail": "Club",
+   "sex": "female",
    "family": "",
    "sire": "",
    "dam": "",
@@ -2553,7 +2621,7 @@
    "age": null,
    "riders": null,
    "cites": [],
-   "updated": 1791327937591
+   "updated": 1791382648326
   },
   {
    "id": "s-leothan",
@@ -2579,11 +2647,18 @@
    "family": "",
    "sire": "",
    "dam": "",
-   "riderId": "",
+   "riderId": "s-cianna",
    "status": "unknown",
-   "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "notes": "",
+   "unverified": false,
+   "rev": 10,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791382771442
   },
   {
    "id": "s-d-smachd",
@@ -2596,7 +2671,7 @@
    "dam": "",
    "riderId": "s-kaori",
    "status": "unknown",
-   "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
+   "notes": "",
    "unverified": false,
    "rev": 10,
    "gryphon": false,
@@ -2605,37 +2680,51 @@
    "age": null,
    "riders": null,
    "cites": [],
-   "updated": 1791327680984
+   "updated": 1791382923939
   },
   {
    "id": "s-d-cruth",
    "name": "Cruth",
-   "color": "",
-   "tail": "",
-   "sex": "",
+   "color": "Green",
+   "tail": "Scorpion",
+   "sex": "female",
    "family": "",
    "sire": "",
    "dam": "",
-   "riderId": "",
-   "status": "unknown",
-   "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "riderId": "s-quinn",
+   "status": "active",
+   "notes": "Cruth was previously bonded to Quinn's great aunt. Because Quinn's great aunt is not a direct relative Cruth was allowed to bond with her. However, this does give Quinn a stronger signet power than would be afforded to a non-descendant bonded rider.",
+   "unverified": false,
+   "rev": 10,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791383025809
   },
   {
    "id": "s-d-claidh",
    "name": "Claidh",
-   "color": "",
-   "tail": "",
-   "sex": "",
+   "color": "Orange",
+   "tail": "Dagger",
+   "sex": "female",
    "family": "",
    "sire": "",
    "dam": "",
-   "riderId": "",
-   "status": "unknown",
-   "notes": "On the Empyrean wiki's Characters list; probably a dragon, but the species and rider are unconfirmed. Check against your copy.",
-   "unverified": true,
-   "rev": 10
+   "riderId": "s-amber",
+   "status": "active",
+   "notes": "",
+   "unverified": false,
+   "rev": 10,
+   "gryphon": false,
+   "img": "",
+   "aliases": "",
+   "age": null,
+   "riders": null,
+   "cites": [],
+   "updated": 1791383113252
   },
   {
    "id": "s-d-nuirlach",
@@ -2736,6 +2825,27 @@
    "cites": [],
    "id": "d-vdl3vi6",
    "updated": 1791380803288
+  },
+  {
+   "tail": "Club",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Dagoth",
+   "img": "",
+   "aliases": "",
+   "color": "Red",
+   "sex": "male",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-aura",
+   "status": "active",
+   "notes": "",
+   "cites": [],
+   "id": "d-yueybot",
+   "updated": 1791382458078
   }
  ],
  "events": [
@@ -5290,8 +5400,10 @@
    "name": "Storm wielding",
    "category": "Wielding",
    "desc": "Calls and controls storms. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 1
+   "unverified": false,
+   "rev": 1,
+   "cites": [],
+   "updated": 1791381549290
   },
   {
    "id": "s-sg-mending",
@@ -5371,26 +5483,39 @@
    "id": "s-sg-truthsayer",
    "name": "Truthsayer",
    "category": "Mind",
-   "desc": "Named in an epigraph as the signet more terrifying than an intrinsic. Details unknown. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 1
+   "desc": "The ability to read if someone is telling the truth, more terrifying than an intrinsic.",
+   "unverified": false,
+   "rev": 1,
+   "cites": [],
+   "updated": 1791381468192
   },
   {
    "id": "s-sg-intrinsic",
-   "name": "Intrinsic",
-   "category": "Other",
-   "desc": "Named in an epigraph as a terrifying signet type. Details unknown. Starter note from web summaries of the books; check against your copy.",
-   "unverified": true,
-   "rev": 1
+   "name": "Intinnsic",
+   "category": "Mind",
+   "desc": "The ability to read minds, there are many types but cadets who have this gift are killed on sight.",
+   "unverified": false,
+   "rev": 1,
+   "cites": [],
+   "updated": 1791381525135
   },
   {
    "unverified": false,
-   "name": "Weakness Readign",
+   "name": "Weakness Reading",
    "category": "Mind",
    "desc": "The ability to read someone's weaknesses. Can be blocked by shielding.",
    "cites": [],
    "id": "sg-8w6oedv",
-   "updated": 1791381003379
+   "updated": 1791381533882
+  },
+  {
+   "unverified": false,
+   "name": "Dream Walking",
+   "category": "Mind",
+   "desc": "The ability to walk into the dreams of other people whilst they and you are sleeping.",
+   "cites": [],
+   "id": "sg-cca6ps8",
+   "updated": 1791381423324
   }
  ],
  "locations": [
@@ -5399,110 +5524,110 @@
    "name": "Navarre",
    "kind": "kingdom",
    "parent": "",
-   "x": 400,
-   "y": 60,
+   "x": 330,
+   "y": 40,
    "desc": "The unified kingdom behind the wards, ruled from the Senarium. Five provinces joined it in year 1 (Public Notice 1.1). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-poromiel",
    "name": "Poromiel",
    "kind": "kingdom",
    "parent": "",
-   "x": 820,
-   "y": 60,
+   "x": 950,
+   "y": 26,
    "desc": "The gryphon kingdom. Ruled by Queen Maraya, then King Tecarus. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-tyrrendor",
    "name": "Tyrrendor",
    "kind": "province",
    "parent": "s-loc-navarre",
-   "x": 380,
-   "y": 520,
+   "x": 560,
+   "y": 570,
    "desc": "Largest and southernmost province of Navarre; home of House Riorson and the failed rebellion. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-calldyr",
    "name": "Calldyr",
    "kind": "province",
    "parent": "s-loc-navarre",
-   "x": 300,
-   "y": 130,
+   "x": 560,
+   "y": 190,
    "desc": "Province of Navarre; the Council of Calldyr agreed Navarre's marriage law (Public Notice 1.249). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-elsum",
    "name": "Elsum",
    "kind": "province",
    "parent": "s-loc-navarre",
-   "x": 590,
-   "y": 250,
+   "x": 735,
+   "y": 160,
    "desc": "Province of Navarre that borders Poromiel; attacked by Krovlan forces near Resson (Public Notice 1.323). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-luceras",
    "name": "Luceras",
    "kind": "province",
    "parent": "s-loc-navarre",
-   "x": 190,
-   "y": 320,
+   "x": 200,
+   "y": 375,
    "desc": "Province of Navarre; coastal Luceras and Tyrrendor are asked to watch for sea raiders (Public Notice 442.184). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-morainne",
    "name": "Morainne",
    "kind": "province",
    "parent": "s-loc-navarre",
-   "x": 430,
-   "y": 190,
+   "x": 560,
+   "y": 290,
    "desc": "Province of Navarre. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-krovla",
    "name": "Krovla",
    "kind": "province",
    "parent": "s-loc-poromiel",
-   "x": 760,
-   "y": 520,
+   "x": 930,
+   "y": 610,
    "desc": "Southernmost Poromish province, ruled by Viscount (later King) Tecarus. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-braevick",
    "name": "Braevick",
    "kind": "province",
    "parent": "s-loc-poromiel",
-   "x": 820,
-   "y": 180,
+   "x": 960,
+   "y": 150,
    "desc": "Poromish province whose second city is Zolya. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-basgiath",
    "name": "Basgiath War College",
    "kind": "fortress",
    "parent": "s-loc-navarre",
-   "x": 400,
-   "y": 300,
+   "x": 500,
+   "y": 385,
    "desc": "Navarre's war college: Riders, Scribe, Healer and Infantry Quadrants, and the wardstone. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-aretia",
@@ -5510,120 +5635,120 @@
    "kind": "town",
    "parent": "s-loc-tyrrendor",
    "x": 330,
-   "y": 500,
+   "y": 610,
    "desc": "Tyrrish town burned by dragons after the rebellion; later the rebels' base with an unpowered wardstone. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-riorson",
    "name": "Riorson House",
    "kind": "fortress",
    "parent": "s-loc-tyrrendor",
-   "x": 410,
-   "y": 560,
+   "x": 450,
+   "y": 670,
    "desc": "Half palace, half barracks, a fortress never breached by an army until dragons burned it. The valley above it holds the old Dubhmadinn hatching grounds. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-kyllendelle",
    "name": "Kyllendelle",
    "kind": "town",
    "parent": "s-loc-tyrrendor",
-   "x": 250,
-   "y": 590,
+   "x": 290,
+   "y": 725,
    "desc": "Tyrrish village sacked by raiders from the Emerald Sea (Public Notice 442.184). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-resson",
    "name": "Resson",
    "kind": "town",
    "parent": "s-loc-elsum",
-   "x": 620,
-   "y": 290,
+   "x": 770,
+   "y": 300,
    "desc": "Village and trading post at the edge of the dragon-protected border; site of a Krovlan attack and the Fourth Wing finale battle. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-athebyne",
    "name": "Athebyne",
    "kind": "outpost",
    "parent": "s-loc-elsum",
-   "x": 650,
-   "y": 320,
+   "x": 790,
+   "y": 350,
    "desc": "Border outpost near Resson, repeatedly attacked. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-steelridge",
    "name": "Steel Ridge Range",
    "kind": "region",
    "parent": "s-loc-navarre",
-   "x": 440,
-   "y": 120,
+   "x": 590,
+   "y": 108,
    "desc": "Mountain range where the green Uaineloidsig dragons offered their hatching grounds (an epigraph). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-zolya",
    "name": "Zolya",
    "kind": "city",
    "parent": "s-loc-braevick",
-   "x": 840,
-   "y": 150,
+   "x": 1010,
+   "y": 200,
    "desc": "Second most populous city in Braevick; home of Cliffsbane Flight Academy. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-cliffsbane",
    "name": "Cliffsbane Flight Academy",
    "kind": "fortress",
    "parent": "s-loc-braevick",
-   "x": 870,
-   "y": 120,
+   "x": 1070,
+   "y": 165,
    "desc": "The Poromish gryphon flier academy, counterpart of Basgiath. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-cordyn",
    "name": "Cordyn",
    "kind": "city",
    "parent": "s-loc-krovla",
-   "x": 800,
-   "y": 570,
+   "x": 900,
+   "y": 685,
    "desc": "Seaside city in Krovla where Viscount Tecarus keeps his palace. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-emerald",
    "name": "Emerald Sea",
    "kind": "sea",
    "parent": "",
-   "x": 560,
-   "y": 650,
+   "x": 440,
+   "y": 915,
    "desc": "The sea south of the Continent; raiders from it sack coastal Tyrrish villages. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-barrens",
    "name": "The Barrens",
    "kind": "region",
    "parent": "",
-   "x": null,
-   "y": null,
-   "desc": "Abandoned by dragons and gryphons after the Great War (an epigraph). Starter note from the notices, snippets and web summaries; check against your copy.",
+   "x": 1250,
+   "y": 430,
+   "desc": "The large eastern land. Abandoned by dragons and gryphons after the Great War (an epigraph). Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-samara",
@@ -5634,29 +5759,29 @@
    "y": null,
    "desc": "Outpost where Xaden is posted in Iron Flame and which is attacked. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-zehyllna",
    "name": "Zehyllna",
    "kind": "island",
    "parent": "",
-   "x": null,
-   "y": null,
+   "x": 560,
+   "y": 935,
    "desc": "Island whose people worship Zihnal; the card game where Trager dies. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-draithus",
    "name": "Draithus",
-   "kind": "island",
+   "kind": "other",
    "parent": "",
-   "x": null,
-   "y": null,
-   "desc": "Site of the climactic Onyx Storm battle against the venin. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "x": 945,
+   "y": 735,
+   "desc": "Site of the climactic Onyx Storm battle against the venin. On the south coast of the Continent rather than an island. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
   },
   {
    "id": "s-loc-dunne",
@@ -5667,13 +5792,1459 @@
    "y": null,
    "desc": "Temple whose shard Violet uses against Theophanie; its head priestess certifies Violet's marriage. Starter note from the notices, snippets and web summaries; check against your copy.",
    "unverified": true,
-   "rev": 1
+   "rev": 2
+  },
+  {
+   "id": "s-loc-deaconshire",
+   "name": "Deaconshire",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 385,
+   "y": 445,
+   "desc": "Province of Navarre, named on the book's world map. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-cygnisen",
+   "name": "Cygnisen",
+   "kind": "province",
+   "parent": "s-loc-navarre",
+   "x": 280,
+   "y": 215,
+   "desc": "Province of Navarre, named on the book's world map. Starter note from the notices, snippets and web summaries; check against your copy.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-arctile",
+   "name": "Arctile Ocean",
+   "kind": "sea",
+   "parent": "",
+   "x": 700,
+   "y": -25,
+   "desc": "Ocean along the northern edge of the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-malek",
+   "name": "Bay of Malek",
+   "kind": "sea",
+   "parent": "",
+   "x": 150,
+   "y": 760,
+   "desc": "Bay on the western coast of the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-esben",
+   "name": "Esben Mountains",
+   "kind": "region",
+   "parent": "",
+   "x": 1075,
+   "y": 270,
+   "desc": "Mountains between Poromiel and the Barrens on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-medaro",
+   "name": "Medaro Pass",
+   "kind": "region",
+   "parent": "",
+   "x": 810,
+   "y": 420,
+   "desc": "A pass named on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-dralor",
+   "name": "Cliffs of Dralor",
+   "kind": "region",
+   "parent": "",
+   "x": 190,
+   "y": 660,
+   "desc": "Named on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-montserrat",
+   "name": "Montserrat",
+   "kind": "town",
+   "parent": "",
+   "x": 880,
+   "y": 330,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-suniva",
+   "name": "Suniva",
+   "kind": "town",
+   "parent": "",
+   "x": 975,
+   "y": 430,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-chakir",
+   "name": "Chakir",
+   "kind": "town",
+   "parent": "",
+   "x": 1040,
+   "y": 340,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-anica",
+   "name": "Anica",
+   "kind": "town",
+   "parent": "",
+   "x": 860,
+   "y": 480,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-newhall",
+   "name": "Newhall",
+   "kind": "town",
+   "parent": "",
+   "x": 420,
+   "y": 250,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-sumerton",
+   "name": "Sumerton",
+   "kind": "town",
+   "parent": "",
+   "x": 600,
+   "y": 450,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-vale",
+   "name": "The Vale",
+   "kind": "town",
+   "parent": "",
+   "x": 250,
+   "y": 330,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-lewellen",
+   "name": "Lewellen",
+   "kind": "town",
+   "parent": "",
+   "x": 650,
+   "y": 245,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-pavis",
+   "name": "Pavis",
+   "kind": "town",
+   "parent": "",
+   "x": 380,
+   "y": 330,
+   "desc": "Named on the world map; what it is has not been checked. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-loysam",
+   "name": "Loysam",
+   "kind": "island",
+   "parent": "",
+   "x": 1010,
+   "y": 890,
+   "desc": "Island on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-hedotis",
+   "name": "Hedotis",
+   "kind": "island",
+   "parent": "",
+   "x": 840,
+   "y": 880,
+   "desc": "Island on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-unnbriel",
+   "name": "Unnbriel",
+   "kind": "island",
+   "parent": "",
+   "x": 1170,
+   "y": 880,
+   "desc": "Island on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-deverelli",
+   "name": "Deverelli",
+   "kind": "island",
+   "parent": "",
+   "x": 700,
+   "y": 950,
+   "desc": "Island on the world map. Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
+  },
+  {
+   "id": "s-loc-unnamed",
+   "name": "Unnamed Isle",
+   "kind": "island",
+   "parent": "",
+   "x": 250,
+   "y": 905,
+   "desc": "Unnamed island on the world map (it holds Xortrys, Vidirys, Eistol and Matyas). Placed by eye from the book's world map; drag it if it is off.",
+   "unverified": true,
+   "rev": 2
   }
  ],
  "routes": [],
+ "shapes": [
+  {
+   "id": "s-sh-continent",
+   "name": "The Continent",
+   "kind": "land",
+   "pts": [
+    [
+     130,
+     260
+    ],
+    [
+     190,
+     170
+    ],
+    [
+     300,
+     110
+    ],
+    [
+     420,
+     70
+    ],
+    [
+     540,
+     60
+    ],
+    [
+     650,
+     50
+    ],
+    [
+     780,
+     40
+    ],
+    [
+     900,
+     50
+    ],
+    [
+     1020,
+     70
+    ],
+    [
+     1130,
+     110
+    ],
+    [
+     1230,
+     90
+    ],
+    [
+     1320,
+     140
+    ],
+    [
+     1370,
+     260
+    ],
+    [
+     1350,
+     400
+    ],
+    [
+     1380,
+     520
+    ],
+    [
+     1340,
+     660
+    ],
+    [
+     1250,
+     760
+    ],
+    [
+     1150,
+     780
+    ],
+    [
+     1080,
+     720
+    ],
+    [
+     1010,
+     700
+    ],
+    [
+     940,
+     730
+    ],
+    [
+     860,
+     690
+    ],
+    [
+     780,
+     720
+    ],
+    [
+     700,
+     780
+    ],
+    [
+     620,
+     820
+    ],
+    [
+     540,
+     800
+    ],
+    [
+     470,
+     850
+    ],
+    [
+     390,
+     830
+    ],
+    [
+     310,
+     780
+    ],
+    [
+     250,
+     700
+    ],
+    [
+     170,
+     640
+    ],
+    [
+     140,
+     520
+    ],
+    [
+     110,
+     400
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-navarre",
+   "name": "Navarre",
+   "kind": "realm",
+   "pts": [
+    [
+     130,
+     260
+    ],
+    [
+     190,
+     170
+    ],
+    [
+     300,
+     110
+    ],
+    [
+     420,
+     70
+    ],
+    [
+     540,
+     60
+    ],
+    [
+     650,
+     50
+    ],
+    [
+     780,
+     40
+    ],
+    [
+     820,
+     150
+    ],
+    [
+     800,
+     260
+    ],
+    [
+     780,
+     380
+    ],
+    [
+     790,
+     500
+    ],
+    [
+     760,
+     620
+    ],
+    [
+     720,
+     720
+    ],
+    [
+     700,
+     780
+    ],
+    [
+     620,
+     820
+    ],
+    [
+     540,
+     800
+    ],
+    [
+     470,
+     850
+    ],
+    [
+     390,
+     830
+    ],
+    [
+     310,
+     780
+    ],
+    [
+     250,
+     700
+    ],
+    [
+     170,
+     640
+    ],
+    [
+     140,
+     520
+    ],
+    [
+     110,
+     400
+    ]
+   ],
+   "color": "green",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-poromiel",
+   "name": "Poromiel",
+   "kind": "realm",
+   "pts": [
+    [
+     780,
+     40
+    ],
+    [
+     900,
+     50
+    ],
+    [
+     1020,
+     70
+    ],
+    [
+     1130,
+     110
+    ],
+    [
+     1150,
+     230
+    ],
+    [
+     1130,
+     340
+    ],
+    [
+     1110,
+     450
+    ],
+    [
+     1090,
+     560
+    ],
+    [
+     1080,
+     720
+    ],
+    [
+     1010,
+     700
+    ],
+    [
+     940,
+     730
+    ],
+    [
+     860,
+     690
+    ],
+    [
+     780,
+     720
+    ],
+    [
+     720,
+     720
+    ],
+    [
+     760,
+     620
+    ],
+    [
+     790,
+     500
+    ],
+    [
+     780,
+     380
+    ],
+    [
+     800,
+     260
+    ],
+    [
+     820,
+     150
+    ]
+   ],
+   "color": "blue",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-barrens",
+   "name": "The Barrens",
+   "kind": "realm",
+   "pts": [
+    [
+     1130,
+     110
+    ],
+    [
+     1230,
+     90
+    ],
+    [
+     1320,
+     140
+    ],
+    [
+     1370,
+     260
+    ],
+    [
+     1350,
+     400
+    ],
+    [
+     1380,
+     520
+    ],
+    [
+     1340,
+     660
+    ],
+    [
+     1250,
+     760
+    ],
+    [
+     1150,
+     780
+    ],
+    [
+     1080,
+     720
+    ],
+    [
+     1090,
+     560
+    ],
+    [
+     1110,
+     450
+    ],
+    [
+     1130,
+     340
+    ],
+    [
+     1150,
+     230
+    ]
+   ],
+   "color": "sand",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-cygnisen",
+   "name": "Cygnisen",
+   "kind": "province",
+   "pts": [
+    [
+     130,
+     260
+    ],
+    [
+     190,
+     170
+    ],
+    [
+     300,
+     110
+    ],
+    [
+     420,
+     70
+    ],
+    [
+     450,
+     230
+    ],
+    [
+     300,
+     290
+    ]
+   ],
+   "color": "lavender",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-calldyr",
+   "name": "Calldyr",
+   "kind": "province",
+   "pts": [
+    [
+     420,
+     70
+    ],
+    [
+     540,
+     60
+    ],
+    [
+     650,
+     50
+    ],
+    [
+     690,
+     230
+    ],
+    [
+     450,
+     230
+    ]
+   ],
+   "color": "gold",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-elsum",
+   "name": "Elsum",
+   "kind": "province",
+   "pts": [
+    [
+     650,
+     50
+    ],
+    [
+     780,
+     40
+    ],
+    [
+     820,
+     150
+    ],
+    [
+     800,
+     260
+    ],
+    [
+     780,
+     380
+    ],
+    [
+     790,
+     500
+    ],
+    [
+     640,
+     480
+    ],
+    [
+     620,
+     330
+    ],
+    [
+     690,
+     230
+    ]
+   ],
+   "color": "rose",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-morainne",
+   "name": "Morainne",
+   "kind": "province",
+   "pts": [
+    [
+     450,
+     230
+    ],
+    [
+     690,
+     230
+    ],
+    [
+     620,
+     330
+    ],
+    [
+     640,
+     480
+    ],
+    [
+     480,
+     470
+    ],
+    [
+     430,
+     340
+    ]
+   ],
+   "color": "teal",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-deaconshire",
+   "name": "Deaconshire",
+   "kind": "province",
+   "pts": [
+    [
+     300,
+     290
+    ],
+    [
+     450,
+     230
+    ],
+    [
+     430,
+     340
+    ],
+    [
+     480,
+     470
+    ],
+    [
+     300,
+     500
+    ],
+    [
+     330,
+     380
+    ]
+   ],
+   "color": "sand",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-luceras",
+   "name": "Luceras",
+   "kind": "province",
+   "pts": [
+    [
+     130,
+     260
+    ],
+    [
+     300,
+     290
+    ],
+    [
+     330,
+     380
+    ],
+    [
+     300,
+     500
+    ],
+    [
+     140,
+     520
+    ],
+    [
+     110,
+     400
+    ]
+   ],
+   "color": "gold",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-tyrrendor",
+   "name": "Tyrrendor",
+   "kind": "province",
+   "pts": [
+    [
+     140,
+     520
+    ],
+    [
+     300,
+     500
+    ],
+    [
+     480,
+     470
+    ],
+    [
+     640,
+     480
+    ],
+    [
+     790,
+     500
+    ],
+    [
+     760,
+     620
+    ],
+    [
+     720,
+     720
+    ],
+    [
+     700,
+     780
+    ],
+    [
+     620,
+     820
+    ],
+    [
+     540,
+     800
+    ],
+    [
+     470,
+     850
+    ],
+    [
+     390,
+     830
+    ],
+    [
+     310,
+     780
+    ],
+    [
+     250,
+     700
+    ],
+    [
+     170,
+     640
+    ]
+   ],
+   "color": "rose",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-braevick",
+   "name": "Braevick",
+   "kind": "province",
+   "pts": [
+    [
+     780,
+     40
+    ],
+    [
+     900,
+     50
+    ],
+    [
+     1020,
+     70
+    ],
+    [
+     1130,
+     110
+    ],
+    [
+     1150,
+     230
+    ],
+    [
+     960,
+     300
+    ],
+    [
+     800,
+     260
+    ],
+    [
+     820,
+     150
+    ]
+   ],
+   "color": "teal",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-krovla",
+   "name": "Krovla",
+   "kind": "province",
+   "pts": [
+    [
+     790,
+     500
+    ],
+    [
+     1090,
+     560
+    ],
+    [
+     1080,
+     720
+    ],
+    [
+     1010,
+     700
+    ],
+    [
+     940,
+     730
+    ],
+    [
+     860,
+     690
+    ],
+    [
+     780,
+     720
+    ],
+    [
+     720,
+     720
+    ],
+    [
+     760,
+     620
+    ]
+   ],
+   "color": "lavender",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-loysam",
+   "name": "Loysam",
+   "kind": "land",
+   "pts": [
+    [
+     1045,
+     890
+    ],
+    [
+     1051,
+     912
+    ],
+    [
+     1017,
+     914
+    ],
+    [
+     986,
+     915
+    ],
+    [
+     966,
+     900
+    ],
+    [
+     973,
+     882
+    ],
+    [
+     983,
+     861
+    ],
+    [
+     1016,
+     868
+    ],
+    [
+     1051,
+     868
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-hedotis",
+   "name": "Hedotis",
+   "kind": "land",
+   "pts": [
+    [
+     870,
+     880
+    ],
+    [
+     873,
+     898
+    ],
+    [
+     846,
+     902
+    ],
+    [
+     822,
+     900
+    ],
+    [
+     800,
+     889
+    ],
+    [
+     811,
+     873
+    ],
+    [
+     817,
+     855
+    ],
+    [
+     845,
+     861
+    ],
+    [
+     874,
+     862
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-unnbriel",
+   "name": "Unnbriel",
+   "kind": "land",
+   "pts": [
+    [
+     1231,
+     880
+    ],
+    [
+     1202,
+     896
+    ],
+    [
+     1180,
+     912
+    ],
+    [
+     1145,
+     906
+    ],
+    [
+     1127,
+     889
+    ],
+    [
+     1115,
+     868
+    ],
+    [
+     1150,
+     860
+    ],
+    [
+     1181,
+     844
+    ],
+    [
+     1202,
+     864
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-deverelli",
+   "name": "Deverelli",
+   "kind": "land",
+   "pts": [
+    [
+     750,
+     950
+    ],
+    [
+     728,
+     964
+    ],
+    [
+     710,
+     981
+    ],
+    [
+     682,
+     968
+    ],
+    [
+     651,
+     960
+    ],
+    [
+     661,
+     942
+    ],
+    [
+     678,
+     928
+    ],
+    [
+     709,
+     922
+    ],
+    [
+     728,
+     936
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-zehyllna",
+   "name": "Zehyllna",
+   "kind": "land",
+   "pts": [
+    [
+     606,
+     935
+    ],
+    [
+     588,
+     949
+    ],
+    [
+     567,
+     958
+    ],
+    [
+     538,
+     958
+    ],
+    [
+     529,
+     942
+    ],
+    [
+     514,
+     925
+    ],
+    [
+     544,
+     919
+    ],
+    [
+     568,
+     907
+    ],
+    [
+     588,
+     921
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-unnamed",
+   "name": "Unnamed Isle",
+   "kind": "land",
+   "pts": [
+    [
+     297,
+     905
+    ],
+    [
+     306,
+     935
+    ],
+    [
+     259,
+     936
+    ],
+    [
+     217,
+     941
+    ],
+    [
+     194,
+     918
+    ],
+    [
+     198,
+     893
+    ],
+    [
+     215,
+     867
+    ],
+    [
+     258,
+     875
+    ],
+    [
+     306,
+     875
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-steelridge",
+   "name": "Steel Ridge Range",
+   "kind": "mountains",
+   "pts": [
+    [
+     480,
+     120
+    ],
+    [
+     540,
+     100
+    ],
+    [
+     600,
+     115
+    ],
+    [
+     660,
+     150
+    ],
+    [
+     690,
+     200
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-esben",
+   "name": "Esben Mountains",
+   "kind": "mountains",
+   "pts": [
+    [
+     1120,
+     160
+    ],
+    [
+     1105,
+     230
+    ],
+    [
+     1125,
+     300
+    ],
+    [
+     1110,
+     380
+    ],
+    [
+     1100,
+     450
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-iakobos",
+   "name": "Iakobos River",
+   "kind": "river",
+   "pts": [
+    [
+     600,
+     120
+    ],
+    [
+     570,
+     200
+    ],
+    [
+     545,
+     290
+    ],
+    [
+     500,
+     380
+    ],
+    [
+     450,
+     480
+    ],
+    [
+     410,
+     600
+    ],
+    [
+     400,
+     720
+    ],
+    [
+     390,
+     830
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-dunness",
+   "name": "Dunness River",
+   "kind": "river",
+   "pts": [
+    [
+     1100,
+     440
+    ],
+    [
+     1040,
+     500
+    ],
+    [
+     980,
+     540
+    ],
+    [
+     920,
+     600
+    ],
+    [
+     880,
+     660
+    ],
+    [
+     860,
+     690
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  },
+  {
+   "id": "s-sh-border",
+   "name": "Navarre–Poromiel border",
+   "kind": "border",
+   "pts": [
+    [
+     820,
+     150
+    ],
+    [
+     800,
+     260
+    ],
+    [
+     780,
+     380
+    ],
+    [
+     790,
+     500
+    ],
+    [
+     760,
+     620
+    ],
+    [
+     720,
+     720
+    ]
+   ],
+   "color": "",
+   "unverified": true,
+   "rev": 1
+  }
+ ],
  "removedSeed": [
   "s-ev-if-resson",
-  "s-d-trissa"
+  "s-d-trissa",
+  "s-w-lyron-panchek"
  ],
  "lastEdition": "Hardcover"
 }
