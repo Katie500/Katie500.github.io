@@ -1022,7 +1022,11 @@
    "notes": "Teaches signet manifestation and practice. Listed on the Empyrean wiki (found through search results); check against your copy.",
    "unverified": true,
    "rev": 9,
-   "title": "Professor"
+   "title": "Professor",
+   "signetIds": [
+    "sg-la03olv"
+   ],
+   "updated": 1791384027335
   },
   {
    "id": "s-kiandra",
@@ -1747,14 +1751,24 @@
   {
    "id": "s-w-avalynn",
    "name": "Avalynn",
-   "group": "civilian",
+   "group": "rider",
    "status": "unknown",
    "rebelChild": false,
    "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
+   "notes": "",
+   "unverified": false,
    "rev": 10,
-   "title": ""
+   "title": "",
+   "aliases": "",
+   "origin": "",
+   "signetIds": [
+    "sg-la03olv"
+   ],
+   "gryphon": "",
+   "dragonId": "",
+   "fateEventId": "",
+   "cites": [],
+   "updated": 1791384027338
   },
   {
    "id": "s-w-calixta",
@@ -1793,18 +1807,6 @@
    "title": ""
   },
   {
-   "id": "s-w-fann",
-   "name": "Fann",
-   "group": "civilian",
-   "status": "unknown",
-   "rebelChild": false,
-   "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10,
-   "title": ""
-  },
-  {
    "id": "s-w-faris",
    "name": "Faris",
    "group": "civilian",
@@ -1831,18 +1833,6 @@
   {
    "id": "s-w-greely",
    "name": "Greely",
-   "group": "civilian",
-   "status": "unknown",
-   "rebelChild": false,
-   "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10,
-   "title": ""
-  },
-  {
-   "id": "s-w-greim",
-   "name": "Greim",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
@@ -1939,30 +1929,6 @@
   {
    "id": "s-w-lyra",
    "name": "Lyra",
-   "group": "civilian",
-   "status": "unknown",
-   "rebelChild": false,
-   "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10,
-   "title": ""
-  },
-  {
-   "id": "s-w-maise",
-   "name": "Maise",
-   "group": "civilian",
-   "status": "unknown",
-   "rebelChild": false,
-   "venin": false,
-   "notes": "Appears on the wiki's character list with little detail. Listed on the Empyrean wiki's Characters category; check against your copy.",
-   "unverified": true,
-   "rev": 10,
-   "title": ""
-  },
-  {
-   "id": "s-w-malla",
-   "name": "Malla",
    "group": "civilian",
    "status": "unknown",
    "rebelChild": false,
@@ -2846,6 +2812,111 @@
    "cites": [],
    "id": "d-yueybot",
    "updated": 1791382458078
+  },
+  {
+   "tail": "Dagger",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Breugan",
+   "img": "",
+   "aliases": "",
+   "color": "Orange",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-carr",
+   "status": "active",
+   "notes": "",
+   "cites": [],
+   "id": "d-21s9i5s",
+   "updated": 1791383437359
+  },
+  {
+   "tail": "Sword",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Fann",
+   "img": "",
+   "aliases": "",
+   "color": "Green",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-w-ulices-ferris",
+   "status": "active",
+   "notes": "",
+   "cites": [],
+   "id": "d-y6az6sh",
+   "updated": 1791383494331
+  },
+  {
+   "tail": "",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Greim",
+   "img": "",
+   "aliases": "",
+   "color": "",
+   "sex": "female",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "",
+   "status": "active",
+   "notes": "Greim and her mate, Maise, have the uncommon ability to communicate with each other over great distances. This is because they've been mated for many decades.",
+   "cites": [],
+   "id": "d-na7zqfo",
+   "updated": 1791383644141
+  },
+  {
+   "tail": "",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Maise",
+   "img": "",
+   "aliases": "",
+   "color": "",
+   "sex": "male",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "",
+   "status": "active",
+   "notes": "Greim and her mate, Maise, have the uncommon ability to communicate with each other over great distances. This is because they've been mated for many decades.",
+   "cites": [],
+   "id": "d-sbo91tb",
+   "updated": 1791383638233
+  },
+  {
+   "tail": "Scorpion",
+   "unverified": false,
+   "gryphon": false,
+   "name": "Malla",
+   "img": "",
+   "aliases": "",
+   "color": "Red",
+   "sex": "",
+   "age": null,
+   "riders": null,
+   "family": "",
+   "sire": "",
+   "dam": "",
+   "riderId": "s-w-nyra-voldaren",
+   "status": "deceased",
+   "notes": "Malla, along with her rider, join the revolution in 634 AU. While serving in Mira's squad, Nyra and Malla were both drained by Venin while defending civilians in an attack in Pavis. There was nothing left of either of them.",
+   "cites": [],
+   "id": "d-alsievg",
+   "updated": 1791383733105
   }
  ],
  "events": [
@@ -5516,6 +5587,15 @@
    "cites": [],
    "id": "sg-cca6ps8",
    "updated": 1791381423324
+  },
+  {
+   "unverified": false,
+   "name": "Fire Wielding",
+   "category": "Wielding",
+   "desc": "",
+   "cites": [],
+   "id": "sg-la03olv",
+   "updated": 1791384027331
   }
  ],
  "locations": [
@@ -7244,7 +7324,11 @@
  "removedSeed": [
   "s-ev-if-resson",
   "s-d-trissa",
-  "s-w-lyron-panchek"
+  "s-w-lyron-panchek",
+  "s-w-malla",
+  "s-w-maise",
+  "s-w-greim",
+  "s-w-fann"
  ],
  "lastEdition": "Hardcover"
 }
